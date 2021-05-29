@@ -1,9 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Advance_Mode">
+    android:layout_height="wrap_content"
+    android:background="@drawable/splash_background"
+    android:orientation="vertical">
+    <!--TODO:    Done by Shufang-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:background="#F686BD"
+        android:text="Advance Mode"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="36sp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:text="Example"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="36sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="392dp"
+        android:layout_gravity="center"
+        android:src="@drawable/advanced_mode_sample_img" />
+
+    <Button
+        android:id="@+id/btnStart"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_margin="40dp"
+        android:background="@drawable/btn_design"
+        android:text="Start"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+</LinearLayout>

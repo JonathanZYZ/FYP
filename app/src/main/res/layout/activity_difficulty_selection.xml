@@ -9,47 +9,47 @@
 
     <!--TODO:    Done by Shufang-->
     <Button
-        android:id="@+id/Play"
+        android:id="@+id/btnEasy"
         android:layout_width="300dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
         android:layout_margin="40dp"
         android:background="@drawable/btn_design"
-        android:text="Play"
+        android:text="Easy"
         android:textColor="@color/white"
         android:textSize="20sp" />
 
     <Button
-        android:id="@+id/btnHowToPlay"
+        android:id="@+id/btnIntermediate"
         android:layout_width="300dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
         android:layout_margin="40dp"
         android:background="@drawable/btn_design"
-        android:text="How To Play"
+        android:text="Intermediate"
         android:textColor="@color/white"
         android:textSize="20sp" />
 
 
     <Button
-        android:id="@+id/btnRevisionSection"
+        android:id="@+id/btnAdvance"
         android:layout_width="300dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
         android:layout_margin="40dp"
         android:background="@drawable/btn_design"
-        android:text="Revision Section"
+        android:text="Advance"
         android:textColor="@color/white"
         android:textSize="20sp" />
 
     <Button
-        android:id="@+id/btnSettings"
+        android:id="@+id/btnChallenging"
         android:layout_width="300dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
         android:layout_margin="40dp"
         android:background="@drawable/btn_design"
-        android:text="Settings"
+        android:text="Challenging"
         android:textColor="@color/white"
         android:textSize="20sp" />
 

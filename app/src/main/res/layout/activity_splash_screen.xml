@@ -1,8 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/splash_background" >
+    android:background="@drawable/splash_background">
+    <!--TODO:    Done by Shufang-->
+    <TextView
+        android:id="@+id/textViewStart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="124dp"
+        android:layout_marginBottom="118dp"
+        android:gravity="center_horizontal"
+        android:text="Organic Chemy"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="@+id/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/logo"
@@ -14,11 +32,11 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:textSize="12dp"
-        android:textColor="#000000"
-        android:gravity="center_horizontal"
         android:layout_alignParentBottom="true"
-        android:text="Organic Chemy" />
+        android:layout_marginBottom="10dp"
+        android:gravity="center_horizontal"
+        android:text="Organic Chemy"
+        android:textColor="#000000"
+        android:textSize="12dp" />
 
 </RelativeLayout>
