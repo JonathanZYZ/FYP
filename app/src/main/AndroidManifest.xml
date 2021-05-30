@@ -9,14 +9,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FYP">
-        <activity android:name=".Start_Quiz"></activity>
-        <activity android:name=".Leaderboard" />
-        <activity android:name=".Advance_Mode" />
-        <activity android:name=".Intermediate_Mode" />
+        <activity android:name=".SettingsPage"></activity>
+        <activity android:name=".RevisionSection" />
+        <activity android:name=".HowToPlay" />
+        <activity
+            android:name=".Start_Quiz"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".Leaderboard"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".Advance_Mode"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".Intermediate_Mode"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".Easy_Mode" />
-        <activity android:name=".Difficulty_Section" />
-        <activity android:name=".MainPage" />
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".Difficulty_Section"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".MainPage"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
