@@ -6,17 +6,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/background2"
-    tools:context=".Question1_Easy">
+    tools:context=".Question2_Easy">
 
     <TextView
-        android:id="@+id/tvQuestion1Easy"
+        android:id="@+id/tvQuestion2Easy"
         android:layout_width="262dp"
         android:layout_height="101dp"
         android:background="#F686BD"
         android:textColor="@color/white"
         android:textAlignment="center"
         android:layout_gravity="center"
-        android:text="QUESTION 1 EASY"
+        android:text="QUESTION 2 EASY"
         android:layout_margin="30dp"
         android:gravity="center" />
 
@@ -26,26 +26,25 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/ivQ1Easy_StartingMaterial"
+            android:id="@+id/ivQ2Easy_StartingMaterial"
             android:layout_width="wrap_content"
             android:layout_height="160dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/question1easy_startingmaterial" />
+            app:srcCompat="@drawable/question2easy_startingmaterial" />
 
         <ImageView
-            android:id="@+id/ivQ1Easy_StrongNucleophile"
+            android:id="@+id/ivQ2Easy_StrongNucleophile"
             android:layout_width="wrap_content"
             android:layout_height="160dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/question1easy_strongnucleophile" />
+            app:srcCompat="@drawable/question2easy_strongnucleophile" />
 
         <ImageView
-            android:id="@+id/ivQ1Easy_Solvent"
+            android:id="@+id/ivQ2Easy_Solvent"
             android:layout_width="wrap_content"
             android:layout_height="160dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/question1easy_solvent" />
-
+            app:srcCompat="@drawable/question2easy_solvent" />
     </LinearLayout>
 
     <LinearLayout
@@ -54,7 +53,7 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/ivQ1Easy_Arrow"
+            android:id="@+id/imageView4"
             android:layout_width="wrap_content"
             android:layout_height="70dp"
             android:layout_gravity="center"
@@ -69,14 +68,14 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/ivQ1Easy_Product"
+            android:id="@+id/ivQ2Easy_Product"
             android:layout_width="wrap_content"
             android:layout_height="150dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/question1easy_product" />
+            app:srcCompat="@drawable/question2easy_product" />
 
         <ImageView
-            android:id="@+id/ivQ1Easy_ReactionType"
+            android:id="@+id/ivQ2Easy_ReactionType"
             android:layout_width="wrap_content"
             android:layout_height="150dp"
             android:layout_weight="1"
@@ -89,7 +88,7 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/btnQ1Easy"
+            android:id="@+id/btnQ2Easy"
             android:layout_width="156dp"
             android:layout_height="80dp"
             android:layout_gravity="center"
@@ -97,5 +96,4 @@
             app:backgroundTint="#F686BD"
             app:cornerRadius="59dp" />
     </LinearLayout>
-
 </LinearLayout>

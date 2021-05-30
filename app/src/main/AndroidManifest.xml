@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FYP">
-        <activity android:name=".Question1_Easy"></activity>
+        <activity android:name=".Question2_Easy"></activity>
+        <activity android:name=".Question1_Easy" />
         <activity
             android:name=".SettingsPage"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
