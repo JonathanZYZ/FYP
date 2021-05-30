@@ -12,9 +12,10 @@
         android:layout_height="50dp"
         android:layout_gravity="top|left"
         android:layout_margin="10dp"
-        android:background="@drawable/ic_baseline_home_24"
         android:backgroundTint="@color/white"
-        android:textSize="20sp" />
+        android:textSize="20sp"/>
+<!--        android:background="@drawable/ic_baseline_home_24"-->
+
 
     <TextView
         android:layout_width="match_parent"
