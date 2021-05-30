@@ -37,7 +37,7 @@
         android:src="@drawable/easy_mode_sample_img" />
 
     <Button
-        android:id="@+id/btnStart"
+        android:id="@+id/btnStartEasy"
         android:layout_width="300dp"
         android:layout_height="100dp"
         android:layout_gravity="center"

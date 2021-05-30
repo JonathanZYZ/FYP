@@ -37,7 +37,7 @@
         android:src="@drawable/intermediate_mode_sample_img" />
 
     <Button
-        android:id="@+id/btnStart"
+        android:id="@+id/btnStartIntermediate"
         android:layout_width="300dp"
         android:layout_height="100dp"
         android:layout_gravity="center"

@@ -9,9 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FYP">
-        <activity android:name=".SettingsPage"></activity>
-        <activity android:name=".RevisionSection" />
-        <activity android:name=".HowToPlay" />
+        <activity android:name=".SettingsPage"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".RevisionSection"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".HowToPlay"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+
         <activity
             android:name=".Start_Quiz"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
@@ -24,12 +28,10 @@
         <activity
             android:name=".Intermediate_Mode"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".Easy_Mode" />
-        <activity
-            android:name=".Difficulty_Section"
+        <activity android:name=".Easy_Mode"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".MainPage"
+            android:name=".Difficulty_Section"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".MainActivity"
