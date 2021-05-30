@@ -2,18 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/background2">
+    android:layout_height="wrap_content"
+    android:background="@drawable/background2"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/tvQuestion1"
         android:layout_width="303dp"
         android:layout_height="180dp"
         android:layout_gravity="center"
-        android:gravity="center"
         android:layout_margin="80dp"
         android:background="#F686BD"
+        android:gravity="center"
         android:text="Question 1 \n Which is the correct answer?"
         android:textAlignment="center"
         android:textColor="@color/white"
@@ -26,22 +26,22 @@
 
         <ImageView
             android:id="@+id/ivOption1"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/option1" />
 
         <ImageView
             android:id="@+id/ivOption2"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/option2" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <Button
@@ -52,6 +52,26 @@
             android:text="START"
             app:backgroundTint="#FE5D9F"
             app:cornerRadius="59dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="128dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="130dp"
+            android:layout_height="67dp"
+            android:layout_gravity="right"
+            app:srcCompat="@drawable/questionmark" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="Click here for hint" />
     </LinearLayout>
 
 
