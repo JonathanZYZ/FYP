@@ -25,6 +25,26 @@ public class MainPage extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
+        btnHowToPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainPage.this,HowToPlay.class);
+                startActivity(i);
+            }
+        });
+        btnRevision.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainPage.this,RevisionSection.class);
+                startActivity(i);
+            }
+        });
+        btnSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainPage.this,SettingsPage.class);
+                startActivity(i);
+            }
+        });
     }
 }
