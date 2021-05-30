@@ -4,21 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/background2"
+    android:orientation="vertical"
     tools:context=".Question1_Easy">
 
     <TextView
         android:id="@+id/tvQuestion1Easy"
         android:layout_width="262dp"
         android:layout_height="101dp"
-        android:background="#F686BD"
-        android:textColor="@color/white"
-        android:textAlignment="center"
         android:layout_gravity="center"
-        android:text="QUESTION 1 EASY"
         android:layout_margin="30dp"
-        android:gravity="center" />
+        android:background="#F686BD"
+        android:gravity="center"
+        android:text="QUESTION 1 EASY"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"

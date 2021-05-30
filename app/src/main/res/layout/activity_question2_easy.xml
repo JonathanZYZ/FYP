@@ -72,14 +72,16 @@
             android:layout_width="wrap_content"
             android:layout_height="150dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/question2easy_product" />
+            app:srcCompat="@drawable/question2easy_product"
+            android:contentDescription="TODO" />
 
         <ImageView
             android:id="@+id/ivQ2Easy_ReactionType"
             android:layout_width="wrap_content"
             android:layout_height="150dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/reaction_type" />
+            app:srcCompat="@drawable/reaction_type"
+            android:contentDescription="TODO" />
     </LinearLayout>
 
     <LinearLayout

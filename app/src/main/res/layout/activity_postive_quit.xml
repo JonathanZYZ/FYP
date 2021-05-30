@@ -3,17 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F686BD"
+    android:background="#80FC90"
     android:orientation="vertical">
     <!--TODO:    Done by Shufang-->
 
     <Button
-        android:id="@+id/btnHome"
+        android:id="@+id/btnReturn"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_gravity="top|left"
         android:layout_margin="10dp"
-        android:background="@drawable/ic_baseline_home_24"
+        android:background="@drawable/ic_baseline_arrow_back_24"
         android:textSize="20sp"
         tools:ignore="RtlHardcoded" />
 
@@ -23,33 +23,40 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="20dp"
-        android:background="#F686BD"
-        android:text="LEADERBOARD"
+        android:text="Good Job!"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
+        android:textSize="36sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:text="You have accumulated\na total score of:"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/tvPoint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:background="#45E95A"
+        android:text="X Points"
+        android:textAlignment="center"
+        android:textColor="@color/black"
         android:textSize="36sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="20dp"
-        android:text="YOUR HIGHEST SCORE"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        android:textStyle="bold" />
 
-    <TextView
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="20dp"
-        android:background="@color/btnColor"
-        android:text="score"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        android:textStyle="bold" />
+        android:src="@drawable/happy_rp_girl" />
+
 
 </LinearLayout>
