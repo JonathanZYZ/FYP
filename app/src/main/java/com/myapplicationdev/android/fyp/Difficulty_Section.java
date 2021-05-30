@@ -9,6 +9,6 @@ public class Difficulty_Section extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_difficulty__section);
+        setContentView(R.layout.activity_difficulty_selection);
     }
 }
