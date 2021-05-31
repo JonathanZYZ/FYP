@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background2"
+    android:orientation="vertical"
+    tools:context=".Question1_Easy">
+
+    <TextView
+        android:id="@+id/tvQuestion1Easy"
+        android:layout_width="262dp"
+        android:layout_height="101dp"
+        android:layout_gravity="center"
+        android:layout_margin="30dp"
+        android:background="#F686BD"
+        android:gravity="center"
+        android:text="QUESTION 1 EASY"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/ivQ1Easy_StartingMaterial"
+            android:layout_width="wrap_content"
+            android:layout_height="160dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/question1easy_startingmaterial" />
+
+        <ImageView
+            android:id="@+id/ivQ1Easy_StrongNucleophile"
+            android:layout_width="wrap_content"
+            android:layout_height="160dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/question1easy_strongnucleophile" />
+
+        <ImageView
+            android:id="@+id/ivQ1Easy_Solvent"
+            android:layout_width="wrap_content"
+            android:layout_height="160dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/question1easy_solvent" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/ivQ1Easy_Arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:rotation="90"
+            app:srcCompat="@drawable/arrow" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/ivQ1Easy_Product"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/question1easy_product" />
+
+        <ImageView
+            android:id="@+id/ivQ1Easy_ReactionType"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/reaction_type" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnQ1Easy"
+            android:layout_width="156dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:text="Start"
+            app:backgroundTint="#F686BD"
+            app:cornerRadius="59dp" />
+    </LinearLayout>
+
+</LinearLayout>
