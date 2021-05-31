@@ -87,21 +87,21 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/ivQ1Easy_StartingMaterial"
+            android:id="@+id/ivStartingMaterial"
             android:layout_width="wrap_content"
             android:layout_height="160dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/question1easy_startingmaterial" />
 
         <ImageView
-            android:id="@+id/ivQ1Easy_StrongNucleophile"
+            android:id="@+id/ivStrongNucleophile"
             android:layout_width="wrap_content"
             android:layout_height="160dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/question1easy_strongnucleophile" />
 
         <ImageView
-            android:id="@+id/ivQ1Easy_Solvent"
+            android:id="@+id/ivEasy_Solvent"
             android:layout_width="wrap_content"
             android:layout_height="160dp"
             android:layout_weight="1"

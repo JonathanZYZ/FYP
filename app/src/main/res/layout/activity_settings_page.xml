@@ -23,7 +23,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tvQuestion1Easy"
+            android:id="@+id/tvQuestion"
             android:layout_width="262dp"
             android:layout_height="101dp"
             android:layout_gravity="center"
