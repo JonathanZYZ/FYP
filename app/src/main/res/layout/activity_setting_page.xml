@@ -1,18 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background2"
     android:orientation="vertical">
 
+
+
+    <TextView
+        android:layout_width="310dp"
+        android:layout_height="508dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="150dp"
+        android:textColor="#F4BBD3"
+        android:background="@drawable/rounded_textview2" />
+
     <TextView
         android:id="@+id/tvSetting"
-        android:layout_width="216dp"
-        android:layout_height="130dp"
+        android:layout_width="311dp"
+        android:layout_height="96dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:background="@drawable/rounded_textview"
+        android:layout_marginTop="151dp"
+        android:layout_marginEnd="51dp"
+        android:layout_marginRight="51dp"
+        android:background="@drawable/rounded_textview1"
         android:gravity="center"
         android:text="Setting"
         android:textAlignment="center"
-        android:textColor="#FFFFFF" />
-</LinearLayout>
+        android:textColor="#FFFFFF"
+        android:textSize="23dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <CheckBox
+        android:id="@+id/checkBoxSound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="122dp"
+        android:layout_marginLeft="122dp"
+        android:layout_marginTop="302dp"
+        android:paddingLeft="20dp"
+        android:text="Sound"
+        android:textSize="40dp" />
+
+    <CheckBox
+        android:id="@+id/checkBoxMusic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="125dp"
+        android:layout_marginLeft="125dp"
+        android:layout_marginTop="424dp"
+        android:paddingLeft="20dp"
+        android:text="Music"
+        android:textSize="40dp" />
+
+</RelativeLayout>
