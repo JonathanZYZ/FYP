@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FYP">
-        <activity android:name=".Question_Correct"></activity>
+        <activity android:name=".Question_Incorrect"></activity>
+        <activity android:name=".Question_Correct" />
         <activity android:name=".Negative_Quit" />
         <activity android:name=".Answered_Correctly" />
         <activity android:name=".Answered_Incorrectly" />
