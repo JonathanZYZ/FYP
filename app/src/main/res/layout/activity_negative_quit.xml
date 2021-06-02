@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#FF6868"
     android:orientation="vertical">
-    <!--TODO:    Done by Shufang-->
+    <!--TODO:    Done by Shufang and Zuhaili-->
 
     <Button
         android:id="@+id/btnReturn"
