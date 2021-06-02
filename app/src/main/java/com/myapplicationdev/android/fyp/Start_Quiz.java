@@ -30,7 +30,10 @@ public class Start_Quiz extends AppCompatActivity {
             btnStart.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    //TODO
+                    Intent i = new Intent(Start_Quiz.this,Questions.class);
+                    i.putExtra("mode","easy");
+                    startActivity(i);
                 }
             });
 
@@ -40,7 +43,10 @@ public class Start_Quiz extends AppCompatActivity {
             btnStart.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    //TODO
+                    Intent i = new Intent(Start_Quiz.this,Questions.class);
+                    i.putExtra("mode","intermediate");
+                    startActivity(i);
                 }
             });
         } else if (mode.equalsIgnoreCase("advanced")) {
@@ -49,7 +55,10 @@ public class Start_Quiz extends AppCompatActivity {
             btnStart.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    //TODO
+                    Intent i = new Intent(Start_Quiz.this,Questions.class);
+                    i.putExtra("mode","advanced");
+                    startActivity(i);
                 }
             });
         }
