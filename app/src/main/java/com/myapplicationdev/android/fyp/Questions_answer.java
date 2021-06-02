@@ -6,11 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class Questions_answer extends AppCompatActivity {
 
     ImageView ivOption1, ivOption2;
-
+    TextView tvQuestions;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,6 +19,10 @@ public class Questions_answer extends AppCompatActivity {
 
         ivOption1 = findViewById(R.id.ivOption1);
         ivOption2 = findViewById(R.id.ivOption2);
+        tvQuestions = findViewById(R.id.tvQuestions);
+        Intent intent = getIntent();
+        String questionNum = intent.getStringExtra("question");
+        tvQuestions.setText(questionNum + "  \n What is the correct answer?");
 
         ivOption1.setOnClickListener(new View.OnClickListener() {
             @Override

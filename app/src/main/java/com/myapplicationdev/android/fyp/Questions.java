@@ -23,7 +23,7 @@ public class Questions extends AppCompatActivity {
             public void onClick(View view) {
                 //TODO
                 Intent i = new Intent(Questions.this,Questions_answer.class);
-                i.putExtra("mode","QN1");
+                i.putExtra("question","Question 1");
                 startActivity(i);
             }
         });
