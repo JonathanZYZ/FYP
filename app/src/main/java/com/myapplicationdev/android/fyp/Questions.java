@@ -16,7 +16,7 @@ public class Questions extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions);
 
-        btnStart = findViewById(R.id.btnStart)
+        btnStart = findViewById(R.id.btnStart);
 
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
