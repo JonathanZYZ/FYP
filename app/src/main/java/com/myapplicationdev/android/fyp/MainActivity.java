@@ -21,38 +21,30 @@ public class MainActivity extends AppCompatActivity {
         btnRevision = findViewById(R.id.btnRevisionSection);
         btnSettings = findViewById(R.id.btnSettings);
         mediaPlayer = MediaPlayer.create(MainActivity.this,R.raw.mouse_click);
-        btnStart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.d("test","test");
-                Intent i = new Intent(MainActivity.this,Difficulty_Section.class);
-                startActivity(i);
-                mediaPlayer.start();
-            }
+
+        btnStart.setOnClickListener(view -> {
+            Log.d("test","test");
+            Intent i = new Intent(MainActivity.this,Difficulty_Section.class);
+            startActivity(i);
+            mediaPlayer.start();
         });
-        btnHowToPlay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this,HowToPlay.class);
-                startActivity(i);
-                mediaPlayer.start();
-            }
+
+        btnHowToPlay.setOnClickListener(view -> {
+            Intent i = new Intent(MainActivity.this,HowToPlay.class);
+            startActivity(i);
+            mediaPlayer.start();
         });
-        btnRevision.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this,RevisionSection.class);
-                startActivity(i);
-                mediaPlayer.start();
-            }
+
+        btnRevision.setOnClickListener(view -> {
+            Intent i = new Intent(MainActivity.this,RevisionSection.class);
+            startActivity(i);
+            mediaPlayer.start();
         });
-        btnSettings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this,SettingsPage.class);
-                startActivity(i);
-                mediaPlayer.start();
-            }
+
+        btnSettings.setOnClickListener(view -> {
+            Intent i = new Intent(MainActivity.this,SettingsPage.class);
+            startActivity(i);
+            mediaPlayer.start();
         });
     }
 }
