@@ -18,14 +18,11 @@ public class Questions extends AppCompatActivity {
 
         btnStart = findViewById(R.id.btnStart);
 
-        btnStart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //TODO
-                Intent i = new Intent(Questions.this,Questions_answer.class);
-                i.putExtra("question","Question 1");
-                startActivity(i);
-            }
+        btnStart.setOnClickListener(view -> {
+            //TODO
+            Intent i = new Intent(Questions.this,Questions_answer.class);
+            i.putExtra("question","Question 1");
+            startActivity(i);
         });
     }
 }

@@ -18,7 +18,7 @@ public class LoginActivity extends AppCompatActivity {
     // Todo: declaring objects
     EditText myEmailEditText, myPasswordEditText;
     Button myLoginButton;
-    TextView iForgetPasswordTextView, mySignupHereTextView;
+    TextView mySignupHereTextView;
     ProgressDialog myProgressDialog;
 
     // Todo: Firebase objects

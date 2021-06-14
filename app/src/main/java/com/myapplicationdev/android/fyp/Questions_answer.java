@@ -2,6 +2,7 @@ package com.myapplicationdev.android.fyp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,7 @@ public class Questions_answer extends AppCompatActivity {
 
     ImageView ivOption1, ivOption2;
     TextView tvQuestions;
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,24 +26,18 @@ public class Questions_answer extends AppCompatActivity {
         String questionNum = intent.getStringExtra("question");
         tvQuestions.setText(questionNum + "  \n What is the correct answer?");
 
-        ivOption1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //TODO
-                Intent i = new Intent(Questions_answer.this,Question_Correct.class);
-                i.putExtra("mode","correct");
-                startActivity(i);
-            }
+        ivOption1.setOnClickListener(view -> {
+            //TODO
+            Intent i = new Intent(Questions_answer.this,Question_Correct.class);
+            i.putExtra("mode","correct");
+            startActivity(i);
         });
 
-        ivOption2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //TODO
-                Intent i = new Intent(Questions_answer.this,Question_Incorrect.class);
-                i.putExtra("mode","Incorrect");
-                startActivity(i);
-            }
+        ivOption2.setOnClickListener(view -> {
+            //TODO
+            Intent i = new Intent(Questions_answer.this,Question_Incorrect.class);
+            i.putExtra("mode","Incorrect");
+            startActivity(i);
         });
     }
 }

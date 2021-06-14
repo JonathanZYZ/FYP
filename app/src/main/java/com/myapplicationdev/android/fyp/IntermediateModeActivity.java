@@ -5,10 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 
-public class Intermediate_Mode extends AppCompatActivity {
+public class IntermediateModeActivity extends AppCompatActivity {
     Button btnStart;
     MediaPlayer mediaPlayer;
     @Override
@@ -16,15 +15,12 @@ public class Intermediate_Mode extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intermediate__mode);
         btnStart = findViewById(R.id.btnStartIntermediate);
-        mediaPlayer = MediaPlayer.create(Intermediate_Mode.this,R.raw.mouse_click);
-        btnStart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(Intermediate_Mode.this,Start_Quiz.class);
-                i.putExtra("mode","intermediate");
-                startActivity(i);
-                mediaPlayer.start();
-            }
+        mediaPlayer = MediaPlayer.create(IntermediateModeActivity.this,R.raw.mouse_click);
+        btnStart.setOnClickListener(view -> {
+            Intent i = new Intent(IntermediateModeActivity.this, StartQuizActivity.class);
+            i.putExtra("mode","intermediate");
+            startActivity(i);
+            mediaPlayer.start();
         });
     }
 }
