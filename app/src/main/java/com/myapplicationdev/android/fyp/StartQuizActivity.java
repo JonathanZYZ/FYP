@@ -16,7 +16,7 @@ public class StartQuizActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_start__quiz);
+        setContentView(R.layout.activity_start_quiz);
 
         tvMode = findViewById(R.id.tvMode);
         tvDesc = findViewById(R.id.tvDesc);
@@ -30,7 +30,7 @@ public class StartQuizActivity extends AppCompatActivity {
             tvDesc.setText("The quiz contains 9 questions and there is no time limit");
             btnStart.setOnClickListener(view -> {
                 //TODO
-                Intent i1 = new Intent(StartQuizActivity.this, Questions.class);
+                Intent i1 = new Intent(StartQuizActivity.this, QuestionsActivity.class);
                 i1.putExtra("mode", "easy");
                 startActivity(i1);
             });
@@ -40,7 +40,7 @@ public class StartQuizActivity extends AppCompatActivity {
             tvDesc.setText("The quiz contains 9 questions and there has a time limit");
             btnStart.setOnClickListener(view -> {
                 //TODO
-                Intent i12 = new Intent(StartQuizActivity.this, Questions.class);
+                Intent i12 = new Intent(StartQuizActivity.this, QuestionsActivity.class);
                 i12.putExtra("mode", "intermediate");
                 startActivity(i12);
             });
@@ -49,7 +49,7 @@ public class StartQuizActivity extends AppCompatActivity {
             tvDesc.setText("The quiz contains 9 questions and there has a time limit");
             btnStart.setOnClickListener(view -> {
                 //TODO
-                Intent i13 = new Intent(StartQuizActivity.this, Questions.class);
+                Intent i13 = new Intent(StartQuizActivity.this, QuestionsActivity.class);
                 i13.putExtra("mode", "advanced");
                 startActivity(i13);
             });

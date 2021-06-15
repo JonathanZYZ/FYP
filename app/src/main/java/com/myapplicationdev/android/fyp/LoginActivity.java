@@ -59,13 +59,13 @@ public class LoginActivity extends AppCompatActivity {
             String pass = myPasswordEditText.getText().toString().trim();
 
             // Verification for user inputs
-            if (TextUtils.isEmpty(email) || TextUtils.isEmpty(pass)) {
+            if (TextUtils.isEmpty(email)) {
                 myEmailEditText.setError("This field is required...");
                 return;
             }
 
-            if (TextUtils.isEmpty(email) && TextUtils.isEmpty(pass)) {
-                myEmailEditText.setError("The fields are required...");
+            if (TextUtils.isEmpty(pass)) {
+                myPasswordEditText.setError("This field is required...");
                 return;
             }
 
@@ -79,6 +79,7 @@ public class LoginActivity extends AppCompatActivity {
                     myProgressDialog.dismiss();
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     Toast.makeText(LoginActivity.this, "Login successful...", Toast.LENGTH_SHORT).show();
+
                 } else {
                     myProgressDialog.dismiss();
                     Toast.makeText(LoginActivity.this, "Login failed...", Toast.LENGTH_SHORT).show();
@@ -90,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
 
         //Todo:  Registration activity
 
-        mySignupHereTextView.setOnClickListener(view -> startActivity(
-                new Intent(LoginActivity.this, RegistrationActivity.class)));
+        mySignupHereTextView.setOnClickListener(view ->
+                startActivity(new Intent(LoginActivity.this, RegistrationActivity.class)));
     }
 }

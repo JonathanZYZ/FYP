@@ -49,15 +49,16 @@ public class RegistrationActivity extends AppCompatActivity {
             String email = myEmail.getText().toString().trim();
             String pass = myPassword.getText().toString().trim();
 
-            if (TextUtils.isEmpty(email) || TextUtils.isEmpty(pass)) {
+            if (TextUtils.isEmpty(email)) {
                 myEmail.setError("This field is required...");
                 return;
             }
 
-            if (TextUtils.isEmpty(email) && TextUtils.isEmpty(pass)) {
-                myEmail.setError("The fields are required...");
+            if (TextUtils.isEmpty(pass)) {
+                myPassword.setError("This field is required...");
                 return;
             }
+
 
             myProgressDialog.setMessage("Processing..");
             myProgressDialog.show();

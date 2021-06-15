@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class AnsweredCorrectlyActivity extends AppCompatActivity {
+public class PositiveResultActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_answered_correctly);
+        setContentView(R.layout.activity_positive_result);
     }
 }

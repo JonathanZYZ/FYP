@@ -3,7 +3,6 @@ package com.myapplicationdev.android.fyp;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -44,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btnRevision.setOnClickListener(view -> {
-            Intent i = new Intent(MainActivity.this, RevisionSection.class);
+            Intent i = new Intent(MainActivity.this, RevisionSectionActivity.class);
             startActivity(i);
             mediaPlayer.start();
         });

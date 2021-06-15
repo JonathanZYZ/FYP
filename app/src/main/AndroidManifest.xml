@@ -28,20 +28,20 @@
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".PositivelyQuitedActivity" />
-        <activity android:name=".Question_Incorrect" />
-        <activity android:name=".Question_Correct" />
+        <activity android:name=".QuestionWrongActivity" />
+        <activity android:name=".QuestionCorrectActivity" />
         <activity android:name=".NegativelyQuitedActivity" />
-        <activity android:name=".AnsweredCorrectlyActivity" />
-        <activity android:name=".AnsweredWronglyActivity" />
-        <activity android:name=".Questions_answer" />
+        <activity android:name=".PositiveResultActivity" />
+        <activity android:name=".NegativeResultActivity" />
+        <activity android:name=".QuestionsAnswerActivity" />
         <activity
-            android:name=".Questions"
+            android:name=".QuestionsActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".SettingPageActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".RevisionSection"
+            android:name=".RevisionSectionActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".HowToPlayActivity"
@@ -53,7 +53,7 @@
             android:name=".LeaderboardActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".AdvanceModeActivity"
+            android:name=".AdvancedModeActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".IntermediateModeActivity"

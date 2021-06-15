@@ -4,10 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 
-public class Questions extends AppCompatActivity {
+public class QuestionsActivity extends AppCompatActivity {
 
     Button btnStart;
 
@@ -20,7 +19,7 @@ public class Questions extends AppCompatActivity {
 
         btnStart.setOnClickListener(view -> {
             //TODO
-            Intent i = new Intent(Questions.this,Questions_answer.class);
+            Intent i = new Intent(QuestionsActivity.this, QuestionsAnswerActivity.class);
             i.putExtra("question","Question 1");
             startActivity(i);
         });

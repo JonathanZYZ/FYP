@@ -13,7 +13,7 @@ public class EasyModeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_easy__mode);
+        setContentView(R.layout.activity_easy_mode);
         btnStart = findViewById(R.id.btnStartEasy);
         mediaPlayer = MediaPlayer.create(EasyModeActivity.this,R.raw.mouse_click);
         btnStart.setOnClickListener(view -> {

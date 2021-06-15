@@ -26,15 +26,18 @@ public class DifficultySectionActivity extends AppCompatActivity {
             startActivity(i);
             mediaPlayer.start();
         });
+
         btnIntermediate.setOnClickListener(view -> {
             Intent i = new Intent(DifficultySectionActivity.this, IntermediateModeActivity.class);
             startActivity(i);
             mediaPlayer.start();
         });
+
         btnAdvanced.setOnClickListener(view -> {
-            Intent i = new Intent(DifficultySectionActivity.this, AdvanceModeActivity.class);
+            Intent i = new Intent(DifficultySectionActivity.this, AdvancedModeActivity.class);
             startActivity(i);
             mediaPlayer.start();
         });
+
     }
 }

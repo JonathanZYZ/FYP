@@ -5,11 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class Questions_answer extends AppCompatActivity {
+public class QuestionsAnswerActivity extends AppCompatActivity {
 
     ImageView ivOption1, ivOption2;
     TextView tvQuestions;
@@ -28,14 +27,14 @@ public class Questions_answer extends AppCompatActivity {
 
         ivOption1.setOnClickListener(view -> {
             //TODO
-            Intent i = new Intent(Questions_answer.this,Question_Correct.class);
+            Intent i = new Intent(QuestionsAnswerActivity.this, QuestionCorrectActivity.class);
             i.putExtra("mode","correct");
             startActivity(i);
         });
 
         ivOption2.setOnClickListener(view -> {
             //TODO
-            Intent i = new Intent(Questions_answer.this,Question_Incorrect.class);
+            Intent i = new Intent(QuestionsAnswerActivity.this, QuestionWrongActivity.class);
             i.putExtra("mode","Incorrect");
             startActivity(i);
         });

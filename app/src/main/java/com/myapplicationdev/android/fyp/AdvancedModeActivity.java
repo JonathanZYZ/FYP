@@ -7,17 +7,17 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class AdvanceModeActivity extends AppCompatActivity {
+public class AdvancedModeActivity extends AppCompatActivity {
     Button btnStart;
     MediaPlayer mediaPlayer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_advance__mode);
+        setContentView(R.layout.activity_advanced_mode);
         btnStart = findViewById(R.id.btnStartAdvanced);
-        mediaPlayer = MediaPlayer.create(AdvanceModeActivity.this,R.raw.mouse_click);
+        mediaPlayer = MediaPlayer.create(AdvancedModeActivity.this,R.raw.mouse_click);
         btnStart.setOnClickListener(view -> {
-            Intent i = new Intent(AdvanceModeActivity.this, StartQuizActivity.class);
+            Intent i = new Intent(AdvancedModeActivity.this, StartQuizActivity.class);
             i.putExtra("mode","advanced");
             startActivity(i);
             mediaPlayer.start();

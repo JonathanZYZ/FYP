@@ -13,7 +13,7 @@ public class IntermediateModeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_intermediate__mode);
+        setContentView(R.layout.activity_intermediate_mode);
         btnStart = findViewById(R.id.btnStartIntermediate);
         mediaPlayer = MediaPlayer.create(IntermediateModeActivity.this,R.raw.mouse_click);
         btnStart.setOnClickListener(view -> {
