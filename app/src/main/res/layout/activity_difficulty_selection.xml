@@ -7,13 +7,30 @@
     android:background="@drawable/splash_background"
     android:orientation="vertical">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_baseline_arrow_back_24"
+            android:textSize="20sp"
+            tools:ignore="RtlHardcoded" />
+
+
+    </RelativeLayout>
     <!--TODO:    Done by Shufang-->
     <Button
         android:id="@+id/btnEasy"
         android:layout_width="300dp"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:layout_gravity="center"
-        android:layout_margin="40dp"
+        android:layout_margin="20dp"
         android:background="@drawable/btn_design"
         android:text="Easy"
         android:textColor="@color/white"
@@ -22,9 +39,9 @@
     <Button
         android:id="@+id/btnIntermediate"
         android:layout_width="300dp"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:layout_gravity="center"
-        android:layout_margin="40dp"
+        android:layout_margin="20dp"
         android:background="@drawable/btn_design"
         android:text="Intermediate"
         android:textColor="@color/white"
@@ -34,9 +51,9 @@
     <Button
         android:id="@+id/btnAdvanced"
         android:layout_width="300dp"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:layout_gravity="center"
-        android:layout_margin="40dp"
+        android:layout_margin="20dp"
         android:background="@drawable/btn_design"
         android:text="Advance"
         android:textColor="@color/white"
@@ -45,9 +62,9 @@
     <Button
         android:id="@+id/btnChallenging"
         android:layout_width="300dp"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:layout_gravity="center"
-        android:layout_margin="40dp"
+        android:layout_margin="20dp"
         android:background="@drawable/btn_design"
         android:text="Challenging"
         android:textColor="@color/white"

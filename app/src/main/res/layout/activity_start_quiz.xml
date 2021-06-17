@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background2"
+    android:orientation="vertical"
+    tools:context=".StartQuizActivity">
+
+    <TextView
+        android:id="@+id/tvMode"
+        android:layout_margin="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:background="#F686BD"
+        android:text="Easy"
+        android:textColor="@color/white"
+        android:textSize="50sp"/>
+
+    <TextView
+        android:id="@+id/tvDesc"
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:textAlignment="center"
+        android:background="#FE5D9F"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:text="The quiz contains 9 questions and there is no time limit"/>
+
+    <Button
+        android:id="@+id/btnStartGame"
+        android:layout_marginTop="125dp"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:background="@drawable/btn_design"
+        android:gravity="center"
+        android:text="Play"
+        android:textColor="@color/white"
+        android:textSize="42sp"
+        android:textAlignment="center" />
+
+
+</LinearLayout>
+
+    <!--TODO:    Done by John-->

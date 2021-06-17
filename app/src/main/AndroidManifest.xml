@@ -2,61 +2,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.myapplicationdev.android.fyp">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.FYP">
-        <activity android:name=".Positive_Quit"></activity>
-        <activity android:name=".Question_Incorrect" />
-        <activity android:name=".Question_Correct" />
-        <activity android:name=".Negative_Quit" />
-        <activity android:name=".Answered_Correctly" />
-        <activity android:name=".Answered_Incorrectly" />
-        <activity android:name=".Questions_answer" />
-        <activity
-            android:name=".Questions"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity
-            android:name=".SettingsPage"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity
-            android:name=".RevisionSection"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity
-            android:name=".HowToPlay"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity
-            android:name=".Start_Quiz"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity
-            android:name=".Leaderboard"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity
-            android:name=".Advance_Mode"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity
-            android:name=".Intermediate_Mode"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity
-            android:name=".Easy_Mode"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity
-            android:name=".Difficulty_Section"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity
-            android:name=".MainActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
         <activity
-            android:name=".SplashScreen"
+            android:name=".SplashScreenActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -64,6 +22,60 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".RegistrationActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".PositivelyQuitedActivity" />
+        <activity android:name=".QuestionWrongActivity" />
+        <activity android:name=".QuestionCorrectActivity" />
+        <activity android:name=".NegativelyQuitedActivity" />
+        <activity android:name=".PositiveResultActivity" />
+        <activity android:name=".NegativeResultActivity" />
+        <activity android:name=".QuestionsAnswerActivity" />
+        <activity
+            android:name=".QuestionsActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".SettingPageActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".RevisionSectionActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".HowToPlayActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".StartQuizActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".LeaderboardActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".AdvancedModeActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".IntermediateModeActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".EasyModeActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".DifficultySectionActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+
+        <!--        <activity-->
+        <!--            android:name=".MainActivity"-->
+        <!--            android:theme="@style/Theme.AppCompat.NoActionBar">-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="android.intent.action.MAIN" />-->
+
+        <!--                <category android:name="android.intent.category.DEFAULT" />-->
+        <!--            </intent-filter>-->
+        <!--        </activity>-->
+
+
     </application>
 
 </manifest>
