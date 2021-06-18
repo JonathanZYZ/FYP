@@ -1,8 +1,9 @@
-package com.myapplicationdev.android.fyp;
+package com.myapplicationdev.android.fyp.Model;
 
+import java.io.Serializable;
 import java.sql.Blob;
 
-public class Questions_POJO {
+public class Question implements Serializable {
     private String mode;
     private String questionsNum;
     private Blob questionsImg;
@@ -10,7 +11,7 @@ public class Questions_POJO {
     private Blob MCQoption2Reaction;
 
 
-    public Questions_POJO(String mode, String questionsNum, Blob questionsImg, Blob option1, Blob MCQoption1Reaction, Blob MCQoption2Reaction) {
+    public Question(String mode, String questionsNum, Blob questionsImg, Blob option1, Blob MCQoption1Reaction, Blob MCQoption2Reaction) {
         this.mode = mode;
         this.questionsNum = questionsNum;
         this.questionsImg = questionsImg;
