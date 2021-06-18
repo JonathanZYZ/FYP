@@ -7,16 +7,16 @@ public class Question implements Serializable {
     private String mode;
     private String questionsNum;
     private Blob questionsImg;
-    private Blob MCQoption1Reaction;
-    private Blob MCQoption2Reaction;
+    private Blob theMCQOption1Reaction;
+    private Blob theMCQOption2Reaction;
 
 
-    public Question(String mode, String questionsNum, Blob questionsImg, Blob option1, Blob MCQoption1Reaction, Blob MCQoption2Reaction) {
+    public Question(String mode, String questionsNum, Blob questionsImg, Blob option1, Blob theMCQOption1Reaction, Blob theMCQOption2Reaction) {
         this.mode = mode;
         this.questionsNum = questionsNum;
         this.questionsImg = questionsImg;
-        this.MCQoption1Reaction = MCQoption1Reaction;
-        this.MCQoption2Reaction = MCQoption2Reaction;
+        this.theMCQOption1Reaction = theMCQOption1Reaction;
+        this.theMCQOption2Reaction = theMCQOption2Reaction;
 
     }
 
@@ -44,19 +44,19 @@ public class Question implements Serializable {
         this.questionsImg = questionsImg;
     }
 
-    public Blob getMCQoption1Reaction() {
-        return MCQoption1Reaction;
+    public Blob gettheMCQOption1Reaction() {
+        return theMCQOption1Reaction;
     }
 
-    public void setMCQoption1Reaction(Blob MCQoption1Reaction) {
-        this.MCQoption1Reaction = MCQoption1Reaction;
+    public void settheMCQOption1Reaction(Blob theMCQOption1Reaction) {
+        this.theMCQOption1Reaction = theMCQOption1Reaction;
     }
 
-    public Blob getMCQoption2Reaction() {
-        return MCQoption2Reaction;
+    public Blob gettheMCQOption2Reaction() {
+        return theMCQOption2Reaction;
     }
 
-    public void setMCQoption2Reaction(Blob MCQoption2Reaction) {
-        this.MCQoption2Reaction = MCQoption2Reaction;
+    public void settheMCQOption2Reaction(Blob theMCQOption2Reaction) {
+        this.theMCQOption2Reaction = theMCQOption2Reaction;
     }
 }
