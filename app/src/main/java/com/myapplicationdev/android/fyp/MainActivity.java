@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,8 +12,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class MainActivity extends AppCompatActivity {
     Button btnStart, btnRevision, btnHowToPlay, btnSettings, btnLogOut;
     MediaPlayer mediaPlayer;
-    // Todo: Firebase objects
-    FirebaseAuth myFirebaseAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         btnLogOut = findViewById(R.id.btnLogOut);
 
         mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.mouse_click);
-        myFirebaseAuth = FirebaseAuth.getInstance();
+
         btnStart.setOnClickListener(view -> {
         //    Log.d("test", "test");
             Intent i = new Intent(MainActivity.this, DifficultySectionActivity.class);
@@ -54,12 +52,6 @@ public class MainActivity extends AppCompatActivity {
             mediaPlayer.start();
         });
 
-        btnLogOut.setOnClickListener(view -> {
-            myFirebaseAuth.signOut();
-            startActivity(new Intent(MainActivity.this, LoginActivity.class));
-            mediaPlayer.start();
-            Toast.makeText(MainActivity.this, "You successfully signed off...", Toast.LENGTH_SHORT).show();
-        });
 
     }
 }
