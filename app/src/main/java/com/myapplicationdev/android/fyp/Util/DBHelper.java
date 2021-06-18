@@ -135,7 +135,7 @@ public class DBHelper extends SQLiteOpenHelper {
     /*TODO: In order to perform an update,
    a method called updateNote() must be implemented in DBHelper.java.
     The method will accept a Note object and perform a database update. */
-    public int updateNote(Leaderboard data) {
+    public int updateLeaderboard(Leaderboard data) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();

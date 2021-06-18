@@ -1,18 +1,19 @@
 package com.myapplicationdev.android.fyp;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 
-import android.os.Bundle;
-
 import java.util.ArrayList;
 
 public class HowToPlayActivity extends AppCompatActivity {
-ArrayList<Fragment> al;
-FragmentPagerAdapter adapter;
-ViewPager vPager;
+    ArrayList<Fragment> al;
+    FragmentPagerAdapter adapter;
+    ViewPager vPager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +26,7 @@ ViewPager vPager;
         al.add(new HowToFrag1());
         al.add(new HowToFrag2());
 
-        adapter = new FragmentPagerAdapter(fm,al);
+        adapter = new FragmentPagerAdapter(fm, al);
         vPager.setAdapter(adapter);
     }
 }
