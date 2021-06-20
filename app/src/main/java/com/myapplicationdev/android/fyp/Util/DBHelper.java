@@ -20,6 +20,7 @@ public class DBHelper extends SQLiteOpenHelper {
     // To make the app calls onUpgrade(), increment the variable DATABASE_VERSION from 1 to 2.
     private static final int DATABASE_VERSION = 1;
     private static final String TABLE_LEADERBOARD = "leaderboard";
+
     private static final String COLUMN_ID = "id";
     private static final String COLUMN_MODE = "mode";
     private static final String COLUMN_SCORE = "score";
@@ -74,8 +75,10 @@ public class DBHelper extends SQLiteOpenHelper {
 //    private static final String COLUMN_SCORE = "score";
 //    private static final String COLUMN_DATE = "date";
 
-    //Insert a new record.
+    // TODO: Insert a new record , C in CRUD
     public long insertLeaderboard(String gameMode, String gameScore) {
+
+        // Create and/or open a SQLiteDatabase that will be used for reading and writing.
         SQLiteDatabase db = this.getWritableDatabase();
 
         // Creates an empty set of values using the default initial size
@@ -97,8 +100,10 @@ public class DBHelper extends SQLiteOpenHelper {
         return result;
     }
 
-    //Record retrieval from database table
+
+    // TODO: Record retrieval from database table , R in CRUD
     public ArrayList<Leaderboard> getAllLeaderboard() {
+
 
         ArrayList<Leaderboard> Leaderboards = new ArrayList<>();
 
@@ -109,26 +114,39 @@ public class DBHelper extends SQLiteOpenHelper {
                 + " FROM " + TABLE_LEADERBOARD;
 
         SQLiteDatabase db = this.getReadableDatabase();
+
+        // an interface provides random read-write access to the result set returned by a database query.
         Cursor cursor = db.rawQuery(selectQuery, null);
 
-
+// Cursor Moves the cursor to the first row.
+//This method will return false if the cursor is empty.
         if (cursor.moveToFirst()) {
             do {
 
+                // Getting relevant data
                 int id = cursor.getInt(0);
                 String modeContent = cursor.getString(1);
                 String scoreContent = cursor.getString(2);
                 String dateContent = cursor.getString(3);
 
                 Leaderboard leaderboard = new Leaderboard(id, modeContent, scoreContent, dateContent);
+
+                // Appends the specified element to the end of the Leaderboards ArrayList
                 Leaderboards.add(leaderboard);
 
-
+// Move the cursor to the next row.
+//This method will return false if the cursor is already past the last entry in the result set.
             } while (cursor.moveToNext());
         }
 
+        // Closes the Cursor, releasing all of its resources and making it completely invalid.
         cursor.close();
+
+        // Releases a reference to the object, closing the object if the last reference was released.
+        // Calling this method is equivalent to calling
         db.close();
+
+        // return the Leaderboards ArrayList
         return Leaderboards;
     }
 
@@ -138,9 +156,11 @@ public class DBHelper extends SQLiteOpenHelper {
     public int updateLeaderboard(Leaderboard data) {
 
         SQLiteDatabase db = this.getWritableDatabase();
+
+        // Creates an empty set of values using the default initial size
         ContentValues values = new ContentValues();
 
-
+        // Add values to the values (ContentValues)
         values.put(COLUMN_MODE, data.getMode());
         values.put(COLUMN_SCORE, data.getScore());
         values.put(COLUMN_DATE, data.getDate());

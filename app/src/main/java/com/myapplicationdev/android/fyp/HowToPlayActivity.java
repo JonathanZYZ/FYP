@@ -22,7 +22,7 @@ public class HowToPlayActivity extends AppCompatActivity {
         vPager = findViewById(R.id.viewpager1);
 
         FragmentManager fm = getSupportFragmentManager();
-        al = new ArrayList<Fragment>();
+        al = new ArrayList<>();
         al.add(new HowToFrag1());
         al.add(new HowToFrag2());
 
