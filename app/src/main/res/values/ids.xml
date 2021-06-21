@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <item name="group" type="id">group</item>
-    <item name="radioButtonOption1" type="id">radioButtonOption1</item>
-    <item name="radioButtonOption2" type="id">radioButtonOption2</item>
-</resources>
