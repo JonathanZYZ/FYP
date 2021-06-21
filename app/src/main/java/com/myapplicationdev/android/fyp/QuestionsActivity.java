@@ -1,9 +1,6 @@
 package com.myapplicationdev.android.fyp;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -12,8 +9,10 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.myapplicationdev.android.fyp.Model.Question;
-import com.myapplicationdev.android.fyp.Util.DBHelper;
 
 import java.util.ArrayList;
 
@@ -24,13 +23,10 @@ public class QuestionsActivity extends AppCompatActivity {
     RadioGroup group;
     RadioButton rdReaction_Option1, rdReaction_Option2;
     ImageView ivQuestion;
-
     ArrayList<Question> al;
-    private int questionCounter;
-    private int questionCountTotal;
-    private Question currentQuestion;
-
-    private boolean answered;
+    int questionCounter, questionCountTotal;
+    Question currentQuestion;
+    boolean answered;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,14 +34,14 @@ public class QuestionsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_questions);
 
         btnStart = findViewById(R.id.btnStart);
-        tvQuestionsNumber = findViewById(R.id.tvQuestion);
+        tvQuestionsNumber = findViewById(R.id.tvQuestionNumber);
         group = findViewById(R.id.group);
         rdReaction_Option1 = findViewById(R.id.radioButtonOption1);
         rdReaction_Option2 = findViewById(R.id.radioButtonOption2);
         ivQuestion = findViewById(R.id.ivQuestions);
 
-        DBHelper dbh = new DBHelper(this);
-        al = dbh.getAllQuestions();
+//        DBHelper dbh = new DBHelper(this);
+//        al = dbh.getAllQuestions();
         questionCountTotal = al.size();
 
         showNextQuestion();
@@ -56,8 +52,8 @@ public class QuestionsActivity extends AppCompatActivity {
 //            i.putExtra("question","Question 1");
 //            startActivity(i);
 
-            if(!answered) {
-                if(rdReaction_Option1.isChecked() || rdReaction_Option2.isChecked()) {
+            if (!answered) {
+                if (rdReaction_Option1.isChecked() || rdReaction_Option2.isChecked()) {
                     checkAnswer();
                 } else {
                     Toast.makeText(QuestionsActivity.this, "Please select an answer", Toast.LENGTH_SHORT).show();
@@ -68,13 +64,14 @@ public class QuestionsActivity extends AppCompatActivity {
         });
     }
 
+    @SuppressLint("SetTextI18n")
     private void checkAnswer() {
         answered = true;
 
         RadioButton rbSelected = findViewById(group.getCheckedRadioButtonId());
         int answer_number = group.indexOfChild(rbSelected) + 1;
 
-        if(answer_number == currentQuestion.getAnswerNum()) {
+        if (answer_number == currentQuestion.getAnswerNum()) {
             AlertDialog.Builder myBuilder = new AlertDialog.Builder(QuestionsActivity.this);
             myBuilder.setTitle("Check Answer");
             myBuilder.setMessage("You selected the correct answer!");
@@ -95,12 +92,14 @@ public class QuestionsActivity extends AppCompatActivity {
             myDialog.show();
         }
 
-        if(questionCounter < questionCountTotal) {
+        if (questionCounter < questionCountTotal) {
             btnStart.setText("Next");
         } else {
             btnStart.setText("Finish");
         }
     }
+
+    @SuppressLint("SetTextI18n")
     private void showNextQuestion() {
         group.clearCheck();
         if (questionCounter < questionCountTotal) {
