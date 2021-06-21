@@ -8,18 +8,40 @@
     android:orientation="vertical"
     tools:context=".QuestionsActivity">
 
-<!--    TODO: Done by Zuhaili-->
-    <TextView
-        android:id="@+id/tvQuestion"
-        android:layout_width="262dp"
-        android:layout_height="101dp"
-        android:layout_gravity="center"
-        android:layout_margin="30dp"
-        android:background="#F686BD"
-        android:gravity="center"
-        android:text="QUESTION"
-        android:textAlignment="center"
-        android:textColor="@color/white" />
+    <!--    TODO: Done by Zuhaili-->
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvPoint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="10dp"
+            android:text="1 Point"
+            android:textColor="@color/black"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            tools:ignore="RtlHardcoded" />
+
+
+        <TextView
+            android:id="@+id/tvQuestionNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_margin="10dp"
+            android:text="Q1"
+            android:textColor="@color/black"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            tools:ignore="RtlHardcoded" />
+
+    </RelativeLayout>
 
 
     <LinearLayout
@@ -33,14 +55,14 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:src="@drawable/easy_question1"
-            app:zoomage_restrictBounds="false"
             app:zoomage_animateOnReset="true"
-            app:zoomage_autoResetMode="UNDER"
             app:zoomage_autoCenter="true"
-            app:zoomage_zoomable="true"
-            app:zoomage_translatable="true"
+            app:zoomage_autoResetMode="UNDER"
+            app:zoomage_maxScale="8"
             app:zoomage_minScale="0.6"
-            app:zoomage_maxScale="8"  />
+            app:zoomage_restrictBounds="false"
+            app:zoomage_translatable="true"
+            app:zoomage_zoomable="true" />
     </LinearLayout>
 
     <RadioGroup
@@ -83,46 +105,45 @@
             app:cornerRadius="59dp" />
     </LinearLayout>
 
-<!--    <TextView-->
-<!--        android:id="@+id/tvQuestion"-->
-<!--        android:layout_width="262dp"-->
-<!--        android:layout_height="101dp"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:layout_margin="30dp"-->
-<!--        android:background="#F686BD"-->
-<!--        android:gravity="center"-->
-<!--        android:text="QUESTION"-->
-<!--        android:textAlignment="center"-->
-<!--        android:textColor="@color/white" />-->
+    <!--    <TextView-->
+    <!--        android:id="@+id/tvQuestion"-->
+    <!--        android:layout_width="262dp"-->
+    <!--        android:layout_height="101dp"-->
+    <!--        android:layout_gravity="center"-->
+    <!--        android:layout_margin="30dp"-->
+    <!--        android:background="#F686BD"-->
+    <!--        android:gravity="center"-->
+    <!--        android:text="QUESTION"-->
+    <!--        android:textAlignment="center"-->
+    <!--        android:textColor="@color/white" />-->
 
 
-<!--    <LinearLayout-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="vertical">-->
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:orientation="vertical">-->
 
-<!--        <ImageView-->
-<!--            android:id="@+id/ivQuestions"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="400dp"-->
-<!--            android:src="@drawable/easy_question1" />-->
-<!--    </LinearLayout>-->
+    <!--        <ImageView-->
+    <!--            android:id="@+id/ivQuestions"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="400dp"-->
+    <!--            android:src="@drawable/easy_question1" />-->
+    <!--    </LinearLayout>-->
 
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:orientation="vertical">-->
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:orientation="vertical">-->
 
-<!--        <Button-->
-<!--            android:id="@+id/btnStart"-->
-<!--            android:layout_width="156dp"-->
-<!--            android:layout_height="80dp"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:text="Start"-->
-<!--            app:backgroundTint="#F686BD"-->
-<!--            app:cornerRadius="59dp" />-->
-<!--    </LinearLayout>-->
-
+    <!--        <Button-->
+    <!--            android:id="@+id/btnStart"-->
+    <!--            android:layout_width="156dp"-->
+    <!--            android:layout_height="80dp"-->
+    <!--            android:layout_gravity="center"-->
+    <!--            android:text="Start"-->
+    <!--            app:backgroundTint="#F686BD"-->
+    <!--            app:cornerRadius="59dp" />-->
+    <!--    </LinearLayout>-->
 
 
 </LinearLayout>
