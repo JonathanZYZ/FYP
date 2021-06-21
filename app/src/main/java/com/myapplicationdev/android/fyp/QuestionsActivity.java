@@ -34,14 +34,23 @@ public class QuestionsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_questions);
 
         btnStart = findViewById(R.id.btnStart);
-        tvQuestionsNumber = findViewById(R.id.tvQuestionNumber);
+        tvQuestionsNumber = findViewById(R.id.tvQuestions_Number);
         group = findViewById(R.id.group);
         rdReaction_Option1 = findViewById(R.id.radioButtonOption1);
         rdReaction_Option2 = findViewById(R.id.radioButtonOption2);
         ivQuestion = findViewById(R.id.ivQuestions);
 
-//        DBHelper dbh = new DBHelper(this);
-//        al = dbh.getAllQuestions();
+        al = new ArrayList<>();
+        al.add(new Question("basic", "1", R.drawable.question1_basic, R.drawable.question1_basic_incorrect, R.drawable.question1_basic_correct, 2));
+        al.add(new Question("basic", "2", R.drawable.question2_basic, R.drawable.question2_basic_incorrect, R.drawable.question2_basic_correct, 2));
+        al.add(new Question("basic", "3", R.drawable.question3_basic, R.drawable.question3_basic_incorrect, R.drawable.question3_basic_correct, 1));
+        al.add(new Question("basic", "4", R.drawable.question4_basic, R.drawable.question4_basic_incorrect, R.drawable.question4_basic_correct, 1));
+        al.add(new Question("basic", "5", R.drawable.question5_basic, R.drawable.question5_basic_incorrect, R.drawable.question5_basic_correct, 1));
+        al.add(new Question("basic", "6", R.drawable.question6_basic, R.drawable.question6_basic_incorrect, R.drawable.question6_basic_correct, 2));
+        al.add(new Question("basic", "7", R.drawable.question7_basic, R.drawable.question7_basic_incorrect, R.drawable.question7_basic_correct, 2));
+        al.add(new Question("basic", "8", R.drawable.question8_basic, R.drawable.question8_basic_incorrect, R.drawable.question8_basic_correct, 2));
+        al.add(new Question("basic", "9", R.drawable.question9_basic, R.drawable.question9_basic_incorrect, R.drawable.question9_basic_correct, 1));
+
         questionCountTotal = al.size();
 
         showNextQuestion();
@@ -93,9 +102,9 @@ public class QuestionsActivity extends AppCompatActivity {
         }
 
         if (questionCounter < questionCountTotal) {
-            btnStart.setText("Next");
+            btnStart.setText("Next Question");
         } else {
-            btnStart.setText("Finish");
+            btnStart.setText("Finish Quiz");
         }
     }
 
