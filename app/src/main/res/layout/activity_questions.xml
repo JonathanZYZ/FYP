@@ -25,14 +25,48 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:orientation="vertical">
 
-        <ImageView
+        <com.jsibbold.zoomage.ZoomageView
             android:id="@+id/ivQuestions"
-            android:layout_width="wrap_content"
-            android:layout_height="400dp"
-            android:src="@drawable/easy_question1" />
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/easy_question1"
+            app:zoomage_restrictBounds="false"
+            app:zoomage_animateOnReset="true"
+            app:zoomage_autoResetMode="UNDER"
+            app:zoomage_autoCenter="true"
+            app:zoomage_zoomable="true"
+            app:zoomage_translatable="true"
+            app:zoomage_minScale="0.6"
+            app:zoomage_maxScale="8"  />
     </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+
+        <RadioButton
+            android:id="@+id/radioButtonOption1"
+            android:layout_width="5dp"
+            android:layout_height="200dp"
+            android:layout_weight="1"
+            android:background="@drawable/question1_basic_incorrect"
+            android:textColor="@color/black" />
+
+        <RadioButton
+            android:id="@+id/radioButtonOption2"
+            android:layout_width="5dp"
+            android:layout_height="200dp"
+            android:layout_weight="1"
+            android:background="@drawable/question1_basic_correct"
+            android:textColor="@color/black" />
+    </RadioGroup>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -48,5 +82,47 @@
             app:backgroundTint="#F686BD"
             app:cornerRadius="59dp" />
     </LinearLayout>
+
+<!--    <TextView-->
+<!--        android:id="@+id/tvQuestion"-->
+<!--        android:layout_width="262dp"-->
+<!--        android:layout_height="101dp"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:layout_margin="30dp"-->
+<!--        android:background="#F686BD"-->
+<!--        android:gravity="center"-->
+<!--        android:text="QUESTION"-->
+<!--        android:textAlignment="center"-->
+<!--        android:textColor="@color/white" />-->
+
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical">-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/ivQuestions"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="400dp"-->
+<!--            android:src="@drawable/easy_question1" />-->
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:orientation="vertical">-->
+
+<!--        <Button-->
+<!--            android:id="@+id/btnStart"-->
+<!--            android:layout_width="156dp"-->
+<!--            android:layout_height="80dp"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:text="Start"-->
+<!--            app:backgroundTint="#F686BD"-->
+<!--            app:cornerRadius="59dp" />-->
+<!--    </LinearLayout>-->
+
+
 
 </LinearLayout>

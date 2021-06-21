@@ -3,21 +3,23 @@ package com.myapplicationdev.android.fyp.Model;
 import java.io.Serializable;
 import java.sql.Blob;
 
-public class Question implements Serializable {
+
+public class Question {
     private String mode;
     private String questionsNum;
-    private Blob questionsImg;
-    private Blob theMCQOption1Reaction;
-    private Blob theMCQOption2Reaction;
+    private int questionsImg;
+    private int MCQoption1Reaction;
+    private int MCQoption2Reaction;
+    private int answerNum;
 
 
-    public Question(String mode, String questionsNum, Blob questionsImg, Blob option1, Blob theMCQOption1Reaction, Blob theMCQOption2Reaction) {
+    public Question(String mode, String questionsNum, int questionsImg, int MCQoption1Reaction, int MCQoption2Reaction, int answerNum) {
         this.mode = mode;
         this.questionsNum = questionsNum;
         this.questionsImg = questionsImg;
-        this.theMCQOption1Reaction = theMCQOption1Reaction;
-        this.theMCQOption2Reaction = theMCQOption2Reaction;
-
+        this.MCQoption1Reaction = MCQoption1Reaction;
+        this.MCQoption2Reaction = MCQoption2Reaction;
+        this.answerNum = answerNum;
     }
 
     public String getMode() {
@@ -36,27 +38,35 @@ public class Question implements Serializable {
         this.questionsNum = questionsNum;
     }
 
-    public Blob getQuestionsImg() {
+    public int getQuestionsImg() {
         return questionsImg;
     }
 
-    public void setQuestionsImg(Blob questionsImg) {
+    public void setQuestionsImg(int questionsImg) {
         this.questionsImg = questionsImg;
     }
 
-    public Blob gettheMCQOption1Reaction() {
-        return theMCQOption1Reaction;
+    public int getMCQoption1Reaction() {
+        return MCQoption1Reaction;
     }
 
-    public void settheMCQOption1Reaction(Blob theMCQOption1Reaction) {
-        this.theMCQOption1Reaction = theMCQOption1Reaction;
+    public void setMCQoption1Reaction(int MCQoption1Reaction) {
+        this.MCQoption1Reaction = MCQoption1Reaction;
     }
 
-    public Blob gettheMCQOption2Reaction() {
-        return theMCQOption2Reaction;
+    public int getMCQoption2Reaction() {
+        return MCQoption2Reaction;
     }
 
-    public void settheMCQOption2Reaction(Blob theMCQOption2Reaction) {
-        this.theMCQOption2Reaction = theMCQOption2Reaction;
+    public void setMCQoption2Reaction(int MCQoption2Reaction) {
+        this.MCQoption2Reaction = MCQoption2Reaction;
+    }
+
+    public int getAnswerNum() {
+        return answerNum;
+    }
+
+    public void setAnswerNum(int answerNum) {
+        this.answerNum = answerNum;
     }
 }
