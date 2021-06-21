@@ -19,13 +19,15 @@ import java.util.ArrayList;
 public class QuestionsActivity extends AppCompatActivity {
 
     Button btnStart;
-    TextView tvQuestionsNumber;
+    TextView tvQuestionsNumber, tvScore;
     RadioGroup group;
     RadioButton rdReaction_Option1, rdReaction_Option2;
     ImageView ivQuestion;
     ArrayList<Question> al;
     int questionCounter, questionCountTotal;
     Question currentQuestion;
+
+    private int score;
     boolean answered;
 
     @Override
@@ -35,6 +37,7 @@ public class QuestionsActivity extends AppCompatActivity {
 
         btnStart = findViewById(R.id.btnStart);
         tvQuestionsNumber = findViewById(R.id.tvQuestions_Number);
+        tvScore = findViewById(R.id.tvPoint);
         group = findViewById(R.id.group);
         rdReaction_Option1 = findViewById(R.id.radioButtonOption1);
         rdReaction_Option2 = findViewById(R.id.radioButtonOption2);
@@ -89,6 +92,9 @@ public class QuestionsActivity extends AppCompatActivity {
 
             AlertDialog myDialog = myBuilder.create();
             myDialog.show();
+
+            score++;
+            tvScore.setText("Score: " + score);
 
         } else {
             AlertDialog.Builder myBuilder = new AlertDialog.Builder(QuestionsActivity.this);
