@@ -19,7 +19,7 @@ public class HowToFrag2 extends Fragment {
         View v = inflater.inflate(R.layout.fragment_how_to_frag2, container, false);
 
         ivImage = v.findViewById(R.id.ivHowTo2);
-        //ivImage.setImageResource();
+        ivImage.setImageResource(R.drawable.howto2);
         return v;
     }
 }

@@ -7,7 +7,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.auth.FirebaseAuth;
+//import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
     Button btnStart, btnRevision, btnHowToPlay, btnSettings, btnLogOut;
@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         btnHowToPlay = findViewById(R.id.btnHowToPlay);
         btnRevision = findViewById(R.id.btnRevisionSection);
         btnSettings = findViewById(R.id.btnSettings);
-        btnLogOut = findViewById(R.id.btnLogOut);
+//        btnLogOut = findViewById(R.id.btnLogOut);
 
         mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.mouse_click);
 

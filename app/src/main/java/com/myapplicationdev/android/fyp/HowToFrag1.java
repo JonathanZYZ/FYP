@@ -20,7 +20,7 @@ public class HowToFrag1 extends Fragment {
         // Inflate the layout for this fragment
 
         ivImage = v.findViewById(R.id.ivHowTo1);
-        //ivImage.setImageResource(R.drawable.);
+        ivImage.setImageResource(R.drawable.howto1);
         return v;
     }
 }

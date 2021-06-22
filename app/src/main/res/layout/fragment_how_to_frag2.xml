@@ -10,6 +10,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+        <TextView
+            android:id="@+id/tvHowTo1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:background="#F686BD"
+            android:text="The Second Screen will prompt you for an answer. A hint button is only visible in EASY mode" />
 
         <ImageView
             android:id="@+id/ivHowTo2"

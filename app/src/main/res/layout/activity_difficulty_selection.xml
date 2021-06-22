@@ -30,7 +30,7 @@
         android:layout_width="300dp"
         android:layout_height="80dp"
         android:layout_gravity="center"
-        android:layout_margin="20dp"
+        android:layout_margin="50dp"
         android:background="@drawable/btn_design"
         android:text="Easy"
         android:textColor="@color/white"
@@ -41,7 +41,7 @@
         android:layout_width="300dp"
         android:layout_height="80dp"
         android:layout_gravity="center"
-        android:layout_margin="20dp"
+        android:layout_margin="50dp"
         android:background="@drawable/btn_design"
         android:text="Intermediate"
         android:textColor="@color/white"
@@ -53,21 +53,12 @@
         android:layout_width="300dp"
         android:layout_height="80dp"
         android:layout_gravity="center"
-        android:layout_margin="20dp"
+        android:layout_margin="50dp"
         android:background="@drawable/btn_design"
         android:text="Advance"
         android:textColor="@color/white"
         android:textSize="20sp" />
 
-    <Button
-        android:id="@+id/btnChallenging"
-        android:layout_width="300dp"
-        android:layout_height="80dp"
-        android:layout_gravity="center"
-        android:layout_margin="20dp"
-        android:background="@drawable/btn_design"
-        android:text="Challenging"
-        android:textColor="@color/white"
-        android:textSize="20sp" />
+
 
 </LinearLayout>
