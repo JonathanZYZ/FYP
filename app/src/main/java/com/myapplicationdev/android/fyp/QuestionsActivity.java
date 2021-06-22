@@ -1,9 +1,11 @@
 package com.myapplicationdev.android.fyp;
 
 import android.annotation.SuppressLint;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -121,8 +123,11 @@ public class QuestionsActivity extends AppCompatActivity {
             currentQuestion = al.get(questionCounter);
 
             ivQuestion.setImageResource(currentQuestion.getQuestionsImg());
-            rdReaction_Option1.setText(currentQuestion.getMCQoption1Reaction());
-            rdReaction_Option2.setText(currentQuestion.getMCQoption2Reaction());
+            rdReaction_Option1.setBackgroundResource(currentQuestion.getMCQoption1Reaction());
+//            LinearLayout.LayoutParams parms = new LinearLayout.LayoutParams(100,100);
+//            rdReaction_Option1.setLayoutParams(parms);
+
+            rdReaction_Option2.setBackgroundResource(currentQuestion.getMCQoption2Reaction());
 
 
 //            ivQuestion.setImageResource();

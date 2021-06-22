@@ -57,8 +57,8 @@
 
         <com.jsibbold.zoomage.ZoomageView
             android:id="@+id/ivQuestions"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
             android:src="@drawable/easy_question1"
             app:zoomage_animateOnReset="true"
             app:zoomage_autoCenter="true"
@@ -80,19 +80,16 @@
 
         <RadioButton
             android:id="@+id/radioButtonOption1"
-            android:layout_width="5dp"
+            android:layout_width="150dp"
             android:layout_height="200dp"
             android:layout_weight="1"
-            android:background="@drawable/question1_basic_incorrect"
             android:textColor="@color/black" />
 
         <RadioButton
             android:id="@+id/radioButtonOption2"
-            android:layout_width="5dp"
+            android:layout_width="150dp"
             android:layout_height="200dp"
-            android:layout_weight="1"
-            android:background="@drawable/question1_basic_correct"
-            android:textColor="@color/black" />
+            android:layout_weight="1"/>
     </RadioGroup>
 
     <LinearLayout
@@ -107,7 +104,8 @@
             android:layout_gravity="center"
             android:text="Start"
             app:backgroundTint="#F686BD"
-            app:cornerRadius="59dp" />
+            app:cornerRadius="59dp"
+            android:layout_margin="10dp"/>
     </LinearLayout>
 
 
