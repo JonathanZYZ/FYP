@@ -17,7 +17,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.myapplicationdev.android.fyp.Model.Question;
+import com.myapplicationdev.android.fyp.Model.QuestionEasy;
 
 import java.util.ArrayList;
 
@@ -28,9 +28,9 @@ public class QuestionsActivity extends AppCompatActivity {
     RadioGroup group;
     RadioButton rdReaction_Option1, rdReaction_Option2;
     ImageView ivQuestion, btnExit;
-    ArrayList<Question> al;
+    ArrayList<QuestionEasy> al;
     int questionCounter, questionCountTotal;
-    Question currentQuestion;
+    QuestionEasy currentQuestion;
 
     private int score;
     boolean answered;
@@ -50,15 +50,15 @@ public class QuestionsActivity extends AppCompatActivity {
         btnExit = findViewById(R.id.btnExit);
 
         al = new ArrayList<>();
-        al.add(new Question("basic", "1", R.drawable.question1_basic, R.drawable.question1_basic_incorrect, R.drawable.question1_basic_correct, 2));
-        al.add(new Question("basic", "2", R.drawable.question2_basic, R.drawable.question2_basic_incorrect, R.drawable.question2_basic_correct, 2));
-        al.add(new Question("basic", "3", R.drawable.question3_basic, R.drawable.question3_basic_incorrect, R.drawable.question3_basic_correct, 1));
-        al.add(new Question("basic", "4", R.drawable.question4_basic, R.drawable.question4_basic_incorrect, R.drawable.question4_basic_correct, 1));
-        al.add(new Question("basic", "5", R.drawable.question5_basic, R.drawable.question5_basic_incorrect, R.drawable.question5_basic_correct, 1));
-        al.add(new Question("basic", "6", R.drawable.question6_basic, R.drawable.question6_basic_incorrect, R.drawable.question6_basic_correct, 2));
-        al.add(new Question("basic", "7", R.drawable.question7_basic, R.drawable.question7_basic_incorrect, R.drawable.question7_basic_correct, 2));
-        al.add(new Question("basic", "8", R.drawable.question8_basic, R.drawable.question8_basic_incorrect, R.drawable.question8_basic_correct, 2));
-        al.add(new Question("basic", "9", R.drawable.question9_basic, R.drawable.question9_basic_incorrect, R.drawable.question9_basic_correct, 1));
+        al.add(new QuestionEasy("basic", "1", R.drawable.question1_basic, R.drawable.question1_basic_incorrect, R.drawable.question1_basic_correct, 2));
+        al.add(new QuestionEasy("basic", "2", R.drawable.question2_basic, R.drawable.question2_basic_incorrect, R.drawable.question2_basic_correct, 2));
+        al.add(new QuestionEasy("basic", "3", R.drawable.question3_basic, R.drawable.question3_basic_incorrect, R.drawable.question3_basic_correct, 1));
+        al.add(new QuestionEasy("basic", "4", R.drawable.question4_basic, R.drawable.question4_basic_incorrect, R.drawable.question4_basic_correct, 1));
+        al.add(new QuestionEasy("basic", "5", R.drawable.question5_basic, R.drawable.question5_basic_incorrect, R.drawable.question5_basic_correct, 1));
+        al.add(new QuestionEasy("basic", "6", R.drawable.question6_basic, R.drawable.question6_basic_incorrect, R.drawable.question6_basic_correct, 2));
+        al.add(new QuestionEasy("basic", "7", R.drawable.question7_basic, R.drawable.question7_basic_incorrect, R.drawable.question7_basic_correct, 2));
+        al.add(new QuestionEasy("basic", "8", R.drawable.question8_basic, R.drawable.question8_basic_incorrect, R.drawable.question8_basic_correct, 2));
+        al.add(new QuestionEasy("basic", "9", R.drawable.question9_basic, R.drawable.question9_basic_incorrect, R.drawable.question9_basic_correct, 1));
 
         questionCountTotal = al.size();
 
