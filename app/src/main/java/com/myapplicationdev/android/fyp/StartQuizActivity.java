@@ -40,7 +40,7 @@ public class StartQuizActivity extends AppCompatActivity {
             tvDesc.setText("The quiz contains 9 questions and there has a time limit");
             btnStart.setOnClickListener(view -> {
                 //TODO
-                Intent i12 = new Intent(StartQuizActivity.this, QuestionsActivity.class);
+                Intent i12 = new Intent(StartQuizActivity.this, IntermediateQuestionsActivity.class);
                 i12.putExtra("mode", "intermediate");
                 startActivity(i12);
             });

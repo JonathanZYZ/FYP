@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.sql.Blob;
 
 
-public class Question {
+public class QuestionEasy {
     private String mode;
     private String questionsNum;
     private int questionsImg;
@@ -13,7 +13,7 @@ public class Question {
     private int answerNum;
 
 
-    public Question(String mode, String questionsNum, int questionsImg, int MCQoption1Reaction, int MCQoption2Reaction, int answerNum) {
+    public QuestionEasy(String mode, String questionsNum, int questionsImg, int MCQoption1Reaction, int MCQoption2Reaction, int answerNum) {
         this.mode = mode;
         this.questionsNum = questionsNum;
         this.questionsImg = questionsImg;

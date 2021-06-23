@@ -35,13 +35,14 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".PositivelyQuitedActivity" />
-        <activity android:name=".QuestionWrongActivity" />
-        <activity android:name=".QuestionCorrectActivity" />
-        <activity android:name=".NegativelyQuitedActivity" />
-        <activity android:name=".PositiveResultActivity" />
-        <activity android:name=".NegativeResultActivity" />
-        <activity android:name=".QuestionsAnswerActivity" />
+        <activity android:name=".IntermediateQuestionsActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".PositivelyQuitedActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".QuestionWrongActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".QuestionCorrectActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".NegativelyQuitedActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".PositiveResultActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".NegativeResultActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".QuestionsAnswerActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity
             android:name=".QuestionsActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
