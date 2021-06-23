@@ -92,9 +92,9 @@ public class QuestionsActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
-                        Intent basicMode_to_leaderboard = new Intent(QuestionsActivity.this, LeaderboardActivity.class);
-//                        basicMode_to_leaderboard.putExtra("question","Question 1");
-                        startActivity(basicMode_to_leaderboard);
+                        Intent basicMode_to_main = new Intent(QuestionsActivity.this, MainActivity.class);
+//                        basicMode_to_main.putExtra("question","Question 1");
+                        startActivity(basicMode_to_main);
                     }
                 });
 
@@ -168,6 +168,8 @@ public class QuestionsActivity extends AppCompatActivity {
     }
 
     private void finishQuiz() {
-        finish();
+//        finish();
+        Intent finishBasicMode_to_leaderboard = new Intent(QuestionsActivity.this, LeaderboardActivity.class);
+        startActivity(finishBasicMode_to_leaderboard);
     }
 }
