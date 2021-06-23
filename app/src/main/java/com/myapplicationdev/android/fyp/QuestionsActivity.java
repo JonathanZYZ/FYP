@@ -1,8 +1,11 @@
 package com.myapplicationdev.android.fyp;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -24,7 +27,7 @@ public class QuestionsActivity extends AppCompatActivity {
     TextView tvQuestionsNumber, tvScore;
     RadioGroup group;
     RadioButton rdReaction_Option1, rdReaction_Option2;
-    ImageView ivQuestion;
+    ImageView ivQuestion, btnExit;
     ArrayList<Question> al;
     int questionCounter, questionCountTotal;
     Question currentQuestion;
@@ -44,6 +47,7 @@ public class QuestionsActivity extends AppCompatActivity {
         rdReaction_Option1 = findViewById(R.id.radioButtonOption1);
         rdReaction_Option2 = findViewById(R.id.radioButtonOption2);
         ivQuestion = findViewById(R.id.ivQuestions);
+        btnExit = findViewById(R.id.btnExit);
 
         al = new ArrayList<>();
         al.add(new Question("basic", "1", R.drawable.question1_basic, R.drawable.question1_basic_incorrect, R.drawable.question1_basic_correct, 2));
@@ -74,6 +78,29 @@ public class QuestionsActivity extends AppCompatActivity {
                 }
             } else {
                 showNextQuestion();
+            }
+        });
+
+        btnExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder exitScreen = new AlertDialog.Builder(QuestionsActivity.this);
+//                exitScreen.setTitle("");
+                exitScreen.setMessage("Are you sure you want to quit? \n Here is your final score: " + score);
+                exitScreen.setCancelable(false);
+                exitScreen.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                        Intent basicMode_to_leaderboard = new Intent(QuestionsActivity.this, LeaderboardActivity.class);
+//                        basicMode_to_leaderboard.putExtra("question","Question 1");
+                        startActivity(basicMode_to_leaderboard);
+                    }
+                });
+
+                exitScreen.setNeutralButton("No", null);
+                AlertDialog ShowDialogExit = exitScreen.create();
+                ShowDialogExit.show();
             }
         });
     }
@@ -128,7 +155,7 @@ public class QuestionsActivity extends AppCompatActivity {
 //            rdReaction_Option1.setLayoutParams(parms);
 
             rdReaction_Option2.setBackgroundResource(currentQuestion.getMCQoption2Reaction());
-
+            
 
 //            ivQuestion.setImageResource();
             questionCounter++;
