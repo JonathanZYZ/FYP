@@ -2,8 +2,10 @@ package com.myapplicationdev.android.fyp;
 
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -15,7 +17,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.myapplicationdev.android.fyp.Model.QuestionEasy;
+import com.myapplicationdev.android.fyp.Model.Question;
 
 import java.util.ArrayList;
 
@@ -25,10 +27,10 @@ public class QuestionsActivity extends AppCompatActivity {
     TextView tvQuestionsNumber, tvScore;
     RadioGroup group;
     RadioButton rdReaction_Option1, rdReaction_Option2;
-    ImageView ivQuestion;
-    ArrayList<QuestionEasy> al;
+    ImageView ivQuestion, btnExit;
+    ArrayList<Question> al;
     int questionCounter, questionCountTotal;
-    QuestionEasy currentQuestion;
+    Question currentQuestion;
 
     private int score;
     boolean answered;
@@ -45,17 +47,18 @@ public class QuestionsActivity extends AppCompatActivity {
         rdReaction_Option1 = findViewById(R.id.radioButtonOption1);
         rdReaction_Option2 = findViewById(R.id.radioButtonOption2);
         ivQuestion = findViewById(R.id.ivQuestions);
+        btnExit = findViewById(R.id.btnExit);
 
         al = new ArrayList<>();
-        al.add(new QuestionEasy("basic", "1", R.drawable.question1_basic, R.drawable.question1_basic_incorrect, R.drawable.question1_basic_correct, 2));
-        al.add(new QuestionEasy("basic", "2", R.drawable.question2_basic, R.drawable.question2_basic_incorrect, R.drawable.question2_basic_correct, 2));
-        al.add(new QuestionEasy("basic", "3", R.drawable.question3_basic, R.drawable.question3_basic_incorrect, R.drawable.question3_basic_correct, 1));
-        al.add(new QuestionEasy("basic", "4", R.drawable.question4_basic, R.drawable.question4_basic_incorrect, R.drawable.question4_basic_correct, 1));
-        al.add(new QuestionEasy("basic", "5", R.drawable.question5_basic, R.drawable.question5_basic_incorrect, R.drawable.question5_basic_correct, 1));
-        al.add(new QuestionEasy("basic", "6", R.drawable.question6_basic, R.drawable.question6_basic_incorrect, R.drawable.question6_basic_correct, 2));
-        al.add(new QuestionEasy("basic", "7", R.drawable.question7_basic, R.drawable.question7_basic_incorrect, R.drawable.question7_basic_correct, 2));
-        al.add(new QuestionEasy("basic", "8", R.drawable.question8_basic, R.drawable.question8_basic_incorrect, R.drawable.question8_basic_correct, 2));
-        al.add(new QuestionEasy("basic", "9", R.drawable.question9_basic, R.drawable.question9_basic_incorrect, R.drawable.question9_basic_correct, 1));
+        al.add(new Question("basic", "1", R.drawable.question1_basic, R.drawable.question1_basic_incorrect, R.drawable.question1_basic_correct, 2));
+        al.add(new Question("basic", "2", R.drawable.question2_basic, R.drawable.question2_basic_incorrect, R.drawable.question2_basic_correct, 2));
+        al.add(new Question("basic", "3", R.drawable.question3_basic, R.drawable.question3_basic_incorrect, R.drawable.question3_basic_correct, 1));
+        al.add(new Question("basic", "4", R.drawable.question4_basic, R.drawable.question4_basic_incorrect, R.drawable.question4_basic_correct, 1));
+        al.add(new Question("basic", "5", R.drawable.question5_basic, R.drawable.question5_basic_incorrect, R.drawable.question5_basic_correct, 1));
+        al.add(new Question("basic", "6", R.drawable.question6_basic, R.drawable.question6_basic_incorrect, R.drawable.question6_basic_correct, 2));
+        al.add(new Question("basic", "7", R.drawable.question7_basic, R.drawable.question7_basic_incorrect, R.drawable.question7_basic_correct, 2));
+        al.add(new Question("basic", "8", R.drawable.question8_basic, R.drawable.question8_basic_incorrect, R.drawable.question8_basic_correct, 2));
+        al.add(new Question("basic", "9", R.drawable.question9_basic, R.drawable.question9_basic_incorrect, R.drawable.question9_basic_correct, 1));
 
         questionCountTotal = al.size();
 
@@ -77,6 +80,29 @@ public class QuestionsActivity extends AppCompatActivity {
                 showNextQuestion();
             }
         });
+
+        btnExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder exitScreen = new AlertDialog.Builder(QuestionsActivity.this);
+//                exitScreen.setTitle("");
+                exitScreen.setMessage("Are you sure you want to quit? \n Here is your final score: " + score);
+                exitScreen.setCancelable(false);
+                exitScreen.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                        Intent basicMode_to_leaderboard = new Intent(QuestionsActivity.this, LeaderboardActivity.class);
+//                        basicMode_to_leaderboard.putExtra("question","Question 1");
+                        startActivity(basicMode_to_leaderboard);
+                    }
+                });
+
+                exitScreen.setNeutralButton("No", null);
+                AlertDialog ShowDialogExit = exitScreen.create();
+                ShowDialogExit.show();
+            }
+        });
     }
 
     @SuppressLint("SetTextI18n")
@@ -91,12 +117,7 @@ public class QuestionsActivity extends AppCompatActivity {
             myBuilder.setTitle("Check Answer");
             myBuilder.setMessage("You selected the correct answer!");
             myBuilder.setCancelable(false);
-            myBuilder.setPositiveButton("Next", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    showNextQuestion();
-                }
-            });
+            myBuilder.setPositiveButton("Dismiss", null);
 
             AlertDialog myDialog = myBuilder.create();
             myDialog.show();
@@ -109,19 +130,14 @@ public class QuestionsActivity extends AppCompatActivity {
             myBuilder.setTitle("Check Answer");
             myBuilder.setMessage("You selected the wrong answer!");
             myBuilder.setCancelable(false);
-            myBuilder.setPositiveButton("Next", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    showNextQuestion();
-                }
-            });
+            myBuilder.setPositiveButton("Dismiss", null);
 
             AlertDialog myDialog = myBuilder.create();
             myDialog.show();
         }
 
         if (questionCounter < questionCountTotal) {
-           // btnStart.setText("Next Question");
+            btnStart.setText("Next Question");
         } else {
             btnStart.setText("Finish Quiz");
         }
@@ -139,7 +155,7 @@ public class QuestionsActivity extends AppCompatActivity {
 //            rdReaction_Option1.setLayoutParams(parms);
 
             rdReaction_Option2.setBackgroundResource(currentQuestion.getMCQoption2Reaction());
-
+            
 
 //            ivQuestion.setImageResource();
             questionCounter++;
