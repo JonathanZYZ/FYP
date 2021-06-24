@@ -1,12 +1,11 @@
 package com.myapplicationdev.android.fyp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class SettingPageActivity extends AppCompatActivity {
 
@@ -23,18 +22,17 @@ public class SettingPageActivity extends AppCompatActivity {
         checkBoxSound = findViewById(R.id.checkBoxSound);
         checkBoxMusic = findViewById(R.id.checkBoxMusic);
 
-        btnApply.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(checkBoxSound.isChecked()){
-                    //store in database
-                }
-                if(checkBoxMusic.isChecked()){
-                    //store in database
-                }
-                Intent i = new Intent(SettingPageActivity.this, MainActivity.class);
-                startActivity(i);
+        btnApply.setOnClickListener(v -> {
+
+            if(checkBoxSound.isChecked()){
+                //store in database
             }
+
+            if(checkBoxMusic.isChecked()){
+                //store in database
+            }
+            Intent i = new Intent(SettingPageActivity.this, MainActivity.class);
+            startActivity(i);
         });
     }
 }

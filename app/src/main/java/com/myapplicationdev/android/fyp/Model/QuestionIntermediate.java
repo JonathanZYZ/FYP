@@ -1,25 +1,27 @@
 package com.myapplicationdev.android.fyp.Model;
 
-public class QuestionIntermediate {
-    private String mode;
-    private String qnNum;
-    private int qnMainImage;
-    private int qnCount;
-    private String qn1Name;
-    private int ans1Image1;
-    private int ans1Image2;
-    private int correctNum1;
-    private String qn2Name;
-    private int ans2Image1;
-    private int ans2Image2;
-    private int ans2Image3;
-    private int correctNum2;
-    private String qn3Name;
-    private int ans3Image1;
-    private int ans3Image2;
-    private int ans3Image3;
-    private int ans3Image4;
-    private int correctNum3;
+import java.io.Serializable;
+
+public class QuestionIntermediate implements Serializable {
+    private final String mode;
+    private final String qnNum;
+    private final int qnMainImage;
+    private final int qnCount;
+    private final String qn1Name;
+    private final int ans1Image1;
+    private final int ans1Image2;
+    private final int correctNum1;
+    private final String qn2Name;
+    private final int ans2Image1;
+    private final int ans2Image2;
+    private final int ans2Image3;
+    private final int correctNum2;
+    private final String qn3Name;
+    private final int ans3Image1;
+    private final int ans3Image2;
+    private final int ans3Image3;
+    private final int ans3Image4;
+    private final int correctNum3;
 
     public QuestionIntermediate(String mode, String qnNum, int qnMainImage, int qnCount, String qn1Name, int ans1Image1, int ans1Image2, int correctNum1, String qn2Name, int ans2Image1, int ans2Image2, int ans2Image3, int correctNum2, String qn3Name, int ans3Image1, int ans3Image2, int ans3Image3, int ans3Image4, int correctNum3) {
         this.mode = mode;

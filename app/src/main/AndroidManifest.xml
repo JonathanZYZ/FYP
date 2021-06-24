@@ -40,7 +40,7 @@
         <activity android:name=".QuestionWrongActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".QuestionCorrectActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".NegativelyQuitedActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
-        <activity android:name=".PositiveResultActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".ResultActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".NegativeResultActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".QuestionsAnswerActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity

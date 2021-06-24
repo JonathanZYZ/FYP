@@ -1,16 +1,17 @@
 package com.myapplicationdev.android.fyp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 public class StartQuizActivity extends AppCompatActivity {
     TextView tvMode, tvDesc;
     Button btnStart;
+
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -30,28 +31,30 @@ public class StartQuizActivity extends AppCompatActivity {
             tvDesc.setText("The quiz contains 9 questions and there is no time limit");
             btnStart.setOnClickListener(view -> {
                 //TODO
-                Intent i1 = new Intent(StartQuizActivity.this, QuestionsActivity.class);
-                i1.putExtra("mode", "easy");
-                startActivity(i1);
+                Intent intent1 = new Intent(StartQuizActivity.this, QuestionsActivity.class);
+                intent1.putExtra("mode", "easy");
+                startActivity(intent1);
             });
+
 
         } else if (mode.equalsIgnoreCase("intermediate")) {
             tvMode.setText("Intermediate");
             tvDesc.setText("The quiz contains 9 questions and there has a time limit");
             btnStart.setOnClickListener(view -> {
                 //TODO
-                Intent i12 = new Intent(StartQuizActivity.this, IntermediateQuestionsActivity.class);
-                i12.putExtra("mode", "intermediate");
-                startActivity(i12);
+                Intent intent2 = new Intent(StartQuizActivity.this, IntermediateQuestionsActivity.class);
+                intent2.putExtra("mode", "intermediate");
+                startActivity(intent2);
             });
+
         } else if (mode.equalsIgnoreCase("advanced")) {
             tvMode.setText("Advanced");
             tvDesc.setText("The quiz contains 9 questions and there has a time limit");
             btnStart.setOnClickListener(view -> {
                 //TODO
-                Intent i13 = new Intent(StartQuizActivity.this, QuestionsActivity.class);
-                i13.putExtra("mode", "advanced");
-                startActivity(i13);
+                Intent intent3 = new Intent(StartQuizActivity.this, QuestionsActivity.class);
+                intent3.putExtra("mode", "advanced");
+                startActivity(intent3);
             });
         }
     }

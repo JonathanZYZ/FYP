@@ -1,14 +1,10 @@
 package com.myapplicationdev.android.fyp;
 
 import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -31,8 +27,7 @@ public class QuestionsActivity extends AppCompatActivity {
     ArrayList<QuestionEasy> al;
     int questionCounter, questionCountTotal;
     QuestionEasy currentQuestion;
-
-    private int score;
+    int score;
     boolean answered;
 
     @Override
@@ -81,27 +76,25 @@ public class QuestionsActivity extends AppCompatActivity {
             }
         });
 
-        btnExit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog.Builder exitScreen = new AlertDialog.Builder(QuestionsActivity.this);
+        btnExit.setOnClickListener(view -> {
+
+
+            AlertDialog.Builder exitScreen = new AlertDialog.Builder(QuestionsActivity.this);
 //                exitScreen.setTitle("");
-                exitScreen.setMessage("Are you sure you want to quit? \n Here is your final score: " + score);
-                exitScreen.setCancelable(false);
-                exitScreen.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
+            exitScreen.setMessage("Are you sure you want to quit? \n Here is your final score: " + score);
+            exitScreen.setCancelable(false);
 
-                        Intent basicMode_to_main = new Intent(QuestionsActivity.this, MainActivity.class);
+
+            exitScreen.setPositiveButton("Yes", (dialogInterface, i) -> {
+
+                Intent basicMode_to_main = new Intent(QuestionsActivity.this, MainActivity.class);
 //                        basicMode_to_main.putExtra("question","Question 1");
-                        startActivity(basicMode_to_main);
-                    }
-                });
+                startActivity(basicMode_to_main);
+            });
 
-                exitScreen.setNeutralButton("No", null);
-                AlertDialog ShowDialogExit = exitScreen.create();
-                ShowDialogExit.show();
-            }
+            exitScreen.setNeutralButton("No", null);
+            AlertDialog ShowDialogExit = exitScreen.create();
+            ShowDialogExit.show();
         });
     }
 
@@ -155,7 +148,7 @@ public class QuestionsActivity extends AppCompatActivity {
 //            rdReaction_Option1.setLayoutParams(parms);
 
             rdReaction_Option2.setBackgroundResource(currentQuestion.getMCQoption2Reaction());
-            
+
 
 //            ivQuestion.setImageResource();
             questionCounter++;

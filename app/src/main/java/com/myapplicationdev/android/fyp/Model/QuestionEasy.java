@@ -1,10 +1,9 @@
 package com.myapplicationdev.android.fyp.Model;
 
 import java.io.Serializable;
-import java.sql.Blob;
 
 
-public class QuestionEasy {
+public class QuestionEasy implements Serializable {
     private String mode;
     private String questionsNum;
     private int questionsImg;
