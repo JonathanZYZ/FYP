@@ -32,6 +32,8 @@ public class SettingPageActivity extends AppCompatActivity {
                 if(checkBoxMusic.isChecked()){
                     //store in database
                 }
+                Intent i = new Intent(SettingPageActivity.this, MainActivity.class);
+                startActivity(i);
             }
         });
     }
