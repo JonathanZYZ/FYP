@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background2"
@@ -13,7 +14,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
         android:layout_gravity="center"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="100dp"
         android:textColor="#F4BBD3"
         android:background="@drawable/rounded_textview2" />
 
@@ -26,7 +27,7 @@
         android:layout_alignParentRight="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:layout_marginTop="151dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="51dp"
         android:layout_marginRight="51dp"
         android:background="@drawable/rounded_textview1"
@@ -52,7 +53,7 @@
         android:layout_centerInParent="true"
         android:layout_marginStart="122dp"
         android:layout_marginLeft="122dp"
-        android:layout_marginTop="302dp"
+        android:layout_marginTop="252dp"
         android:paddingLeft="20dp"
         android:text="Sound"
         android:textSize="40dp" />
@@ -67,9 +68,25 @@
         android:layout_centerInParent="true"
         android:layout_marginStart="125dp"
         android:layout_marginLeft="125dp"
-        android:layout_marginTop="424dp"
+        android:layout_marginTop="374dp"
         android:paddingLeft="20dp"
         android:text="Music"
         android:textSize="40dp" />
+
+    <Button
+        android:id="@+id/btnApply"
+        android:layout_width="220dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="51dp"
+        android:layout_marginTop="480dp"
+        android:background="@drawable/btn_design"
+        android:gravity="center"
+        android:text="Apply"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="42sp"
+        app:backgroundTint="@color/btnColor" />
 
 </RelativeLayout>
