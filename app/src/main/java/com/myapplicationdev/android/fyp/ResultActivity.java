@@ -60,8 +60,12 @@ public class ResultActivity extends AppCompatActivity {
         btnPlayAgain.setOnClickListener(v -> {
 
             Intent intent = new Intent(ResultActivity.this, MainActivity.class);
+
+
             startActivity(intent);
             finish();
+
+
 
         });
 
@@ -71,6 +75,13 @@ public class ResultActivity extends AppCompatActivity {
             // Kill the process with the given PID.
             android.os.Process.killProcess(android.os.Process.myPid());
             System.exit(0);
+
+
+
+
+
+
+
 
         });
 

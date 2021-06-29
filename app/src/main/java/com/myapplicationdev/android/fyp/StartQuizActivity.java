@@ -19,6 +19,7 @@ public class StartQuizActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_quiz);
 
+
         tvMode = findViewById(R.id.tvMode);
         tvDesc = findViewById(R.id.tvDesc);
         btnStart = findViewById(R.id.btnStartGame);

@@ -3,6 +3,7 @@ package com.myapplicationdev.android.fyp.Model;
 import java.io.Serializable;
 
 public class QuestionIntermediate implements Serializable {
+
     private final String mode;
     private final String qnNum;
     private final int qnMainImage;

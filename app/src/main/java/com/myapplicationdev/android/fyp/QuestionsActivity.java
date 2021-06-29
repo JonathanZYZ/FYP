@@ -27,7 +27,7 @@ public class QuestionsActivity extends AppCompatActivity {
     ArrayList<QuestionEasy> al;
     int questionCounter, questionCountTotal;
     QuestionEasy currentQuestion;
-    int score;
+    int score = 0;
     boolean answered;
 
     @Override
@@ -162,7 +162,12 @@ public class QuestionsActivity extends AppCompatActivity {
 
     private void finishQuiz() {
 //        finish();
-        Intent finishBasicMode_to_leaderboard = new Intent(QuestionsActivity.this, LeaderboardActivity.class);
-        startActivity(finishBasicMode_to_leaderboard);
+        //  Intent finishBasicMode_to_leaderboard = new Intent(QuestionsActivity.this, LeaderboardActivity.class);
+
+        Intent intent = new Intent(QuestionsActivity.this, ResultActivity.class);
+        intent.putExtra("score", score);
+        startActivity(intent);
+        finish();
+
     }
 }

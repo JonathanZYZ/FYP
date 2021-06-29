@@ -7,10 +7,9 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-//import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
-    Button btnStart, btnRevision, btnHowToPlay, btnSettings, btnLogOut;
+    Button btnStart, btnRevision, btnHowToPlay, btnSettings, btnLeaderBoard;
     MediaPlayer mediaPlayer;
 
 
@@ -23,12 +22,11 @@ public class MainActivity extends AppCompatActivity {
         btnHowToPlay = findViewById(R.id.btnHowToPlay);
         btnRevision = findViewById(R.id.btnRevisionSection);
         btnSettings = findViewById(R.id.btnSettings);
-//        btnLogOut = findViewById(R.id.btnLogOut);
-
+        btnLeaderBoard = findViewById(R.id.btnLeaderBoard);
         mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.mouse_click);
 
         btnStart.setOnClickListener(view -> {
-        //    Log.d("test", "test");
+            //    Log.d("test", "test");
             Intent i = new Intent(MainActivity.this, DifficultySectionActivity.class);
             startActivity(i);
             mediaPlayer.start();
@@ -53,5 +51,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        btnLeaderBoard.setOnClickListener(view -> {
+            Intent i = new Intent(MainActivity.this, LeaderboardActivity.class);
+            startActivity(i);
+            mediaPlayer.start();
+        });
     }
 }
