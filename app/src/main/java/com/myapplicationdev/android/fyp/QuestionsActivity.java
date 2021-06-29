@@ -2,6 +2,7 @@ package com.myapplicationdev.android.fyp;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -14,6 +15,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.myapplicationdev.android.fyp.Model.QuestionEasy;
+import com.myapplicationdev.android.fyp.Util.DBHelper;
 
 import java.util.ArrayList;
 
@@ -29,6 +31,9 @@ public class QuestionsActivity extends AppCompatActivity {
     QuestionEasy currentQuestion;
     int score = 0;
     boolean answered;
+    DBHelper dbh = new DBHelper(QuestionsActivity.this);
+    SharedPreferences sharedPreferences;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

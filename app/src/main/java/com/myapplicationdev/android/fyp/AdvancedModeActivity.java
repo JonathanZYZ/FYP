@@ -13,14 +13,18 @@ public class AdvancedModeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_advanced_mode);
         btnStart = findViewById(R.id.btnStartAdvanced);
         mediaPlayer = MediaPlayer.create(AdvancedModeActivity.this,R.raw.mouse_click);
+
         btnStart.setOnClickListener(view -> {
             Intent i = new Intent(AdvancedModeActivity.this, StartQuizActivity.class);
             i.putExtra("mode","advanced");
             startActivity(i);
             mediaPlayer.start();
         });
+
+
     }
 }

@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class DifficultySectionActivity extends AppCompatActivity {
     Button btnEasy,btnIntermediate,btnAdvanced,btnBack;
     MediaPlayer mediaPlayer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

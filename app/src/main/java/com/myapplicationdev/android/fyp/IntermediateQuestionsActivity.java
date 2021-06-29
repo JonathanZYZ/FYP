@@ -1,6 +1,7 @@
 package com.myapplicationdev.android.fyp;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.myapplicationdev.android.fyp.Model.QuestionIntermediate;
+import com.myapplicationdev.android.fyp.Util.DBHelper;
 
 import java.util.ArrayList;
 
@@ -28,6 +30,8 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
     int ans1, ans2, ans3;
     int score;
     boolean answered;
+    DBHelper dbh = new DBHelper(IntermediateQuestionsActivity.this);
+    SharedPreferences sharedPreferences;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

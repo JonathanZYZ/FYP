@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.myapplicationdev.android.fyp.Util.DBHelper;
+
 public class ResultActivity extends AppCompatActivity {
 
 
@@ -17,7 +19,7 @@ public class ResultActivity extends AppCompatActivity {
     Button btnPlayAgain, btnQuitGame;
     int myScore;
     SharedPreferences sharedPreferences;
-
+    DBHelper dbh = new DBHelper(ResultActivity.this);
 
     @SuppressLint({"SetTextI18n", "CutPasteId"})
     @Override
