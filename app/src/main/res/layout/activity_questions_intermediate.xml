@@ -66,75 +66,39 @@
             app:zoomage_zoomable="true" />
     </LinearLayout>
 
-    <RadioGroup
-        android:id="@+id/radiogroup_Intermediate"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_weight="2"
         android:orientation="horizontal">
 
-        <RadioButton
-            android:id="@+id/radiobutton_solvent_intermediate"
-            android:layout_width="150dp"
+        <ImageView
+            android:id="@+id/ivChoiceQn1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Solvent"
-            android:textColor="@color/black" />
+            app:srcCompat="@drawable/option1" />
 
-        <RadioButton
-            android:id="@+id/radiobutton_product_intermediate"
-            android:layout_width="150dp"
+        <ImageView
+            android:id="@+id/ivChoiceQn2"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Product"/>
+            app:srcCompat="@drawable/option2" />
 
-        <RadioButton
-            android:id="@+id/radiobutton_reaction_intermediate"
-            android:layout_width="150dp"
+        <ImageView
+            android:id="@+id/ivChoiceQn3"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Reaction"
-            android:textColor="@color/black" />
-    </RadioGroup>
-
-    <RadioGroup
-        android:id="@+id/radiogroup_MCQoption_intermediate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:id="@+id/radiobutton_option1_intermediate"
-            android:layout_width="150dp"
-            android:layout_height="200dp"
-            android:layout_weight="1"
-            android:textColor="@color/black" />
-
-        <RadioButton
-            android:id="@+id/radiobutton_option2_intermediate"
-            android:layout_width="150dp"
-            android:layout_height="200dp"
-            android:layout_weight="1" />
-
-        <RadioButton
-            android:id="@+id/radiobutton_option3_intermediate"
-            android:layout_width="150dp"
-            android:layout_height="200dp"
-            android:layout_weight="1"
-            android:textColor="@color/black" />
-
-        <RadioButton
-            android:id="@+id/radiobutton_option4_intermediate"
-            android:layout_width="150dp"
-            android:layout_height="200dp"
-            android:layout_weight="1"
-            android:textColor="@color/black" />
-    </RadioGroup>
+            app:srcCompat="@drawable/option2" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_weight="2"
         android:orientation="vertical">
 
         <Button
@@ -143,7 +107,7 @@
             android:layout_height="80dp"
             android:layout_gravity="center"
             android:layout_margin="10dp"
-            android:text="Start"
+            android:text="Submit"
             app:backgroundTint="#F686BD"
             app:cornerRadius="59dp" />
     </LinearLayout>
