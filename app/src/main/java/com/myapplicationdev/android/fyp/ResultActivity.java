@@ -36,7 +36,7 @@ public class ResultActivity extends AppCompatActivity {
         myScore = getIntent().getIntExtra("score", 0);
         textViewMyScore.setText("Your Score : " + myScore);
 
-
+        textViewHeading.setText("Good Job!");
         sharedPreferences = this.getSharedPreferences("Score", Context.MODE_PRIVATE);
         int highestScore = sharedPreferences.getInt("highestScore", 0);
 
@@ -46,6 +46,7 @@ public class ResultActivity extends AppCompatActivity {
             textViewHighestScore.setText("Highest Score : " + myScore);
             textViewHeading.setText("Congratulations. The new high score. Do you want to get better scores?");
         } else {
+
             textViewHighestScore.setText("Highest Score : " + highestScore);
             if ((highestScore - myScore) > 10) {
                 textViewHeading.setText("xxxx");
@@ -68,7 +69,6 @@ public class ResultActivity extends AppCompatActivity {
             finish();
 
 
-
         });
 
         btnQuitGame.setOnClickListener(v -> {
@@ -77,12 +77,6 @@ public class ResultActivity extends AppCompatActivity {
             // Kill the process with the given PID.
             android.os.Process.killProcess(android.os.Process.myPid());
             System.exit(0);
-
-
-
-
-
-
 
 
         });

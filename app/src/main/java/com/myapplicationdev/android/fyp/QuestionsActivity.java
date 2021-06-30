@@ -20,19 +20,19 @@ import com.myapplicationdev.android.fyp.Util.DBHelper;
 import java.util.ArrayList;
 
 public class QuestionsActivity extends AppCompatActivity {
-
     Button btnStart;
     TextView tvQuestionsNumber, tvScore;
     RadioGroup group;
     RadioButton rdReaction_Option1, rdReaction_Option2;
     ImageView ivQuestion, btnExit;
     ArrayList<QuestionEasy> al;
-    int questionCounter, questionCountTotal;
     QuestionEasy currentQuestion;
-    int score = 0;
-    boolean answered;
     DBHelper dbh = new DBHelper(QuestionsActivity.this);
+    String mode;
     SharedPreferences sharedPreferences;
+    int score = 0;
+    int questionCounter, questionCountTotal;
+    boolean answered;
 
 
     @Override

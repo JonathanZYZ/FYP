@@ -2,17 +2,12 @@ package com.myapplicationdev.android.fyp;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -132,12 +127,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
             if (ans1 == currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2() && ans3 == currentQuestion.getCorrectNum3()) {
                 myBuilder.setMessage("You selected the correct answer!");
                 myBuilder.setCancelable(false);
-                myBuilder.setPositiveButton("Next", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        showNextQuestion();
-                    }
-                });
+                myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
                 AlertDialog myDialog = myBuilder.create();
                 myDialog.show();
@@ -147,84 +137,49 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
             } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2() && ans3 == currentQuestion.getCorrectNum3()) {
                 myBuilder.setMessage("You selected the wrong answer for Question 1!");
                 myBuilder.setCancelable(false);
-                myBuilder.setPositiveButton("Next", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        showNextQuestion();
-                    }
-                });
+                myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
                 AlertDialog myDialog = myBuilder.create();
                 myDialog.show();
             } else if (ans1 == currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum2() && ans3 == currentQuestion.getCorrectNum3()) {
                 myBuilder.setMessage("You selected the wrong answer for Question 2!");
                 myBuilder.setCancelable(false);
-                myBuilder.setPositiveButton("Next", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        showNextQuestion();
-                    }
-                });
+                myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
                 AlertDialog myDialog = myBuilder.create();
                 myDialog.show();
             } else if (ans1 == currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2() && ans3 != currentQuestion.getCorrectNum3()) {
                 myBuilder.setMessage("You selected the wrong answer for Question 3!");
                 myBuilder.setCancelable(false);
-                myBuilder.setPositiveButton("Next", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        showNextQuestion();
-                    }
-                });
+                myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
                 AlertDialog myDialog = myBuilder.create();
                 myDialog.show();
             } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum2() && ans3 == currentQuestion.getCorrectNum3()) {
                 myBuilder.setMessage("You selected the wrong answer for Question 1 and 2!");
                 myBuilder.setCancelable(false);
-                myBuilder.setPositiveButton("Next", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        showNextQuestion();
-                    }
-                });
+                myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
                 AlertDialog myDialog = myBuilder.create();
                 myDialog.show();
             } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2() && ans3 != currentQuestion.getCorrectNum3()) {
                 myBuilder.setMessage("You selected the wrong answer for Question 1 and 3!");
                 myBuilder.setCancelable(false);
-                myBuilder.setPositiveButton("Next", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        showNextQuestion();
-                    }
-                });
+                myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
                 AlertDialog myDialog = myBuilder.create();
                 myDialog.show();
             } else if (ans1 == currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum2() && ans3 != currentQuestion.getCorrectNum3()) {
                 myBuilder.setMessage("You selected the wrong answer for Question 2 and 3!");
                 myBuilder.setCancelable(false);
-                myBuilder.setPositiveButton("Next", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        showNextQuestion();
-                    }
-                });
+                myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
                 AlertDialog myDialog = myBuilder.create();
                 myDialog.show();
             } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum2() && ans3 != currentQuestion.getCorrectNum3()) {
                 myBuilder.setMessage("You selected the wrong answer for all Questions!");
                 myBuilder.setCancelable(false);
-                myBuilder.setPositiveButton("Next", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        showNextQuestion();
-                    }
-                });
+                myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
                 AlertDialog myDialog = myBuilder.create();
                 myDialog.show();
@@ -285,27 +240,11 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                 ivChoice3.setImageResource(currentQuestion.getQn3Image());
             }
 
-            ivChoice1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    MyCustomAlertDialog(1, numOfAnsForQn1);
+            ivChoice1.setOnClickListener(view -> MyCustomAlertDialog(1, numOfAnsForQn1));
 
-                }
-            });
+            ivChoice2.setOnClickListener(view -> MyCustomAlertDialog(2, numOfAnsForQn2));
 
-            ivChoice2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    MyCustomAlertDialog(2, numOfAnsForQn2);
-                }
-            });
-
-            ivChoice3.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    MyCustomAlertDialog(3, 4);
-                }
-            });
+            ivChoice3.setOnClickListener(view -> MyCustomAlertDialog(3, 4));
 
             questionCounter++;
             tvQuestionsNumber.setText("Question: " + questionCounter + "/" + questionCountTotal);
@@ -402,99 +341,87 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
             ivUserChoice4.setImageResource(currentQuestion.getAns3Image4());
         }
 
-        ivUserChoice1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (qnNum == 1) {
-                    if (numOfAns == 2) {
-                        ans1 = 1;
-                        ivChoice1.setImageResource(currentQuestion.getAns1Image1());
-                    } else if (numOfAns == 3) {
-                        ans1 = 1;
-                        ivChoice1.setImageResource(currentQuestion.getAns2Image1());
-                    } else if (numOfAns == 4) {
-                        ans1 = 1;
-                        ivChoice1.setImageResource(currentQuestion.getAns3Image1());
-                    }
-
-                } else if (qnNum == 2) {
-                    if (numOfAns == 3) {
-                        ans2 = 1;
-                        ivChoice2.setImageResource(currentQuestion.getAns2Image1());
-                    } else if (numOfAns == 4) {
-                        ans2 = 1;
-                        ivChoice2.setImageResource(currentQuestion.getAns3Image1());
-                    }
-
-                } else if (qnNum == 3) {
-                    ans3 = 1;
-                    ivChoice3.setImageResource(currentQuestion.getAns3Image1());
+        ivUserChoice1.setOnClickListener(view -> {
+            if (qnNum == 1) {
+                if (numOfAns == 2) {
+                    ans1 = 1;
+                    ivChoice1.setImageResource(currentQuestion.getAns1Image1());
+                } else if (numOfAns == 3) {
+                    ans1 = 1;
+                    ivChoice1.setImageResource(currentQuestion.getAns2Image1());
+                } else if (numOfAns == 4) {
+                    ans1 = 1;
+                    ivChoice1.setImageResource(currentQuestion.getAns3Image1());
                 }
-                MyDialog.cancel();
+
+            } else if (qnNum == 2) {
+                if (numOfAns == 3) {
+                    ans2 = 1;
+                    ivChoice2.setImageResource(currentQuestion.getAns2Image1());
+                } else if (numOfAns == 4) {
+                    ans2 = 1;
+                    ivChoice2.setImageResource(currentQuestion.getAns3Image1());
+                }
+
+            } else if (qnNum == 3) {
+                ans3 = 1;
+                ivChoice3.setImageResource(currentQuestion.getAns3Image1());
             }
+            MyDialog.cancel();
         });
 
-        ivUserChoice2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (qnNum == 1) {
-                    if (numOfAns == 2) {
-                        ans1 = 2;
-                        ivChoice1.setImageResource(currentQuestion.getAns1Image2());
-                    } else if (numOfAns == 3) {
-                        ans1 = 2;
-                        ivChoice1.setImageResource(currentQuestion.getAns2Image2());
-                    } else if (numOfAns == 4) {
-                        ans1 = 2;
-                        ivChoice1.setImageResource(currentQuestion.getAns3Image2());
-                    }
-
-                } else if (qnNum == 2) {
-                    if (numOfAns == 3) {
-                        ans2 = 2;
-                        ivChoice2.setImageResource(currentQuestion.getAns2Image2());
-                    } else if (numOfAns == 4) {
-                        ans2 = 2;
-                        ivChoice2.setImageResource(currentQuestion.getAns3Image2());
-                    }
-
-                } else if (qnNum == 3) {
-                    ans3 = 2;
-                    ivChoice3.setImageResource(currentQuestion.getAns3Image2());
+        ivUserChoice2.setOnClickListener(view -> {
+            if (qnNum == 1) {
+                if (numOfAns == 2) {
+                    ans1 = 2;
+                    ivChoice1.setImageResource(currentQuestion.getAns1Image2());
+                } else if (numOfAns == 3) {
+                    ans1 = 2;
+                    ivChoice1.setImageResource(currentQuestion.getAns2Image2());
+                } else if (numOfAns == 4) {
+                    ans1 = 2;
+                    ivChoice1.setImageResource(currentQuestion.getAns3Image2());
                 }
-                MyDialog.cancel();
+
+            } else if (qnNum == 2) {
+                if (numOfAns == 3) {
+                    ans2 = 2;
+                    ivChoice2.setImageResource(currentQuestion.getAns2Image2());
+                } else if (numOfAns == 4) {
+                    ans2 = 2;
+                    ivChoice2.setImageResource(currentQuestion.getAns3Image2());
+                }
+
+            } else if (qnNum == 3) {
+                ans3 = 2;
+                ivChoice3.setImageResource(currentQuestion.getAns3Image2());
             }
+            MyDialog.cancel();
         });
 
-        ivUserChoice3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (qnNum == 2) {
-                    if (numOfAns == 3) {
-                        ans2 = 3;
-                        ivChoice2.setImageResource(currentQuestion.getAns2Image3());
-                    } else if (numOfAns == 4) {
-                        ans2 = 3;
-                        ivChoice2.setImageResource(currentQuestion.getAns3Image3());
-                    }
-
-                } else if (qnNum == 3) {
-                    ans3 = 3;
-                    ivChoice3.setImageResource(currentQuestion.getAns3Image3());
+        ivUserChoice3.setOnClickListener(view -> {
+            if (qnNum == 2) {
+                if (numOfAns == 3) {
+                    ans2 = 3;
+                    ivChoice2.setImageResource(currentQuestion.getAns2Image3());
+                } else if (numOfAns == 4) {
+                    ans2 = 3;
+                    ivChoice2.setImageResource(currentQuestion.getAns3Image3());
                 }
-                MyDialog.cancel();
+
+            } else if (qnNum == 3) {
+                ans3 = 3;
+                ivChoice3.setImageResource(currentQuestion.getAns3Image3());
             }
+            MyDialog.cancel();
         });
 
-        ivUserChoice4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ans3 = 4;
-                ivChoice3.setImageResource(currentQuestion.getAns3Image4());
+        ivUserChoice4.setOnClickListener(view -> {
+            ans3 = 4;
+            ivChoice3.setImageResource(currentQuestion.getAns3Image4());
 
-                MyDialog.cancel();
+            MyDialog.cancel();
 
-            }
         });
 
         MyDialog.show();
