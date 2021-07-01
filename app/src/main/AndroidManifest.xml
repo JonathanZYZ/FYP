@@ -44,7 +44,7 @@
         <activity android:name=".NegativeResultActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".QuestionsAnswerActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity
-            android:name=".QuestionsActivity"
+            android:name=".BasicQuestionsActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".SettingPageActivity"

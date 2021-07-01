@@ -1,15 +1,16 @@
 package com.myapplicationdev.android.fyp;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,17 +20,18 @@ import com.myapplicationdev.android.fyp.Util.DBHelper;
 
 import java.util.ArrayList;
 
-public class QuestionsActivity extends AppCompatActivity {
+public class BasicQuestionsActivity extends AppCompatActivity {
     Button btnStart;
     TextView tvQuestionsNumber, tvScore;
     RadioGroup group;
     RadioButton rdReaction_Option1, rdReaction_Option2;
-    ImageView ivQuestion, btnExit;
+    ImageView ivQuestion, btnExit, ivChoiceBasicQn;
     ArrayList<QuestionEasy> al;
     QuestionEasy currentQuestion;
-    DBHelper dbh = new DBHelper(QuestionsActivity.this);
+    DBHelper dbh = new DBHelper(BasicQuestionsActivity.this);
     String mode;
     SharedPreferences sharedPreferences;
+    int ans;
     int score = 0;
     int questionCounter, questionCountTotal;
     boolean answered;
@@ -43,22 +45,23 @@ public class QuestionsActivity extends AppCompatActivity {
         btnStart = findViewById(R.id.btnStart);
         tvQuestionsNumber = findViewById(R.id.tvQuestions_Number);
         tvScore = findViewById(R.id.tvPoint);
-        group = findViewById(R.id.group);
-        rdReaction_Option1 = findViewById(R.id.radioButtonOption1);
-        rdReaction_Option2 = findViewById(R.id.radioButtonOption2);
+//        group = findViewById(R.id.radioGroupBasic);
+//        rdReaction_Option1 = findViewById(R.id.radioButtonOption1);
+//        rdReaction_Option2 = findViewById(R.id.radioButtonOption2);
+        ivChoiceBasicQn = findViewById(R.id.ivChoiceBasicQn);
         ivQuestion = findViewById(R.id.ivQuestions);
         btnExit = findViewById(R.id.btnExit);
 
         al = new ArrayList<>();
         al.add(new QuestionEasy("basic", "1", R.drawable.question1_basic, R.drawable.question1_basic_incorrect, R.drawable.question1_basic_correct, 2));
         al.add(new QuestionEasy("basic", "2", R.drawable.question2_basic, R.drawable.question2_basic_incorrect, R.drawable.question2_basic_correct, 2));
-        al.add(new QuestionEasy("basic", "3", R.drawable.question3_basic, R.drawable.question3_basic_incorrect, R.drawable.question3_basic_correct, 1));
-        al.add(new QuestionEasy("basic", "4", R.drawable.question4_basic, R.drawable.question4_basic_incorrect, R.drawable.question4_basic_correct, 1));
-        al.add(new QuestionEasy("basic", "5", R.drawable.question5_basic, R.drawable.question5_basic_incorrect, R.drawable.question5_basic_correct, 1));
+        al.add(new QuestionEasy("basic", "3", R.drawable.question3_basic, R.drawable.question3_basic_correct, R.drawable.question3_basic_incorrect, 1));
+        al.add(new QuestionEasy("basic", "4", R.drawable.question4_basic, R.drawable.question4_basic_correct, R.drawable.question4_basic_incorrect, 1));
+        al.add(new QuestionEasy("basic", "5", R.drawable.question5_basic, R.drawable.question5_basic_correct, R.drawable.question5_basic_incorrect, 1));
         al.add(new QuestionEasy("basic", "6", R.drawable.question6_basic, R.drawable.question6_basic_incorrect, R.drawable.question6_basic_correct, 2));
         al.add(new QuestionEasy("basic", "7", R.drawable.question7_basic, R.drawable.question7_basic_incorrect, R.drawable.question7_basic_correct, 2));
         al.add(new QuestionEasy("basic", "8", R.drawable.question8_basic, R.drawable.question8_basic_incorrect, R.drawable.question8_basic_correct, 2));
-        al.add(new QuestionEasy("basic", "9", R.drawable.question9_basic, R.drawable.question9_basic_incorrect, R.drawable.question9_basic_correct, 1));
+        al.add(new QuestionEasy("basic", "9", R.drawable.question9_basic, R.drawable.question9_basic_correct, R.drawable.question9_basic_incorrect, 1));
 
         questionCountTotal = al.size();
 
@@ -71,11 +74,12 @@ public class QuestionsActivity extends AppCompatActivity {
 //            startActivity(i);
 
             if (!answered) {
-                if (rdReaction_Option1.isChecked() || rdReaction_Option2.isChecked()) {
-                    checkAnswer();
-                } else {
-                    Toast.makeText(QuestionsActivity.this, "Please select an answer", Toast.LENGTH_SHORT).show();
-                }
+                checkAnswer();
+//                if (rdReaction_Option1.isChecked() || rdReaction_Option2.isChecked()) {
+//                    checkAnswer();
+//                } else {
+//                    Toast.makeText(QuestionsActivity.this, "Please select an answer", Toast.LENGTH_SHORT).show();
+//                }
             } else {
                 showNextQuestion();
             }
@@ -84,7 +88,7 @@ public class QuestionsActivity extends AppCompatActivity {
         btnExit.setOnClickListener(view -> {
 
 
-            AlertDialog.Builder exitScreen = new AlertDialog.Builder(QuestionsActivity.this);
+            AlertDialog.Builder exitScreen = new AlertDialog.Builder(BasicQuestionsActivity.this);
 //                exitScreen.setTitle("");
             exitScreen.setMessage("Are you sure you want to quit? \n Here is your final score: " + score);
             exitScreen.setCancelable(false);
@@ -92,7 +96,7 @@ public class QuestionsActivity extends AppCompatActivity {
 
             exitScreen.setPositiveButton("Yes", (dialogInterface, i) -> {
 
-                Intent basicMode_to_main = new Intent(QuestionsActivity.this, MainActivity.class);
+                Intent basicMode_to_main = new Intent(BasicQuestionsActivity.this, MainActivity.class);
 //                        basicMode_to_main.putExtra("question","Question 1");
                 startActivity(basicMode_to_main);
             });
@@ -107,11 +111,11 @@ public class QuestionsActivity extends AppCompatActivity {
     private void checkAnswer() {
         answered = true;
 
-        RadioButton rbSelected = findViewById(group.getCheckedRadioButtonId());
-        int answer_number = group.indexOfChild(rbSelected) + 1;
+//        RadioButton rbSelected = findViewById(group.getCheckedRadioButtonId());
+//        int answer_number = group.indexOfChild(rbSelected) + 1;
 
-        if (answer_number == currentQuestion.getAnswerNum()) {
-            AlertDialog.Builder myBuilder = new AlertDialog.Builder(QuestionsActivity.this);
+        if (ans == currentQuestion.getAnswerNum()) {
+            AlertDialog.Builder myBuilder = new AlertDialog.Builder(BasicQuestionsActivity.this);
             myBuilder.setTitle("Check Answer");
             myBuilder.setMessage("You selected the correct answer!");
             myBuilder.setCancelable(false);
@@ -124,7 +128,7 @@ public class QuestionsActivity extends AppCompatActivity {
             tvScore.setText("Score: " + score);
 
         } else {
-            AlertDialog.Builder myBuilder = new AlertDialog.Builder(QuestionsActivity.this);
+            AlertDialog.Builder myBuilder = new AlertDialog.Builder(BasicQuestionsActivity.this);
             myBuilder.setTitle("Check Answer");
             myBuilder.setMessage("You selected the wrong answer!");
             myBuilder.setCancelable(false);
@@ -134,6 +138,7 @@ public class QuestionsActivity extends AppCompatActivity {
             myDialog.show();
         }
 
+        // There are 9 basic questions. If current question is not at question 9, set text "Next Questions" else set text "Finish Quiz".
         if (questionCounter < questionCountTotal) {
             btnStart.setText("Next Question");
         } else {
@@ -143,16 +148,21 @@ public class QuestionsActivity extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
     private void showNextQuestion() {
-        group.clearCheck();
+        ans = 0;
+//        group.clearCheck();
         if (questionCounter < questionCountTotal) {
             currentQuestion = al.get(questionCounter);
 
-            ivQuestion.setImageResource(currentQuestion.getQuestionsImg());
-            rdReaction_Option1.setBackgroundResource(currentQuestion.getMCQoption1Reaction());
+            ivQuestion.setImageResource(currentQuestion.getQuestionsBasic());
+            ivChoiceBasicQn.setImageResource(R.drawable.hidden_qn_reaction);
+//            rdReaction_Option1.setBackgroundResource(currentQuestion.getOption1Reaction());
 //            LinearLayout.LayoutParams parms = new LinearLayout.LayoutParams(100,100);
 //            rdReaction_Option1.setLayoutParams(parms);
 
-            rdReaction_Option2.setBackgroundResource(currentQuestion.getMCQoption2Reaction());
+//            rdReaction_Option2.setBackgroundResource(currentQuestion.getOption2Reaction());
+
+            ivChoiceBasicQn.setOnClickListener(view -> MyCustomAlertDialog());
+
 
 
 //            ivQuestion.setImageResource();
@@ -165,11 +175,56 @@ public class QuestionsActivity extends AppCompatActivity {
         }
     }
 
+
+    private void MyCustomAlertDialog() {
+        final Dialog MyDialog = new Dialog(BasicQuestionsActivity.this);
+        MyDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        MyDialog.setContentView(R.layout.custom_alert_dialog);
+
+        ImageView ivUserChoice1 = (ImageView) MyDialog.findViewById(R.id.ivUserChoice1);
+        ImageView ivUserChoice2 = (ImageView) MyDialog.findViewById(R.id.ivUserChoice2);
+        ImageView ivUserChoice3 = (ImageView) MyDialog.findViewById(R.id.ivUserChoice3);
+        ImageView ivUserChoice4 = (ImageView) MyDialog.findViewById(R.id.ivUserChoice4);
+
+        ivUserChoice1.setEnabled(true);
+        ivUserChoice1.setImageResource(currentQuestion.getOption1Reaction());
+        ivUserChoice2.setEnabled(true);
+        ivUserChoice2.setImageResource(currentQuestion.getOption2Reaction());
+        ivUserChoice3.setImageResource(android.R.color.transparent);
+        ivUserChoice3.setEnabled(false);
+        ivUserChoice4.setImageResource(android.R.color.transparent);
+        ivUserChoice4.setEnabled(false);
+
+        ivUserChoice1.setOnClickListener(view -> {
+            ans = 1;
+            ivChoiceBasicQn.setImageResource(currentQuestion.getOption1Reaction());
+            MyDialog.cancel();
+        });
+
+        ivUserChoice2.setOnClickListener(view -> {
+            ans = 2;
+            ivChoiceBasicQn.setImageResource(currentQuestion.getOption2Reaction());
+            MyDialog.cancel();
+        });
+
+        ivUserChoice3.setOnClickListener(view -> {
+
+        });
+
+        ivUserChoice4.setOnClickListener(view -> {
+
+        });
+
+        MyDialog.show();
+
+    }
+
+
     private void finishQuiz() {
 //        finish();
         //  Intent finishBasicMode_to_leaderboard = new Intent(QuestionsActivity.this, LeaderboardActivity.class);
 
-        Intent intent = new Intent(QuestionsActivity.this, ResultActivity.class);
+        Intent intent = new Intent(BasicQuestionsActivity.this, ResultActivity.class);
         intent.putExtra("score", score);
         startActivity(intent);
         finish();

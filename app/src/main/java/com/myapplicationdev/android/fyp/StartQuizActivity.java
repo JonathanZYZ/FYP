@@ -32,7 +32,7 @@ public class StartQuizActivity extends AppCompatActivity {
             tvDesc.setText("The quiz contains 9 questions and there is no time limit");
             btnStart.setOnClickListener(view -> {
                 //TODO
-                Intent intent1 = new Intent(StartQuizActivity.this, QuestionsActivity.class);
+                Intent intent1 = new Intent(StartQuizActivity.this, BasicQuestionsActivity.class);
                 intent1.putExtra("mode", "easy");
                 startActivity(intent1);
             });
@@ -53,7 +53,7 @@ public class StartQuizActivity extends AppCompatActivity {
             tvDesc.setText("The quiz contains 9 questions and there has a time limit");
             btnStart.setOnClickListener(view -> {
                 //TODO
-                Intent intent3 = new Intent(StartQuizActivity.this, QuestionsActivity.class);
+                Intent intent3 = new Intent(StartQuizActivity.this, BasicQuestionsActivity.class);
                 intent3.putExtra("mode", "advanced");
                 startActivity(intent3);
             });
