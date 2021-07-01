@@ -2,6 +2,7 @@ package com.myapplicationdev.android.fyp;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Window;
@@ -31,6 +32,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
     DBHelper dbh = new DBHelper(IntermediateQuestionsActivity.this);
     SharedPreferences sharedPreferences;
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,7 +100,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                 R.drawable.question13_intermediate_startingmaterial1_incorrect, R.drawable.question13_intermediate_startingmaterial2_incorrect, R.drawable.question13_intermediate_startingmaterial3_incorrect, 1));
 
         questionCountTotal = al.size();
-
+        tvScore.setText("Score: 0");
         showNextQuestion();
 
 
@@ -123,77 +125,488 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
         answered = true;
         if (questionCounter < questionCountTotal) {
             AlertDialog.Builder myBuilder = new AlertDialog.Builder(IntermediateQuestionsActivity.this);
-            myBuilder.setTitle("Check Answer");
-            if (ans1 == currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2() && ans3 == currentQuestion.getCorrectNum3()) {
-                myBuilder.setMessage("You selected the correct answer!");
-                myBuilder.setCancelable(false);
-                myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
+            myBuilder.setTitle("Sorry");
+            if (currentQuestion.getQnCount() == 3){
+                if (ans1 == currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2() && ans3 == currentQuestion.getCorrectNum3()) {
+                    myBuilder.setTitle("Congratulations!!");
+                    myBuilder.setMessage("You selected the correct answer!");
+                    myBuilder.setCancelable(false);
+                    myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
-                AlertDialog myDialog = myBuilder.create();
-                myDialog.show();
+                    AlertDialog myDialog = myBuilder.create();
+                    myDialog.show();
 
-                score++;
-                tvScore.setText("Score: " + score);
-            } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2() && ans3 == currentQuestion.getCorrectNum3()) {
-                myBuilder.setMessage("You selected the wrong answer for Question 1!");
-                myBuilder.setCancelable(false);
-                myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
+                    score++;
+                    tvScore.setText("Score: " + score);
+                } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2() && ans3 == currentQuestion.getCorrectNum3()) {
+                    myBuilder.setMessage("You selected the wrong answer for Question 1!");
+                    myBuilder.setCancelable(false);
+                    myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
-                AlertDialog myDialog = myBuilder.create();
-                myDialog.show();
-            } else if (ans1 == currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum2() && ans3 == currentQuestion.getCorrectNum3()) {
-                myBuilder.setMessage("You selected the wrong answer for Question 2!");
-                myBuilder.setCancelable(false);
-                myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
+                    AlertDialog myDialog = myBuilder.create();
+                    myDialog.show();
+                } else if (ans1 == currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum2() && ans3 == currentQuestion.getCorrectNum3()) {
+                    myBuilder.setMessage("You selected the wrong answer for Question 2!");
+                    myBuilder.setCancelable(false);
+                    myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
-                AlertDialog myDialog = myBuilder.create();
-                myDialog.show();
-            } else if (ans1 == currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2() && ans3 != currentQuestion.getCorrectNum3()) {
-                myBuilder.setMessage("You selected the wrong answer for Question 3!");
-                myBuilder.setCancelable(false);
-                myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
+                    AlertDialog myDialog = myBuilder.create();
+                    myDialog.show();
+                } else if (ans1 == currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2() && ans3 != currentQuestion.getCorrectNum3()) {
+                    myBuilder.setMessage("You selected the wrong answer for Question 3!");
+                    myBuilder.setCancelable(false);
+                    myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
-                AlertDialog myDialog = myBuilder.create();
-                myDialog.show();
-            } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum2() && ans3 == currentQuestion.getCorrectNum3()) {
-                myBuilder.setMessage("You selected the wrong answer for Question 1 and 2!");
-                myBuilder.setCancelable(false);
-                myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
+                    AlertDialog myDialog = myBuilder.create();
+                    myDialog.show();
+                } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum2() && ans3 == currentQuestion.getCorrectNum3()) {
+                    myBuilder.setMessage("You selected the wrong answer for Question 1 and 2!");
+                    myBuilder.setCancelable(false);
+                    myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
-                AlertDialog myDialog = myBuilder.create();
-                myDialog.show();
-            } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2() && ans3 != currentQuestion.getCorrectNum3()) {
-                myBuilder.setMessage("You selected the wrong answer for Question 1 and 3!");
-                myBuilder.setCancelable(false);
-                myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
+                    AlertDialog myDialog = myBuilder.create();
+                    myDialog.show();
+                } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2() && ans3 != currentQuestion.getCorrectNum3()) {
+                    myBuilder.setMessage("You selected the wrong answer for Question 1 and 3!");
+                    myBuilder.setCancelable(false);
+                    myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
-                AlertDialog myDialog = myBuilder.create();
-                myDialog.show();
-            } else if (ans1 == currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum2() && ans3 != currentQuestion.getCorrectNum3()) {
-                myBuilder.setMessage("You selected the wrong answer for Question 2 and 3!");
-                myBuilder.setCancelable(false);
-                myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
+                    AlertDialog myDialog = myBuilder.create();
+                    myDialog.show();
+                } else if (ans1 == currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum2() && ans3 != currentQuestion.getCorrectNum3()) {
+                    myBuilder.setMessage("You selected the wrong answer for Question 2 and 3!");
+                    myBuilder.setCancelable(false);
+                    myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
-                AlertDialog myDialog = myBuilder.create();
-                myDialog.show();
-            } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum2() && ans3 != currentQuestion.getCorrectNum3()) {
-                myBuilder.setMessage("You selected the wrong answer for all Questions!");
-                myBuilder.setCancelable(false);
-                myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
+                    AlertDialog myDialog = myBuilder.create();
+                    myDialog.show();
+                } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum2() && ans3 != currentQuestion.getCorrectNum3()) {
+                    myBuilder.setMessage("You selected the wrong answer for all Questions!");
+                    myBuilder.setCancelable(false);
+                    myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
-                AlertDialog myDialog = myBuilder.create();
-                myDialog.show();
+                    AlertDialog myDialog = myBuilder.create();
+                    myDialog.show();
+                }
+
+            }else if (currentQuestion.getQnCount() == 2) {
+                if (currentQuestion.getQn1Image() == 0) {
+                    if (ans1 == currentQuestion.getCorrectNum2() && ans2 == currentQuestion.getCorrectNum3()) {
+                        myBuilder.setTitle("Congratulations!!");
+                        myBuilder.setMessage("You selected the correct answer!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
+
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+
+                        score++;
+                        tvScore.setText("Score: " + score);
+                    } else if (ans1 != currentQuestion.getCorrectNum2() && ans2 == currentQuestion.getCorrectNum3()) {
+                        myBuilder.setMessage("You selected the wrong answer for Question 1!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
+
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+                    } else if (ans1 == currentQuestion.getCorrectNum2() && ans2 != currentQuestion.getCorrectNum3()) {
+                        myBuilder.setMessage("You selected the wrong answer for Question 2!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
+
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+                    } else {
+                        myBuilder.setMessage("You selected the wrong answer for all Questions!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
+
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+                    }
+                } else if (currentQuestion.getQn2Image() == 0) {
+                    if (ans1 == currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum3()) {
+                        myBuilder.setTitle("Congratulations!!");
+                        myBuilder.setMessage("You selected the correct answer!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
+
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+
+                        score++;
+                        tvScore.setText("Score: " + score);
+                    } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum3()) {
+                        myBuilder.setMessage("You selected the wrong answer for Question 1!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
+
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+                    } else if (ans1 == currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum3()) {
+                        myBuilder.setMessage("You selected the wrong answer for Question 2!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
+
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+                    } else {
+                        myBuilder.setMessage("You selected the wrong answer for all Questions!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
+
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+                    }
+                } else if (currentQuestion.getQn3Image() == 0) {
+                    if (ans1 == currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2()) {
+                        myBuilder.setTitle("Congratulations!!");
+                        myBuilder.setMessage("You selected the correct answer!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
+
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+
+                        score++;
+                        tvScore.setText("Score: " + score);
+                    } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2()) {
+                        myBuilder.setMessage("You selected the wrong answer for Question 1!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
+
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+                    } else if (ans1 == currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum2()) {
+                        myBuilder.setMessage("You selected the wrong answer for Question 2!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
+
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+                    } else {
+                        myBuilder.setMessage("You selected the wrong answer for all Questions!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
+
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+                    }
+                }
+
+
+            } else if (currentQuestion.getQnCount() == 1){
+                if (currentQuestion.getQn1Image() != 0){
+                    if (ans1 == currentQuestion.getCorrectNum1()) {
+                        myBuilder.setTitle("Congratulations!!");
+                        myBuilder.setMessage("You selected the correct answer!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
+
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+
+                        score++;
+                        tvScore.setText("Score: " + score);
+                    } else if (ans1 != currentQuestion.getCorrectNum1()) {
+                        myBuilder.setMessage("You selected the wrong answer!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
+
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+                    }
+                } else if (currentQuestion.getQn2Image() != 0){
+                    if (ans1 == currentQuestion.getCorrectNum2()) {
+                        myBuilder.setTitle("Congratulations!!");
+                        myBuilder.setMessage("You selected the correct answer!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
+
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+
+                        score++;
+                        tvScore.setText("Score: " + score);
+                    } else if (ans1 != currentQuestion.getCorrectNum2()) {
+                        myBuilder.setMessage("You selected the wrong answer!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
+
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+                    }
+                } else if (currentQuestion.getQn3Image() != 0){
+                    if (ans1 == currentQuestion.getCorrectNum3()) {
+                        myBuilder.setTitle("Congratulations!!");
+                        myBuilder.setMessage("You selected the correct answer!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
+
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+
+                        score++;
+                        tvScore.setText("Score: " + score);
+                    } else if (ans1 != currentQuestion.getCorrectNum3()) {
+                        myBuilder.setMessage("You selected the wrong answer!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
+
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+                    }
+                }
             }
 
 
             // btnStart.setText("Next Question");
         } else {
-            btnStart.setText("Finish Quiz");
+            AlertDialog.Builder myBuilder = new AlertDialog.Builder(IntermediateQuestionsActivity.this);
+            myBuilder.setTitle("Sorry");
+            if (currentQuestion.getQnCount() == 3){
+                if (ans1 == currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2() && ans3 == currentQuestion.getCorrectNum3()) {
+                    myBuilder.setTitle("Congratulations!!");
+                    myBuilder.setMessage("You selected the correct answer!");
+                    myBuilder.setCancelable(false);
+                    myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
+
+                    AlertDialog myDialog = myBuilder.create();
+                    myDialog.show();
+
+                    score++;
+                    tvScore.setText("Score: " + score);
+                } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2() && ans3 == currentQuestion.getCorrectNum3()) {
+                    myBuilder.setMessage("You selected the wrong answer for Question 1!");
+                    myBuilder.setCancelable(false);
+                    myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
+
+                    AlertDialog myDialog = myBuilder.create();
+                    myDialog.show();
+                } else if (ans1 == currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum2() && ans3 == currentQuestion.getCorrectNum3()) {
+                    myBuilder.setMessage("You selected the wrong answer for Question 2!");
+                    myBuilder.setCancelable(false);
+                    myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
+
+                    AlertDialog myDialog = myBuilder.create();
+                    myDialog.show();
+                } else if (ans1 == currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2() && ans3 != currentQuestion.getCorrectNum3()) {
+                    myBuilder.setMessage("You selected the wrong answer for Question 3!");
+                    myBuilder.setCancelable(false);
+                    myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
+
+                    AlertDialog myDialog = myBuilder.create();
+                    myDialog.show();
+                } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum2() && ans3 == currentQuestion.getCorrectNum3()) {
+                    myBuilder.setMessage("You selected the wrong answer for Question 1 and 2!");
+                    myBuilder.setCancelable(false);
+                    myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
+
+                    AlertDialog myDialog = myBuilder.create();
+                    myDialog.show();
+                } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2() && ans3 != currentQuestion.getCorrectNum3()) {
+                    myBuilder.setMessage("You selected the wrong answer for Question 1 and 3!");
+                    myBuilder.setCancelable(false);
+                    myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
+
+                    AlertDialog myDialog = myBuilder.create();
+                    myDialog.show();
+                } else if (ans1 == currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum2() && ans3 != currentQuestion.getCorrectNum3()) {
+                    myBuilder.setMessage("You selected the wrong answer for Question 2 and 3!");
+                    myBuilder.setCancelable(false);
+                    myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
+
+                    AlertDialog myDialog = myBuilder.create();
+                    myDialog.show();
+                } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum2() && ans3 != currentQuestion.getCorrectNum3()) {
+                    myBuilder.setMessage("You selected the wrong answer for all Questions!");
+                    myBuilder.setCancelable(false);
+                    myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
+
+                    AlertDialog myDialog = myBuilder.create();
+                    myDialog.show();
+                }
+
+            }else if (currentQuestion.getQnCount() == 2) {
+                if (currentQuestion.getQn1Image() == 0) {
+                    if (ans1 == currentQuestion.getCorrectNum2() && ans2 == currentQuestion.getCorrectNum3()) {
+                        myBuilder.setTitle("Congratulations!!");
+                        myBuilder.setMessage("You selected the correct answer!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
+
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+
+                        score++;
+                        tvScore.setText("Score: " + score);
+                    } else if (ans1 != currentQuestion.getCorrectNum2() && ans2 == currentQuestion.getCorrectNum3()) {
+                        myBuilder.setMessage("You selected the wrong answer for Question 1!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
+
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+                    } else if (ans1 == currentQuestion.getCorrectNum2() && ans2 != currentQuestion.getCorrectNum3()) {
+                        myBuilder.setMessage("You selected the wrong answer for Question 2!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
+
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+                    } else {
+                        myBuilder.setMessage("You selected the wrong answer for all Questions!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
+
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+                    }
+                } else if (currentQuestion.getQn2Image() == 0) {
+                    if (ans1 == currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum3()) {
+                        myBuilder.setTitle("Congratulations!!");
+                        myBuilder.setMessage("You selected the correct answer!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
+
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+
+                        score++;
+                        tvScore.setText("Score: " + score);
+                    } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum3()) {
+                        myBuilder.setMessage("You selected the wrong answer for Question 1!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
+
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+                    } else if (ans1 == currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum3()) {
+                        myBuilder.setMessage("You selected the wrong answer for Question 2!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
+
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+                    } else {
+                        myBuilder.setMessage("You selected the wrong answer for all Questions!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
+
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+                    }
+                } else if (currentQuestion.getQn3Image() == 0) {
+                    if (ans1 == currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2()) {
+                        myBuilder.setTitle("Congratulations!!");
+                        myBuilder.setMessage("You selected the correct answer!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
+
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+
+                        score++;
+                        tvScore.setText("Score: " + score);
+                    } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2()) {
+                        myBuilder.setMessage("You selected the wrong answer for Question 1!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
+
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+                    } else if (ans1 == currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum2()) {
+                        myBuilder.setMessage("You selected the wrong answer for Question 2!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
+
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+                    } else {
+                        myBuilder.setMessage("You selected the wrong answer for all Questions!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
+
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+                    }
+                }
+
+
+            } else if (currentQuestion.getQnCount() == 1){
+                if (currentQuestion.getQn1Image() != 0){
+                    if (ans1 == currentQuestion.getCorrectNum1()) {
+                        myBuilder.setTitle("Congratulations!!");
+                        myBuilder.setMessage("You selected the correct answer!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
+
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+
+                        score++;
+                        tvScore.setText("Score: " + score);
+                    } else if (ans1 != currentQuestion.getCorrectNum1()) {
+                        myBuilder.setMessage("You selected the wrong answer!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
+
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+                    }
+                } else if (currentQuestion.getQn2Image() != 0){
+                    if (ans1 == currentQuestion.getCorrectNum2()) {
+                        myBuilder.setTitle("Congratulations!!");
+                        myBuilder.setMessage("You selected the correct answer!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
+
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+
+                        score++;
+                        tvScore.setText("Score: " + score);
+                    } else if (ans1 != currentQuestion.getCorrectNum2()) {
+                        myBuilder.setMessage("You selected the wrong answer!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
+
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+                    }
+                } else if (currentQuestion.getQn3Image() != 0){
+                    if (ans1 == currentQuestion.getCorrectNum3()) {
+                        myBuilder.setTitle("Congratulations!!");
+                        myBuilder.setMessage("You selected the correct answer!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
+
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+
+                        score++;
+                        tvScore.setText("Score: " + score);
+                    } else if (ans1 != currentQuestion.getCorrectNum3()) {
+                        myBuilder.setMessage("You selected the wrong answer!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
+
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+                    }
+                }
+            }
         }
     }
 
     @SuppressLint("SetTextI18n")
     private void showNextQuestion() {
+        ans1 = 0;
+        ans2 = 0;
+        ans3 = 0;
+        ivChoice1.setEnabled(true);
+        ivChoice2.setEnabled(true);
+        ivChoice3.setEnabled(true);
         if (questionCounter < questionCountTotal) {
             currentQuestion = al.get(questionCounter);
 
@@ -400,7 +813,16 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
         });
 
         ivUserChoice3.setOnClickListener(view -> {
-            if (qnNum == 2) {
+            if (qnNum == 1) {
+                if (numOfAns == 3) {
+                    ans1 = 2;
+                    ivChoice1.setImageResource(currentQuestion.getAns2Image3());
+                } else if (numOfAns == 4) {
+                    ans1 = 2;
+                    ivChoice1.setImageResource(currentQuestion.getAns3Image3());
+                }
+
+            } else if (qnNum == 2) {
                 if (numOfAns == 3) {
                     ans2 = 3;
                     ivChoice2.setImageResource(currentQuestion.getAns2Image3());
@@ -417,9 +839,22 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
         });
 
         ivUserChoice4.setOnClickListener(view -> {
-            ans3 = 4;
-            ivChoice3.setImageResource(currentQuestion.getAns3Image4());
+            if (qnNum == 1) {
 
+                ans1 = 4;
+                ivChoice1.setImageResource(currentQuestion.getAns3Image4());
+
+
+            } else if (qnNum == 2) {
+
+                ans2 = 4;
+                ivChoice2.setImageResource(currentQuestion.getAns3Image4());
+
+
+            } else if (qnNum == 3) {
+                ans3 = 4;
+                ivChoice3.setImageResource(currentQuestion.getAns3Image4());
+            }
             MyDialog.cancel();
 
         });
@@ -429,7 +864,9 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
     }
 
     private void finishQuiz() {
-        finish();
+        Intent i = new Intent(IntermediateQuestionsActivity.this,ResultActivity.class);
+        i.putExtra("score",score);
+        startActivity(i);
     }
 }
 

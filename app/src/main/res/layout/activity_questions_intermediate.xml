@@ -25,7 +25,7 @@
             android:layout_marginBottom="10dp"
             android:text="Score:"
             android:textColor="@color/black"
-            android:textSize="36sp"
+            android:textSize="30sp"
             android:textStyle="bold"
             tools:ignore="RtlHardcoded" />
 
@@ -38,7 +38,7 @@
             android:layout_margin="10dp"
             android:text="Q1"
             android:textColor="@color/black"
-            android:textSize="36sp"
+            android:textSize="30sp"
             android:textStyle="bold"
             tools:ignore="RtlHardcoded" />
 
@@ -69,29 +69,27 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
         android:layout_weight="2"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/ivChoiceQn1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="130dp"
+            android:layout_height="150dp"
             app:srcCompat="@drawable/option1" />
 
         <ImageView
             android:id="@+id/ivChoiceQn2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="130dp"
+            android:layout_height="150dp"
             app:srcCompat="@drawable/option2" />
 
         <ImageView
             android:id="@+id/ivChoiceQn3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="130dp"
+            android:layout_height="150dp"
             app:srcCompat="@drawable/option2" />
     </LinearLayout>
 
