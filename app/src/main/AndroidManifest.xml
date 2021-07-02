@@ -14,7 +14,7 @@
         android:theme="@style/Theme.FYP"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-
+        <activity android:name=".AdvancedQuestionsActivity"></activity>
         <activity
             android:name=".SplashScreenActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
@@ -24,8 +24,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
         <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
@@ -35,14 +33,30 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".IntermediateQuestionsActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
-        <activity android:name=".PositivelyQuitedActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
-        <activity android:name=".QuestionWrongActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
-        <activity android:name=".QuestionCorrectActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
-        <activity android:name=".NegativelyQuitedActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
-        <activity android:name=".ResultActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
-        <activity android:name=".NegativeResultActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
-        <activity android:name=".QuestionsAnswerActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity
+            android:name=".IntermediateQuestionsActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".PositivelyQuitedActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".QuestionWrongActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".QuestionCorrectActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".NegativelyQuitedActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".ResultActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".NegativeResultActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".QuestionsAnswerActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".BasicQuestionsActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
@@ -73,18 +87,6 @@
         <activity
             android:name=".DifficultySectionActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-
-        <!--        <activity-->
-        <!--            android:name=".MainActivity"-->
-        <!--            android:theme="@style/Theme.AppCompat.NoActionBar">-->
-        <!--            <intent-filter>-->
-        <!--                <action android:name="android.intent.action.MAIN" />-->
-
-        <!--                <category android:name="android.intent.category.DEFAULT" />-->
-        <!--            </intent-filter>-->
-        <!--        </activity>-->
-
-
     </application>
 
 </manifest>

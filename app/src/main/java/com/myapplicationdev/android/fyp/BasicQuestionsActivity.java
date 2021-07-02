@@ -2,6 +2,7 @@ package com.myapplicationdev.android.fyp;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -33,6 +34,7 @@ public class BasicQuestionsActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     int ans;
     int score = 0;
+    int streak;
     int questionCounter, questionCountTotal;
     boolean answered;
 
@@ -115,21 +117,44 @@ public class BasicQuestionsActivity extends AppCompatActivity {
 //        int answer_number = group.indexOfChild(rbSelected) + 1;
 
         if (ans == currentQuestion.getAnswerNum()) {
-            AlertDialog.Builder myBuilder = new AlertDialog.Builder(BasicQuestionsActivity.this);
-            myBuilder.setTitle("Check Answer");
-            myBuilder.setMessage("You selected the correct answer!");
-            myBuilder.setCancelable(false);
-            myBuilder.setPositiveButton("Dismiss", null);
-
-            AlertDialog myDialog = myBuilder.create();
-            myDialog.show();
-
+            streak += 1;
             score++;
-            tvScore.setText("Score: " + score);
+            if (streak == 5){
+                AlertDialog.Builder myBuilder = new AlertDialog.Builder(BasicQuestionsActivity.this);
+                myBuilder.setTitle("Congratulations!");
+                myBuilder.setMessage("You have answered 5 questions correctly in a row! We would like to test you further by bringing you to the intermediate Level! GoodLuck!");
+                myBuilder.setCancelable(false);
+                myBuilder.setPositiveButton("Proceed to Intermediate Mode", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent = new Intent(BasicQuestionsActivity.this, IntermediateQuestionsActivity.class);
+                        intent.putExtra("score", score);
+                        intent.putExtra("questionNum", questionCounter + 1);
+                        startActivity(intent);
+                    }
+                });
+
+                AlertDialog myDialog = myBuilder.create();
+                myDialog.show();
+            }else {
+                AlertDialog.Builder myBuilder = new AlertDialog.Builder(BasicQuestionsActivity.this);
+                myBuilder.setTitle("Congratulations!");
+                myBuilder.setMessage("You selected the correct answer!");
+                myBuilder.setCancelable(false);
+                myBuilder.setPositiveButton("Dismiss", null);
+
+                AlertDialog myDialog = myBuilder.create();
+                myDialog.show();
+
+
+                tvScore.setText("Score: " + score);
+            }
+
 
         } else {
+            streak = 0;
             AlertDialog.Builder myBuilder = new AlertDialog.Builder(BasicQuestionsActivity.this);
-            myBuilder.setTitle("Check Answer");
+            myBuilder.setTitle("Sorry!");
             myBuilder.setMessage("You selected the wrong answer!");
             myBuilder.setCancelable(false);
             myBuilder.setPositiveButton("Dismiss", null);
