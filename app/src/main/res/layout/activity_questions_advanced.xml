@@ -5,11 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background2"
-    android:orientation="vertical"
-    tools:context=".Questions.EasyQuestionsActivity">
-
-    <!--    TODO: Done by Zuhaili-->
-
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -17,7 +13,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/tvPoint"
+            android:id="@+id/tvScore_Intermediate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -29,20 +25,20 @@
             android:layout_marginBottom="10dp"
             android:text="Score:"
             android:textColor="@color/black"
-            android:textSize="36sp"
+            android:textSize="30sp"
             android:textStyle="bold"
             tools:ignore="RtlHardcoded" />
 
 
         <TextView
-            android:id="@+id/tvQuestions_Number"
+            android:id="@+id/tvQuestionsNumber_Intermediate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_margin="10dp"
             android:text="Q1"
             android:textColor="@color/black"
-            android:textSize="36sp"
+            android:textSize="30sp"
             android:textStyle="bold"
             tools:ignore="RtlHardcoded" />
 
@@ -56,10 +52,10 @@
         android:orientation="vertical">
 
         <com.jsibbold.zoomage.ZoomageView
-            android:id="@+id/ivQuestions"
+            android:id="@+id/ivQuestions_Intermediate"
             android:layout_width="300dp"
             android:layout_height="300dp"
-            android:src="@drawable/easy_question1"
+            android:src="@drawable/question1_intermediate"
             app:zoomage_animateOnReset="true"
             app:zoomage_autoCenter="true"
             app:zoomage_autoResetMode="UNDER"
@@ -78,35 +74,31 @@
         android:layout_weight="2"
         android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/ivChoiceBasicQn"
-                android:layout_width="130dp"
-                android:layout_height="150dp"
-                app:srcCompat="@drawable/hidden_qn_reaction" />
+        <ImageView
+            android:id="@+id/ivChoiceQn1"
+            android:layout_width="97.5dp"
+            android:layout_height="112.5dp"
+            app:srcCompat="@drawable/option1" />
 
-        </LinearLayout>
+        <ImageView
+            android:id="@+id/ivChoiceQn2"
+            android:layout_width="97.5dp"
+            android:layout_height="112.5dp"
+            app:srcCompat="@drawable/option2" />
 
-<!--    <RadioGroup-->
-<!--        android:id="@+id/group"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:orientation="horizontal">-->
+        <ImageView
+            android:id="@+id/ivChoiceQn3"
+            android:layout_width="97.5dp"
+            android:layout_height="112.5dp"
+            app:srcCompat="@drawable/option2" />
 
+        <ImageView
+            android:id="@+id/ivChoiceQn4"
+            android:layout_width="97.5dp"
+            android:layout_height="112.5dp"
+            app:srcCompat="@drawable/option2" />
 
-<!--        <RadioButton-->
-<!--            android:id="@+id/radioButtonOption1"-->
-<!--            android:layout_width="150dp"-->
-<!--            android:layout_height="200dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:textColor="@color/black" />-->
-
-<!--        <RadioButton-->
-<!--            android:id="@+id/radioButtonOption2"-->
-<!--            android:layout_width="150dp"-->
-<!--            android:layout_height="200dp"-->
-<!--            android:layout_weight="1"/>-->
-<!--    </RadioGroup>-->
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -115,7 +107,7 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/btnStart"
+            android:id="@+id/btnStart_advanced"
             android:layout_width="156dp"
             android:layout_height="80dp"
             android:layout_gravity="center"
@@ -123,16 +115,28 @@
             android:text="Submit"
             app:backgroundTint="#F686BD"
             app:cornerRadius="59dp" />
-
-        <ImageView
-            android:id="@+id/btnExit"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="bottom|left"
-            android:background="@drawable/exit_icon" />
     </LinearLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
+        <ImageView
+            android:id="@+id/ivDidYouKnow"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:contentDescription="TODO"
+            android:textColor="@color/black"
+            app:srcCompat="@drawable/ic_baseline_info_24"
+            tools:ignore="VectorDrawableCompat" />
+
+    </RelativeLayout>
 
 
 </LinearLayout>

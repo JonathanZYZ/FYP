@@ -8,6 +8,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.myapplicationdev.android.fyp.Questions.EasyQuestionsActivity;
+import com.myapplicationdev.android.fyp.Questions.IntermediateQuestionsActivity;
+
 public class StartQuizActivity extends AppCompatActivity {
     TextView tvMode, tvDesc;
     Button btnStart;
@@ -32,7 +35,7 @@ public class StartQuizActivity extends AppCompatActivity {
             tvDesc.setText("The quiz contains 9 questions and there is no time limit");
             btnStart.setOnClickListener(view -> {
                 //TODO
-                Intent intent1 = new Intent(StartQuizActivity.this, BasicQuestionsActivity.class);
+                Intent intent1 = new Intent(StartQuizActivity.this, EasyQuestionsActivity.class);
                 intent1.putExtra("mode", "easy");
                 startActivity(intent1);
             });
@@ -53,7 +56,7 @@ public class StartQuizActivity extends AppCompatActivity {
             tvDesc.setText("The quiz contains 9 questions and there has a time limit");
             btnStart.setOnClickListener(view -> {
                 //TODO
-                Intent intent3 = new Intent(StartQuizActivity.this, BasicQuestionsActivity.class);
+                Intent intent3 = new Intent(StartQuizActivity.this, EasyQuestionsActivity.class);
                 intent3.putExtra("mode", "advanced");
                 startActivity(intent3);
             });

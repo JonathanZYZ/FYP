@@ -14,7 +14,7 @@
         android:theme="@style/Theme.FYP"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".AdvancedQuestionsActivity"></activity>
+        <activity android:name=".Questions.AdvancedQuestionsActivity"></activity>
         <activity
             android:name=".SplashScreenActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
@@ -34,7 +34,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".IntermediateQuestionsActivity"
+            android:name=".Questions.IntermediateQuestionsActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".PositivelyQuitedActivity"
@@ -58,7 +58,7 @@
             android:name=".QuestionsAnswerActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".BasicQuestionsActivity"
+            android:name=".Questions.EasyQuestionsActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".SettingPageActivity"

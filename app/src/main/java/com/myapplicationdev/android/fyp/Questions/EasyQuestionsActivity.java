@@ -1,4 +1,4 @@
-package com.myapplicationdev.android.fyp;
+package com.myapplicationdev.android.fyp.Questions;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
@@ -16,12 +16,15 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.myapplicationdev.android.fyp.MainActivity;
 import com.myapplicationdev.android.fyp.Model.QuestionEasy;
+import com.myapplicationdev.android.fyp.R;
+import com.myapplicationdev.android.fyp.ResultActivity;
 import com.myapplicationdev.android.fyp.Util.DBHelper;
 
 import java.util.ArrayList;
 
-public class BasicQuestionsActivity extends AppCompatActivity {
+public class EasyQuestionsActivity extends AppCompatActivity {
     Button btnStart;
     TextView tvQuestionsNumber, tvScore;
     RadioGroup group;
@@ -29,7 +32,7 @@ public class BasicQuestionsActivity extends AppCompatActivity {
     ImageView ivQuestion, btnExit, ivChoiceBasicQn;
     ArrayList<QuestionEasy> al;
     QuestionEasy currentQuestion;
-    DBHelper dbh = new DBHelper(BasicQuestionsActivity.this);
+    DBHelper dbh = new DBHelper(EasyQuestionsActivity.this);
     String mode;
     SharedPreferences sharedPreferences;
     int ans;
@@ -90,7 +93,7 @@ public class BasicQuestionsActivity extends AppCompatActivity {
         btnExit.setOnClickListener(view -> {
 
 
-            AlertDialog.Builder exitScreen = new AlertDialog.Builder(BasicQuestionsActivity.this);
+            AlertDialog.Builder exitScreen = new AlertDialog.Builder(EasyQuestionsActivity.this);
 //                exitScreen.setTitle("");
             exitScreen.setMessage("Are you sure you want to quit? \n Here is your final score: " + score);
             exitScreen.setCancelable(false);
@@ -98,7 +101,7 @@ public class BasicQuestionsActivity extends AppCompatActivity {
 
             exitScreen.setPositiveButton("Yes", (dialogInterface, i) -> {
 
-                Intent basicMode_to_main = new Intent(BasicQuestionsActivity.this, MainActivity.class);
+                Intent basicMode_to_main = new Intent(EasyQuestionsActivity.this, MainActivity.class);
 //                        basicMode_to_main.putExtra("question","Question 1");
                 startActivity(basicMode_to_main);
             });
@@ -120,14 +123,14 @@ public class BasicQuestionsActivity extends AppCompatActivity {
             streak += 1;
             score++;
             if (streak == 5){
-                AlertDialog.Builder myBuilder = new AlertDialog.Builder(BasicQuestionsActivity.this);
+                AlertDialog.Builder myBuilder = new AlertDialog.Builder(EasyQuestionsActivity.this);
                 myBuilder.setTitle("Congratulations!");
                 myBuilder.setMessage("You have answered 5 questions correctly in a row! We would like to test you further by bringing you to the intermediate Level! GoodLuck!");
                 myBuilder.setCancelable(false);
                 myBuilder.setPositiveButton("Proceed to Intermediate Mode", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Intent intent = new Intent(BasicQuestionsActivity.this, IntermediateQuestionsActivity.class);
+                        Intent intent = new Intent(EasyQuestionsActivity.this, IntermediateQuestionsActivity.class);
                         intent.putExtra("score", score);
                         intent.putExtra("questionNum", questionCounter + 1);
                         startActivity(intent);
@@ -137,7 +140,7 @@ public class BasicQuestionsActivity extends AppCompatActivity {
                 AlertDialog myDialog = myBuilder.create();
                 myDialog.show();
             }else {
-                AlertDialog.Builder myBuilder = new AlertDialog.Builder(BasicQuestionsActivity.this);
+                AlertDialog.Builder myBuilder = new AlertDialog.Builder(EasyQuestionsActivity.this);
                 myBuilder.setTitle("Congratulations!");
                 myBuilder.setMessage("You selected the correct answer!");
                 myBuilder.setCancelable(false);
@@ -153,7 +156,7 @@ public class BasicQuestionsActivity extends AppCompatActivity {
 
         } else {
             streak = 0;
-            AlertDialog.Builder myBuilder = new AlertDialog.Builder(BasicQuestionsActivity.this);
+            AlertDialog.Builder myBuilder = new AlertDialog.Builder(EasyQuestionsActivity.this);
             myBuilder.setTitle("Sorry!");
             myBuilder.setMessage("You selected the wrong answer!");
             myBuilder.setCancelable(false);
@@ -202,14 +205,14 @@ public class BasicQuestionsActivity extends AppCompatActivity {
 
 
     private void MyCustomAlertDialog() {
-        final Dialog MyDialog = new Dialog(BasicQuestionsActivity.this);
+        final Dialog MyDialog = new Dialog(EasyQuestionsActivity.this);
         MyDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         MyDialog.setContentView(R.layout.custom_alert_dialog);
 
-        ImageView ivUserChoice1 = (ImageView) MyDialog.findViewById(R.id.ivUserChoice1);
-        ImageView ivUserChoice2 = (ImageView) MyDialog.findViewById(R.id.ivUserChoice2);
-        ImageView ivUserChoice3 = (ImageView) MyDialog.findViewById(R.id.ivUserChoice3);
-        ImageView ivUserChoice4 = (ImageView) MyDialog.findViewById(R.id.ivUserChoice4);
+        ImageView ivUserChoice1 = MyDialog.findViewById(R.id.ivUserChoice1);
+        ImageView ivUserChoice2 = MyDialog.findViewById(R.id.ivUserChoice2);
+        ImageView ivUserChoice3 = MyDialog.findViewById(R.id.ivUserChoice3);
+        ImageView ivUserChoice4 = MyDialog.findViewById(R.id.ivUserChoice4);
 
         ivUserChoice1.setEnabled(true);
         ivUserChoice1.setImageResource(currentQuestion.getOption1Reaction());
@@ -249,7 +252,7 @@ public class BasicQuestionsActivity extends AppCompatActivity {
 //        finish();
         //  Intent finishBasicMode_to_leaderboard = new Intent(QuestionsActivity.this, LeaderboardActivity.class);
 
-        Intent intent = new Intent(BasicQuestionsActivity.this, ResultActivity.class);
+        Intent intent = new Intent(EasyQuestionsActivity.this, ResultActivity.class);
         intent.putExtra("score", score);
         startActivity(intent);
         finish();

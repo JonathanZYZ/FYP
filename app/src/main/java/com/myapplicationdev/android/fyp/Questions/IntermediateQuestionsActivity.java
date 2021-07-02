@@ -1,4 +1,4 @@
-package com.myapplicationdev.android.fyp;
+package com.myapplicationdev.android.fyp.Questions;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
@@ -15,6 +15,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.myapplicationdev.android.fyp.Model.QuestionIntermediate;
+import com.myapplicationdev.android.fyp.R;
+import com.myapplicationdev.android.fyp.ResultActivity;
 import com.myapplicationdev.android.fyp.Util.DBHelper;
 
 import java.util.ArrayList;
@@ -138,12 +140,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
             myBuilder.setTitle("No Input!");
             myBuilder.setMessage("Click on the question mark to input your answer");
             myBuilder.setCancelable(false);
-            myBuilder.setPositiveButton("Proceed to Advanced Activity", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    dialogInterface.dismiss();
-                }
-            });
+            myBuilder.setPositiveButton("Proceed to Advanced Activity", (dialogInterface, i) -> dialogInterface.dismiss());
 
             AlertDialog myDialog = myBuilder.create();
             myDialog.show();
@@ -306,19 +303,17 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                         if (ans1 == currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum3()) {
                             streak += 1;
                         score++;
+
                         if (streak == 5) {
                             myBuilder.setTitle("Congratulations!!");
                             myBuilder.setMessage("You have answered 5 questions correctly in a row! We would like to test you further by bringing you to the Advanced Level! GoodLuck!");
                             myBuilder.setCancelable(false);
                             //myBuilder.setPositiveButton("Next", (dialogInterface, i) -> Intent intent = new Intent(IntermediateQuestionsActivity.this,AdvancedQuestionsActivity));
-                            myBuilder.setPositiveButton("Proceed to Advanced Mode", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    Intent intent = new Intent(IntermediateQuestionsActivity.this, AdvancedQuestionsActivity.class);
-                                    intent.putExtra("score", score);
-                                    intent.putExtra("questionNum", questionCounter + 1);
-                                    startActivity(intent);
-                                }
+                            myBuilder.setPositiveButton("Proceed to Advanced Mode", (dialogInterface, i) -> {
+                                Intent intent = new Intent(IntermediateQuestionsActivity.this, AdvancedQuestionsActivity.class);
+                                intent.putExtra("score", score);
+                                intent.putExtra("questionNum", questionCounter + 1);
+                                startActivity(intent);
                             });
 
                             AlertDialog myDialog = myBuilder.create();
@@ -369,14 +364,11 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             myBuilder.setMessage("You have answered 5 questions correctly in a row! We would like to test you further by bringing you to the Advanced Level! GoodLuck!");
                             myBuilder.setCancelable(false);
                             //myBuilder.setPositiveButton("Next", (dialogInterface, i) -> Intent intent = new Intent(IntermediateQuestionsActivity.this,AdvancedQuestionsActivity));
-                            myBuilder.setPositiveButton("Proceed to Advanced Mode", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    Intent intent = new Intent(IntermediateQuestionsActivity.this, AdvancedQuestionsActivity.class);
-                                    intent.putExtra("score", score);
-                                    intent.putExtra("questionNum", questionCounter + 1);
-                                    startActivity(intent);
-                                }
+                            myBuilder.setPositiveButton("Proceed to Advanced Mode", (dialogInterface, i) -> {
+                                Intent intent = new Intent(IntermediateQuestionsActivity.this, AdvancedQuestionsActivity.class);
+                                intent.putExtra("score", score);
+                                intent.putExtra("questionNum", questionCounter + 1);
+                                startActivity(intent);
                             });
 
                             AlertDialog myDialog = myBuilder.create();
@@ -431,14 +423,11 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             myBuilder.setMessage("You have answered 5 questions correctly in a row! We would like to test you further by bringing you to the Advanced Level! GoodLuck!");
                             myBuilder.setCancelable(false);
                             //myBuilder.setPositiveButton("Next", (dialogInterface, i) -> Intent intent = new Intent(IntermediateQuestionsActivity.this,AdvancedQuestionsActivity));
-                            myBuilder.setPositiveButton("Proceed to Advanced Mode", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    Intent intent = new Intent(IntermediateQuestionsActivity.this, AdvancedQuestionsActivity.class);
-                                    intent.putExtra("score", score);
-                                    intent.putExtra("questionNum", questionCounter + 1);
-                                    startActivity(intent);
-                                }
+                            myBuilder.setPositiveButton("Proceed to Advanced Mode", (dialogInterface, i) -> {
+                                Intent intent = new Intent(IntermediateQuestionsActivity.this, AdvancedQuestionsActivity.class);
+                                intent.putExtra("score", score);
+                                intent.putExtra("questionNum", questionCounter + 1);
+                                startActivity(intent);
                             });
 
                             AlertDialog myDialog = myBuilder.create();
@@ -473,14 +462,11 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             myBuilder.setMessage("You have answered 5 questions correctly in a row! We would like to test you further by bringing you to the Advanced Level! GoodLuck!");
                             myBuilder.setCancelable(false);
                             //myBuilder.setPositiveButton("Next", (dialogInterface, i) -> Intent intent = new Intent(IntermediateQuestionsActivity.this,AdvancedQuestionsActivity));
-                            myBuilder.setPositiveButton("Proceed to Advanced Mode", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    Intent intent = new Intent(IntermediateQuestionsActivity.this, AdvancedQuestionsActivity.class);
-                                    intent.putExtra("score", score);
-                                    intent.putExtra("questionNum", questionCounter + 1);
-                                    startActivity(intent);
-                                }
+                            myBuilder.setPositiveButton("Proceed to Advanced Mode", (dialogInterface, i) -> {
+                                Intent intent = new Intent(IntermediateQuestionsActivity.this, AdvancedQuestionsActivity.class);
+                                intent.putExtra("score", score);
+                                intent.putExtra("questionNum", questionCounter + 1);
+                                startActivity(intent);
                             });
 
                             AlertDialog myDialog = myBuilder.create();
@@ -516,14 +502,11 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             myBuilder.setMessage("You have answered 5 questions correctly in a row! We would like to test you further by bringing you to the Advanced Level! GoodLuck!");
                             myBuilder.setCancelable(false);
                             //myBuilder.setPositiveButton("Next", (dialogInterface, i) -> Intent intent = new Intent(IntermediateQuestionsActivity.this,AdvancedQuestionsActivity));
-                            myBuilder.setPositiveButton("Proceed to Advanced Mode", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    Intent intent = new Intent(IntermediateQuestionsActivity.this, AdvancedQuestionsActivity.class);
-                                    intent.putExtra("score", score);
-                                    intent.putExtra("questionNum", questionCounter + 1);
-                                    startActivity(intent);
-                                }
+                            myBuilder.setPositiveButton("Proceed to Advanced Mode", (dialogInterface, i) -> {
+                                Intent intent = new Intent(IntermediateQuestionsActivity.this, AdvancedQuestionsActivity.class);
+                                intent.putExtra("score", score);
+                                intent.putExtra("questionNum", questionCounter + 1);
+                                startActivity(intent);
                             });
 
                             AlertDialog myDialog = myBuilder.create();
@@ -867,10 +850,10 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
         MyDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         MyDialog.setContentView(R.layout.custom_alert_dialog);
 
-        ImageView ivUserChoice1 = (ImageView) MyDialog.findViewById(R.id.ivUserChoice1);
-        ImageView ivUserChoice2 = (ImageView) MyDialog.findViewById(R.id.ivUserChoice2);
-        ImageView ivUserChoice3 = (ImageView) MyDialog.findViewById(R.id.ivUserChoice3);
-        ImageView ivUserChoice4 = (ImageView) MyDialog.findViewById(R.id.ivUserChoice4);
+        ImageView ivUserChoice1 = MyDialog.findViewById(R.id.ivUserChoice1);
+        ImageView ivUserChoice2 = MyDialog.findViewById(R.id.ivUserChoice2);
+        ImageView ivUserChoice3 = MyDialog.findViewById(R.id.ivUserChoice3);
+        ImageView ivUserChoice4 = MyDialog.findViewById(R.id.ivUserChoice4);
 
         if (qnNum == 1) {
             if (numOfAns == 2) {
@@ -1058,7 +1041,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
     }
 
     private void finishQuiz() {
-        Intent i = new Intent(IntermediateQuestionsActivity.this,ResultActivity.class);
+        Intent i = new Intent(IntermediateQuestionsActivity.this, ResultActivity.class);
         i.putExtra("score",score);
         startActivity(i);
     }
