@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.myapplicationdev.android.fyp.Model.Leaderboard;
+import com.myapplicationdev.android.fyp.Model.ScoreBoard;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -16,13 +16,13 @@ import java.util.Date;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "simpleLeaderboard.db";
+    private static final String DATABASE_NAME = "simpleScoreBoard.db";
     // To make the app calls onUpgrade(), increment the variable DATABASE_VERSION from 1 to 2.
     private static final int DATABASE_VERSION = 1;
-    private static final String TABLE_LEADERBOARD = "leaderboard";
+    private static final String TABLE_SCOREBOARD = "scoreBoard";
 
     private static final String COLUMN_ID = "id";
-    private static final String COLUMN_MODE = "mode";
+    private static final String COLUMN_USERNAME = "username";
     private static final String COLUMN_SCORE = "score";
     private static final String COLUMN_DATE = "date";
 
@@ -34,9 +34,9 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
 
-        String createNoteTableSql = "CREATE TABLE " + TABLE_LEADERBOARD + "("
+        String createNoteTableSql = "CREATE TABLE " + TABLE_SCOREBOARD + "("
                 + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + COLUMN_MODE + " TEXT,"
+                + COLUMN_USERNAME + " TEXT,"
                 + COLUMN_SCORE + " TEXT,"
                 + COLUMN_DATE + " DATETIME DEFAULT CURRENT_TIMESTAMP )";
         // Create the table with a default settings to put current datetime automatically ^
@@ -52,12 +52,12 @@ public class DBHelper extends SQLiteOpenHelper {
 
             // Creates an empty set of values using the default initial size
             ContentValues values = new ContentValues();
-            values.put(COLUMN_ID, "Leaderboard number " + i);
-            values.put(COLUMN_MODE, "Leaderboard number " + i);
-            values.put(COLUMN_SCORE, "Leaderboard number " + i);
-            values.put(COLUMN_DATE, "Leaderboard number " + i);
+            values.put(COLUMN_ID, "ScoreBoard ID " + i);
+            values.put(COLUMN_USERNAME, "ScoreBoard Username " + i);
+            values.put(COLUMN_SCORE, "ScoreBoard Score " + i);
+            values.put(COLUMN_DATE, "ScoreBoard Date " + i);
 
-            db.insert(TABLE_LEADERBOARD, null, values);
+            db.insert(TABLE_SCOREBOARD, null, values);
         }
         Log.i("info", "dummy records inserted");
 
@@ -65,7 +65,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_LEADERBOARD);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_SCOREBOARD);
         onCreate(db);
 
     }
@@ -76,7 +76,7 @@ public class DBHelper extends SQLiteOpenHelper {
 //    private static final String COLUMN_DATE = "date";
 
     // TODO: Insert a new record , C in CRUD
-    public long insertLeaderboard(String gameMode, String gameScore) {
+    public long insertScoreBoard(String username, String score, String date) {
 
         // Create and/or open a SQLiteDatabase that will be used for reading and writing.
         SQLiteDatabase db = this.getWritableDatabase();
@@ -84,17 +84,20 @@ public class DBHelper extends SQLiteOpenHelper {
         // Creates an empty set of values using the default initial size
         ContentValues values = new ContentValues();
 
-        values.put(COLUMN_MODE, gameMode);
-        values.put(COLUMN_SCORE, gameScore);
+        values.put(COLUMN_USERNAME, username);
+        values.put(COLUMN_SCORE, score);
+
 
         // Create SimpleDateFormat and convert current date into SQL format string
         @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String playedDate = sdf.format(new Date());
+        date = sdf.format(new Date());
 
-        values.put(COLUMN_DATE, playedDate);
+        values.put(COLUMN_DATE, date);
 
 
-        long result = db.insert(TABLE_LEADERBOARD, null, values);
+        long result = db.insert(TABLE_SCOREBOARD, null, values);
+
+
         db.close();
         Log.d("SQL Insert", "ID:" + result); //id returned, shouldn’t be -1
         return result;
@@ -102,16 +105,16 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     // TODO: Record retrieval from database table , R in CRUD
-    public ArrayList<Leaderboard> getAllLeaderboard() {
+    public ArrayList<ScoreBoard> getAllScoreBoard() {
 
 
-        ArrayList<Leaderboard> Leaderboards = new ArrayList<>();
+        ArrayList<ScoreBoard> ScoreBoards = new ArrayList<>();
 
         String selectQuery = "SELECT " + COLUMN_ID + ", "
-                + COLUMN_MODE + ", "
+                + COLUMN_USERNAME + ", "
                 + COLUMN_SCORE + ", "
                 + COLUMN_DATE
-                + " FROM " + TABLE_LEADERBOARD;
+                + " FROM " + TABLE_SCOREBOARD;
 
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -129,10 +132,10 @@ public class DBHelper extends SQLiteOpenHelper {
                 String scoreContent = cursor.getString(2);
                 String dateContent = cursor.getString(3);
 
-                Leaderboard leaderboard = new Leaderboard(id, modeContent, scoreContent, dateContent);
+                ScoreBoard scoreBoard = new ScoreBoard(id, modeContent, scoreContent, dateContent);
 
-                // Appends the specified element to the end of the Leaderboards ArrayList
-                Leaderboards.add(leaderboard);
+                // Appends the specified element to the end of the ScoreBoards ArrayList
+                ScoreBoards.add(scoreBoard);
 
 // Move the cursor to the next row.
 //This method will return false if the cursor is already past the last entry in the result set.
@@ -146,14 +149,14 @@ public class DBHelper extends SQLiteOpenHelper {
         // Calling this method is equivalent to calling
         db.close();
 
-        // return the Leaderboards ArrayList
-        return Leaderboards;
+        // return the ScoreBoards ArrayList
+        return ScoreBoards;
     }
 
     /*TODO: In order to perform an update,
    a method called updateNote() must be implemented in DBHelper.java.
     The method will accept a Note object and perform a database update. */
-    public int updateLeaderboard(Leaderboard data) {
+    public int updateScoreBoard(ScoreBoard data) {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -161,7 +164,7 @@ public class DBHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
 
         // Add values to the values (ContentValues)
-        values.put(COLUMN_MODE, data.getMode());
+        values.put(COLUMN_USERNAME, data.getUsername());
         values.put(COLUMN_SCORE, data.getScore());
         values.put(COLUMN_DATE, data.getDate());
 
@@ -176,7 +179,7 @@ public class DBHelper extends SQLiteOpenHelper {
    However, in this case, we anticipate only one record.
    As a result, if the affected record is 1,
    we can use it to determine whether or not a record was successfully updated.*/
-        int result = db.update(TABLE_LEADERBOARD, values, condition, args);
+        int result = db.update(TABLE_SCOREBOARD, values, condition, args);
 
         db.close();
         return result;
@@ -185,14 +188,14 @@ public class DBHelper extends SQLiteOpenHelper {
 
     /*TODO:To delete a note, a deleteNote() method in DBHelper.java must be implemented.
         To delete a record from the database, the method will accept an ID as the primary reference. */
-    public int deleteLeaderboard(int id) {
+    public int deleteScoreBoard(int id) {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
         String condition = COLUMN_ID + "= ?";
 
         String[] args = {String.valueOf(id)};
-        int result = db.delete(TABLE_LEADERBOARD, condition, args);
+        int result = db.delete(TABLE_SCOREBOARD, condition, args);
         db.close();
         return result;
     }

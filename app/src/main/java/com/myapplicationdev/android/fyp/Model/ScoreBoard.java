@@ -2,16 +2,16 @@ package com.myapplicationdev.android.fyp.Model;
 
 import java.io.Serializable;
 
-public class Leaderboard implements Serializable {
+public class ScoreBoard implements Serializable {
 
     private int id;
-    private String mode;
+    private String username;
     private String score;
     private String date;
 
-    public Leaderboard(int id, String mode, String score, String date) {
+    public ScoreBoard(int id, String username, String score, String date) {
         this.id = id;
-        this.mode = mode;
+        this.username = username;
         this.score = score;
         this.date = date;
     }
@@ -24,12 +24,12 @@ public class Leaderboard implements Serializable {
         this.id = id;
     }
 
-    public String getMode() {
-        return mode;
+    public String getUsername() {
+        return username;
     }
 
-    public void setMode(String mode) {
-        this.mode = mode;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getScore() {
