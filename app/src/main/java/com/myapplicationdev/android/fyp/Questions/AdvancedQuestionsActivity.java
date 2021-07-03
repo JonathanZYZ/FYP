@@ -45,6 +45,28 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
         ivChoice3 = findViewById(R.id.ivChoiceQn3);
         ivChoiceQn4 = findViewById(R.id.ivChoiceQn4);
 
+//  TODO: When the user clicks the "did you know?" icon on the screen, text messages are prepared for them.
+        String didYouKnowIconMsgQ1 = "Tamoxifen's main skeleton is a tertiary alcohol. The starting material is treated with sulfuric acid, and acid catalyzed dehydration takes place. Alcohol group protonation makes it a good leaving group, and E1 reactions occur when a tertiary carbocation is formed prior to Tamoxifen formation (Z isomer).\n" +
+                "\n" +
+                "Tamoxifen is an estrogen receptor modulator (SERM).\n" +
+                "\n" +
+                "Tamoxifen is a widely used drug in the treatment of breast cancer (ER positive breast cancer).";
 
+
+        String didYouKnowIconMsgQ2 = "Newer muscle relaxants, such as atracurium, have a built-in functional group that allows the drug to be rapidly metabolised or changed into an inactive form via the E2 reaction of the drug's quaternary ammonium group.\n" +
+                "\n" +
+                "In the presence of normal blood pH and temperature, spontaneous degradation occurs. There are no nucleophiles present.";
+        String didYouKnowIconMsgQ3 = "The E1 reaction is involved in the biosynthesis of geraniol in roses.\n" +
+                "A carbocation serves as the starting material.\n" +
+                "\n" +
+                "Geranyl diphosphate can be synthesized using a strong base and a protic solvent.\n" +
+                "\n" +
+                "I've lost a CH3, and I'm not sure where the OPP is coming from.";
+        String didYouKnowIconMsgQ4 = "";
+        String didYouKnowIconMsgQ5 = "";
+        String didYouKnowIconMsgQ6 = "";
+        String didYouKnowIconMsgQ7 = "";
+        String didYouKnowIconMsgQ8 = "";
+        String didYouKnowIconMsgQ9 = "";
     }
 }

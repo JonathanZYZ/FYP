@@ -104,10 +104,10 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                 R.drawable.question13_intermediate_startingmaterial1_incorrect, R.drawable.question13_intermediate_startingmaterial2_incorrect, R.drawable.question13_intermediate_startingmaterial3_incorrect, 1));
 
         questionCountTotal = al.size();
-        Intent i =  getIntent();
-        int currentQnNum = i.getIntExtra("questionNum",0);
-        int currentScore = i.getIntExtra("score",0);
-        if (currentQnNum != 0 && currentScore != 0){
+        Intent i = getIntent();
+        int currentQnNum = i.getIntExtra("questionNum", 0);
+        int currentScore = i.getIntExtra("score", 0);
+        if (currentQnNum != 0 && currentScore != 0) {
             questionCounter = currentQnNum;
             score = currentScore;
         }
@@ -244,36 +244,33 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                     if (currentQuestion.getQn1Image() == 0) {
                         if (ans1 == currentQuestion.getCorrectNum2() && ans2 == currentQuestion.getCorrectNum3()) {
                             streak += 1;
-                        score++;
-                        if (streak == 5) {
-                            myBuilder.setTitle("Congratulations!!");
-                            myBuilder.setMessage("You have answered 5 questions correctly in a row! We would like to test you further by bringing you to the Advanced Level! GoodLuck!");
-                            myBuilder.setCancelable(false);
-                            //myBuilder.setPositiveButton("Next", (dialogInterface, i) -> Intent intent = new Intent(IntermediateQuestionsActivity.this,AdvancedQuestionsActivity));
-                            myBuilder.setPositiveButton("Proceed to Advanced Mode", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
+                            score++;
+                            if (streak == 5) {
+                                myBuilder.setTitle("Congratulations!!");
+                                myBuilder.setMessage("You have answered 5 questions correctly in a row! We would like to test you further by bringing you to the Advanced Level! GoodLuck!");
+                                myBuilder.setCancelable(false);
+                                //myBuilder.setPositiveButton("Next", (dialogInterface, i) -> Intent intent = new Intent(IntermediateQuestionsActivity.this,AdvancedQuestionsActivity));
+                                myBuilder.setPositiveButton("Proceed to Advanced Mode", (dialogInterface, i) -> {
                                     Intent intent = new Intent(IntermediateQuestionsActivity.this, AdvancedQuestionsActivity.class);
                                     intent.putExtra("score", score);
                                     intent.putExtra("questionNum", questionCounter + 1);
                                     startActivity(intent);
-                                }
-                            });
+                                });
 
-                            AlertDialog myDialog = myBuilder.create();
-                            myDialog.show();
+                                AlertDialog myDialog = myBuilder.create();
+                                myDialog.show();
 
-                        } else {
-                            myBuilder.setTitle("Congratulations!!");
-                            myBuilder.setMessage("You selected the correct answer!");
-                            myBuilder.setCancelable(false);
-                            myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
+                            } else {
+                                myBuilder.setTitle("Congratulations!!");
+                                myBuilder.setMessage("You selected the correct answer!");
+                                myBuilder.setCancelable(false);
+                                myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
-                            AlertDialog myDialog = myBuilder.create();
-                            myDialog.show();
+                                AlertDialog myDialog = myBuilder.create();
+                                myDialog.show();
 
-                            tvScore.setText("Score: " + score);
-                        }
+                                tvScore.setText("Score: " + score);
+                            }
                         } else if (ans1 != currentQuestion.getCorrectNum2() && ans2 == currentQuestion.getCorrectNum3()) {
                             streak = 0;
                             myBuilder.setMessage("You selected the wrong answer for Question 1!");
@@ -302,34 +299,34 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                     } else if (currentQuestion.getQn2Image() == 0) {
                         if (ans1 == currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum3()) {
                             streak += 1;
-                        score++;
+                            score++;
 
-                        if (streak == 5) {
-                            myBuilder.setTitle("Congratulations!!");
-                            myBuilder.setMessage("You have answered 5 questions correctly in a row! We would like to test you further by bringing you to the Advanced Level! GoodLuck!");
-                            myBuilder.setCancelable(false);
-                            //myBuilder.setPositiveButton("Next", (dialogInterface, i) -> Intent intent = new Intent(IntermediateQuestionsActivity.this,AdvancedQuestionsActivity));
-                            myBuilder.setPositiveButton("Proceed to Advanced Mode", (dialogInterface, i) -> {
-                                Intent intent = new Intent(IntermediateQuestionsActivity.this, AdvancedQuestionsActivity.class);
-                                intent.putExtra("score", score);
-                                intent.putExtra("questionNum", questionCounter + 1);
-                                startActivity(intent);
-                            });
+                            if (streak == 5) {
+                                myBuilder.setTitle("Congratulations!!");
+                                myBuilder.setMessage("You have answered 5 questions correctly in a row! We would like to test you further by bringing you to the Advanced Level! GoodLuck!");
+                                myBuilder.setCancelable(false);
+                                //myBuilder.setPositiveButton("Next", (dialogInterface, i) -> Intent intent = new Intent(IntermediateQuestionsActivity.this,AdvancedQuestionsActivity));
+                                myBuilder.setPositiveButton("Proceed to Advanced Mode", (dialogInterface, i) -> {
+                                    Intent intent = new Intent(IntermediateQuestionsActivity.this, AdvancedQuestionsActivity.class);
+                                    intent.putExtra("score", score);
+                                    intent.putExtra("questionNum", questionCounter + 1);
+                                    startActivity(intent);
+                                });
 
-                            AlertDialog myDialog = myBuilder.create();
-                            myDialog.show();
+                                AlertDialog myDialog = myBuilder.create();
+                                myDialog.show();
 
-                        } else {
-                            myBuilder.setTitle("Congratulations!!");
-                            myBuilder.setMessage("You selected the correct answer!");
-                            myBuilder.setCancelable(false);
-                            myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
+                            } else {
+                                myBuilder.setTitle("Congratulations!!");
+                                myBuilder.setMessage("You selected the correct answer!");
+                                myBuilder.setCancelable(false);
+                                myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
-                            AlertDialog myDialog = myBuilder.create();
-                            myDialog.show();
+                                AlertDialog myDialog = myBuilder.create();
+                                myDialog.show();
 
-                            tvScore.setText("Score: " + score);
-                        }
+                                tvScore.setText("Score: " + score);
+                            }
                         } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum3()) {
                             streak = 0;
                             myBuilder.setMessage("You selected the wrong answer for Question 1!");
@@ -358,33 +355,33 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                     } else if (currentQuestion.getQn3Image() == 0) {
                         if (ans1 == currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2()) {
                             streak += 1;
-                        score++;
-                        if (streak == 5) {
-                            myBuilder.setTitle("Congratulations!!");
-                            myBuilder.setMessage("You have answered 5 questions correctly in a row! We would like to test you further by bringing you to the Advanced Level! GoodLuck!");
-                            myBuilder.setCancelable(false);
-                            //myBuilder.setPositiveButton("Next", (dialogInterface, i) -> Intent intent = new Intent(IntermediateQuestionsActivity.this,AdvancedQuestionsActivity));
-                            myBuilder.setPositiveButton("Proceed to Advanced Mode", (dialogInterface, i) -> {
-                                Intent intent = new Intent(IntermediateQuestionsActivity.this, AdvancedQuestionsActivity.class);
-                                intent.putExtra("score", score);
-                                intent.putExtra("questionNum", questionCounter + 1);
-                                startActivity(intent);
-                            });
+                            score++;
+                            if (streak == 5) {
+                                myBuilder.setTitle("Congratulations!!");
+                                myBuilder.setMessage("You have answered 5 questions correctly in a row! We would like to test you further by bringing you to the Advanced Level! GoodLuck!");
+                                myBuilder.setCancelable(false);
+                                //myBuilder.setPositiveButton("Next", (dialogInterface, i) -> Intent intent = new Intent(IntermediateQuestionsActivity.this,AdvancedQuestionsActivity));
+                                myBuilder.setPositiveButton("Proceed to Advanced Mode", (dialogInterface, i) -> {
+                                    Intent intent = new Intent(IntermediateQuestionsActivity.this, AdvancedQuestionsActivity.class);
+                                    intent.putExtra("score", score);
+                                    intent.putExtra("questionNum", questionCounter + 1);
+                                    startActivity(intent);
+                                });
 
-                            AlertDialog myDialog = myBuilder.create();
-                            myDialog.show();
+                                AlertDialog myDialog = myBuilder.create();
+                                myDialog.show();
 
-                        } else {
-                            myBuilder.setTitle("Congratulations!!");
-                            myBuilder.setMessage("You selected the correct answer!");
-                            myBuilder.setCancelable(false);
-                            myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
+                            } else {
+                                myBuilder.setTitle("Congratulations!!");
+                                myBuilder.setMessage("You selected the correct answer!");
+                                myBuilder.setCancelable(false);
+                                myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
-                            AlertDialog myDialog = myBuilder.create();
-                            myDialog.show();
+                                AlertDialog myDialog = myBuilder.create();
+                                myDialog.show();
 
-                            tvScore.setText("Score: " + score);
-                        }
+                                tvScore.setText("Score: " + score);
+                            }
                         } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2()) {
                             streak = 0;
                             myBuilder.setMessage("You selected the wrong answer for Question 1!");
@@ -417,33 +414,33 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                     if (currentQuestion.getQn1Image() != 0) {
                         if (ans1 == currentQuestion.getCorrectNum1()) {
                             streak += 1;
-                        score++;
-                        if (streak == 5) {
-                            myBuilder.setTitle("Congratulations!!");
-                            myBuilder.setMessage("You have answered 5 questions correctly in a row! We would like to test you further by bringing you to the Advanced Level! GoodLuck!");
-                            myBuilder.setCancelable(false);
-                            //myBuilder.setPositiveButton("Next", (dialogInterface, i) -> Intent intent = new Intent(IntermediateQuestionsActivity.this,AdvancedQuestionsActivity));
-                            myBuilder.setPositiveButton("Proceed to Advanced Mode", (dialogInterface, i) -> {
-                                Intent intent = new Intent(IntermediateQuestionsActivity.this, AdvancedQuestionsActivity.class);
-                                intent.putExtra("score", score);
-                                intent.putExtra("questionNum", questionCounter + 1);
-                                startActivity(intent);
-                            });
+                            score++;
+                            if (streak == 5) {
+                                myBuilder.setTitle("Congratulations!!");
+                                myBuilder.setMessage("You have answered 5 questions correctly in a row! We would like to test you further by bringing you to the Advanced Level! GoodLuck!");
+                                myBuilder.setCancelable(false);
+                                //myBuilder.setPositiveButton("Next", (dialogInterface, i) -> Intent intent = new Intent(IntermediateQuestionsActivity.this,AdvancedQuestionsActivity));
+                                myBuilder.setPositiveButton("Proceed to Advanced Mode", (dialogInterface, i) -> {
+                                    Intent intent = new Intent(IntermediateQuestionsActivity.this, AdvancedQuestionsActivity.class);
+                                    intent.putExtra("score", score);
+                                    intent.putExtra("questionNum", questionCounter + 1);
+                                    startActivity(intent);
+                                });
 
-                            AlertDialog myDialog = myBuilder.create();
-                            myDialog.show();
+                                AlertDialog myDialog = myBuilder.create();
+                                myDialog.show();
 
-                        } else {
-                            myBuilder.setTitle("Congratulations!!");
-                            myBuilder.setMessage("You selected the correct answer!");
-                            myBuilder.setCancelable(false);
-                            myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
+                            } else {
+                                myBuilder.setTitle("Congratulations!!");
+                                myBuilder.setMessage("You selected the correct answer!");
+                                myBuilder.setCancelable(false);
+                                myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
-                            AlertDialog myDialog = myBuilder.create();
-                            myDialog.show();
+                                AlertDialog myDialog = myBuilder.create();
+                                myDialog.show();
 
-                            tvScore.setText("Score: " + score);
-                        }
+                                tvScore.setText("Score: " + score);
+                            }
                         } else if (ans1 != currentQuestion.getCorrectNum1()) {
                             streak = 0;
                             myBuilder.setMessage("You selected the wrong answer!");
@@ -456,34 +453,34 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                     } else if (currentQuestion.getQn2Image() != 0) {
                         if (ans1 == currentQuestion.getCorrectNum2()) {
                             streak += 1;
-                        score++;
-                        if (streak == 5) {
-                            myBuilder.setTitle("Congratulations!!");
-                            myBuilder.setMessage("You have answered 5 questions correctly in a row! We would like to test you further by bringing you to the Advanced Level! GoodLuck!");
-                            myBuilder.setCancelable(false);
-                            //myBuilder.setPositiveButton("Next", (dialogInterface, i) -> Intent intent = new Intent(IntermediateQuestionsActivity.this,AdvancedQuestionsActivity));
-                            myBuilder.setPositiveButton("Proceed to Advanced Mode", (dialogInterface, i) -> {
-                                Intent intent = new Intent(IntermediateQuestionsActivity.this, AdvancedQuestionsActivity.class);
-                                intent.putExtra("score", score);
-                                intent.putExtra("questionNum", questionCounter + 1);
-                                startActivity(intent);
-                            });
+                            score++;
+                            if (streak == 5) {
+                                myBuilder.setTitle("Congratulations!!");
+                                myBuilder.setMessage("You have answered 5 questions correctly in a row! We would like to test you further by bringing you to the Advanced Level! GoodLuck!");
+                                myBuilder.setCancelable(false);
+                                //myBuilder.setPositiveButton("Next", (dialogInterface, i) -> Intent intent = new Intent(IntermediateQuestionsActivity.this,AdvancedQuestionsActivity));
+                                myBuilder.setPositiveButton("Proceed to Advanced Mode", (dialogInterface, i) -> {
+                                    Intent intent = new Intent(IntermediateQuestionsActivity.this, AdvancedQuestionsActivity.class);
+                                    intent.putExtra("score", score);
+                                    intent.putExtra("questionNum", questionCounter + 1);
+                                    startActivity(intent);
+                                });
 
-                            AlertDialog myDialog = myBuilder.create();
-                            myDialog.show();
+                                AlertDialog myDialog = myBuilder.create();
+                                myDialog.show();
 
 
-                        } else {
-                            myBuilder.setTitle("Congratulations!!");
-                            myBuilder.setMessage("You selected the correct answer!");
-                            myBuilder.setCancelable(false);
-                            myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
+                            } else {
+                                myBuilder.setTitle("Congratulations!!");
+                                myBuilder.setMessage("You selected the correct answer!");
+                                myBuilder.setCancelable(false);
+                                myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
-                            AlertDialog myDialog = myBuilder.create();
-                            myDialog.show();
+                                AlertDialog myDialog = myBuilder.create();
+                                myDialog.show();
 
-                            tvScore.setText("Score: " + score);
-                        }
+                                tvScore.setText("Score: " + score);
+                            }
                         } else if (ans1 != currentQuestion.getCorrectNum2()) {
                             streak = 0;
                             myBuilder.setMessage("You selected the wrong answer!");
@@ -496,33 +493,33 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                     } else if (currentQuestion.getQn3Image() != 0) {
                         if (ans1 == currentQuestion.getCorrectNum3()) {
                             streak += 1;
-                        score++;
-                        if (streak == 5) {
-                            myBuilder.setTitle("Congratulations!!");
-                            myBuilder.setMessage("You have answered 5 questions correctly in a row! We would like to test you further by bringing you to the Advanced Level! GoodLuck!");
-                            myBuilder.setCancelable(false);
-                            //myBuilder.setPositiveButton("Next", (dialogInterface, i) -> Intent intent = new Intent(IntermediateQuestionsActivity.this,AdvancedQuestionsActivity));
-                            myBuilder.setPositiveButton("Proceed to Advanced Mode", (dialogInterface, i) -> {
-                                Intent intent = new Intent(IntermediateQuestionsActivity.this, AdvancedQuestionsActivity.class);
-                                intent.putExtra("score", score);
-                                intent.putExtra("questionNum", questionCounter + 1);
-                                startActivity(intent);
-                            });
+                            score++;
+                            if (streak == 5) {
+                                myBuilder.setTitle("Congratulations!!");
+                                myBuilder.setMessage("You have answered 5 questions correctly in a row! We would like to test you further by bringing you to the Advanced Level! GoodLuck!");
+                                myBuilder.setCancelable(false);
+                                //myBuilder.setPositiveButton("Next", (dialogInterface, i) -> Intent intent = new Intent(IntermediateQuestionsActivity.this,AdvancedQuestionsActivity));
+                                myBuilder.setPositiveButton("Proceed to Advanced Mode", (dialogInterface, i) -> {
+                                    Intent intent = new Intent(IntermediateQuestionsActivity.this, AdvancedQuestionsActivity.class);
+                                    intent.putExtra("score", score);
+                                    intent.putExtra("questionNum", questionCounter + 1);
+                                    startActivity(intent);
+                                });
 
-                            AlertDialog myDialog = myBuilder.create();
-                            myDialog.show();
+                                AlertDialog myDialog = myBuilder.create();
+                                myDialog.show();
 
-                        } else {
-                            myBuilder.setTitle("Congratulations!!");
-                            myBuilder.setMessage("You selected the correct answer!");
-                            myBuilder.setCancelable(false);
-                            myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
+                            } else {
+                                myBuilder.setTitle("Congratulations!!");
+                                myBuilder.setMessage("You selected the correct answer!");
+                                myBuilder.setCancelable(false);
+                                myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
-                            AlertDialog myDialog = myBuilder.create();
-                            myDialog.show();
+                                AlertDialog myDialog = myBuilder.create();
+                                myDialog.show();
 
-                            tvScore.setText("Score: " + score);
-                        }
+                                tvScore.setText("Score: " + score);
+                            }
                         } else if (ans1 != currentQuestion.getCorrectNum3()) {
                             streak = 0;
                             myBuilder.setMessage("You selected the wrong answer!");
@@ -1042,7 +1039,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
 
     private void finishQuiz() {
         Intent i = new Intent(IntermediateQuestionsActivity.this, ResultActivity.class);
-        i.putExtra("score",score);
+        i.putExtra("score", score);
         startActivity(i);
     }
 }

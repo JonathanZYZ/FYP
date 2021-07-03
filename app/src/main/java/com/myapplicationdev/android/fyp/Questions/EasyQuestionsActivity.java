@@ -122,24 +122,21 @@ public class EasyQuestionsActivity extends AppCompatActivity {
         if (ans == currentQuestion.getAnswerNum()) {
             streak += 1;
             score++;
-            if (streak == 5){
+            if (streak == 5) {
                 AlertDialog.Builder myBuilder = new AlertDialog.Builder(EasyQuestionsActivity.this);
                 myBuilder.setTitle("Congratulations!");
                 myBuilder.setMessage("You have answered 5 questions correctly in a row! We would like to test you further by bringing you to the intermediate Level! GoodLuck!");
                 myBuilder.setCancelable(false);
-                myBuilder.setPositiveButton("Proceed to Intermediate Mode", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Intent intent = new Intent(EasyQuestionsActivity.this, IntermediateQuestionsActivity.class);
-                        intent.putExtra("score", score);
-                        intent.putExtra("questionNum", questionCounter + 1);
-                        startActivity(intent);
-                    }
+                myBuilder.setPositiveButton("Proceed to Intermediate Mode", (dialogInterface, i) -> {
+                    Intent intent = new Intent(EasyQuestionsActivity.this, IntermediateQuestionsActivity.class);
+                    intent.putExtra("score", score);
+                    intent.putExtra("questionNum", questionCounter + 1);
+                    startActivity(intent);
                 });
 
                 AlertDialog myDialog = myBuilder.create();
                 myDialog.show();
-            }else {
+            } else {
                 AlertDialog.Builder myBuilder = new AlertDialog.Builder(EasyQuestionsActivity.this);
                 myBuilder.setTitle("Congratulations!");
                 myBuilder.setMessage("You selected the correct answer!");
@@ -190,7 +187,6 @@ public class EasyQuestionsActivity extends AppCompatActivity {
 //            rdReaction_Option2.setBackgroundResource(currentQuestion.getOption2Reaction());
 
             ivChoiceBasicQn.setOnClickListener(view -> MyCustomAlertDialog());
-
 
 
 //            ivQuestion.setImageResource();
