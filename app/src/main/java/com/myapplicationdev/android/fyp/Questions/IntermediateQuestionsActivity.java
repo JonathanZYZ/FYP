@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.myapplicationdev.android.fyp.Model.QuestionIntermediate;
 import com.myapplicationdev.android.fyp.R;
 import com.myapplicationdev.android.fyp.ResultActivity;
-import com.myapplicationdev.android.fyp.Util.DBHelper;
+import com.myapplicationdev.android.fyp.Utilities.DBHelper;
 
 import java.util.ArrayList;
 

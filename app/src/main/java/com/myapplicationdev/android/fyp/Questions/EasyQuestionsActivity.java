@@ -2,7 +2,6 @@ package com.myapplicationdev.android.fyp.Questions;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -20,7 +19,7 @@ import com.myapplicationdev.android.fyp.MainActivity;
 import com.myapplicationdev.android.fyp.Model.QuestionEasy;
 import com.myapplicationdev.android.fyp.R;
 import com.myapplicationdev.android.fyp.ResultActivity;
-import com.myapplicationdev.android.fyp.Util.DBHelper;
+import com.myapplicationdev.android.fyp.Utilities.DBHelper;
 
 import java.util.ArrayList;
 

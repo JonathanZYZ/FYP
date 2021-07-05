@@ -1,4 +1,4 @@
-package com.myapplicationdev.android.fyp.Util;
+package com.myapplicationdev.android.fyp.Utilities;
 
 import android.annotation.SuppressLint;
 import android.content.ContentValues;

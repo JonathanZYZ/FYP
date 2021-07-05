@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.myapplicationdev.android.fyp.Util.DBHelper;
+import com.myapplicationdev.android.fyp.Utilities.DBHelper;
 
 public class ResultActivity extends AppCompatActivity {
 

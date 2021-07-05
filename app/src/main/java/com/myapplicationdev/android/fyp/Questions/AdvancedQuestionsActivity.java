@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.myapplicationdev.android.fyp.Model.QuestionIntermediate;
 import com.myapplicationdev.android.fyp.R;
-import com.myapplicationdev.android.fyp.Util.DBHelper;
+import com.myapplicationdev.android.fyp.Utilities.DBHelper;
 
 import java.util.ArrayList;
 
@@ -52,7 +52,6 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
                 "\n" +
                 "Tamoxifen is a widely used drug in the treatment of breast cancer (ER positive breast cancer).";
 
-
         String didYouKnowIconMsgQ2 = "Newer muscle relaxants, such as atracurium, have a built-in functional group that allows the drug to be rapidly metabolised or changed into an inactive form via the E2 reaction of the drug's quaternary ammonium group.\n" +
                 "\n" +
                 "In the presence of normal blood pH and temperature, spontaneous degradation occurs. There are no nucleophiles present.";
@@ -62,11 +61,15 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
                 "Geranyl diphosphate can be synthesized using a strong base and a protic solvent.\n" +
                 "\n" +
                 "I've lost a CH3, and I'm not sure where the OPP is coming from.";
-        String didYouKnowIconMsgQ4 = "";
-        String didYouKnowIconMsgQ5 = "";
-        String didYouKnowIconMsgQ6 = "";
-        String didYouKnowIconMsgQ7 = "";
-        String didYouKnowIconMsgQ8 = "";
-        String didYouKnowIconMsgQ9 = "";
+        String didYouKnowIconMsgQ4 = "There is no hint for this question.";
+        String didYouKnowIconMsgQ5 = "There is no hint for this question.";
+        String didYouKnowIconMsgQ6 = "There is no hint for this question.";
+        String didYouKnowIconMsgQ7 = "There is no hint for this question.";
+        String didYouKnowIconMsgQ8 = "There is no hint for this question.";
+        String didYouKnowIconMsgQ9 = "There is no hint for this question.";
+
+
+
+
     }
 }
