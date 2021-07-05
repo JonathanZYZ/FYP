@@ -7,6 +7,8 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.myapplicationdev.android.fyp.Questions.AdvancedQuestionsActivity;
+
 public class AdvancedModeActivity extends AppCompatActivity {
     Button btnStart;
     MediaPlayer mediaPlayer;
@@ -19,7 +21,7 @@ public class AdvancedModeActivity extends AppCompatActivity {
         mediaPlayer = MediaPlayer.create(AdvancedModeActivity.this,R.raw.mouse_click);
 
         btnStart.setOnClickListener(view -> {
-            Intent i = new Intent(AdvancedModeActivity.this, StartQuizActivity.class);
+            Intent i = new Intent(AdvancedModeActivity.this, AdvancedQuestionsActivity.class);
             i.putExtra("mode","advanced");
             startActivity(i);
             mediaPlayer.start();
