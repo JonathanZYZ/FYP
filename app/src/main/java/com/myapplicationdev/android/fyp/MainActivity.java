@@ -1,16 +1,18 @@
 package com.myapplicationdev.android.fyp;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.widget.Button;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 
 public class MainActivity extends AppCompatActivity {
     Button btnStart, btnRevision, btnHowToPlay, btnSettings, btnLeaderBoard;
-    MediaPlayer mediaPlayer;
+    MediaPlayer mediaPlayer,backgroundMusic;
 
 
     @Override
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         btnSettings = findViewById(R.id.btnSettings);
         btnLeaderBoard = findViewById(R.id.btnLeaderBoard);
         mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.mouse_click);
+        backgroundMusic = MediaPlayer.create(MainActivity.this,R.raw.background_music);
 
         btnStart.setOnClickListener(view -> {
             //    Log.d("test", "test");
@@ -56,5 +59,40 @@ public class MainActivity extends AppCompatActivity {
             startActivity(i);
             mediaPlayer.start();
         });
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        backgroundMusic.start();
+        backgroundMusic.setLooping(true);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        backgroundMusic.pause();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+       AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
+       alertDialog.setTitle("Are you sure you want to exit?");
+       alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+           @Override
+           public void onClick(DialogInterface dialogInterface, int i) {
+               backgroundMusic.stop();
+               finish();
+
+           }
+       });
+       alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+           @Override
+           public void onClick(DialogInterface dialogInterface, int i) {
+               dialogInterface.dismiss();
+           }
+       });
+        AlertDialog myDialog = alertDialog.create();
+        myDialog.show();
     }
 }

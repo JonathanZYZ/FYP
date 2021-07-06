@@ -504,12 +504,7 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        backgroundMusic.start();
-        backgroundMusic.setLooping(true);
-    }
+
 }
 
 
