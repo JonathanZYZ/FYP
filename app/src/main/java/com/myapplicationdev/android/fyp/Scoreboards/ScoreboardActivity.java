@@ -1,13 +1,10 @@
 package com.myapplicationdev.android.fyp.Scoreboards;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.myapplicationdev.android.fyp.Models.ScoreBoard;
 import com.myapplicationdev.android.fyp.R;
@@ -33,7 +30,7 @@ public class ScoreboardActivity extends AppCompatActivity {
 
 
         al = new ArrayList<>();
-        aa = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, al);
+        aa = new ScoreboardAdapter(this, android.R.layout.simple_list_item_1, al);
         lvScoreBoardData.setAdapter(aa);
 
         DBHelper dbh = new DBHelper(ScoreboardActivity.this);

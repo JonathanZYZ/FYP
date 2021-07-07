@@ -38,7 +38,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
     boolean answered;
     DBHelper dbh = new DBHelper(IntermediateQuestionsActivity.this);
     SharedPreferences sharedPreferences;
-    MediaPlayer choiceSound,correctSound,wrongSound,finishSound,backgroundMusic;
+    MediaPlayer choiceSound, correctSound, wrongSound, finishSound, backgroundMusic;
     EditText editText;
 
     @SuppressLint("SetTextI18n")
@@ -55,11 +55,11 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
         ivChoice2 = findViewById(R.id.ivChoiceQn2);
         ivChoice3 = findViewById(R.id.ivChoiceQn3);
 
-        choiceSound = MediaPlayer.create(IntermediateQuestionsActivity.this,R.raw.answer_click);
-        correctSound = MediaPlayer.create(IntermediateQuestionsActivity.this,R.raw.correct_answer);
-        wrongSound = MediaPlayer.create(IntermediateQuestionsActivity.this,R.raw.wrong_answer);
-        finishSound = MediaPlayer.create(IntermediateQuestionsActivity.this,R.raw.end_game);
-        backgroundMusic = MediaPlayer.create(IntermediateQuestionsActivity.this,R.raw.background_music);
+        choiceSound = MediaPlayer.create(IntermediateQuestionsActivity.this, R.raw.answer_click);
+        correctSound = MediaPlayer.create(IntermediateQuestionsActivity.this, R.raw.correct_answer);
+        wrongSound = MediaPlayer.create(IntermediateQuestionsActivity.this, R.raw.wrong_answer);
+        finishSound = MediaPlayer.create(IntermediateQuestionsActivity.this, R.raw.end_game);
+        backgroundMusic = MediaPlayer.create(IntermediateQuestionsActivity.this, R.raw.background_music);
 
         al = new ArrayList<>();
         al.add(new QuestionIntermediate("intermediate", "1", R.drawable.question1_intermediate, 3, R.drawable.hidden_qn_solvent, R.drawable.question1_intermediate_solvent_correct, R.drawable.question1_intermediate_solvent_incorrect,
@@ -575,7 +575,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
             } else {
                 AlertDialog.Builder myBuilder = new AlertDialog.Builder(IntermediateQuestionsActivity.this);
                 myBuilder.setTitle("Sorry");
-                final View customLayout = getLayoutInflater().inflate(R.layout.custom_layout,null);
+                final View customLayout = getLayoutInflater().inflate(R.layout.custom_layout, null);
                 myBuilder.setView(customLayout);
                 editText = customLayout.findViewById(R.id.et_text);
                 if (currentQuestion.getQnCount() == 3) {
@@ -900,21 +900,21 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     choiceSound.start();
-                    MyCustomAlertDialog(1,numOfAnsForQn1);
+                    MyCustomAlertDialog(1, numOfAnsForQn1);
                 }
             });
             ivChoice2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     choiceSound.start();
-                    MyCustomAlertDialog(2,numOfAnsForQn2);
+                    MyCustomAlertDialog(2, numOfAnsForQn2);
                 }
             });
             ivChoice3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     choiceSound.start();
-                    MyCustomAlertDialog(3,4);
+                    MyCustomAlertDialog(3, 4);
                 }
             });
 
@@ -1131,8 +1131,8 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
         finishSound.start();
         Intent i = new Intent(IntermediateQuestionsActivity.this, ResultActivity.class);
         i.putExtra("score", score);
-        i.putExtra("difficulty",currentQuestion.getMode());
-        i.putExtra("username",editText.getText().toString());
+        i.putExtra("difficulty", currentQuestion.getMode());
+        i.putExtra("username", editText.getText().toString());
         startActivity(i);
     }
 }

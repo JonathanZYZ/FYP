@@ -185,7 +185,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
                 myBuilder.setTitle("Congratulations!");
                 myBuilder.setMessage("You selected the correct answer!");
                 myBuilder.setCancelable(false);
-                final View customLayout = getLayoutInflater().inflate(R.layout.custom_layout,null);
+                final View customLayout = getLayoutInflater().inflate(R.layout.custom_layout, null);
                 myBuilder.setView(customLayout);
                 editText = customLayout.findViewById(R.id.et_text);
                 myBuilder.setPositiveButton("Check Results", new DialogInterface.OnClickListener() {
@@ -202,14 +202,13 @@ public class EasyQuestionsActivity extends AppCompatActivity {
                 tvScore.setText("Score: " + score);
 
 
-
             } else {
                 streak = 0;
                 AlertDialog.Builder myBuilder = new AlertDialog.Builder(EasyQuestionsActivity.this);
                 myBuilder.setTitle("Sorry!");
                 myBuilder.setMessage("You selected the wrong answer!");
                 myBuilder.setCancelable(false);
-                final View customLayout = getLayoutInflater().inflate(R.layout.custom_layout,null);
+                final View customLayout = getLayoutInflater().inflate(R.layout.custom_layout, null);
                 myBuilder.setView(customLayout);
                 editText = customLayout.findViewById(R.id.et_text);
                 myBuilder.setPositiveButton("Check Results", new DialogInterface.OnClickListener() {
@@ -296,8 +295,8 @@ public class EasyQuestionsActivity extends AppCompatActivity {
 
         Intent intent = new Intent(EasyQuestionsActivity.this, ResultActivity.class);
         intent.putExtra("score", score);
-        intent.putExtra("difficulty",currentQuestion.getMode());
-        intent.putExtra("username",editText.getText().toString());
+        intent.putExtra("difficulty", currentQuestion.getMode());
+        intent.putExtra("username", editText.getText().toString());
         startActivity(intent);
         finish();
 

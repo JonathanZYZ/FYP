@@ -1,8 +1,11 @@
 package com.myapplicationdev.android.fyp.Questions;
 
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
 import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
@@ -34,7 +37,7 @@ public class ResultActivity extends AppCompatActivity {
     EditText editTextDialogUserName;
 
     TextView textViewHeading, textViewMyScore, textViewHighestScore, textViewDialogScore, textViewDialogDatePlayed;
-    Button btnPlayAgain, btnQuitGame,btnScoreboard;
+    Button btnPlayAgain, btnQuitGame, btnScoreboard;
     int myScore;
     String username;
     SharedPreferences sharedPreferences;
@@ -60,14 +63,28 @@ public class ResultActivity extends AppCompatActivity {
         myScore = getIntent().getIntExtra("score", 0);
         String score = String.valueOf(myScore);
         username = getIntent().getStringExtra("username");
-        // TODO: Init popup dialog view and it's ui controls.
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        date = sdf.format(new Date());
+
+
+        // TODO: defining the time for the user's playing date
+//        @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//
+//        //@SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+//        TimeZone tz = TimeZone.getTimeZone("SGT");
+//        sdf.setTimeZone(tz);
+//        date = sdf.format(new Date());
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
+        TimeZone tz = TimeZone.getTimeZone("Asia/Singapore");
+        sdf.setTimeZone(tz);
+
+        Date date = new java.util.Date();
+        // Timestamp local = new Timestamp(date.getTime());
+        String strDate = sdf.format(date);
 
         dbh = new DBHelper(ResultActivity.this);
 
-
-        long inserted_id = dbh.insertScoreBoard(username, score, date);
+        // TODO:  adding data into SQlite DB
+        long inserted_id = dbh.insertScoreBoard(username, score, strDate);
 
         dbh.close();
 
@@ -109,9 +126,9 @@ public class ResultActivity extends AppCompatActivity {
             Intent intent = new Intent();
             if (difficulty.equalsIgnoreCase("easy")) {
                 intent = new Intent(ResultActivity.this, EasyQuestionsActivity.class);
-            }else if (difficulty.equalsIgnoreCase("intermediate")) {
+            } else if (difficulty.equalsIgnoreCase("intermediate")) {
                 intent = new Intent(ResultActivity.this, IntermediateQuestionsActivity.class);
-            }else if (difficulty.equalsIgnoreCase("advanced")) {
+            } else if (difficulty.equalsIgnoreCase("advanced")) {
                 intent = new Intent(ResultActivity.this, AdvancedQuestionsActivity.class);
             }
             //Intent intent = new Intent(ResultActivity.this, DifficultySectionActivity.class);
@@ -120,13 +137,10 @@ public class ResultActivity extends AppCompatActivity {
 
 
         });
-        btnScoreboard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ResultActivity.this, ScoreboardActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        btnScoreboard.setOnClickListener(view -> {
+            Intent intent = new Intent(ResultActivity.this, ScoreboardActivity.class);
+            startActivity(intent);
+            finish();
         });
 
         btnQuitGame.setOnClickListener(v -> {
@@ -191,4 +205,4 @@ public class ResultActivity extends AppCompatActivity {
 //        });
 //
 //        MyDialog.show();
-    }
+}

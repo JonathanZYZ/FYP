@@ -44,56 +44,91 @@
             android:textColor="@color/white"
             android:textSize="30dp" />
 
+        <TableRow
+
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="UserId"
+                android:textColor="@color/white" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="Username"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="Score"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="Date Played"
+                android:textColor="@color/white" />
+        </TableRow>
+
         <ListView
             android:id="@+id/lvScoreBoardData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
 
-
-
-
         <!--        <TableLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:gravity="center_horizontal"-->
-<!--            >-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            android:gravity="center_horizontal"-->
+        <!--            >-->
 
-<!--            <TableRow-->
-<!--                android:background="#0079D6"-->
-<!--                android:gravity="center_horizontal"-->
-<!--                android:padding="5dp"-->
-<!--                android:textAlignment="center">-->
+        <!--            <TableRow-->
+        <!--                android:background="#0079D6"-->
+        <!--                android:gravity="center_horizontal"-->
+        <!--                android:padding="5dp"-->
+        <!--                android:textAlignment="center">-->
 
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:gravity="center_horizontal"-->
-<!--                    android:text="UserId" />-->
+        <!--                <TextView-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_weight="1"-->
+        <!--                    android:gravity="center_horizontal"-->
+        <!--                    android:text="UserId" />-->
 
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:gravity="center_horizontal"-->
-<!--                    android:text="Username" />-->
+        <!--                <TextView-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_weight="1"-->
+        <!--                    android:gravity="center_horizontal"-->
+        <!--                    android:text="Username" />-->
 
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:gravity="center_horizontal"-->
-<!--                    android:text="Score" />-->
+        <!--                <TextView-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_weight="1"-->
+        <!--                    android:gravity="center_horizontal"-->
+        <!--                    android:text="Score" />-->
 
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:gravity="center_horizontal"-->
-<!--                    android:text="Date Played" />-->
-<!--            </TableRow>-->
-<!--        </TableLayout>-->
+        <!--                <TextView-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_weight="1"-->
+        <!--                    android:gravity="center_horizontal"-->
+        <!--                    android:text="Date Played" />-->
+        <!--            </TableRow>-->
+        <!--        </TableLayout>-->
     </TableLayout>
 
 

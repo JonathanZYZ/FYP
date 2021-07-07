@@ -16,7 +16,6 @@ import java.util.ArrayList;
 
 public class ScoreboardAdapter extends ArrayAdapter<ScoreBoard> {
 
-
     Context context;
     ArrayList<ScoreBoard> scoreBoards;
     int resource;
@@ -29,6 +28,7 @@ public class ScoreboardAdapter extends ArrayAdapter<ScoreBoard> {
         this.resource = resource;
     }
 
+    @SuppressLint("DefaultLocale")
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context
@@ -53,12 +53,10 @@ public class ScoreboardAdapter extends ArrayAdapter<ScoreBoard> {
         String score = scoreBoard.getScore();
         String date = scoreBoard.getDate();
 
-
-        TextViewUserID.setText(id);
+        TextViewUserID.setText(String.format("%d", id));
         TextViewUsername.setText(username);
         TextViewScore.setText(score);
         TextViewDatePlayed.setText(date);
-
 
         return rowView;
     }

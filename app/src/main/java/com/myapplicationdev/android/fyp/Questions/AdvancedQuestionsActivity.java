@@ -26,16 +26,16 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
 
     Button btnStart;
     TextView tvQuestionsNumber, tvScore;
-    ImageView ivQuestion, ivChoice1, ivChoice2,ivDidYouKnow;
+    ImageView ivQuestion, ivChoice1, ivChoice2, ivDidYouKnow;
     QuestionAdvanced currentQuestion;
     ArrayList<QuestionAdvanced> al;
     DBHelper dbh = new DBHelper(AdvancedQuestionsActivity.this);
     SharedPreferences sharedPreferences;
     int questionCounter, questionCountTotal;
-    int ans1, ans2,streak;
+    int ans1, ans2, streak;
     int score, numOfAnsForQn1, numOfAnsForQn2;
     boolean answered;
-    MediaPlayer choiceSound,correctSound,wrongSound,finishSound,backgroundMusic;
+    MediaPlayer choiceSound, correctSound, wrongSound, finishSound, backgroundMusic;
     EditText editText;
 
     @SuppressLint("SetTextI18n")
@@ -53,11 +53,11 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
         ivChoice2 = findViewById(R.id.ivChoiceAdvancedQn2);
         ivDidYouKnow = findViewById(R.id.ivDidYouKnow);
 
-        choiceSound = MediaPlayer.create(AdvancedQuestionsActivity.this,R.raw.answer_click);
-        correctSound = MediaPlayer.create(AdvancedQuestionsActivity.this,R.raw.correct_answer);
-        wrongSound = MediaPlayer.create(AdvancedQuestionsActivity.this,R.raw.wrong_answer);
-        finishSound = MediaPlayer.create(AdvancedQuestionsActivity.this,R.raw.end_game);
-        backgroundMusic = MediaPlayer.create(AdvancedQuestionsActivity.this,R.raw.background_music);
+        choiceSound = MediaPlayer.create(AdvancedQuestionsActivity.this, R.raw.answer_click);
+        correctSound = MediaPlayer.create(AdvancedQuestionsActivity.this, R.raw.correct_answer);
+        wrongSound = MediaPlayer.create(AdvancedQuestionsActivity.this, R.raw.wrong_answer);
+        finishSound = MediaPlayer.create(AdvancedQuestionsActivity.this, R.raw.end_game);
+        backgroundMusic = MediaPlayer.create(AdvancedQuestionsActivity.this, R.raw.background_music);
 
 //  TODO: When the user clicks the "did you know?" icon on the screen, text messages are prepared for them.
         String didYouKnowIconMsgQ1 = "Tamoxifen's main skeleton is a tertiary alcohol. The starting material is treated with sulfuric acid, and acid catalyzed dehydration takes place. Alcohol group protonation makes it a good leaving group, and E1 reactions occur when a tertiary carbocation is formed prior to Tamoxifen formation (Z isomer).\n" +
@@ -120,64 +120,63 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
                 AlertDialog.Builder myBuilder = new AlertDialog.Builder(AdvancedQuestionsActivity.this);
                 myBuilder.setTitle("Sorry");
                 if (currentQuestion.getQnCount() == 2) {
-                        if (ans1 == currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2()) {
-                            correctSound.start();
-                            streak += 1;
-                            score++;
-                            if (streak == 5) {
-                                myBuilder.setTitle("Congratulations!!");
-                                myBuilder.setMessage("You have answered 5 questions correctly in a row! Would you like to continue or check your results?");
-                                myBuilder.setCancelable(false);
-                                //myBuilder.setPositiveButton("Next", (dialogInterface, i) -> Intent intent = new Intent(IntermediateQuestionsActivity.this,AdvancedQuestionsActivity));
-                                myBuilder.setPositiveButton("Continue", (dialogInterface, i) -> {
-                                    streak = 0;
-                                    showNextQuestion();
-                                });
-                                myBuilder.setNegativeButton("Check Results", (dialogInterface, i) -> finishQuiz());
-
-                                AlertDialog myDialog = myBuilder.create();
-                                myDialog.show();
-
-                            } else {
-                                myBuilder.setTitle("Congratulations!!");
-                                myBuilder.setMessage("You selected the correct answer!");
-                                myBuilder.setCancelable(false);
-                                myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
-
-                                AlertDialog myDialog = myBuilder.create();
-                                myDialog.show();
-
-                                tvScore.setText("Score: " + score);
-                            }
-                        } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2()) {
-                            wrongSound.start();
-                            streak = 0;
-                            myBuilder.setMessage("You selected the wrong answer for Question 1!");
+                    if (ans1 == currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2()) {
+                        correctSound.start();
+                        streak += 1;
+                        score++;
+                        if (streak == 5) {
+                            myBuilder.setTitle("Congratulations!!");
+                            myBuilder.setMessage("You have answered 5 questions correctly in a row! Would you like to continue or check your results?");
                             myBuilder.setCancelable(false);
-                            myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
+                            //myBuilder.setPositiveButton("Next", (dialogInterface, i) -> Intent intent = new Intent(IntermediateQuestionsActivity.this,AdvancedQuestionsActivity));
+                            myBuilder.setPositiveButton("Continue", (dialogInterface, i) -> {
+                                streak = 0;
+                                showNextQuestion();
+                            });
+                            myBuilder.setNegativeButton("Check Results", (dialogInterface, i) -> finishQuiz());
 
                             AlertDialog myDialog = myBuilder.create();
                             myDialog.show();
-                        } else if (ans1 == currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum2()) {
-                            wrongSound.start();
-                            streak = 0;
-                            myBuilder.setMessage("You selected the wrong answer for Question 2!");
-                            myBuilder.setCancelable(false);
-                            myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
-                            AlertDialog myDialog = myBuilder.create();
-                            myDialog.show();
                         } else {
-                            wrongSound.start();
-                            streak = 0;
-                            myBuilder.setMessage("You selected the wrong answer for all Questions!");
+                            myBuilder.setTitle("Congratulations!!");
+                            myBuilder.setMessage("You selected the correct answer!");
                             myBuilder.setCancelable(false);
                             myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
                             AlertDialog myDialog = myBuilder.create();
                             myDialog.show();
-                        }
 
+                            tvScore.setText("Score: " + score);
+                        }
+                    } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2()) {
+                        wrongSound.start();
+                        streak = 0;
+                        myBuilder.setMessage("You selected the wrong answer for Question 1!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
+
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+                    } else if (ans1 == currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum2()) {
+                        wrongSound.start();
+                        streak = 0;
+                        myBuilder.setMessage("You selected the wrong answer for Question 2!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
+
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+                    } else {
+                        wrongSound.start();
+                        streak = 0;
+                        myBuilder.setMessage("You selected the wrong answer for all Questions!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
+
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+                    }
 
 
                 } else if (currentQuestion.getQnCount() == 1) {
@@ -230,48 +229,47 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
             } else {
                 AlertDialog.Builder myBuilder = new AlertDialog.Builder(AdvancedQuestionsActivity.this);
                 myBuilder.setTitle("Sorry");
-                final View customLayout = getLayoutInflater().inflate(R.layout.custom_layout,null);
+                final View customLayout = getLayoutInflater().inflate(R.layout.custom_layout, null);
                 myBuilder.setView(customLayout);
                 editText = customLayout.findViewById(R.id.et_text);
                 if (currentQuestion.getQnCount() == 2) {
-                        if (ans1 == currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2()) {
-                            correctSound.start();
-                            myBuilder.setTitle("Congratulations!!");
-                            myBuilder.setMessage("You selected the correct answer!");
-                            myBuilder.setCancelable(false);
-                            myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
+                    if (ans1 == currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2()) {
+                        correctSound.start();
+                        myBuilder.setTitle("Congratulations!!");
+                        myBuilder.setMessage("You selected the correct answer!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
 
-                            AlertDialog myDialog = myBuilder.create();
-                            myDialog.show();
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
 
-                            score++;
-                            tvScore.setText("Score: " + score);
-                        } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2()) {
-                            wrongSound.start();
-                            myBuilder.setMessage("You selected the wrong answer for Question 1!");
-                            myBuilder.setCancelable(false);
-                            myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
+                        score++;
+                        tvScore.setText("Score: " + score);
+                    } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2()) {
+                        wrongSound.start();
+                        myBuilder.setMessage("You selected the wrong answer for Question 1!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
 
-                            AlertDialog myDialog = myBuilder.create();
-                            myDialog.show();
-                        } else if (ans1 == currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum2()) {
-                            wrongSound.start();
-                            myBuilder.setMessage("You selected the wrong answer for Question 2!");
-                            myBuilder.setCancelable(false);
-                            myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+                    } else if (ans1 == currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum2()) {
+                        wrongSound.start();
+                        myBuilder.setMessage("You selected the wrong answer for Question 2!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
 
-                            AlertDialog myDialog = myBuilder.create();
-                            myDialog.show();
-                        } else {
-                            wrongSound.start();
-                            myBuilder.setMessage("You selected the wrong answer for all Questions!");
-                            myBuilder.setCancelable(false);
-                            myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+                    } else {
+                        wrongSound.start();
+                        myBuilder.setMessage("You selected the wrong answer for all Questions!");
+                        myBuilder.setCancelable(false);
+                        myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
 
-                            AlertDialog myDialog = myBuilder.create();
-                            myDialog.show();
-                        }
-
+                        AlertDialog myDialog = myBuilder.create();
+                        myDialog.show();
+                    }
 
 
                 } else if (currentQuestion.getQnCount() == 1) {
@@ -321,20 +319,20 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
                     numOfAnsForQn1 = currentQuestion.getNumOfQuestions1();
                 }
             } else if (currentQuestion.getQnCount() == 2) {
-                    ivChoice1.setImageResource(currentQuestion.getQn1Image());
-                    numOfAnsForQn1 = currentQuestion.getNumOfQuestions1();
-                    ivChoice2.setImageResource(currentQuestion.getQn2Image());
-                    numOfAnsForQn2 = currentQuestion.getNumOfQuestions2();
+                ivChoice1.setImageResource(currentQuestion.getQn1Image());
+                numOfAnsForQn1 = currentQuestion.getNumOfQuestions1();
+                ivChoice2.setImageResource(currentQuestion.getQn2Image());
+                numOfAnsForQn2 = currentQuestion.getNumOfQuestions2();
 
             }
 
             ivChoice1.setOnClickListener(view -> {
                 choiceSound.start();
-                MyCustomAlertDialog(1,numOfAnsForQn1);
+                MyCustomAlertDialog(1, numOfAnsForQn1);
             });
             ivChoice2.setOnClickListener(view -> {
                 choiceSound.start();
-                MyCustomAlertDialog(2,numOfAnsForQn2);
+                MyCustomAlertDialog(2, numOfAnsForQn2);
             });
 
 
@@ -421,7 +419,7 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
                 if (numOfAns == 2) {
                     ans1 = 2;
                     ivChoice1.setImageResource(currentQuestion.getAns1Image2());
-                }else if (numOfAns == 4) {
+                } else if (numOfAns == 4) {
                     ans1 = 2;
                     ivChoice1.setImageResource(currentQuestion.getAns1Image2());
                 }
@@ -484,8 +482,8 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
         finishSound.start();
         Intent i = new Intent(AdvancedQuestionsActivity.this, ResultActivity.class);
         i.putExtra("score", score);
-        i.putExtra("difficulty",currentQuestion.getMode());
-        i.putExtra("username",editText.getText().toString());
+        i.putExtra("difficulty", currentQuestion.getMode());
+        i.putExtra("username", editText.getText().toString());
         startActivity(i);
     }
 
