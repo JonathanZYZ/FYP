@@ -2,12 +2,10 @@ package com.myapplicationdev.android.fyp.Questions;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -17,9 +15,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.myapplicationdev.android.fyp.Model.QuestionAdvanced;
-import com.myapplicationdev.android.fyp.Model.QuestionIntermediate;
 import com.myapplicationdev.android.fyp.R;
-import com.myapplicationdev.android.fyp.ResultActivity;
 import com.myapplicationdev.android.fyp.Utilities.DBHelper;
 
 import java.util.ArrayList;
@@ -85,7 +81,7 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
 
         al = new ArrayList<>();
 
-        questionCountTotal = al.size();
+        questionCountTotal = 0;
         Intent i = getIntent();
         int currentQnNum = i.getIntExtra("questionNum", 0);
         int currentScore = i.getIntExtra("score", 0);
@@ -95,11 +91,8 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
         }
         tvQuestionsNumber.setText("Question: " + questionCounter + "/" + questionCountTotal);
         tvScore.setText("Score: " + score);
-        btnStart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        btnStart.setOnClickListener(view -> {
 
-            }
         });
 
 
@@ -137,12 +130,7 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
                                     streak = 0;
                                     showNextQuestion();
                                 });
-                                myBuilder.setNegativeButton("Check Results", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        finishQuiz();
-                                    }
-                                });
+                                myBuilder.setNegativeButton("Check Results", (dialogInterface, i) -> finishQuiz());
 
                                 AlertDialog myDialog = myBuilder.create();
                                 myDialog.show();
@@ -205,12 +193,7 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
                                     streak = 0;
                                     showNextQuestion();
                                 });
-                                myBuilder.setNegativeButton("Check Results", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        finishQuiz();
-                                    }
-                                });
+                                myBuilder.setNegativeButton("Check Results", (dialogInterface, i) -> finishQuiz());
 
                                 AlertDialog myDialog = myBuilder.create();
                                 myDialog.show();
@@ -339,19 +322,13 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
 
             }
 
-            ivChoice1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    choiceSound.start();
-                    MyCustomAlertDialog(1,numOfAnsForQn1);
-                }
+            ivChoice1.setOnClickListener(view -> {
+                choiceSound.start();
+                MyCustomAlertDialog(1,numOfAnsForQn1);
             });
-            ivChoice2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    choiceSound.start();
-                    MyCustomAlertDialog(2,numOfAnsForQn2);
-                }
+            ivChoice2.setOnClickListener(view -> {
+                choiceSound.start();
+                MyCustomAlertDialog(2,numOfAnsForQn2);
             });
 
 

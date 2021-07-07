@@ -1,6 +1,5 @@
 package com.myapplicationdev.android.fyp.Utilities;
 
-import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -10,9 +9,7 @@ import android.util.Log;
 
 import com.myapplicationdev.android.fyp.Model.ScoreBoard;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class DBHelper extends SQLiteOpenHelper {
 
@@ -38,7 +35,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + COLUMN_USERNAME + " TEXT,"
                 + COLUMN_SCORE + " TEXT,"
-                + COLUMN_DATE + " DATETIME DEFAULT CURRENT_TIMESTAMP )";
+                + COLUMN_DATE + " TEXT )";
         // Create the table with a default settings to put current datetime automatically ^
 
 
@@ -86,20 +83,16 @@ public class DBHelper extends SQLiteOpenHelper {
 
         values.put(COLUMN_USERNAME, username);
         values.put(COLUMN_SCORE, score);
-
-
-        // Create SimpleDateFormat and convert current date into SQL format string
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        date = sdf.format(new Date());
-
         values.put(COLUMN_DATE, date);
 
 
         long result = db.insert(TABLE_SCOREBOARD, null, values);
-
-
         db.close();
-        Log.d("SQL Insert", "ID:" + result); //id returned, shouldn’t be -1
+        if (result == -1) {
+            Log.d("DBHelper", "Insert failed");
+        } else {
+            Log.d("SQL Insert", "ID:" + result);
+        }
         return result;
     }
 

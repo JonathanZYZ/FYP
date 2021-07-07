@@ -18,7 +18,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.myapplicationdev.android.fyp.MainActivity;
 import com.myapplicationdev.android.fyp.Model.QuestionEasy;
 import com.myapplicationdev.android.fyp.R;
-import com.myapplicationdev.android.fyp.ResultActivity;
 import com.myapplicationdev.android.fyp.Utilities.DBHelper;
 
 import java.util.ArrayList;
@@ -245,7 +244,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
 
     private void finishQuiz() {
 //        finish();
-        //  Intent finishBasicMode_to_leaderboard = new Intent(QuestionsActivity.this, LeaderboardActivity.class);
+        //  Intent finishBasicMode_to_leaderboard = new Intent(QuestionsActivity.this, ScoreboardActivity.class);
 
         Intent intent = new Intent(EasyQuestionsActivity.this, ResultActivity.class);
         intent.putExtra("score", score);

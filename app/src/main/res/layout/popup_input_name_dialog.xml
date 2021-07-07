@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+
+
+    android:paddingTop="20dp">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <TextView
+            android:gravity="end"
+            android:text="Username : " />
+
+        <EditText
+            android:id="@+id/editTextDialogUserName"
+            android:autofillHints="Please enter your username."
+            android:hint="Please enter your username."
+            android:inputType="textPersonName" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:paddingTop="10dp">
+
+        <TextView
+            android:gravity="end"
+            android:text="Score : " />
+
+        <TextView
+            android:id="@+id/textViewDialogScore"
+            android:text="Score"
+            tools:ignore="DuplicateIds" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:paddingTop="10dp">
+
+        <TextView
+            android:gravity="end"
+            android:text="Date Played : " />
+
+        <TextView
+            android:id="@+id/textViewDialogDatePlayed"
+            android:text="Date Played"
+            tools:ignore="DuplicateIds" />
+
+    </TableRow>
+
+
+    <TableRow android:gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/buttonCancelUserData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center_horizontal"
+            android:text="Cancel"
+            android:textAllCaps="false"
+            android:textSize="20sp" />
+
+
+        <Button
+            android:id="@+id/buttonSaveUserData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center_horizontal"
+            android:text="Save User Data"
+            android:textAllCaps="false"
+            android:textSize="20sp" />
+
+    </TableRow>
+</TableLayout>

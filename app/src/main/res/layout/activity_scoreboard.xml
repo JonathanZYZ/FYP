@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background2"
+    android:orientation="vertical">
+    <!--TODO:    Done by Zuhaili and Shufang-->
+
+    <Button
+        android:id="@+id/btnHome"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="top|left"
+        android:layout_margin="10dp"
+        android:background="@drawable/ic_baseline_home_24"
+        android:textSize="20sp"
+        tools:ignore="RtlHardcoded" />
+
+    <TableLayout
+        android:layout_width="380dp"
+        android:layout_height="500dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="#F686BD"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="SCOREBOARD"
+            android:textColor="@color/white"
+            android:textSize="40dp" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:gravity="center_horizontal"
+            android:text="Score Ranking"
+            android:textColor="@color/white"
+            android:textSize="30dp" />
+
+        <ListView
+            android:id="@+id/lvScoreBoardData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+
+
+
+        <!--        <TableLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            >-->
+
+<!--            <TableRow-->
+<!--                android:background="#0079D6"-->
+<!--                android:gravity="center_horizontal"-->
+<!--                android:padding="5dp"-->
+<!--                android:textAlignment="center">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:gravity="center_horizontal"-->
+<!--                    android:text="UserId" />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:gravity="center_horizontal"-->
+<!--                    android:text="Username" />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:gravity="center_horizontal"-->
+<!--                    android:text="Score" />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:gravity="center_horizontal"-->
+<!--                    android:text="Date Played" />-->
+<!--            </TableRow>-->
+<!--        </TableLayout>-->
+    </TableLayout>
+
+
+</LinearLayout>

@@ -49,7 +49,7 @@
             android:name=".NegativelyQuitedActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".ResultActivity"
+            android:name=".Questions.ResultActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".NegativeResultActivity"
@@ -73,7 +73,7 @@
             android:name=".StartQuizActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".LeaderboardActivity"
+            android:name=".Scoreboards.ScoreboardActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".AdvancedModeActivity"

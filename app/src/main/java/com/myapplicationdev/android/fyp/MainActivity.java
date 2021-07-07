@@ -9,6 +9,8 @@ import android.widget.Button;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.myapplicationdev.android.fyp.Scoreboards.ScoreboardActivity;
+
 
 public class MainActivity extends AppCompatActivity {
     Button btnStart, btnRevision, btnHowToPlay, btnSettings, btnLeaderBoard;
@@ -55,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         btnLeaderBoard.setOnClickListener(view -> {
-            Intent i = new Intent(MainActivity.this, LeaderboardActivity.class);
+            Intent i = new Intent(MainActivity.this, ScoreboardActivity.class);
             startActivity(i);
             mediaPlayer.start();
         });
