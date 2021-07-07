@@ -2,11 +2,14 @@ package com.myapplicationdev.android.fyp.Questions;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -33,6 +36,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
     DBHelper dbh = new DBHelper(EasyQuestionsActivity.this);
     String mode;
     SharedPreferences sharedPreferences;
+    EditText editText;
     int ans;
     int score = 0;
     int streak;
@@ -67,6 +71,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
         al.add(new QuestionEasy("basic", "9", R.drawable.question9_basic, R.drawable.question9_basic_correct, R.drawable.question9_basic_incorrect, 1));
 
         questionCountTotal = al.size();
+        btnStart.setText("Confirm");
 
         showNextQuestion();
 
@@ -116,56 +121,107 @@ public class EasyQuestionsActivity extends AppCompatActivity {
 
 //        RadioButton rbSelected = findViewById(group.getCheckedRadioButtonId());
 //        int answer_number = group.indexOfChild(rbSelected) + 1;
+        if (questionCounter < questionCountTotal) {
+            if (ans == currentQuestion.getAnswerNum()) {
+                streak += 1;
+                score++;
+                if (streak == 5) {
+                    AlertDialog.Builder myBuilder = new AlertDialog.Builder(EasyQuestionsActivity.this);
+                    myBuilder.setTitle("Congratulations!");
+                    myBuilder.setMessage("You have answered 5 questions correctly in a row! We would like to test you further by bringing you to the intermediate Level! GoodLuck!");
+                    myBuilder.setCancelable(false);
+                    myBuilder.setPositiveButton("Proceed to Intermediate Mode", (dialogInterface, i) -> {
+                        Intent intent = new Intent(EasyQuestionsActivity.this, IntermediateQuestionsActivity.class);
+                        intent.putExtra("score", score);
+                        intent.putExtra("questionNum", questionCounter + 1);
+                        startActivity(intent);
+                    });
 
-        if (ans == currentQuestion.getAnswerNum()) {
-            streak += 1;
-            score++;
-            if (streak == 5) {
+                    AlertDialog myDialog = myBuilder.create();
+                    myDialog.show();
+                } else {
+                    AlertDialog.Builder myBuilder = new AlertDialog.Builder(EasyQuestionsActivity.this);
+                    myBuilder.setTitle("Congratulations!");
+                    myBuilder.setMessage("You selected the correct answer!");
+                    myBuilder.setCancelable(false);
+                    myBuilder.setPositiveButton("Next Question", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            showNextQuestion();
+                        }
+                    });
+
+                    AlertDialog myDialog = myBuilder.create();
+                    myDialog.show();
+
+
+                    tvScore.setText("Score: " + score);
+                }
+
+
+            } else {
+                streak = 0;
                 AlertDialog.Builder myBuilder = new AlertDialog.Builder(EasyQuestionsActivity.this);
-                myBuilder.setTitle("Congratulations!");
-                myBuilder.setMessage("You have answered 5 questions correctly in a row! We would like to test you further by bringing you to the intermediate Level! GoodLuck!");
+                myBuilder.setTitle("Sorry!");
+                myBuilder.setMessage("You selected the wrong answer!");
                 myBuilder.setCancelable(false);
-                myBuilder.setPositiveButton("Proceed to Intermediate Mode", (dialogInterface, i) -> {
-                    Intent intent = new Intent(EasyQuestionsActivity.this, IntermediateQuestionsActivity.class);
-                    intent.putExtra("score", score);
-                    intent.putExtra("questionNum", questionCounter + 1);
-                    startActivity(intent);
+                myBuilder.setPositiveButton("Next Question", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        showNextQuestion();
+                    }
                 });
 
                 AlertDialog myDialog = myBuilder.create();
                 myDialog.show();
-            } else {
+            }
+
+            // There are 9 basic questions. If current question is not at question 9, set text "Next Questions" else set text "Finish Quiz".
+        } else {
+            if (ans == currentQuestion.getAnswerNum()) {
+                score++;
+
                 AlertDialog.Builder myBuilder = new AlertDialog.Builder(EasyQuestionsActivity.this);
                 myBuilder.setTitle("Congratulations!");
                 myBuilder.setMessage("You selected the correct answer!");
                 myBuilder.setCancelable(false);
-                myBuilder.setPositiveButton("Dismiss", null);
+                final View customLayout = getLayoutInflater().inflate(R.layout.custom_layout,null);
+                myBuilder.setView(customLayout);
+                editText = customLayout.findViewById(R.id.et_text);
+                myBuilder.setPositiveButton("Check Results", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finishQuiz();
+                    }
+                });
 
                 AlertDialog myDialog = myBuilder.create();
                 myDialog.show();
 
 
                 tvScore.setText("Score: " + score);
+
+
+
+            } else {
+                streak = 0;
+                AlertDialog.Builder myBuilder = new AlertDialog.Builder(EasyQuestionsActivity.this);
+                myBuilder.setTitle("Sorry!");
+                myBuilder.setMessage("You selected the wrong answer!");
+                myBuilder.setCancelable(false);
+                final View customLayout = getLayoutInflater().inflate(R.layout.custom_layout,null);
+                myBuilder.setView(customLayout);
+                editText = customLayout.findViewById(R.id.et_text);
+                myBuilder.setPositiveButton("Check Results", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finishQuiz();
+                    }
+                });
+
+                AlertDialog myDialog = myBuilder.create();
+                myDialog.show();
             }
-
-
-        } else {
-            streak = 0;
-            AlertDialog.Builder myBuilder = new AlertDialog.Builder(EasyQuestionsActivity.this);
-            myBuilder.setTitle("Sorry!");
-            myBuilder.setMessage("You selected the wrong answer!");
-            myBuilder.setCancelable(false);
-            myBuilder.setPositiveButton("Dismiss", null);
-
-            AlertDialog myDialog = myBuilder.create();
-            myDialog.show();
-        }
-
-        // There are 9 basic questions. If current question is not at question 9, set text "Next Questions" else set text "Finish Quiz".
-        if (questionCounter < questionCountTotal) {
-            btnStart.setText("Next Question");
-        } else {
-            btnStart.setText("Finish Quiz");
         }
     }
 
@@ -228,16 +284,8 @@ public class EasyQuestionsActivity extends AppCompatActivity {
             ivChoiceBasicQn.setImageResource(currentQuestion.getOption2Reaction());
             MyDialog.cancel();
         });
-
-        ivUserChoice3.setOnClickListener(view -> {
-
-        });
-
-        ivUserChoice4.setOnClickListener(view -> {
-
-        });
-
         MyDialog.show();
+
 
     }
 
@@ -248,6 +296,8 @@ public class EasyQuestionsActivity extends AppCompatActivity {
 
         Intent intent = new Intent(EasyQuestionsActivity.this, ResultActivity.class);
         intent.putExtra("score", score);
+        intent.putExtra("difficulty",currentQuestion.getMode());
+        intent.putExtra("username",editText.getText().toString());
         startActivity(intent);
         finish();
 

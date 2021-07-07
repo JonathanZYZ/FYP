@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -34,6 +36,7 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
     int score, numOfAnsForQn1, numOfAnsForQn2;
     boolean answered;
     MediaPlayer choiceSound,correctSound,wrongSound,finishSound,backgroundMusic;
+    EditText editText;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -227,6 +230,9 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
             } else {
                 AlertDialog.Builder myBuilder = new AlertDialog.Builder(AdvancedQuestionsActivity.this);
                 myBuilder.setTitle("Sorry");
+                final View customLayout = getLayoutInflater().inflate(R.layout.custom_layout,null);
+                myBuilder.setView(customLayout);
+                editText = customLayout.findViewById(R.id.et_text);
                 if (currentQuestion.getQnCount() == 2) {
                         if (ans1 == currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2()) {
                             correctSound.start();
@@ -478,6 +484,8 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
         finishSound.start();
         Intent i = new Intent(AdvancedQuestionsActivity.this, ResultActivity.class);
         i.putExtra("score", score);
+        i.putExtra("difficulty",currentQuestion.getMode());
+        i.putExtra("username",editText.getText().toString());
         startActivity(i);
     }
 

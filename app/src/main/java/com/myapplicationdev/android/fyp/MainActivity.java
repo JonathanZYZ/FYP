@@ -69,15 +69,11 @@ public class MainActivity extends AppCompatActivity {
         backgroundMusic.setLooping(true);
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        backgroundMusic.pause();
-    }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        backgroundMusic.stop();
        AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
        alertDialog.setTitle("Are you sure you want to exit?");
        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -97,4 +93,5 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog myDialog = alertDialog.create();
         myDialog.show();
     }
+
 }

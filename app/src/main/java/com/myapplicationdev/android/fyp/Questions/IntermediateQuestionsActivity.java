@@ -10,12 +10,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.myapplicationdev.android.fyp.MainActivity;
 import com.myapplicationdev.android.fyp.Models.QuestionIntermediate;
 import com.myapplicationdev.android.fyp.R;
 import com.myapplicationdev.android.fyp.Utilities.DBHelper;
@@ -37,6 +39,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
     DBHelper dbh = new DBHelper(IntermediateQuestionsActivity.this);
     SharedPreferences sharedPreferences;
     MediaPlayer choiceSound,correctSound,wrongSound,finishSound,backgroundMusic;
+    EditText editText;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -572,6 +575,9 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
             } else {
                 AlertDialog.Builder myBuilder = new AlertDialog.Builder(IntermediateQuestionsActivity.this);
                 myBuilder.setTitle("Sorry");
+                final View customLayout = getLayoutInflater().inflate(R.layout.custom_layout,null);
+                myBuilder.setView(customLayout);
+                editText = customLayout.findViewById(R.id.et_text);
                 if (currentQuestion.getQnCount() == 3) {
                     if (ans1 == currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2() && ans3 == currentQuestion.getCorrectNum3()) {
                         correctSound.start();
@@ -1125,6 +1131,8 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
         finishSound.start();
         Intent i = new Intent(IntermediateQuestionsActivity.this, ResultActivity.class);
         i.putExtra("score", score);
+        i.putExtra("difficulty",currentQuestion.getMode());
+        i.putExtra("username",editText.getText().toString());
         startActivity(i);
     }
 }

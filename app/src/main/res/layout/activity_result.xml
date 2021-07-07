@@ -58,9 +58,20 @@
         android:layout_width="300dp"
         android:layout_height="80dp"
         android:layout_gravity="center"
-        android:layout_margin="30dp"
+        android:layout_margin="15dp"
         android:background="@drawable/btn_design"
         android:text="Play Again"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btnScoreBoard"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:layout_margin="15dp"
+        android:background="@drawable/btn_design"
+        android:text="Scoreboard"
         android:textColor="@color/white"
         android:textSize="20sp" />
 
@@ -69,12 +80,11 @@
         android:layout_width="300dp"
         android:layout_height="80dp"
         android:layout_gravity="center"
-        android:layout_margin="30dp"
+        android:layout_margin="15dp"
         android:background="@drawable/btn_design"
         android:text="Quit Game"
         android:textColor="@color/white"
         android:textSize="20sp" />
-
 
 
 </LinearLayout>

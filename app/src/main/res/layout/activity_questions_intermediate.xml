@@ -72,25 +72,28 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:layout_weight="2"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/border">
 
         <ImageView
             android:id="@+id/ivChoiceQn2"
-            android:layout_width="130dp"
-            android:layout_height="150dp"
-            app:srcCompat="@drawable/option1" />
+            android:layout_width="120dp"
+            android:layout_height="160dp"
+            app:srcCompat="@drawable/hidden_qn_carbocation" />
 
         <ImageView
             android:id="@+id/ivChoiceQn1"
-            android:layout_width="130dp"
-            android:layout_height="150dp"
-            app:srcCompat="@drawable/option2" />
+            android:layout_width="120dp"
+            android:layout_height="160dp"
+            app:srcCompat="@drawable/hidden_qn_leavinggroup" />
 
         <ImageView
             android:id="@+id/ivChoiceQn3"
-            android:layout_width="130dp"
-            android:layout_height="150dp"
-            app:srcCompat="@drawable/option2" />
+            android:layout_width="120dp"
+            android:layout_height="160dp"
+            app:srcCompat="@drawable/hidden_qn_product" />
     </LinearLayout>
 
     <LinearLayout
