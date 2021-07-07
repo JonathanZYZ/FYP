@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.myapplicationdev.android.fyp.Model.ScoreBoard;
+import com.myapplicationdev.android.fyp.Models.ScoreBoard;
 
 import java.util.ArrayList;
 

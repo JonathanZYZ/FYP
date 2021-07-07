@@ -16,7 +16,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.myapplicationdev.android.fyp.MainActivity;
-import com.myapplicationdev.android.fyp.Model.QuestionEasy;
+import com.myapplicationdev.android.fyp.Models.QuestionEasy;
 import com.myapplicationdev.android.fyp.R;
 import com.myapplicationdev.android.fyp.Utilities.DBHelper;
 

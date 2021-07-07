@@ -14,7 +14,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.myapplicationdev.android.fyp.Model.QuestionAdvanced;
+import com.myapplicationdev.android.fyp.Models.QuestionAdvanced;
 import com.myapplicationdev.android.fyp.R;
 import com.myapplicationdev.android.fyp.Utilities.DBHelper;
 

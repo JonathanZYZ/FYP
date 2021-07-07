@@ -1,4 +1,4 @@
-package com.myapplicationdev.android.fyp.Model;
+package com.myapplicationdev.android.fyp.Models;
 
 import java.io.Serializable;
 

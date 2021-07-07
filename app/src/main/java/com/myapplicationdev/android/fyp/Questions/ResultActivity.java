@@ -94,6 +94,16 @@ public class ResultActivity extends AppCompatActivity {
 
         });
 
+        // setting Data for popup dialog textViewDialogScore
+        textViewDialogScore.setText(myScore);
+
+        // Create SimpleDateFormat and convert current date into SQL format string
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String date = sdf.format(new Date());
+
+        // setting Data for popup dialog textViewDialogScore
+        textViewDialogDatePlayed.setText(date);
+
         btnQuitGame.setOnClickListener(v -> {
 
 
@@ -111,16 +121,6 @@ public class ResultActivity extends AppCompatActivity {
             final AlertDialog alertDialog = alertDialogBuilder.create();
             alertDialog.show();
 
-
-            // setting Data for popup dialog textViewDialogScore
-            textViewDialogScore.setText(myScore);
-
-            // Create SimpleDateFormat and convert current date into SQL format string
-            @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            String date = sdf.format(new Date());
-
-            // setting Data for popup dialog textViewDialogScore
-            textViewDialogDatePlayed.setText(date);
 
 
 // TODO: when user click the save user data button in the popup dialog.
