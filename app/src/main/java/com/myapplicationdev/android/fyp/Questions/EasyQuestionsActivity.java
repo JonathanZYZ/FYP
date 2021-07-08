@@ -30,7 +30,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
     TextView tvQuestionsNumber, tvScore;
     RadioGroup group;
     RadioButton rdReaction_Option1, rdReaction_Option2;
-    ImageView ivQuestion, btnExit, ivChoiceBasicQn;
+    ImageView ivQuestion, btnExit, ivChoiceBasicQn,ivHints;
     ArrayList<QuestionEasy> al;
     QuestionEasy currentQuestion;
     DBHelper dbh = new DBHelper(EasyQuestionsActivity.this);
@@ -42,7 +42,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
     int streak;
     int questionCounter, questionCountTotal;
     boolean answered;
-
+    String[] hints;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +57,11 @@ public class EasyQuestionsActivity extends AppCompatActivity {
 //        rdReaction_Option2 = findViewById(R.id.radioButtonOption2);
         ivChoiceBasicQn = findViewById(R.id.ivChoiceBasicQn);
         ivQuestion = findViewById(R.id.ivQuestions);
+        ivHints = findViewById(R.id.ivHints);
         btnExit = findViewById(R.id.btnExit);
-
+        hints = new String[]{"Starting material has less steric hinderance.","Starting material has less steric hinderance.","Starting material with high steric hindrance inhibits nucleophilic attack.","Starting material with high steric hindrance inhibits nucleophilic attack.","Starting material with high steric hindrance inhibits nucleophilic attack.","Starting material has less\n" +
+                " steric hinderance.\n","Starting material has less\n" +
+                " steric hinderance.\n","Undergoes either SN1 or SN2 depending on the Nucleophile and Solvent. ","Undergoes either SN1 or SN2 depending on the Nucleophile and Solvent. "};
         al = new ArrayList<>();
         al.add(new QuestionEasy("basic", "1", R.drawable.question1_basic, R.drawable.question1_basic_incorrect, R.drawable.question1_basic_correct, 2));
         al.add(new QuestionEasy("basic", "2", R.drawable.question2_basic, R.drawable.question2_basic_incorrect, R.drawable.question2_basic_correct, 2));
@@ -112,6 +115,16 @@ public class EasyQuestionsActivity extends AppCompatActivity {
             exitScreen.setNeutralButton("No", null);
             AlertDialog ShowDialogExit = exitScreen.create();
             ShowDialogExit.show();
+        });
+        ivHints.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder hintDialog = new AlertDialog.Builder(EasyQuestionsActivity.this);
+                hintDialog.setTitle("Hint #" + questionCounter);
+                hintDialog.setMessage(hints[questionCounter-1]);
+                hintDialog.setCancelable(true);
+                hintDialog.show();
+            }
         });
     }
 

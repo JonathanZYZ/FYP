@@ -43,7 +43,7 @@ public class ResultActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     DBHelper dbh = new DBHelper(ResultActivity.this);
     MediaPlayer mediaPlayer;
-    String date;
+    String date,difficulty;
 
 
     @SuppressLint({"SetTextI18n", "CutPasteId"})
@@ -63,7 +63,7 @@ public class ResultActivity extends AppCompatActivity {
         myScore = getIntent().getIntExtra("score", 0);
         String score = String.valueOf(myScore);
         username = getIntent().getStringExtra("username");
-
+        difficulty = getIntent().getStringExtra("difficulty");
 
         // TODO: defining the time for the user's playing date
 //        @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -122,7 +122,7 @@ public class ResultActivity extends AppCompatActivity {
 //        UserInputDialog();
 
         btnPlayAgain.setOnClickListener(v -> {
-            String difficulty = getIntent().getStringExtra("difficulty");
+//            String difficulty = getIntent().getStringExtra("difficulty");
             Intent intent = new Intent();
             if (difficulty.equalsIgnoreCase("easy")) {
                 intent = new Intent(ResultActivity.this, EasyQuestionsActivity.class);
