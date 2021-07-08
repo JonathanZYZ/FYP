@@ -148,6 +148,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
     private void checkAnswer() {
         answered = true;
         if (ans1 == 0 && ans2 == 0 && ans3 == 0) {
+            answered = false;
             wrongSound.start();
             AlertDialog.Builder myBuilder = new AlertDialog.Builder(IntermediateQuestionsActivity.this);
             myBuilder.setTitle("No Input!");

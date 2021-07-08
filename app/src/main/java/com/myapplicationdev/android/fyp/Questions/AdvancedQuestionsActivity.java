@@ -106,6 +106,7 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
     public void checkAnswer() {
         answered = true;
         if (ans1 == 0 && ans2 == 0) {
+            answered = false;
             wrongSound.start();
             AlertDialog.Builder myBuilder = new AlertDialog.Builder(AdvancedQuestionsActivity.this);
             myBuilder.setTitle("No Input!");

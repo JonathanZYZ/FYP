@@ -1,5 +1,6 @@
 package com.myapplicationdev.android.fyp;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -31,9 +32,9 @@ public class SettingPageActivity extends AppCompatActivity {
 
             AudioData.getInstance().setEnabledSound(checkBoxSound.isChecked());
             AudioData.getInstance().setEnabledMusic(checkBoxMusic.isChecked());
-
-            Intent i = new Intent(SettingPageActivity.this, MainActivity.class);
-            startActivity(i);
+            finish();
+//            Intent i = new Intent(SettingPageActivity.this, MainActivity.class);
+//            startActivity(i);
         });
     }
 }
