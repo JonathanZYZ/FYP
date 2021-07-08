@@ -3,6 +3,7 @@ package com.myapplicationdev.android.fyp;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,25 +26,37 @@ public class DifficultySectionActivity extends AppCompatActivity {
         btnEasy.setOnClickListener(view -> {
             Intent i = new Intent(DifficultySectionActivity.this, EasyModeActivity.class);
             startActivity(i);
-            mediaPlayer.start();
+            if(AudioData.getInstance().isEnabledSound()){
+                Log.i("sound: ","play");
+                mediaPlayer.start();
+            }
         });
 
         btnIntermediate.setOnClickListener(view -> {
             Intent i = new Intent(DifficultySectionActivity.this, IntermediateModeActivity.class);
             startActivity(i);
-            mediaPlayer.start();
+            if(AudioData.getInstance().isEnabledSound()){
+                Log.i("sound: ","play");
+                mediaPlayer.start();
+            }
         });
 
         btnAdvanced.setOnClickListener(view -> {
             Intent i = new Intent(DifficultySectionActivity.this, AdvancedModeActivity.class);
             startActivity(i);
-            mediaPlayer.start();
+            if(AudioData.getInstance().isEnabledSound()){
+                Log.i("sound: ","play");
+                mediaPlayer.start();
+            }
         });
 
         btnBack.setOnClickListener(view -> {
             Intent i = new Intent(DifficultySectionActivity.this, MainActivity.class);
             startActivity(i);
-            mediaPlayer.start();
+            if(AudioData.getInstance().isEnabledSound()){
+                Log.i("sound: ","play");
+                mediaPlayer.start();
+            }
         });
 
     }

@@ -3,6 +3,7 @@ package com.myapplicationdev.android.fyp;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,7 +22,10 @@ public class IntermediateModeActivity extends AppCompatActivity {
             Intent i = new Intent(IntermediateModeActivity.this, StartQuizActivity.class);
             i.putExtra("mode", "intermediate");
             startActivity(i);
-            mediaPlayer.start();
+            if(AudioData.getInstance().isEnabledSound()){
+                Log.i("sound: ","play");
+                mediaPlayer.start();
+            }
         });
     }
 }

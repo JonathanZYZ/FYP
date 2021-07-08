@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 
 import androidx.appcompat.app.AlertDialog;
@@ -34,39 +35,62 @@ public class MainActivity extends AppCompatActivity {
             //    Log.d("test", "test");
             Intent i = new Intent(MainActivity.this, DifficultySectionActivity.class);
             startActivity(i);
-            mediaPlayer.start();
+            if(AudioData.getInstance().isEnabledSound()){
+                Log.i("sound: ","play");
+                mediaPlayer.start();
+            }
         });
 
         btnHowToPlay.setOnClickListener(view -> {
             Intent i = new Intent(MainActivity.this, HowToPlayActivity.class);
             startActivity(i);
-            mediaPlayer.start();
+            if(AudioData.getInstance().isEnabledSound()){
+                Log.i("sound: ","play");
+                mediaPlayer.start();
+            }
         });
 
         btnRevision.setOnClickListener(view -> {
             Intent i = new Intent(MainActivity.this, RevisionSectionActivity.class);
             startActivity(i);
-            mediaPlayer.start();
+            if(AudioData.getInstance().isEnabledSound()){
+                Log.i("sound: ","play");
+                mediaPlayer.start();
+            }
         });
 
         btnSettings.setOnClickListener(view -> {
             Intent i = new Intent(MainActivity.this, SettingPageActivity.class);
             startActivity(i);
-            mediaPlayer.start();
+            if(AudioData.getInstance().isEnabledSound()){
+                Log.i("sound: ","play");
+                mediaPlayer.start();
+            }
         });
 
 
         btnLeaderBoard.setOnClickListener(view -> {
             Intent i = new Intent(MainActivity.this, ScoreboardActivity.class);
             startActivity(i);
-            mediaPlayer.start();
+            if(AudioData.getInstance().isEnabledSound()){
+                Log.i("sound: ","play");
+                mediaPlayer.start();
+            }
         });
     }
     @Override
     protected void onResume() {
         super.onResume();
-        backgroundMusic.start();
-        backgroundMusic.setLooping(true);
+        Log.i("JSON Results: ",AudioData.getInstance().isEnabledMusic() + "");
+        if(AudioData.getInstance().isEnabledMusic()){
+            Log.i("JSON Results: ","play");
+            backgroundMusic.start();
+            backgroundMusic.setLooping(true);
+        } else {
+            Log.i("JSON Results: ","stop");
+            backgroundMusic = new MediaPlayer();
+            backgroundMusic.start();
+        }
     }
 
 
