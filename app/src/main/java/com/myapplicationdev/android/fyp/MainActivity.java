@@ -1,8 +1,11 @@
 package com.myapplicationdev.android.fyp;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -28,71 +31,63 @@ public class MainActivity extends AppCompatActivity {
         btnRevision = findViewById(R.id.btnRevisionSection);
         btnSettings = findViewById(R.id.btnSettings);
         btnLeaderBoard = findViewById(R.id.btnLeaderBoard);
-        mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.mouse_click);
-        backgroundMusic = MediaPlayer.create(MainActivity.this,R.raw.background_music);
+
+
+
+
 
         btnStart.setOnClickListener(view -> {
             //    Log.d("test", "test");
             Intent i = new Intent(MainActivity.this, DifficultySectionActivity.class);
             startActivity(i);
-            if(AudioData.getInstance().isEnabledSound()){
-                Log.i("sound: ","play");
-                mediaPlayer.start();
-            }
+            mediaPlayer.start();
         });
 
         btnHowToPlay.setOnClickListener(view -> {
             Intent i = new Intent(MainActivity.this, HowToPlayActivity.class);
             startActivity(i);
-            if(AudioData.getInstance().isEnabledSound()){
-                Log.i("sound: ","play");
-                mediaPlayer.start();
-            }
+            mediaPlayer.start();
         });
 
         btnRevision.setOnClickListener(view -> {
             Intent i = new Intent(MainActivity.this, RevisionSectionActivity.class);
             startActivity(i);
-            if(AudioData.getInstance().isEnabledSound()){
-                Log.i("sound: ","play");
-                mediaPlayer.start();
-            }
+            mediaPlayer.start();
         });
 
         btnSettings.setOnClickListener(view -> {
             Intent i = new Intent(MainActivity.this, SettingPageActivity.class);
             startActivity(i);
-            if(AudioData.getInstance().isEnabledSound()){
-                Log.i("sound: ","play");
-                mediaPlayer.start();
-            }
+            mediaPlayer.start();
         });
 
 
         btnLeaderBoard.setOnClickListener(view -> {
             Intent i = new Intent(MainActivity.this, ScoreboardActivity.class);
             startActivity(i);
-            if(AudioData.getInstance().isEnabledSound()){
-                Log.i("sound: ","play");
-                mediaPlayer.start();
-            }
+            mediaPlayer.start();
         });
     }
+
     @Override
     protected void onResume() {
         super.onResume();
-        Log.i("JSON Results: ",AudioData.getInstance().isEnabledMusic() + "");
-        if(AudioData.getInstance().isEnabledMusic()){
-            Log.i("JSON Results: ","play");
-            backgroundMusic.start();
-            backgroundMusic.setLooping(true);
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        Boolean sound = sharedPreferences.getBoolean("sound",true);
+        if(sound==true){
+            mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.mouse_click);
         } else {
-            Log.i("JSON Results: ","stop");
+            mediaPlayer = new MediaPlayer();
+        }
+        Boolean music = sharedPreferences.getBoolean("music",true);
+        if(music==true){
+            backgroundMusic = MediaPlayer.create(MainActivity.this,R.raw.background_music);
+            backgroundMusic.start();
+        } else{
             backgroundMusic = new MediaPlayer();
             backgroundMusic.start();
         }
     }
-
 
     @Override
     public void onBackPressed() {

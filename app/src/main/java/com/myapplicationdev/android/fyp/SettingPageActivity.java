@@ -30,8 +30,12 @@ public class SettingPageActivity extends AppCompatActivity {
 
         btnApply.setOnClickListener(v -> {
 
-            AudioData.getInstance().setEnabledSound(checkBoxSound.isChecked());
-            AudioData.getInstance().setEnabledMusic(checkBoxMusic.isChecked());
+            SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("sound", checkBoxSound.isChecked());
+            editor.putBoolean("music", checkBoxMusic.isChecked());
+            editor.commit();
+
             finish();
 //            Intent i = new Intent(SettingPageActivity.this, MainActivity.class);
 //            startActivity(i);
