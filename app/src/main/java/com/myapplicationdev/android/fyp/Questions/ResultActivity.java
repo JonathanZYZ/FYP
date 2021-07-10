@@ -1,35 +1,27 @@
 package com.myapplicationdev.android.fyp.Questions;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-
-import java.util.Date;
-import java.util.Locale;
-import java.util.TimeZone;
-
 import android.annotation.SuppressLint;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.myapplicationdev.android.fyp.DifficultySectionActivity;
-import com.myapplicationdev.android.fyp.MainActivity;
 import com.myapplicationdev.android.fyp.R;
 import com.myapplicationdev.android.fyp.Scoreboards.ScoreboardActivity;
 import com.myapplicationdev.android.fyp.Utilities.DBHelper;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 
 public class ResultActivity extends AppCompatActivity {
 
@@ -43,7 +35,7 @@ public class ResultActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     DBHelper dbh = new DBHelper(ResultActivity.this);
     MediaPlayer mediaPlayer;
-    String date,difficulty;
+    String date, difficulty;
 
 
     @SuppressLint({"SetTextI18n", "CutPasteId"})
@@ -144,7 +136,7 @@ public class ResultActivity extends AppCompatActivity {
         });
 
         btnQuitGame.setOnClickListener(v -> {
-            // TODO: after users quits the game after playing , they would lead to the LeaderBoard Activity
+            // TODO: after users quits the game after playing , they would lead to the DifficultySectionActivity Activity
             Intent intent = new Intent(ResultActivity.this, DifficultySectionActivity.class);
             startActivity(intent);
             finish();

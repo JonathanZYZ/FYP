@@ -1,59 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/cardview_light_background"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/cardview_light_background"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/tvChooseAnswer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:text="Choose An Answer below"
         android:textSize="20sp"
-        android:textStyle="bold"
-        android:text="Choose An Answer below" />
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_weight="10">
+        android:layout_weight="10"
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/ivUserChoice1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/question1_advanced_startingmaterial1_incorrect"/>
+            android:src="@drawable/question4_advanced_startingmaterial1_incorrect" />
 
+
+        <!--        android:src="@drawable/question1_advanced_startingmaterial1_incorrect"-->
         <ImageView
             android:id="@+id/ivUserChoice2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/question1_advanced_startingmaterial1_incorrect"/>
+            android:src="@drawable/question2_intermediate_startingmaterial2_incorrect" />
+
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_weight="10">
+        android:layout_weight="10"
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/ivUserChoice3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/question1_advanced_startingmaterial1_incorrect"/>
+            android:src="@drawable/question2_intermediate_startingmaterial2_incorrect" />
 
         <ImageView
             android:id="@+id/ivUserChoice4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/question1_advanced_startingmaterial1_incorrect"/>
+            android:src="@drawable/question2_intermediate_startingmaterial2_incorrect" />
     </LinearLayout>
 </LinearLayout>

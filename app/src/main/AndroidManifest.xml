@@ -14,7 +14,10 @@
         android:theme="@style/Theme.FYP"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".Questions.AdvancedQuestionsActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".Scoreboards.ModifyScoreboardActivity"></activity>
+        <activity
+            android:name=".Questions.AdvancedQuestionsActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".SplashScreenActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
