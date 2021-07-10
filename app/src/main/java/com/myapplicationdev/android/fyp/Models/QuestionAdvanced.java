@@ -23,11 +23,8 @@ public class QuestionAdvanced implements Serializable {
     private final int ans2Image3;
     private final int ans2Image4;
     private final int correctNum2;
-    private final int zoomedImage1;
-    private final int zoomedImage2;
-    private final int zoomedImage3;
 
-    public QuestionAdvanced(String mode, String qnNum, String didYouKnowMsg, int qnMainImage, int qnCount, int qn1Image, int numOfQuestions1, int ans1Image1, int ans1Image2, int ans1Image3, int ans1Image4, int correctNum1, int qn2Image, int numOfQuestions2, int ans2Image1, int ans2Image2, int ans2Image3, int ans2Image4, int correctNum2, int zoomedImage1, int zoomedImage2, int zoomedImage3) {
+    public QuestionAdvanced(String mode, String qnNum, String didYouKnowMsg, int qnMainImage, int qnCount, int qn1Image, int numOfQuestions1, int ans1Image1, int ans1Image2, int ans1Image3, int ans1Image4, int correctNum1, int qn2Image, int numOfQuestions2, int ans2Image1, int ans2Image2, int ans2Image3, int ans2Image4, int correctNum2) {
         this.mode = mode;
         this.qnNum = qnNum;
         this.didYouKnowMsg = didYouKnowMsg;
@@ -47,9 +44,6 @@ public class QuestionAdvanced implements Serializable {
         this.ans2Image3 = ans2Image3;
         this.ans2Image4 = ans2Image4;
         this.correctNum2 = correctNum2;
-        this.zoomedImage1 = zoomedImage1;
-        this.zoomedImage2 = zoomedImage2;
-        this.zoomedImage3 = zoomedImage3;
     }
 
     public String getMode() {
@@ -126,17 +120,5 @@ public class QuestionAdvanced implements Serializable {
 
     public int getCorrectNum2() {
         return correctNum2;
-    }
-
-    public int getZoomedImage1() {
-        return zoomedImage1;
-    }
-
-    public int getZoomedImage2() {
-        return zoomedImage2;
-    }
-
-    public int getZoomedImage3() {
-        return zoomedImage3;
     }
 }
