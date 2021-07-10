@@ -2,7 +2,6 @@ package com.myapplicationdev.android.fyp.Questions;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
@@ -17,7 +16,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.myapplicationdev.android.fyp.MainActivity;
 import com.myapplicationdev.android.fyp.Models.QuestionIntermediate;
 import com.myapplicationdev.android.fyp.R;
 import com.myapplicationdev.android.fyp.Utilities.DBHelper;
@@ -172,14 +170,11 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             myBuilder.setMessage("You have answered 5 questions correctly in a row! We would like to test you further by bringing you to the Advanced Level! GoodLuck!");
                             myBuilder.setCancelable(false);
                             //myBuilder.setPositiveButton("Next", (dialogInterface, i) -> Intent intent = new Intent(IntermediateQuestionsActivity.this,AdvancedQuestionsActivity));
-                            myBuilder.setPositiveButton("Proceed to Advanced Mode", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    Intent intent = new Intent(IntermediateQuestionsActivity.this, AdvancedQuestionsActivity.class);
-                                    intent.putExtra("score", score);
-                                    intent.putExtra("questionNum", questionCounter + 1);
-                                    startActivity(intent);
-                                }
+                            myBuilder.setPositiveButton("Proceed to Advanced Mode", (dialogInterface, i) -> {
+                                Intent intent = new Intent(IntermediateQuestionsActivity.this, AdvancedQuestionsActivity.class);
+                                intent.putExtra("score", score);
+                                intent.putExtra("questionNum", questionCounter + 1);
+                                startActivity(intent);
                             });
 
                             AlertDialog myDialog = myBuilder.create();

@@ -2,7 +2,6 @@ package com.myapplicationdev.android.fyp.Questions;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -44,6 +43,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
     boolean answered;
     String[] hints;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,15 +116,12 @@ public class EasyQuestionsActivity extends AppCompatActivity {
             AlertDialog ShowDialogExit = exitScreen.create();
             ShowDialogExit.show();
         });
-        ivHints.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog.Builder hintDialog = new AlertDialog.Builder(EasyQuestionsActivity.this);
-                hintDialog.setTitle("Hint #" + questionCounter);
-                hintDialog.setMessage(hints[questionCounter-1]);
-                hintDialog.setCancelable(true);
-                hintDialog.show();
-            }
+        ivHints.setOnClickListener(view -> {
+            AlertDialog.Builder hintDialog = new AlertDialog.Builder(EasyQuestionsActivity.this);
+            hintDialog.setTitle("Hint #" + questionCounter);
+            hintDialog.setMessage(hints[questionCounter - 1]);
+            hintDialog.setCancelable(true);
+            hintDialog.show();
         });
     }
 
@@ -169,12 +166,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
                         myBuilder.setTitle("Congratulations!");
                         myBuilder.setMessage("You selected the correct answer!");
                         myBuilder.setCancelable(false);
-                        myBuilder.setPositiveButton("Next Question", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                showNextQuestion();
-                            }
-                        });
+                        myBuilder.setPositiveButton("Next Question", (dialogInterface, i) -> showNextQuestion());
 
                         AlertDialog myDialog = myBuilder.create();
                         myDialog.show();
@@ -190,12 +182,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
                     myBuilder.setTitle("Sorry!");
                     myBuilder.setMessage("You selected the wrong answer!");
                     myBuilder.setCancelable(false);
-                    myBuilder.setPositiveButton("Next Question", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            showNextQuestion();
-                        }
-                    });
+                    myBuilder.setPositiveButton("Next Question", (dialogInterface, i) -> showNextQuestion());
 
                     AlertDialog myDialog = myBuilder.create();
                     myDialog.show();
@@ -226,12 +213,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
                     final View customLayout = getLayoutInflater().inflate(R.layout.custom_layout, null);
                     myBuilder.setView(customLayout);
                     editText = customLayout.findViewById(R.id.et_text);
-                    myBuilder.setPositiveButton("Check Results", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            finishQuiz();
-                        }
-                    });
+                    myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
 
                     AlertDialog myDialog = myBuilder.create();
                     myDialog.show();
@@ -249,12 +231,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
                     final View customLayout = getLayoutInflater().inflate(R.layout.custom_layout, null);
                     myBuilder.setView(customLayout);
                     editText = customLayout.findViewById(R.id.et_text);
-                    myBuilder.setPositiveButton("Check Results", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            finishQuiz();
-                        }
-                    });
+                    myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
 
                     AlertDialog myDialog = myBuilder.create();
                     myDialog.show();

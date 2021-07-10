@@ -1,22 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background2"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="10dp">
     <!--TODO:    Done by Zuhaili and Shufang-->
 
     <Button
-        android:id="@+id/btnHome"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_gravity="top|left"
-        android:layout_margin="10dp"
-        android:background="@drawable/ic_baseline_home_24"
-        android:textSize="20sp"
-        tools:ignore="RtlHardcoded" />
+        android:id="@+id/btnShowAll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Show all Users" />
+
+
+    <Button
+        android:id="@+id/btnFilter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Only Show User with top high-scores" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select user by username:"
+        android:textColor="@color/black" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+    <!--    <Button-->
+    <!--        android:id="@+id/btnHome"-->
+    <!--        android:layout_width="50dp"-->
+    <!--        android:layout_height="50dp"-->
+    <!--        android:layout_gravity="top|left"-->
+    <!--        android:layout_margin="10dp"-->
+    <!--        android:background="@drawable/ic_baseline_home_24"-->
+    <!--        android:textSize="20sp"-->
+    <!--        tools:ignore="RtlHardcoded" />-->
 
     <TableLayout
         android:layout_width="380dp"
@@ -35,14 +58,13 @@
             android:textSize="40dp" />
 
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
-            android:gravity="center_horizontal"
-            android:text="Score Ranking"
-            android:textColor="@color/white"
-            android:textSize="30dp" />
+        <!--        <TextView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:gravity="center_horizontal"-->
+        <!--            android:text="Score Ranking"-->
+        <!--            android:textColor="@color/white"-->
+        <!--            android:textSize="30dp" />-->
 
         <TableRow
 
