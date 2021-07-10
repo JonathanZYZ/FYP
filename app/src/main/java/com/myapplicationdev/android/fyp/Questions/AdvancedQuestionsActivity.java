@@ -35,7 +35,7 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
     int ans1, ans2, streak;
     int score, numOfAnsForQn1, numOfAnsForQn2;
     boolean answered;
-    MediaPlayer choiceSound, correctSound, wrongSound, finishSound, backgroundMusic;
+    MediaPlayer choiceSound, correctSound, wrongSound, finishSound, backgroundMusic,buttonSound;
     EditText editText;
 
     @SuppressLint("SetTextI18n")
@@ -58,6 +58,7 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
         wrongSound = MediaPlayer.create(AdvancedQuestionsActivity.this, R.raw.wrong_answer);
         finishSound = MediaPlayer.create(AdvancedQuestionsActivity.this, R.raw.end_game);
         backgroundMusic = MediaPlayer.create(AdvancedQuestionsActivity.this, R.raw.background_music);
+        buttonSound = MediaPlayer.create(AdvancedQuestionsActivity.this,R.raw.button_click);
 
 //  TODO: When the user clicks the "did you know?" icon on the screen, text messages are prepared for them.
         String didYouKnowIconMsgQ1 = "Tamoxifen's main skeleton is a tertiary alcohol. The starting material is treated with sulfuric acid, and acid catalyzed dehydration takes place. Alcohol group protonation makes it a good leaving group, and E1 reactions occur when a tertiary carbocation is formed prior to Tamoxifen formation (Z isomer).\n" +
@@ -208,7 +209,7 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
         tvQuestionsNumber.setText("Question: " + questionCounter + "/" + questionCountTotal);
         tvScore.setText("Score: " + score);
         btnStart.setOnClickListener(view -> {
-            choiceSound.start();
+            buttonSound.start();
             if (!answered) {
 
                 checkAnswer();

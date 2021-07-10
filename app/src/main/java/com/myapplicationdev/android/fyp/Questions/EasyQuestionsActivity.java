@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -42,7 +43,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
     int questionCounter, questionCountTotal;
     boolean answered;
     String[] hints;
-
+    MediaPlayer choiceSound, correctSound, wrongSound, finishSound, backgroundMusic,buttonSound;
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +60,14 @@ public class EasyQuestionsActivity extends AppCompatActivity {
         ivQuestion = findViewById(R.id.ivQuestions);
         ivHints = findViewById(R.id.ivHints);
         btnExit = findViewById(R.id.btnExit);
+
+        choiceSound = MediaPlayer.create(EasyQuestionsActivity.this, R.raw.answer_click);
+        correctSound = MediaPlayer.create(EasyQuestionsActivity.this, R.raw.correct_answer);
+        wrongSound = MediaPlayer.create(EasyQuestionsActivity.this, R.raw.wrong_answer);
+        finishSound = MediaPlayer.create(EasyQuestionsActivity.this, R.raw.end_game);
+        backgroundMusic = MediaPlayer.create(EasyQuestionsActivity.this, R.raw.background_music);
+        buttonSound = MediaPlayer.create(EasyQuestionsActivity.this,R.raw.button_click);
+
         hints = new String[]{"Starting material has less steric hinderance.","Starting material has less steric hinderance.","Starting material with high steric hindrance inhibits nucleophilic attack.","Starting material with high steric hindrance inhibits nucleophilic attack.","Starting material with high steric hindrance inhibits nucleophilic attack.","Starting material has less\n" +
                 " steric hinderance.\n","Starting material has less\n" +
                 " steric hinderance.\n","Undergoes either SN1 or SN2 depending on the Nucleophile and Solvent. ","Undergoes either SN1 or SN2 depending on the Nucleophile and Solvent. "};
@@ -83,7 +92,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
 //            Intent i = new Intent(QuestionsActivity.this, QuestionsAnswerActivity.class);
 //            i.putExtra("question","Question 1");
 //            startActivity(i);
-
+            buttonSound.start();
             if (!answered) {
                 checkAnswer();
 //                if (rdReaction_Option1.isChecked() || rdReaction_Option2.isChecked()) {
@@ -98,7 +107,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
 
         btnExit.setOnClickListener(view -> {
 
-
+            buttonSound.start();
             AlertDialog.Builder exitScreen = new AlertDialog.Builder(EasyQuestionsActivity.this);
 //                exitScreen.setTitle("");
             exitScreen.setMessage("Are you sure you want to quit? \n Here is your final score: " + score);
@@ -117,6 +126,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
             ShowDialogExit.show();
         });
         ivHints.setOnClickListener(view -> {
+            buttonSound.start();
             AlertDialog.Builder hintDialog = new AlertDialog.Builder(EasyQuestionsActivity.this);
             hintDialog.setTitle("Hint #" + questionCounter);
             hintDialog.setMessage(hints[questionCounter - 1]);
@@ -133,6 +143,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
 //        int answer_number = group.indexOfChild(rbSelected) + 1;
         if (questionCounter < questionCountTotal) {
             if (ans == 0) {
+                wrongSound.start();
                 answered = false;
                 //wrongSound.start();
                 AlertDialog.Builder myBuilder = new AlertDialog.Builder(EasyQuestionsActivity.this);
@@ -145,6 +156,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
                 myDialog.show();
             } else {
                 if (ans == currentQuestion.getAnswerNum()) {
+                    correctSound.start();
                     streak += 1;
                     score++;
                     if (streak == 5) {
@@ -177,6 +189,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
 
 
                 } else {
+                    wrongSound.start();
                     streak = 0;
                     AlertDialog.Builder myBuilder = new AlertDialog.Builder(EasyQuestionsActivity.this);
                     myBuilder.setTitle("Sorry!");
@@ -192,6 +205,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
             // There are 9 basic questions. If current question is not at question 9, set text "Next Questions" else set text "Finish Quiz".
         } else {
             if (ans == 0) {
+                wrongSound.start();
                 answered = false;
                 //wrongSound.start();
                 AlertDialog.Builder myBuilder = new AlertDialog.Builder(EasyQuestionsActivity.this);
@@ -204,6 +218,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
                 myDialog.show();
             } else {
                 if (ans == currentQuestion.getAnswerNum()) {
+                    correctSound.start();
                     score++;
 
                     AlertDialog.Builder myBuilder = new AlertDialog.Builder(EasyQuestionsActivity.this);
@@ -223,6 +238,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
 
 
                 } else {
+                    wrongSound.start();
                     streak = 0;
                     AlertDialog.Builder myBuilder = new AlertDialog.Builder(EasyQuestionsActivity.this);
                     myBuilder.setTitle("Sorry!");
@@ -256,7 +272,14 @@ public class EasyQuestionsActivity extends AppCompatActivity {
 
 //            rdReaction_Option2.setBackgroundResource(currentQuestion.getOption2Reaction());
 
-            ivChoiceBasicQn.setOnClickListener(view -> MyCustomAlertDialog());
+
+            ivChoiceBasicQn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    choiceSound.start();
+                    MyCustomAlertDialog();
+                }
+            });
 
 
 //            ivQuestion.setImageResource();
@@ -290,12 +313,14 @@ public class EasyQuestionsActivity extends AppCompatActivity {
         ivUserChoice4.setEnabled(false);
 
         ivUserChoice1.setOnClickListener(view -> {
+            choiceSound.start();
             ans = 1;
             ivChoiceBasicQn.setImageResource(currentQuestion.getOption1Reaction());
             MyDialog.cancel();
         });
 
         ivUserChoice2.setOnClickListener(view -> {
+            choiceSound.start();
             ans = 2;
             ivChoiceBasicQn.setImageResource(currentQuestion.getOption2Reaction());
             MyDialog.cancel();
@@ -309,7 +334,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
     private void finishQuiz() {
 //        finish();
         //  Intent finishBasicMode_to_leaderboard = new Intent(QuestionsActivity.this, ShowScoreboardActivity.class);
-
+        finishSound.start();
         Intent intent = new Intent(EasyQuestionsActivity.this, ResultActivity.class);
         intent.putExtra("score", score);
         intent.putExtra("difficulty", currentQuestion.getMode());

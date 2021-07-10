@@ -36,7 +36,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
     boolean answered;
     DBHelper dbh = new DBHelper(IntermediateQuestionsActivity.this);
     SharedPreferences sharedPreferences;
-    MediaPlayer choiceSound, correctSound, wrongSound, finishSound, backgroundMusic;
+    MediaPlayer choiceSound, correctSound, wrongSound, finishSound, backgroundMusic,buttonSound;
     EditText editText;
 
     @SuppressLint("SetTextI18n")
@@ -58,7 +58,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
         wrongSound = MediaPlayer.create(IntermediateQuestionsActivity.this, R.raw.wrong_answer);
         finishSound = MediaPlayer.create(IntermediateQuestionsActivity.this, R.raw.end_game);
         backgroundMusic = MediaPlayer.create(IntermediateQuestionsActivity.this, R.raw.background_music);
-        backgroundMusic = new MediaPlayer();
+        buttonSound = MediaPlayer.create(IntermediateQuestionsActivity.this,R.raw.button_click);
 
         al = new ArrayList<>();
         al.add(new QuestionIntermediate("intermediate", "1", R.drawable.question1_intermediate, 3, R.drawable.hidden_qn_solvent, R.drawable.question1_intermediate_solvent_correct, R.drawable.question1_intermediate_solvent_incorrect,
@@ -131,7 +131,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
 //            Intent i = new Intent(QuestionsActivity.this, QuestionsAnswerActivity.class);
 //            i.putExtra("question","Question 1");
 //            startActivity(i);
-            choiceSound.start();
+            buttonSound.start();
             if (!answered) {
 
                 checkAnswer();
