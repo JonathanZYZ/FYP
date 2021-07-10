@@ -76,7 +76,7 @@
             android:name=".StartQuizActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".Scoreboards.ScoreboardActivity"
+            android:name=".Scoreboards.ShowScoreboardActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".AdvancedModeActivity"

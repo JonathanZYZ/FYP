@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.myapplicationdev.android.fyp.DifficultySectionActivity;
 import com.myapplicationdev.android.fyp.R;
-import com.myapplicationdev.android.fyp.Scoreboards.ScoreboardActivity;
+import com.myapplicationdev.android.fyp.Scoreboards.ShowScoreboardActivity;
 import com.myapplicationdev.android.fyp.Utilities.DBHelper;
 
 import java.text.SimpleDateFormat;
@@ -130,7 +130,7 @@ public class ResultActivity extends AppCompatActivity {
 
         });
         btnScoreboard.setOnClickListener(view -> {
-            Intent intent = new Intent(ResultActivity.this, ScoreboardActivity.class);
+            Intent intent = new Intent(ResultActivity.this, ShowScoreboardActivity.class);
             startActivity(intent);
             finish();
         });
@@ -191,7 +191,7 @@ public class ResultActivity extends AppCompatActivity {
 //            @Override
 //            public void onClick(View view) {
 //                MyDialog.dismiss();
-//                Intent i = new Intent(ResultActivity.this, ScoreboardActivity.class);
+//                Intent i = new Intent(ResultActivity.this, ShowScoreboardActivity.class);
 //                startActivity(i);
 //            }
 //        });

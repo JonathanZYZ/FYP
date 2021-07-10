@@ -308,7 +308,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
 
     private void finishQuiz() {
 //        finish();
-        //  Intent finishBasicMode_to_leaderboard = new Intent(QuestionsActivity.this, ScoreboardActivity.class);
+        //  Intent finishBasicMode_to_leaderboard = new Intent(QuestionsActivity.this, ShowScoreboardActivity.class);
 
         Intent intent = new Intent(EasyQuestionsActivity.this, ResultActivity.class);
         intent.putExtra("score", score);

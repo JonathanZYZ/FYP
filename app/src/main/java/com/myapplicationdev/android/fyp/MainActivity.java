@@ -5,15 +5,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.myapplicationdev.android.fyp.Scoreboards.ScoreboardActivity;
+import com.myapplicationdev.android.fyp.Scoreboards.ShowScoreboardActivity;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -63,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         btnLeaderBoard.setOnClickListener(view -> {
-            Intent i = new Intent(MainActivity.this, ScoreboardActivity.class);
+            Intent i = new Intent(MainActivity.this, ShowScoreboardActivity.class);
             startActivity(i);
             mediaPlayer.start();
         });
