@@ -76,15 +76,24 @@ public class EasyQuestionsActivity extends AppCompatActivity {
                 " steric hinderance.\n","Starting material has less\n" +
                 " steric hinderance.\n","Undergoes either SN1 or SN2 depending on the Nucleophile and Solvent. ","Undergoes either SN1 or SN2 depending on the Nucleophile and Solvent. "};
         al = new ArrayList<>();
-        al.add(new QuestionEasy("basic", "1", R.drawable.question1_basic, R.drawable.question1_basic_incorrect, R.drawable.question1_basic_correct, 2));
-        al.add(new QuestionEasy("basic", "2", R.drawable.question2_basic, R.drawable.question2_basic_incorrect, R.drawable.question2_basic_correct, 2));
-        al.add(new QuestionEasy("basic", "3", R.drawable.question3_basic, R.drawable.question3_basic_correct, R.drawable.question3_basic_incorrect, 1));
-        al.add(new QuestionEasy("basic", "4", R.drawable.question4_basic, R.drawable.question4_basic_correct, R.drawable.question4_basic_incorrect, 1));
-        al.add(new QuestionEasy("basic", "5", R.drawable.question5_basic, R.drawable.question5_basic_correct, R.drawable.question5_basic_incorrect, 1));
-        al.add(new QuestionEasy("basic", "6", R.drawable.question6_basic, R.drawable.question6_basic_incorrect, R.drawable.question6_basic_correct, 2));
-        al.add(new QuestionEasy("basic", "7", R.drawable.question7_basic, R.drawable.question7_basic_incorrect, R.drawable.question7_basic_correct, 2));
-        al.add(new QuestionEasy("basic", "8", R.drawable.question8_basic, R.drawable.question8_basic_incorrect, R.drawable.question8_basic_correct, 2));
-        al.add(new QuestionEasy("basic", "9", R.drawable.question9_basic, R.drawable.question9_basic_correct, R.drawable.question9_basic_incorrect, 1));
+        al.add(new QuestionEasy("basic", "1", R.drawable.question1_basic, R.drawable.question1_basic1_incorrect, R.drawable.question1_basic2_incorrect, R.drawable.question1_basic_correct, R.drawable.question1_basic3_incorrect,3));
+        al.add(new QuestionEasy("basic", "2", R.drawable.question2_basic, R.drawable.question2_basic_incorrect, R.drawable.question2_basic2_incorrect, R.drawable.question2_basic3_incorrect, R.drawable.question2_basic_correct, 4));
+        al.add(new QuestionEasy("basic", "3", R.drawable.question3_basic, R.drawable.question3_basic1_incorrect, R.drawable.question3_basic_correct, R.drawable.question3_basic2_incorrect, R.drawable.question3_basic3_incorrect, 2));
+        al.add(new QuestionEasy("basic", "4", R.drawable.question4_basic, R.drawable.question4_basic1_incorrect, R.drawable.question4_basic_correct, R.drawable.question4_basic2_incorrect, R.drawable.question4_basic3_incorrect, 2));
+        al.add(new QuestionEasy("basic", "5", R.drawable.question5_basic, R.drawable.question5_basic1_incorrect, R.drawable.question5_basic3_incorrect, R.drawable.question5_basic3_incorrect, R.drawable.question5_basic_correct, 4));
+        al.add(new QuestionEasy("basic", "6", R.drawable.question6_basic, R.drawable.question6_basic1_incorrect, R.drawable.question6_basic2_incorrect, R.drawable.question6_basic3_incorrect, R.drawable.question6_basic_correct, 4));
+        al.add(new QuestionEasy("basic", "7", R.drawable.question7_basic, R.drawable.question7_basic_correct, R.drawable.question7_basic1_incorrect, R.drawable.question7_basic2_incorrect, R.drawable.question7_basic3_incorrect, 1));
+        al.add(new QuestionEasy("basic", "8", R.drawable.question8_basic, R.drawable.question8_basic_correct, R.drawable.question8_basic1_incorrect, R.drawable.question8_basic2_incorrect, R.drawable.question8_basic3_incorrect, 1));
+        al.add(new QuestionEasy("basic", "9", R.drawable.question9_basic, R.drawable.question9_basic1_incorrect, R.drawable.question9_basic2_incorrect, R.drawable.question9_basic3_incorrect, R.drawable.question9_basic_correct, 4));
+        al.add(new QuestionEasy("basic", "10", R.drawable.question10_basic, R.drawable.question10_basic_correct, R.drawable.question10_basic1_incorrect, R.drawable.question10_basic2_incorrect, R.drawable.question10_basic3_incorrect, 1));
+        al.add(new QuestionEasy("basic", "11", R.drawable.question11_basic, R.drawable.question11_basic1_incorrect, R.drawable.question11_basic_correct, R.drawable.question11_basic2_incorrect, R.drawable.question11_basic3_incorrect, 2));
+        al.add(new QuestionEasy("basic", "12", R.drawable.question12_basic, R.drawable.question12_basic1_incorrect, R.drawable.question12_basic2_incorrect, R.drawable.question12_basic_correct, R.drawable.question12_basic3_incorrect, 3));
+        al.add(new QuestionEasy("basic", "13", R.drawable.question13_basic, R.drawable.question13_basic1_incorrect, R.drawable.question13_basic_correct, R.drawable.question13_basic2_incorrect, R.drawable.question13_basic3_incorrect, 2));
+        al.add(new QuestionEasy("basic", "14", R.drawable.question14_basic, R.drawable.question14_basic1_incorrect, R.drawable.question14_basic2_incorrect, R.drawable.question14_basic_correct, R.drawable.question14_basic3_incorrect, 3));
+        al.add(new QuestionEasy("basic", "15", R.drawable.question15_basic, R.drawable.question15_basic1_incorrect, R.drawable.question15_basic2_incorrect, R.drawable.question15_basic3_incorrect, R.drawable.question15_basic_correct, 4));
+        al.add(new QuestionEasy("basic", "16", R.drawable.question16_basic, R.drawable.question16_basic_correct, R.drawable.question16_basic1_incorrect, R.drawable.question16_basic2_incorrect, R.drawable.question16_basic3_incorrect, 1));
+        al.add(new QuestionEasy("basic", "17", R.drawable.question17_basic, R.drawable.question17_basic_correct, R.drawable.question17_basic1_incorrect, R.drawable.question17_basic2_incorrect, R.drawable.question17_basic3_incorrect, 1));
+        al.add(new QuestionEasy("basic", "18", R.drawable.question18_basic, R.drawable.question18_basic1_incorrect, R.drawable.question18_basic2_incorrect, R.drawable.question18_basic_correct, R.drawable.question18_basic3_incorrect, 3));
 
         questionCountTotal = al.size();
         btnStart.setText("Confirm");
@@ -314,10 +323,11 @@ public class EasyQuestionsActivity extends AppCompatActivity {
         ivUserChoice1.setImageResource(currentQuestion.getOption1Reaction());
         ivUserChoice2.setEnabled(true);
         ivUserChoice2.setImageResource(currentQuestion.getOption2Reaction());
-        ivUserChoice3.setImageResource(android.R.color.transparent);
-        ivUserChoice3.setEnabled(false);
-        ivUserChoice4.setImageResource(android.R.color.transparent);
-        ivUserChoice4.setEnabled(false);
+        ivUserChoice3.setEnabled(true);
+        ivUserChoice3.setImageResource(currentQuestion.getOption3Reaction());
+//        ivUserChoice4.setImageResource(android.R.color.transparent);
+        ivUserChoice4.setEnabled(true);
+        ivUserChoice4.setImageResource(currentQuestion.getOption4Reaction());
 
         ivUserChoice1.setOnClickListener(view -> {
             choiceSound.start();
@@ -330,6 +340,20 @@ public class EasyQuestionsActivity extends AppCompatActivity {
             choiceSound.start();
             ans = 2;
             ivChoiceBasicQn.setImageResource(currentQuestion.getOption2Reaction());
+            MyDialog.cancel();
+        });
+
+        ivUserChoice3.setOnClickListener(view -> {
+            choiceSound.start();
+            ans = 3;
+            ivChoiceBasicQn.setImageResource(currentQuestion.getOption3Reaction());
+            MyDialog.cancel();
+        });
+
+        ivUserChoice4.setOnClickListener(view -> {
+            choiceSound.start();
+            ans = 4;
+            ivChoiceBasicQn.setImageResource(currentQuestion.getOption4Reaction());
             MyDialog.cancel();
         });
         MyDialog.show();
