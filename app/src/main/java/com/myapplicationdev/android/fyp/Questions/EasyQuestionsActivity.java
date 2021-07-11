@@ -2,10 +2,13 @@ package com.myapplicationdev.android.fyp.Questions;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -14,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -228,7 +232,9 @@ public class EasyQuestionsActivity extends AppCompatActivity {
                     final View customLayout = getLayoutInflater().inflate(R.layout.custom_layout, null);
                     myBuilder.setView(customLayout);
                     editText = customLayout.findViewById(R.id.et_text);
+                    editText.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
                     myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
+
 
                     AlertDialog myDialog = myBuilder.create();
                     myDialog.show();
@@ -247,6 +253,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
                     final View customLayout = getLayoutInflater().inflate(R.layout.custom_layout, null);
                     myBuilder.setView(customLayout);
                     editText = customLayout.findViewById(R.id.et_text);
+                    editText.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
                     myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
 
                     AlertDialog myDialog = myBuilder.create();
@@ -334,13 +341,35 @@ public class EasyQuestionsActivity extends AppCompatActivity {
     private void finishQuiz() {
 //        finish();
         //  Intent finishBasicMode_to_leaderboard = new Intent(QuestionsActivity.this, ShowScoreboardActivity.class);
-        finishSound.start();
-        Intent intent = new Intent(EasyQuestionsActivity.this, ResultActivity.class);
-        intent.putExtra("score", score);
-        intent.putExtra("difficulty", currentQuestion.getMode());
-        intent.putExtra("username", editText.getText().toString());
-        startActivity(intent);
-        finish();
+        if (dbh.getAllScoreBoard().isEmpty()) {
+            finishSound.start();
+            Intent i = new Intent(EasyQuestionsActivity.this, ResultActivity.class);
+            i.putExtra("score", score);
+            i.putExtra("difficulty", currentQuestion.getMode());
+            i.putExtra("username", editText.getText().toString());
+            Log.i("Test", "check");
+            startActivity(i);
+            finish();
+        } else {
+            ArrayList<String> namesInScoreboard = dbh.getNameInScoreBoard();
+            for (int x = 0; x < namesInScoreboard.size(); x++) {
+                if (editText.getText().toString().equalsIgnoreCase(namesInScoreboard.get(x))) {
+                    wrongSound.start();
+                    answered = false;
+                    score--;
+                    Toast.makeText(EasyQuestionsActivity.this, "Name already exists. Use a different name.", Toast.LENGTH_SHORT).show();
+                } else {
+                    finishSound.start();
+                    Intent i = new Intent(EasyQuestionsActivity.this, ResultActivity.class);
+                    i.putExtra("score", score);
+                    i.putExtra("difficulty", currentQuestion.getMode());
+                    i.putExtra("username", editText.getText().toString());
+                    Log.i("Test", "check");
+                    startActivity(i);
+                    finish();
+                }
+            }
+        }
 
     }
 }

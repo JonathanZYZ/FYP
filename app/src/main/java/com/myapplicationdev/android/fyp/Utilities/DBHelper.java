@@ -192,5 +192,26 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
         return result;
     }
+    public ArrayList<String> getNameInScoreBoard(){
+        ArrayList<String> NameScoreBoards = new ArrayList<>();
+
+        String selectQuery = "SELECT " + COLUMN_USERNAME
+                + " FROM " + TABLE_SCOREBOARD;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+
+                String name = cursor.getString(0);
+                NameScoreBoards.add(name);
+
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return NameScoreBoards;
+    }
 
 }

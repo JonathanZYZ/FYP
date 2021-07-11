@@ -6,12 +6,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -352,6 +354,7 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
                 final View customLayout = getLayoutInflater().inflate(R.layout.custom_layout, null);
                 myBuilder.setView(customLayout);
                 editText = customLayout.findViewById(R.id.et_text);
+                editText.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
                 if (currentQuestion.getQnCount() == 2) {
                     if (ans1 == currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2()) {
                         correctSound.start();
@@ -608,12 +611,32 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
     }
 
     private void finishQuiz() {
-        finishSound.start();
-        Intent i = new Intent(AdvancedQuestionsActivity.this, ResultActivity.class);
-        i.putExtra("score", score);
-        i.putExtra("difficulty", currentQuestion.getMode());
-        i.putExtra("username", editText.getText().toString());
-        startActivity(i);
+        if(dbh.getAllScoreBoard().isEmpty()){
+            finishSound.start();
+            Intent i = new Intent(AdvancedQuestionsActivity.this, ResultActivity.class);
+            i.putExtra("score", score);
+            i.putExtra("difficulty", currentQuestion.getMode());
+            i.putExtra("username", editText.getText().toString());
+            startActivity(i);
+            finish();
+        }else {
+            ArrayList<String> namesInScoreboard = dbh.getNameInScoreBoard();
+            for (int x = 0; x < namesInScoreboard.size(); x++) {
+                if (editText.getText().toString().equalsIgnoreCase(namesInScoreboard.get(x))) {
+                    wrongSound.start();
+                    Toast.makeText(AdvancedQuestionsActivity.this, "Name already exists. Use a different name.", Toast.LENGTH_SHORT).show();
+                } else {
+                    finishSound.start();
+                    Intent i = new Intent(AdvancedQuestionsActivity.this, ResultActivity.class);
+                    i.putExtra("score", score);
+                    i.putExtra("difficulty", currentQuestion.getMode());
+                    i.putExtra("username", editText.getText().toString());
+                    startActivity(i);
+                    finish();
+                }
+            }
+        }
+
     }
 
 
