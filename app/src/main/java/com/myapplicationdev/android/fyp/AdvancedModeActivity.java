@@ -30,7 +30,7 @@ public class AdvancedModeActivity extends AppCompatActivity {
         }
 
         btnStart.setOnClickListener(view -> {
-            Intent i = new Intent(AdvancedModeActivity.this, AdvancedQuestionsActivity.class);
+            Intent i = new Intent(AdvancedModeActivity.this, StartQuizActivity.class);
             i.putExtra("mode","advanced");
             startActivity(i);
             mediaPlayer.start();

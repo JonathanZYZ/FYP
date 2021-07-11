@@ -115,6 +115,10 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
         al.add(new QuestionIntermediate("intermediate", "13", R.drawable.question13_intermediate, 1, 0, 0, 0,
                 0, 0, 0, 0, 0, 0, R.drawable.hidden_qn_startingmaterial, R.drawable.question13_intermediate_startingmaterial_correct,
                 R.drawable.question13_intermediate_startingmaterial1_incorrect, R.drawable.question13_intermediate_startingmaterial2_incorrect, R.drawable.question13_intermediate_startingmaterial3_incorrect, 1));
+        //
+        al.add(new QuestionIntermediate("intermediate", "14", R.drawable.question14_intermediate, 1, R.drawable.hidden_qn_solvent, R.drawable.question14_intermediate_correct, R.drawable.question14_intermediate_incorrect,
+                1, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0));
 
         questionCountTotal = al.size();
         Intent i = getIntent();

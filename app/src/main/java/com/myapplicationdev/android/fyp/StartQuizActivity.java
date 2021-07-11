@@ -43,7 +43,7 @@ public class StartQuizActivity extends AppCompatActivity {
 
         } else if (mode.equalsIgnoreCase("intermediate")) {
             tvMode.setText("Intermediate");
-            tvDesc.setText("The quiz contains 9 questions and there has a time limit");
+            tvDesc.setText("The quiz contains 14 questions and there is no time limit");
             btnStart.setOnClickListener(view -> {
                 //TODO
                 Intent intent2 = new Intent(StartQuizActivity.this, IntermediateQuestionsActivity.class);
@@ -53,7 +53,7 @@ public class StartQuizActivity extends AppCompatActivity {
 
         } else if (mode.equalsIgnoreCase("advanced")) {
             tvMode.setText("Advanced");
-            tvDesc.setText("The quiz contains 9 questions and there has a time limit");
+            tvDesc.setText("The quiz contains 19 questions and there is no time limit");
             btnStart.setOnClickListener(view -> {
                 //TODO
                 Intent intent3 = new Intent(StartQuizActivity.this, EasyQuestionsActivity.class);
