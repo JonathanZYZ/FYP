@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.util.Log;
 import android.widget.Button;
 
@@ -13,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class DifficultySectionActivity extends AppCompatActivity {
     Button btnEasy,btnIntermediate,btnAdvanced,btnBack;
     MediaPlayer mediaPlayer;
+    Vibrator v;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,7 @@ public class DifficultySectionActivity extends AppCompatActivity {
         btnIntermediate = findViewById(R.id.btnIntermediate);
         btnAdvanced = findViewById(R.id.btnAdvanced);
         btnBack = findViewById(R.id.btnBack);
+        v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         Boolean sound = sharedPreferences.getBoolean("sound",true);
         if(sound==true){
@@ -32,27 +35,29 @@ public class DifficultySectionActivity extends AppCompatActivity {
         }
 
         btnEasy.setOnClickListener(view -> {
+            v.vibrate(50);
             Intent i = new Intent(DifficultySectionActivity.this, EasyModeActivity.class);
             startActivity(i);
             mediaPlayer.start();
         });
 
         btnIntermediate.setOnClickListener(view -> {
+            v.vibrate(50);
             Intent i = new Intent(DifficultySectionActivity.this, IntermediateModeActivity.class);
             startActivity(i);
             mediaPlayer.start();
         });
 
         btnAdvanced.setOnClickListener(view -> {
+            v.vibrate(50);
             Intent i = new Intent(DifficultySectionActivity.this, AdvancedModeActivity.class);
             startActivity(i);
             mediaPlayer.start();
         });
 
         btnBack.setOnClickListener(view -> {
-            Intent i = new Intent(DifficultySectionActivity.this, MainActivity.class);
-            startActivity(i);
-            mediaPlayer.start();
+            v.vibrate(50);
+            finish();
         });
 
     }

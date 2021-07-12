@@ -2,10 +2,12 @@ package com.myapplicationdev.android.fyp.Questions;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
@@ -41,6 +43,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     MediaPlayer choiceSound, correctSound, wrongSound, finishSound, backgroundMusic,buttonSound;
     EditText editText;
+    Vibrator v;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -55,6 +58,8 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
         ivChoice1 = findViewById(R.id.ivChoiceQn1);
         ivChoice2 = findViewById(R.id.ivChoiceQn2);
         ivChoice3 = findViewById(R.id.ivChoiceQn3);
+        v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+
 
         choiceSound = MediaPlayer.create(IntermediateQuestionsActivity.this, R.raw.answer_click);
         correctSound = MediaPlayer.create(IntermediateQuestionsActivity.this, R.raw.correct_answer);
@@ -153,6 +158,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
     private void checkAnswer() {
         answered = true;
         if (ans1 == 0 && ans2 == 0 && ans3 == 0) {
+            v.vibrate(200);
             answered = false;
             wrongSound.start();
             AlertDialog.Builder myBuilder = new AlertDialog.Builder(IntermediateQuestionsActivity.this);
@@ -201,6 +207,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
 
                     } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2() && ans3 == currentQuestion.getCorrectNum3()) {
                         wrongSound.start();
+                        v.vibrate(200);
                         streak = 0;
                         myBuilder.setMessage("You selected the wrong answer for Question 1!");
                         myBuilder.setCancelable(false);
@@ -210,6 +217,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                         myDialog.show();
                     } else if (ans1 == currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum2() && ans3 == currentQuestion.getCorrectNum3()) {
                         wrongSound.start();
+                        v.vibrate(200);
                         streak = 0;
                         myBuilder.setMessage("You selected the wrong answer for Question 2!");
                         myBuilder.setCancelable(false);
@@ -219,6 +227,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                         myDialog.show();
                     } else if (ans1 == currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2() && ans3 != currentQuestion.getCorrectNum3()) {
                         wrongSound.start();
+                        v.vibrate(200);
                         streak = 0;
                         myBuilder.setMessage("You selected the wrong answer for Question 3!");
                         myBuilder.setCancelable(false);
@@ -228,6 +237,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                         myDialog.show();
                     } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum2() && ans3 == currentQuestion.getCorrectNum3()) {
                         wrongSound.start();
+                        v.vibrate(200);
                         streak = 0;
                         myBuilder.setMessage("You selected the wrong answer for Question 1 and 2!");
                         myBuilder.setCancelable(false);
@@ -237,6 +247,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                         myDialog.show();
                     } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2() && ans3 != currentQuestion.getCorrectNum3()) {
                         wrongSound.start();
+                        v.vibrate(200);
                         streak = 0;
                         myBuilder.setMessage("You selected the wrong answer for Question 1 and 3!");
                         myBuilder.setCancelable(false);
@@ -246,6 +257,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                         myDialog.show();
                     } else if (ans1 == currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum2() && ans3 != currentQuestion.getCorrectNum3()) {
                         wrongSound.start();
+                        v.vibrate(200);
                         streak = 0;
                         myBuilder.setMessage("You selected the wrong answer for Question 2 and 3!");
                         myBuilder.setCancelable(false);
@@ -255,6 +267,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                         myDialog.show();
                     } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum2() && ans3 != currentQuestion.getCorrectNum3()) {
                         wrongSound.start();
+                        v.vibrate(200);
                         streak = 0;
                         myBuilder.setMessage("You selected the wrong answer for all Questions!");
                         myBuilder.setCancelable(false);
@@ -298,6 +311,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             }
                         } else if (ans1 != currentQuestion.getCorrectNum2() && ans2 == currentQuestion.getCorrectNum3()) {
                             wrongSound.start();
+                            v.vibrate(200);
                             streak = 0;
                             myBuilder.setMessage("You selected the wrong answer for Question 1!");
                             myBuilder.setCancelable(false);
@@ -307,6 +321,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             myDialog.show();
                         } else if (ans1 == currentQuestion.getCorrectNum2() && ans2 != currentQuestion.getCorrectNum3()) {
                             wrongSound.start();
+                            v.vibrate(200);
                             streak = 0;
                             myBuilder.setMessage("You selected the wrong answer for Question 2!");
                             myBuilder.setCancelable(false);
@@ -316,6 +331,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             myDialog.show();
                         } else {
                             wrongSound.start();
+                            v.vibrate(200);
                             streak = 0;
                             myBuilder.setMessage("You selected the wrong answer for all Questions!");
                             myBuilder.setCancelable(false);
@@ -358,6 +374,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             }
                         } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum3()) {
                             wrongSound.start();
+                            v.vibrate(200);
                             streak = 0;
                             myBuilder.setMessage("You selected the wrong answer for Question 1!");
                             myBuilder.setCancelable(false);
@@ -367,6 +384,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             myDialog.show();
                         } else if (ans1 == currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum3()) {
                             wrongSound.start();
+                            v.vibrate(200);
                             streak = 0;
                             myBuilder.setMessage("You selected the wrong answer for Question 2!");
                             myBuilder.setCancelable(false);
@@ -376,6 +394,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             myDialog.show();
                         } else {
                             wrongSound.start();
+                            v.vibrate(200);
                             streak = 0;
                             myBuilder.setMessage("You selected the wrong answer for all Questions!");
                             myBuilder.setCancelable(false);
@@ -417,6 +436,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             }
                         } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2()) {
                             wrongSound.start();
+                            v.vibrate(200);
                             streak = 0;
                             myBuilder.setMessage("You selected the wrong answer for Question 1!");
                             myBuilder.setCancelable(false);
@@ -426,6 +446,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             myDialog.show();
                         } else if (ans1 == currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum2()) {
                             wrongSound.start();
+                            v.vibrate(200);
                             streak = 0;
                             myBuilder.setMessage("You selected the wrong answer for Question 2!");
                             myBuilder.setCancelable(false);
@@ -435,6 +456,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             myDialog.show();
                         } else {
                             wrongSound.start();
+                            v.vibrate(200);
                             streak = 0;
                             myBuilder.setMessage("You selected the wrong answer for all Questions!");
                             myBuilder.setCancelable(false);
@@ -480,6 +502,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             }
                         } else if (ans1 != currentQuestion.getCorrectNum1()) {
                             wrongSound.start();
+                            v.vibrate(200);
                             streak = 0;
                             myBuilder.setMessage("You selected the wrong answer!");
                             myBuilder.setCancelable(false);
@@ -522,6 +545,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             }
                         } else if (ans1 != currentQuestion.getCorrectNum2()) {
                             wrongSound.start();
+                            v.vibrate(200);
                             streak = 0;
                             myBuilder.setMessage("You selected the wrong answer!");
                             myBuilder.setCancelable(false);
@@ -563,6 +587,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             }
                         } else if (ans1 != currentQuestion.getCorrectNum3()) {
                             wrongSound.start();
+                            v.vibrate(200);
                             streak = 0;
                             myBuilder.setMessage("You selected the wrong answer!");
                             myBuilder.setCancelable(false);
@@ -598,6 +623,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                         tvScore.setText("Score: " + score);
                     } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2() && ans3 == currentQuestion.getCorrectNum3()) {
                         wrongSound.start();
+                        v.vibrate(200);
                         myBuilder.setMessage("You selected the wrong answer for Question 1!");
                         myBuilder.setCancelable(false);
                         myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
@@ -606,6 +632,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                         myDialog.show();
                     } else if (ans1 == currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum2() && ans3 == currentQuestion.getCorrectNum3()) {
                         wrongSound.start();
+                        v.vibrate(200);
                         myBuilder.setMessage("You selected the wrong answer for Question 2!");
                         myBuilder.setCancelable(false);
                         myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
@@ -614,6 +641,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                         myDialog.show();
                     } else if (ans1 == currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2() && ans3 != currentQuestion.getCorrectNum3()) {
                         wrongSound.start();
+                        v.vibrate(200);
                         myBuilder.setMessage("You selected the wrong answer for Question 3!");
                         myBuilder.setCancelable(false);
                         myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
@@ -622,6 +650,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                         myDialog.show();
                     } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum2() && ans3 == currentQuestion.getCorrectNum3()) {
                         wrongSound.start();
+                        v.vibrate(200);
                         myBuilder.setMessage("You selected the wrong answer for Question 1 and 2!");
                         myBuilder.setCancelable(false);
                         myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
@@ -630,6 +659,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                         myDialog.show();
                     } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2() && ans3 != currentQuestion.getCorrectNum3()) {
                         wrongSound.start();
+                        v.vibrate(200);
                         myBuilder.setMessage("You selected the wrong answer for Question 1 and 3!");
                         myBuilder.setCancelable(false);
                         myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
@@ -638,6 +668,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                         myDialog.show();
                     } else if (ans1 == currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum2() && ans3 != currentQuestion.getCorrectNum3()) {
                         wrongSound.start();
+                        v.vibrate(200);
                         myBuilder.setMessage("You selected the wrong answer for Question 2 and 3!");
                         myBuilder.setCancelable(false);
                         myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
@@ -646,6 +677,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                         myDialog.show();
                     } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum2() && ans3 != currentQuestion.getCorrectNum3()) {
                         wrongSound.start();
+                        v.vibrate(200);
                         myBuilder.setMessage("You selected the wrong answer for all Questions!");
                         myBuilder.setCancelable(false);
                         myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
@@ -670,6 +702,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             tvScore.setText("Score: " + score);
                         } else if (ans1 != currentQuestion.getCorrectNum2() && ans2 == currentQuestion.getCorrectNum3()) {
                             wrongSound.start();
+                            v.vibrate(200);
                             myBuilder.setMessage("You selected the wrong answer for Question 1!");
                             myBuilder.setCancelable(false);
                             myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
@@ -678,6 +711,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             myDialog.show();
                         } else if (ans1 == currentQuestion.getCorrectNum2() && ans2 != currentQuestion.getCorrectNum3()) {
                             wrongSound.start();
+                            v.vibrate(200);
                             myBuilder.setMessage("You selected the wrong answer for Question 2!");
                             myBuilder.setCancelable(false);
                             myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
@@ -686,6 +720,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             myDialog.show();
                         } else {
                             wrongSound.start();
+                            v.vibrate(200);
                             myBuilder.setMessage("You selected the wrong answer for all Questions!");
                             myBuilder.setCancelable(false);
                             myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
@@ -708,6 +743,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             tvScore.setText("Score: " + score);
                         } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum3()) {
                             wrongSound.start();
+                            v.vibrate(200);
                             myBuilder.setMessage("You selected the wrong answer for Question 1!");
                             myBuilder.setCancelable(false);
                             myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
@@ -716,6 +752,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             myDialog.show();
                         } else if (ans1 == currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum3()) {
                             wrongSound.start();
+                            v.vibrate(200);
                             myBuilder.setMessage("You selected the wrong answer for Question 2!");
                             myBuilder.setCancelable(false);
                             myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
@@ -724,6 +761,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             myDialog.show();
                         } else {
                             wrongSound.start();
+                            v.vibrate(200);
                             myBuilder.setMessage("You selected the wrong answer for all Questions!");
                             myBuilder.setCancelable(false);
                             myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
@@ -746,6 +784,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             tvScore.setText("Score: " + score);
                         } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2()) {
                             wrongSound.start();
+                            v.vibrate(200);
                             myBuilder.setMessage("You selected the wrong answer for Question 1!");
                             myBuilder.setCancelable(false);
                             myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
@@ -754,6 +793,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             myDialog.show();
                         } else if (ans1 == currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum2()) {
                             wrongSound.start();
+                            v.vibrate(200);
                             myBuilder.setMessage("You selected the wrong answer for Question 2!");
                             myBuilder.setCancelable(false);
                             myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
@@ -762,6 +802,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             myDialog.show();
                         } else {
                             wrongSound.start();
+                            v.vibrate(200);
                             myBuilder.setMessage("You selected the wrong answer for all Questions!");
                             myBuilder.setCancelable(false);
                             myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
@@ -788,6 +829,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             tvScore.setText("Score: " + score);
                         } else if (ans1 != currentQuestion.getCorrectNum1()) {
                             wrongSound.start();
+                            v.vibrate(200);
                             myBuilder.setMessage("You selected the wrong answer!");
                             myBuilder.setCancelable(false);
                             myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
@@ -810,6 +852,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             tvScore.setText("Score: " + score);
                         } else if (ans1 != currentQuestion.getCorrectNum2()) {
                             wrongSound.start();
+                            v.vibrate(200);
                             myBuilder.setMessage("You selected the wrong answer!");
                             myBuilder.setCancelable(false);
                             myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
@@ -832,6 +875,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             tvScore.setText("Score: " + score);
                         } else if (ans1 != currentQuestion.getCorrectNum3()) {
                             wrongSound.start();
+                            v.vibrate(200);
                             myBuilder.setMessage("You selected the wrong answer!");
                             myBuilder.setCancelable(false);
                             myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());

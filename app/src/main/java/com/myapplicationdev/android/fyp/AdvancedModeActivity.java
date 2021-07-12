@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.util.Log;
 import android.widget.Button;
 
@@ -15,12 +16,14 @@ import com.myapplicationdev.android.fyp.Questions.AdvancedQuestionsActivity;
 public class AdvancedModeActivity extends AppCompatActivity {
     Button btnStart;
     MediaPlayer mediaPlayer;
+    Vibrator v;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_advanced_mode);
         btnStart = findViewById(R.id.btnStartAdvanced);
+        v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         Boolean sound = sharedPreferences.getBoolean("sound",true);
         if(sound==true){
@@ -30,6 +33,7 @@ public class AdvancedModeActivity extends AppCompatActivity {
         }
 
         btnStart.setOnClickListener(view -> {
+            v.vibrate(50);
             Intent i = new Intent(AdvancedModeActivity.this, StartQuizActivity.class);
             i.putExtra("mode","advanced");
             startActivity(i);

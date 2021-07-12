@@ -2,11 +2,13 @@ package com.myapplicationdev.android.fyp.Questions;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
@@ -48,6 +50,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
     boolean answered;
     String[] hints;
     MediaPlayer choiceSound, correctSound, wrongSound, finishSound, backgroundMusic,buttonSound;
+    Vibrator v;
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +74,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
         finishSound = MediaPlayer.create(EasyQuestionsActivity.this, R.raw.end_game);
         backgroundMusic = MediaPlayer.create(EasyQuestionsActivity.this, R.raw.background_music);
         buttonSound = MediaPlayer.create(EasyQuestionsActivity.this,R.raw.button_click);
+        v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
         hints = new String[]{"Starting material has less steric hinderance.","Starting material has less steric hinderance.","Starting material with high steric hindrance inhibits nucleophilic attack.","Starting material with high steric hindrance inhibits nucleophilic attack.","Starting material with high steric hindrance inhibits nucleophilic attack.","Starting material has less\n" +
                 " steric hinderance.\n","Starting material has less\n" +
@@ -105,6 +109,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
 //            Intent i = new Intent(QuestionsActivity.this, QuestionsAnswerActivity.class);
 //            i.putExtra("question","Question 1");
 //            startActivity(i);
+
             buttonSound.start();
             if (!answered) {
                 checkAnswer();
@@ -139,6 +144,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
             ShowDialogExit.show();
         });
         ivHints.setOnClickListener(view -> {
+            v.vibrate(50);
             buttonSound.start();
             AlertDialog.Builder hintDialog = new AlertDialog.Builder(EasyQuestionsActivity.this);
             hintDialog.setTitle("Hint #" + questionCounter);
@@ -156,6 +162,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
 //        int answer_number = group.indexOfChild(rbSelected) + 1;
         if (questionCounter < questionCountTotal) {
             if (ans == 0) {
+                v.vibrate(200);
                 wrongSound.start();
                 answered = false;
                 //wrongSound.start();
@@ -202,6 +209,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
 
 
                 } else {
+                    v.vibrate(200);
                     wrongSound.start();
                     streak = 0;
                     AlertDialog.Builder myBuilder = new AlertDialog.Builder(EasyQuestionsActivity.this);
@@ -218,6 +226,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
             // There are 9 basic questions. If current question is not at question 9, set text "Next Questions" else set text "Finish Quiz".
         } else {
             if (ans == 0) {
+                v.vibrate(200);
                 wrongSound.start();
                 answered = false;
                 //wrongSound.start();
@@ -253,6 +262,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
 
 
                 } else {
+                    v.vibrate(200);
                     wrongSound.start();
                     streak = 0;
                     AlertDialog.Builder myBuilder = new AlertDialog.Builder(EasyQuestionsActivity.this);
