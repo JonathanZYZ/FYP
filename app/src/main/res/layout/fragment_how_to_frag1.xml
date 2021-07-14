@@ -14,19 +14,24 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tvHowTo1"
+<!--        <TextView-->
+<!--            android:id="@+id/tvHowTo1"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="#F686BD"-->
+<!--            android:text="The first screen will show the questions."-->
+<!--            android:textSize="20sp"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:textStyle="bold" />-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/ivHowTo1"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent" />-->
+        <VideoView
+            android:id="@+id/videoView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#F686BD"
-            android:text="The first screen will show the questions."
-            android:textSize="20sp"
-            android:layout_gravity="center"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/ivHowTo1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_gravity="center"/>
     </LinearLayout>
 </FrameLayout>
