@@ -1,92 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background2"
     android:orientation="vertical">
 
 
-
     <TextView
-        android:layout_width="310dp"
-        android:layout_height="508dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerInParent="true"
+        android:id="@+id/textView6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_gravity="center"
+        android:layout_marginLeft="50dp"
         android:layout_marginTop="100dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/rounded_textview2"
         android:textColor="#F4BBD3"
-        android:background="@drawable/rounded_textview2" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/tvSetting"
         android:layout_width="311dp"
         android:layout_height="96dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="51dp"
-        android:layout_marginRight="51dp"
         android:background="@drawable/rounded_textview1"
         android:gravity="center"
         android:text="Setting"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="23dp" />
+        android:textSize="23dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView6"
+        app:layout_constraintStart_toStartOf="@+id/textView6"
+        app:layout_constraintTop_toTopOf="@+id/textView6" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView" />
-
-    <CheckBox
-        android:id="@+id/checkBoxSound"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="122dp"
-        android:layout_marginLeft="122dp"
-        android:layout_marginTop="252dp"
-        android:paddingLeft="20dp"
-        android:text="Sound"
-        android:textSize="40dp" />
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
         android:id="@+id/checkBoxMusic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="125dp"
-        android:layout_marginLeft="125dp"
-        android:layout_marginTop="374dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:paddingLeft="20dp"
         android:text="Music"
-        android:textSize="40dp" />
+        android:textSize="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnApply"
+        app:layout_constraintEnd_toEndOf="@+id/checkBoxSound"
+        app:layout_constraintStart_toStartOf="@+id/checkBoxSound"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxSound" />
+
+    <CheckBox
+        android:id="@+id/checkBoxSound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:paddingLeft="20dp"
+        android:text="Sound"
+        android:textSize="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/checkBoxMusic"
+        app:layout_constraintEnd_toEndOf="@+id/textView6"
+        app:layout_constraintStart_toStartOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/tvSetting" />
 
     <Button
         android:id="@+id/btnApply"
         android:layout_width="220dp"
         android:layout_height="80dp"
         android:layout_gravity="center"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="51dp"
-        android:layout_marginTop="480dp"
         android:background="@drawable/btn_design"
         android:gravity="center"
         android:text="Apply"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="42sp"
-        app:backgroundTint="@color/btnColor" />
+        app:backgroundTint="@color/btnColor"
+        app:layout_constraintBottom_toBottomOf="@id/textView6"
+        app:layout_constraintEnd_toEndOf="@+id/checkBoxMusic"
+        app:layout_constraintHorizontal_bias="0.474"
+        app:layout_constraintStart_toStartOf="@+id/checkBoxMusic"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxMusic" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
