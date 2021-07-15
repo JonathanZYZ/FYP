@@ -31,7 +31,7 @@
 
     <TextView
         android:id="@+id/tvSetting"
-        android:layout_width="311dp"
+        android:layout_width="0dp"
         android:layout_height="96dp"
         android:layout_gravity="center"
         android:background="@drawable/rounded_textview1"
