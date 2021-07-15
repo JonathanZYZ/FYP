@@ -51,7 +51,7 @@ public class StartQuizActivity extends AppCompatActivity {
 
         } else if (mode.equalsIgnoreCase("intermediate")) {
             tvMode.setText("Intermediate");
-            tvDesc.setText("The quiz contains 22 questions and there is no time limit");
+            tvDesc.setText("The quiz contains 14 questions and there is no time limit");
             btnStart.setOnClickListener(view -> {
                 v.vibrate(50);
                 //TODO

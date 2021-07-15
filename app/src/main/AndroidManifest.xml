@@ -15,10 +15,12 @@
         android:theme="@style/Theme.FYP"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".Scoreboards.ModifyScoreboardActivity"></activity>
+        <activity android:name=".Scoreboards.ModifyScoreboardActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Questions.AdvancedQuestionsActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".SplashScreenActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
@@ -39,22 +41,24 @@
         </activity>
         <activity
             android:name=".Questions.IntermediateQuestionsActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity
-            android:name=".PositivelyQuitedActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity
-            android:name=".QuestionWrongActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity
-            android:name=".QuestionCorrectActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity
-            android:name=".NegativelyQuitedActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:screenOrientation="portrait"/>
+<!--        <activity-->
+<!--            android:name=".PositivelyQuitedActivity"-->
+<!--            android:theme="@style/Theme.AppCompat.NoActionBar" />-->
+<!--        <activity-->
+<!--            android:name=".QuestionWrongActivity"-->
+<!--            android:theme="@style/Theme.AppCompat.NoActionBar" />-->
+<!--        <activity-->
+<!--            android:name=".QuestionCorrectActivity"-->
+<!--            android:theme="@style/Theme.AppCompat.NoActionBar" />-->
+<!--        <activity-->
+<!--            android:name=".NegativelyQuitedActivity"-->
+<!--            android:theme="@style/Theme.AppCompat.NoActionBar" />-->
         <activity
             android:name=".Questions.ResultActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".NegativeResultActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
@@ -63,34 +67,44 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".Questions.EasyQuestionsActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".SettingPageActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".RevisionSectionActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".HowToPlayActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".StartQuizActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Scoreboards.ShowScoreboardActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".AdvancedModeActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".IntermediateModeActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".EasyModeActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".DifficultySectionActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:screenOrientation="portrait"/>
+
     </application>
 
 </manifest>

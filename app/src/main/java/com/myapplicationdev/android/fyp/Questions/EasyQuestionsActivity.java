@@ -136,6 +136,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
 
                 Intent basicMode_to_main = new Intent(EasyQuestionsActivity.this, MainActivity.class);
 //                        basicMode_to_main.putExtra("question","Question 1");
+                basicMode_to_main.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(basicMode_to_main);
             });
 
@@ -310,7 +311,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
 
 //            ivQuestion.setImageResource();
             questionCounter++;
-            tvQuestionsNumber.setText("Question: " + questionCounter + "/" + questionCountTotal);
+            tvQuestionsNumber.setText("Easy: " + questionCounter + "/" + questionCountTotal);
             answered = false;
             btnStart.setText("Confirm");
         } else {

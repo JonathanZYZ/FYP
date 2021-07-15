@@ -127,13 +127,11 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
 
         questionCountTotal = al.size();
         Intent i = getIntent();
-        int currentQnNum = i.getIntExtra("questionNum", 0);
         int currentScore = i.getIntExtra("score", 0);
-        if (currentQnNum != 0 && currentScore != 0) {
-            questionCounter = currentQnNum;
+        if (currentScore != 0) {
             score = currentScore;
         }
-        tvQuestionsNumber.setText("Question: " + questionCounter + "/" + questionCountTotal);
+        tvQuestionsNumber.setText("Intermediate: " + questionCounter + "/" + questionCountTotal);
         tvScore.setText("Score: " + score);
         showNextQuestion();
 
@@ -169,7 +167,104 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
 
             AlertDialog myDialog = myBuilder.create();
             myDialog.show();
-        } else {
+        }else if (currentQuestion.getQnCount() == 3 && ans2 == 0 && ans3 ==0){
+            v.vibrate(200);
+            answered = false;
+            wrongSound.start();
+            AlertDialog.Builder myBuilder = new AlertDialog.Builder(IntermediateQuestionsActivity.this);
+            myBuilder.setTitle("No Input for qns 2 and 3");
+            myBuilder.setMessage("Click on the question mark to input your answer");
+            myBuilder.setCancelable(false);
+            myBuilder.setPositiveButton("Input Answer", (dialogInterface, i) -> dialogInterface.dismiss());
+
+            AlertDialog myDialog = myBuilder.create();
+            myDialog.show();
+        }else if (currentQuestion.getQnCount() == 3 && ans1 == 0 && ans3 ==0){
+            v.vibrate(200);
+            answered = false;
+            wrongSound.start();
+            AlertDialog.Builder myBuilder = new AlertDialog.Builder(IntermediateQuestionsActivity.this);
+            myBuilder.setTitle("No Input for qns 1 and 3");
+            myBuilder.setMessage("Click on the question mark to input your answer");
+            myBuilder.setCancelable(false);
+            myBuilder.setPositiveButton("Input Answer", (dialogInterface, i) -> dialogInterface.dismiss());
+
+            AlertDialog myDialog = myBuilder.create();
+            myDialog.show();
+        }else if (currentQuestion.getQnCount() == 3 && ans1 == 0 && ans2 ==0){
+            v.vibrate(200);
+            answered = false;
+            wrongSound.start();
+            AlertDialog.Builder myBuilder = new AlertDialog.Builder(IntermediateQuestionsActivity.this);
+            myBuilder.setTitle("No Input for qns 1 and 2");
+            myBuilder.setMessage("Click on the question mark to input your answer");
+            myBuilder.setCancelable(false);
+            myBuilder.setPositiveButton("Input Answer", (dialogInterface, i) -> dialogInterface.dismiss());
+
+            AlertDialog myDialog = myBuilder.create();
+            myDialog.show();
+        }else if (currentQuestion.getQnCount() == 3 && ans1 == 0){
+            v.vibrate(200);
+            answered = false;
+            wrongSound.start();
+            AlertDialog.Builder myBuilder = new AlertDialog.Builder(IntermediateQuestionsActivity.this);
+            myBuilder.setTitle("No Input for qns 1");
+            myBuilder.setMessage("Click on the question mark to input your answer");
+            myBuilder.setCancelable(false);
+            myBuilder.setPositiveButton("Input Answer", (dialogInterface, i) -> dialogInterface.dismiss());
+
+            AlertDialog myDialog = myBuilder.create();
+            myDialog.show();
+        }else if (currentQuestion.getQnCount() == 3 && ans2 ==0){
+            v.vibrate(200);
+            answered = false;
+            wrongSound.start();
+            AlertDialog.Builder myBuilder = new AlertDialog.Builder(IntermediateQuestionsActivity.this);
+            myBuilder.setTitle("No Input for qns 2");
+            myBuilder.setMessage("Click on the question mark to input your answer");
+            myBuilder.setCancelable(false);
+            myBuilder.setPositiveButton("Input Answer", (dialogInterface, i) -> dialogInterface.dismiss());
+
+            AlertDialog myDialog = myBuilder.create();
+            myDialog.show();
+        }else if (currentQuestion.getQnCount() == 3 && ans3 == 0){
+            v.vibrate(200);
+            answered = false;
+            wrongSound.start();
+            AlertDialog.Builder myBuilder = new AlertDialog.Builder(IntermediateQuestionsActivity.this);
+            myBuilder.setTitle("No Input for qns 3");
+            myBuilder.setMessage("Click on the question mark to input your answer");
+            myBuilder.setCancelable(false);
+            myBuilder.setPositiveButton("Input Answer", (dialogInterface, i) -> dialogInterface.dismiss());
+
+            AlertDialog myDialog = myBuilder.create();
+            myDialog.show();
+        }else if (currentQuestion.getQnCount() == 2 && ans2 == 0){
+            v.vibrate(200);
+            answered = false;
+            wrongSound.start();
+            AlertDialog.Builder myBuilder = new AlertDialog.Builder(IntermediateQuestionsActivity.this);
+            myBuilder.setTitle("No Input for qns 2");
+            myBuilder.setMessage("Click on the question mark to input your answer");
+            myBuilder.setCancelable(false);
+            myBuilder.setPositiveButton("Input Answer", (dialogInterface, i) -> dialogInterface.dismiss());
+
+            AlertDialog myDialog = myBuilder.create();
+            myDialog.show();
+        }else if (currentQuestion.getQnCount() == 2 && ans1 == 0){
+            v.vibrate(200);
+            answered = false;
+            wrongSound.start();
+            AlertDialog.Builder myBuilder = new AlertDialog.Builder(IntermediateQuestionsActivity.this);
+            myBuilder.setTitle("No Input for qns 1");
+            myBuilder.setMessage("Click on the question mark to input your answer");
+            myBuilder.setCancelable(false);
+            myBuilder.setPositiveButton("Input Answer", (dialogInterface, i) -> dialogInterface.dismiss());
+
+            AlertDialog myDialog = myBuilder.create();
+            myDialog.show();
+        }
+        else {
             if (questionCounter < questionCountTotal) {
                 AlertDialog.Builder myBuilder = new AlertDialog.Builder(IntermediateQuestionsActivity.this);
                 myBuilder.setTitle("Sorry");
@@ -969,7 +1064,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
 
 
             questionCounter++;
-            tvQuestionsNumber.setText("Question: " + questionCounter + "/" + questionCountTotal);
+            tvQuestionsNumber.setText("Intermediate: " + questionCounter + "/" + questionCountTotal);
             answered = false;
             btnStart.setText("Confirm");
         } else {

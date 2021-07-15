@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.myapplicationdev.android.fyp.DifficultySectionActivity;
+import com.myapplicationdev.android.fyp.MainActivity;
 import com.myapplicationdev.android.fyp.R;
 import com.myapplicationdev.android.fyp.Scoreboards.ShowScoreboardActivity;
 import com.myapplicationdev.android.fyp.Utilities.DBHelper;
@@ -137,9 +138,9 @@ public class ResultActivity extends AppCompatActivity {
 
         btnQuitGame.setOnClickListener(v -> {
             // TODO: after users quits the game after playing , they would lead to the DifficultySectionActivity Activity
-            Intent intent = new Intent(ResultActivity.this, DifficultySectionActivity.class);
+            Intent intent = new Intent(ResultActivity.this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-            finish();
         });
 
 

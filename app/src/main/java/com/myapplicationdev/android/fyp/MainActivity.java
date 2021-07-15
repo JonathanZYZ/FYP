@@ -25,7 +25,8 @@ public class MainActivity extends AppCompatActivity {
     MediaPlayer mediaPlayer,backgroundMusic;
     Vibrator v;
     int LAUNCH_SETTINGS_PAGE = 1;
-
+    SharedPreferences sharedPreferences;
+    int music,sound;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,10 +39,30 @@ public class MainActivity extends AppCompatActivity {
         btnSettings = findViewById(R.id.btnSettings);
         btnLeaderBoard = findViewById(R.id.btnLeaderBoard);
         v =(Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.mouse_click);
-        backgroundMusic = MediaPlayer.create(MainActivity.this,R.raw.background_music);
-        backgroundMusic.start();
-        backgroundMusic.setLooping(true);
+
+
+        sharedPreferences = getSharedPreferences("audio",Context.MODE_PRIVATE);
+        if (sharedPreferences.contains("sound") && sharedPreferences.contains("music")){
+            music = sharedPreferences.getInt("music",0);
+            sound = sharedPreferences.getInt("sound",0);
+            if (music == 0){
+                backgroundMusic = new MediaPlayer();
+            }else {
+                backgroundMusic = MediaPlayer.create(MainActivity.this,R.raw.background_music);
+                backgroundMusic.start();
+                backgroundMusic.setLooping(true);
+            }
+            if (sound == 0){
+                mediaPlayer = new MediaPlayer();
+            }else {
+                mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.mouse_click);
+            }
+        }else{
+            backgroundMusic = MediaPlayer.create(MainActivity.this,R.raw.background_music);
+            backgroundMusic.start();
+            backgroundMusic.setLooping(true);
+            mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.mouse_click);
+        }
 
 
         btnStart.setOnClickListener(view -> {
