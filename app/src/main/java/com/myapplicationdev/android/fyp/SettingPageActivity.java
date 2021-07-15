@@ -70,6 +70,7 @@ public class SettingPageActivity extends AppCompatActivity {
             returnIntent.putExtra("sound",sound);
             returnIntent.putExtra("music",music);
             setResult(RESULT_OK,returnIntent);
+            Toast.makeText(SettingPageActivity.this,"Changes applied",Toast.LENGTH_SHORT).show();
 //            Toast
             finish();
 //            Intent i = new Intent(SettingPageActivity.this, MainActivity.class);
