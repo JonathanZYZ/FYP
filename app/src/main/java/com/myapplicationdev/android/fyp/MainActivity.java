@@ -1,5 +1,6 @@
 package com.myapplicationdev.android.fyp;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -8,8 +9,11 @@ import android.content.pm.ActivityInfo;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.util.Log;
 import android.widget.Button;
+import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnStart, btnRevision, btnHowToPlay, btnSettings, btnLeaderBoard;
     MediaPlayer mediaPlayer,backgroundMusic;
     Vibrator v;
+    int LAUNCH_SETTINGS_PAGE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +38,10 @@ public class MainActivity extends AppCompatActivity {
         btnSettings = findViewById(R.id.btnSettings);
         btnLeaderBoard = findViewById(R.id.btnLeaderBoard);
         v =(Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-
-
+        mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.mouse_click);
+        backgroundMusic = MediaPlayer.create(MainActivity.this,R.raw.background_music);
+        backgroundMusic.start();
+        backgroundMusic.setLooping(true);
 
 
         btnStart.setOnClickListener(view -> {
@@ -62,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         btnSettings.setOnClickListener(view -> {
             v.vibrate(50);
             Intent i = new Intent(MainActivity.this, SettingPageActivity.class);
-            startActivity(i);
+            startActivityForResult(i,LAUNCH_SETTINGS_PAGE);
             mediaPlayer.start();
         });
 
@@ -75,27 +82,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        Boolean sound = sharedPreferences.getBoolean("sound",true);
-        if(sound==true){
-            mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.mouse_click);
-        } else {
-            mediaPlayer = new MediaPlayer();
-        }
-        Boolean music = sharedPreferences.getBoolean("music",true);
-        if(music==true){
-            backgroundMusic = MediaPlayer.create(MainActivity.this,R.raw.background_music);
-        } else{
-            backgroundMusic = new MediaPlayer();
-        }
-        if (backgroundMusic.isPlaying()){
-            backgroundMusic.stop();
-        }
-
-    }
 
     @Override
     public void onBackPressed() {
@@ -118,4 +104,28 @@ public class MainActivity extends AppCompatActivity {
         myDialog.show();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,@Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //Toast.makeText(MainActivity.this,resultCode,Toast.LENGTH_SHORT).show();
+        if(resultCode == RESULT_OK){
+            int sound = data.getIntExtra("sound",0);
+            int music = data.getIntExtra("music",0);
+            Log.i("Check",sound+" ," + music);
+            if(sound == 1){
+                mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.mouse_click);
+            }else{
+                mediaPlayer = new MediaPlayer();
+            }
+            if (music == 1){
+                backgroundMusic.stop();
+                backgroundMusic = MediaPlayer.create(MainActivity.this,R.raw.background_music);
+                backgroundMusic.start();
+                backgroundMusic.setLooping(true);
+            }else{
+                backgroundMusic.stop();
+            }
+
+        }
+    }
 }

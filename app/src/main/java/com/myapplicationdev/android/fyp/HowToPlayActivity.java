@@ -1,6 +1,8 @@
 package com.myapplicationdev.android.fyp;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.VideoView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +18,7 @@ public class HowToPlayActivity extends AppCompatActivity {
     FragmentPagerAdapter adapter;
     ViewPager vPager;
     VideoView videoView;
+    Button btnHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +26,7 @@ public class HowToPlayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_how_to_play);
 
         videoView = findViewById(R.id.videoView);
+        btnHome = findViewById(R.id.btnHome);
 //        vPager = findViewById(R.id.viewpager1);
 //
 //        FragmentManager fm = getSupportFragmentManager();
@@ -40,5 +44,11 @@ public class HowToPlayActivity extends AppCompatActivity {
         ft.replace(R.id.frame1, f1);
 
         ft.commit();
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 }

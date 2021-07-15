@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,8 +15,8 @@ public class SettingPageActivity extends AppCompatActivity {
 
     Button btnApply;
     CheckBox checkBoxSound, checkBoxMusic;
-    SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-    Boolean sound,music;
+    SharedPreferences sharedPreferences;
+    int sound,music;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,32 +25,57 @@ public class SettingPageActivity extends AppCompatActivity {
         btnApply = findViewById(R.id.btnApply);
         checkBoxSound = findViewById(R.id.checkBoxSound);
         checkBoxMusic = findViewById(R.id.checkBoxMusic);
-        sound = sharedPreferences.getBoolean("sound",true);
-        music = sharedPreferences.getBoolean("music",true);
-        if (sound){
-            checkBoxMusic.setChecked(true);
-        }else {
-            checkBoxMusic.setChecked(false);
-        }
-        if (music){
-            checkBoxSound.setChecked(true);
-        }else{
-            checkBoxSound.setChecked(false);
-        }
-        checkBoxMusic.setChecked(AudioData.getInstance().isEnabledMusic());
-        checkBoxSound.setChecked(AudioData.getInstance().isEnabledSound());
+       sharedPreferences = getSharedPreferences("audio",Context.MODE_PRIVATE);
+
+//        editor.putInt("music",1);
+//        editor.putInt("sound",1);
+//        editor.commit();
+        checkBoxMusic.setChecked(true);
+        checkBoxSound.setChecked(true);
+
+
 
         btnApply.setOnClickListener(v -> {
-
-
             SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putBoolean("sound", checkBoxSound.isChecked());
-            editor.putBoolean("music", checkBoxMusic.isChecked());
+            if(checkBoxMusic.isChecked()){
+                music = 1;
+            }else{
+                music = 0;
+            }
+            if(checkBoxSound.isChecked()){
+                sound = 1;
+            }else{
+                sound = 0;
+            }
+            editor.putInt("music",music);
+            editor.putInt("sound",sound);
             editor.commit();
-
-            finish();
+            Intent returnIntent = new Intent();
+            returnIntent.putExtra("sound",sound);
+            returnIntent.putExtra("music",music);
+            setResult(RESULT_OK,returnIntent);
+//            Toast
+            //finish();
 //            Intent i = new Intent(SettingPageActivity.this, MainActivity.class);
 //            startActivity(i);
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        sharedPreferences = getSharedPreferences("audio",Context.MODE_PRIVATE);
+        music = sharedPreferences.getInt("music",0);
+        sound = sharedPreferences.getInt("sound",0);
+        if (music == 0){
+            checkBoxMusic.setChecked(false);
+        }else {
+            checkBoxMusic.setChecked(true);
+        }
+        if (sound == 0){
+            checkBoxSound.setChecked(false);
+        }else {
+            checkBoxSound.setChecked(true);
+        }
     }
 }
