@@ -7,6 +7,7 @@
     android:layout_height="wrap_content"
     android:fillViewport="true"
     android:paddingTop="8dp"
+    android:orientation="vertical"
     android:background="@drawable/splash_background"
     tools:context=".RevisionSectionActivity">
 
@@ -27,9 +28,10 @@
             android:gravity="center_horizontal" />
 
         <com.jsibbold.zoomage.ZoomageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
             android:src="@drawable/nucleophiles"
+            android:layout_gravity="center_horizontal"
             app:zoomage_restrictBounds="false"
             app:zoomage_animateOnReset="true"
             app:zoomage_autoResetMode="UNDER"
@@ -40,12 +42,13 @@
             app:zoomage_maxScale="8"/>
 
         <com.jsibbold.zoomage.ZoomageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
             android:src="@drawable/solvents"
             app:zoomage_restrictBounds="false"
             app:zoomage_animateOnReset="true"
             app:zoomage_autoResetMode="UNDER"
+            android:layout_gravity="center_horizontal"
             app:zoomage_autoCenter="true"
             app:zoomage_zoomable="true"
             app:zoomage_translatable="true"
@@ -53,12 +56,13 @@
             app:zoomage_maxScale="8"  />
 
         <com.jsibbold.zoomage.ZoomageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
             android:src="@drawable/treediagram"
             app:zoomage_restrictBounds="false"
             app:zoomage_animateOnReset="true"
             app:zoomage_autoResetMode="UNDER"
+            android:layout_gravity="center_horizontal"
             app:zoomage_autoCenter="true"
             app:zoomage_zoomable="true"
             app:zoomage_translatable="true"
@@ -66,12 +70,13 @@
             app:zoomage_maxScale="8"  />
 
         <com.jsibbold.zoomage.ZoomageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
             android:src="@drawable/mechanism_templates"
             app:zoomage_restrictBounds="false"
             app:zoomage_animateOnReset="true"
             app:zoomage_autoResetMode="UNDER"
+            android:layout_gravity="center_horizontal"
             app:zoomage_autoCenter="true"
             app:zoomage_zoomable="true"
             app:zoomage_translatable="true"
