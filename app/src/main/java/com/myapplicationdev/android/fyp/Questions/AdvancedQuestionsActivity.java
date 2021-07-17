@@ -688,6 +688,7 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
                     i.putExtra("username", editText.getText().toString());
                     startActivity(i);
                     finish();
+
                 }
             }
         }
