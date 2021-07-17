@@ -65,31 +65,51 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
         wrongSound = MediaPlayer.create(AdvancedQuestionsActivity.this, R.raw.wrong_answer);
         finishSound = MediaPlayer.create(AdvancedQuestionsActivity.this, R.raw.end_game);
         backgroundMusic = MediaPlayer.create(AdvancedQuestionsActivity.this, R.raw.background_music);
-        buttonSound = MediaPlayer.create(AdvancedQuestionsActivity.this,R.raw.button_click);
+        buttonSound = MediaPlayer.create(AdvancedQuestionsActivity.this, R.raw.button_click);
 
 //  TODO: When the user clicks the "did you know?" icon on the screen, text messages are prepared for them.
-        String didYouKnowIconMsgQ1 = "Tamoxifen's main skeleton is a tertiary alcohol. The starting material is treated with sulfuric acid, and acid catalyzed dehydration takes place. Alcohol group protonation makes it a good leaving group, and E1 reactions occur when a tertiary carbocation is formed prior to Tamoxifen formation (Z isomer).\n" +
+        String didYouKnowIconMsgQ1 = "Tamoxifen is a popular drug used to treat or prevent breast cancer. It is a selective estrogen receptor modulator (SERM) (ER positive breast cancer).\n" +
                 "\n" +
-                "Tamoxifen is an estrogen receptor modulator (SERM).\n" +
-                "\n" +
-                "Tamoxifen is a widely used drug in the treatment of breast cancer (ER positive breast cancer).";
+                "Tamoxifen's primary structure is a tertiary alcohol. The dehydration process is catalyzed by the starting material, which has been treated with sulfuric acid. The alcohol group is protonated, converting it to a suitable leaving group, and an E1 reaction follows to form Tamoxifen.";
 
-        String didYouKnowIconMsgQ2 = "Newer muscle relaxants, such as atracurium, have a built-in functional group that allows the drug to be rapidly metabolised or changed into an inactive form via the E2 reaction of the drug's quaternary ammonium group.\n" +
+        String didYouKnowIconMsgQ2 = "Atracurium is a non-depolarizing neuromuscular blocking drug of the benzylisoquinolinium class that is used in conjunction with general anaesthesia to provide skeletal muscle relaxation during surgery or mechanical ventilation.\n" +
                 "\n" +
-                "In the presence of normal blood pH and temperature, spontaneous degradation occurs. There are no nucleophiles present.";
-        String didYouKnowIconMsgQ3 = "The E1 reaction is involved in the biosynthesis of geraniol in roses.\n" +
-                "A carbocation serves as the starting material.\n" +
+                "Atracurium is a newer muscle relaxant that has a built-in functional group that allows the drug to be rapidly metabolized or changed into an inactive form via the E2 reaction of the drug's quaternary ammonium group.\n" +
                 "\n" +
-                "Geranyl diphosphate can be synthesized using a strong base and a protic solvent.\n" +
+                "In the presence of normal blood pH and temperature, spontaneous degradation occurs through in-situ metabolism. There are no nucleophiles involved.\n";
+
+        String didYouKnowIconMsgQ3 = "Geranyl diphosphate is an intermediate in the HMG-CoA reductase pathway, which organisms use to produce farnesyl pyrophosphate and geranylgeranyl pyrophosphate.\n" +
                 "\n" +
-                "I've lost a CH3, and I'm not sure where the OPP is coming from.";
+                "Geranyl Diphosphate can be biologically converted to Geraniol, a sweet rosy-smelling liquid.\n" +
+                "\n" +
+                "Geranyl Diphosphate is converted into Geraniol, which benefits the perfumery industry.\n";
+
+
         String didYouKnowIconMsgQ4 = "There is no hint for this question.";
         String didYouKnowIconMsgQ5 = "There is no hint for this question.";
         String didYouKnowIconMsgQ6 = "There is no hint for this question.";
-        String didYouKnowIconMsgQ7 = "There is no hint for this question.";
-        String didYouKnowIconMsgQ8 = "There is no hint for this question.";
-        String didYouKnowIconMsgQ9 = "There is no hint for this question.";
-        String didYouKnowIconMsgQ10 = "There is no hint for this question.";
+
+
+        String didYouKnowIconMsgQ7 = "Nitrogen mustard was first synthesized in the 1930s with the intention of using it as a weapon during World War II.\n" +
+                "Nitrogen mustard was discovered to be effective in the treatment of cancer after World War II.\n" +
+                "Nitrogen mustard (now known as Mechlorethamine) is a chemotherapy agent used in cancer patients.\n" +
+                "Mechanism: DNA is alkylated through a series of two SN2 reactions. This causes cross-linking between segments of DNA, resulting in the formation of DNA adducts.\n";
+
+
+        String didYouKnowIconMsgQ8 = "Aminoglycoside antibiotics such as Gentamicin, Streptomycin, and Neomycin are broad-spectrum bactericidal antibiotics that have shown efficacy in multi-antibiotic resistant bacteria and are thought to have originated from a soil bacteria called Actinomycetales.\n" +
+                "\n" +
+                "They are used to treat severe infections of the abdomen, urinary tract, bacteraemia, and endocarditis.\n" +
+                "\n" +
+                "Aminoglycosides inhibit protein synthesis in bacteria by binding irreversibly to the 30s ribosomal subunit. This prevents aminoacyl-tRNA from being transferred to the peptidyl site, resulting in premature termination of the peptide chain.\n";
+
+
+        String didYouKnowIconMsgQ9 = "Geraniol is a colorless liquid or pale yellow oil with a sweet rose scent that is frequently used in perfumery.\n" +
+                "It is a naturally fragrant alcohol derived from the distillation of rose oil and various essential oils, such as rose oil or citronella oil.\n" +
+                "The FDA has determined that the ingredient is safe for use in human and animal body care products.\n" +
+                "Geraniol can be produced biologically by converting Geranyl Diphosphate to Geraniol.\n";
+
+
+        String didYouKnowIconMsgQ10 = "Other than the image hint, there is no word hint for this question.";
         String didYouKnowIconMsgQ11 = "There is no hint for this question.";
         String didYouKnowIconMsgQ12 = "There is no hint for this question.";
         String didYouKnowIconMsgQ13 = "There is no hint for this question.";
@@ -494,16 +514,13 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
                 choiceSound.start();
                 MyCustomAlertDialog(2, numOfAnsForQn2);
             });
-            ivDidYouKnow.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    v.vibrate(50);
-                    AlertDialog.Builder hintDialog = new AlertDialog.Builder(AdvancedQuestionsActivity.this);
-                    hintDialog.setTitle("Did You Know? #" + questionCounter);
-                    hintDialog.setMessage(currentQuestion.getDidYouKnowMsg());
-                    hintDialog.setCancelable(true);
-                    hintDialog.show();
-                }
+            ivDidYouKnow.setOnClickListener(view -> {
+                v.vibrate(50);
+                AlertDialog.Builder hintDialog = new AlertDialog.Builder(AdvancedQuestionsActivity.this);
+                hintDialog.setTitle("Did You Know? #" + questionCounter);
+                hintDialog.setMessage(currentQuestion.getDidYouKnowMsg());
+                hintDialog.setCancelable(true);
+                hintDialog.show();
             });
 
             questionCounter++;
