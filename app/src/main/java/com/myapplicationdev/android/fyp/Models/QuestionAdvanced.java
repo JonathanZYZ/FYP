@@ -7,6 +7,8 @@ public class QuestionAdvanced implements Serializable {
     private final String mode;
     private final String qnNum;
     private final String didYouKnowMsg;
+    // TODO: didYouKnowImg could need to be added
+
     private final int qnMainImage;
     private final int qnCount;
     private final int qn1Image;

@@ -14,8 +14,6 @@ import com.myapplicationdev.android.fyp.Questions.AdvancedQuestionsActivity;
 import com.myapplicationdev.android.fyp.Questions.EasyQuestionsActivity;
 import com.myapplicationdev.android.fyp.Questions.IntermediateQuestionsActivity;
 
-import java.util.concurrent.ConcurrentHashMap;
-
 public class StartQuizActivity extends AppCompatActivity {
     TextView tvMode, tvDesc;
     Button btnStart;

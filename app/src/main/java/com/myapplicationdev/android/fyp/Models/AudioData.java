@@ -1,4 +1,4 @@
-package com.myapplicationdev.android.fyp;
+package com.myapplicationdev.android.fyp.Models;
 
 public class AudioData {
     // static variable single_instance of type Singleton
@@ -9,13 +9,14 @@ public class AudioData {
     private boolean isEnabledSound;
 
     // private constructor restricted to this class itself
-    private AudioData() { }
+    private AudioData() {
+    }
 
     // static method to create instance of Singleton class
-    public static AudioData getInstance()
-    {
-        if (single_instance == null)
+    public static AudioData getInstance() {
+        if (single_instance == null) {
             single_instance = new AudioData();
+        }
         return single_instance;
     }
 

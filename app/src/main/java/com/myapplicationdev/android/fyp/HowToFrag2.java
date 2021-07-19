@@ -20,6 +20,7 @@ public class HowToFrag2 extends Fragment {
 
         ivImage = v.findViewById(R.id.ivHowTo2);
         ivImage.setImageResource(R.drawable.howto2);
+
         return v;
     }
 }

@@ -1,4 +1,4 @@
-package com.myapplicationdev.android.fyp;
+package com.myapplicationdev.android.fyp.Modes;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +10,10 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class AdvancedModeActivity extends AppCompatActivity {
+import com.myapplicationdev.android.fyp.R;
+import com.myapplicationdev.android.fyp.StartQuizActivity;
+
+public class EasyModeActivity extends AppCompatActivity {
     Button btnStart;
     MediaPlayer mediaPlayer;
     Vibrator v;
@@ -18,27 +21,25 @@ public class AdvancedModeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_easy_mode);
 
-        setContentView(R.layout.activity_advanced_mode);
-        btnStart = findViewById(R.id.btnStartAdvanced);
+        btnStart = findViewById(R.id.btnStartEasy);
         v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        Boolean sound = sharedPreferences.getBoolean("sound", true);
+        boolean sound = sharedPreferences.getBoolean("sound", true);
 
         if (sound) {
-            mediaPlayer = MediaPlayer.create(AdvancedModeActivity.this, R.raw.mouse_click);
+            mediaPlayer = MediaPlayer.create(EasyModeActivity.this, R.raw.mouse_click);
         } else {
             mediaPlayer = new MediaPlayer();
         }
 
         btnStart.setOnClickListener(view -> {
             v.vibrate(50);
-            Intent i = new Intent(AdvancedModeActivity.this, StartQuizActivity.class);
-            i.putExtra("mode", "advanced");
+            Intent i = new Intent(EasyModeActivity.this, StartQuizActivity.class);
+            i.putExtra("mode", "easy");
             startActivity(i);
             mediaPlayer.start();
         });
-
-
     }
 }

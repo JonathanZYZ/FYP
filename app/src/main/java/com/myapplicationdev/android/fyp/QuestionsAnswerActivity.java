@@ -26,6 +26,7 @@ public class QuestionsAnswerActivity extends AppCompatActivity {
         tvQuestions.setText(questionNum + "  \n What is the correct answer?");
 
         ivOption1.setOnClickListener(view -> {
+
             //TODO
             Intent i = new Intent(QuestionsAnswerActivity.this, QuestionCorrectActivity.class);
             i.putExtra("mode","correct");
@@ -33,6 +34,7 @@ public class QuestionsAnswerActivity extends AppCompatActivity {
         });
 
         ivOption2.setOnClickListener(view -> {
+
             //TODO
             Intent i = new Intent(QuestionsAnswerActivity.this, QuestionWrongActivity.class);
             i.putExtra("mode","Incorrect");
