@@ -5,10 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,19 +25,13 @@ import java.util.TimeZone;
 
 public class ResultActivity extends AppCompatActivity {
 
-
-    EditText editTextDialogUserName;
-
     LinearLayout linearLayoutBackground;
-    TextView textViewHeading, textViewMyScore, textViewHighestScore, textViewDialogScore, textViewDialogDatePlayed,tvScoreOverview;
+    TextView textViewHeading, textViewMyScore, textViewHighestScore, tvScoreOverview;
     Button btnPlayAgain, btnQuitGame, btnScoreboard;
-    int myScore;
-    String username;
+    String username, difficulty;
     SharedPreferences sharedPreferences;
     DBHelper dbh = new DBHelper(ResultActivity.this);
-    MediaPlayer mediaPlayer;
-    String date, difficulty;
-    int highestScore;
+    int myScore, highestScore;
 
     @SuppressLint({"SetTextI18n", "CutPasteId"})
     @Override
@@ -56,24 +48,25 @@ public class ResultActivity extends AppCompatActivity {
         btnQuitGame = findViewById(R.id.btnQuitGame);
         btnScoreboard = findViewById(R.id.btnScoreBoard);
 
-        // TODO: the total score obtained from all activities completed
-        myScore = getIntent().getIntExtra("scoreTotal", 0);
-        String score = String.valueOf(myScore);
-        int scoreEasy = getIntent().getIntExtra("scoreEasy",0);
-        int scoreInter = getIntent().getIntExtra("scoreIntermediate",0);
-        int scoreAdv = getIntent().getIntExtra("scoreAdv",0);
-        tvScoreOverview.setText("Score Overview: \n" + "Easy: " + scoreEasy + "\n" + "Intermediate: " + scoreInter +"\n" + "Advanced: " + scoreAdv );
+        // getting user data from intents
         username = getIntent().getStringExtra("username");
         difficulty = getIntent().getStringExtra("difficulty");
+        myScore = getIntent().getIntExtra("scoreTotal", 0);
+
+        // TODO: the total score obtained from all activities completed
+        String score = String.valueOf(myScore);
+        int scoreEasy = getIntent().getIntExtra("scoreEasy", 0);
+        int scoreInter = getIntent().getIntExtra("scoreIntermediate", 0);
+        int scoreAdv = getIntent().getIntExtra("scoreAdv", 0);
+
+        tvScoreOverview.setText("Score Overview: \n"
+                + "Easy: " + scoreEasy + "\n"
+                + "Intermediate: " + scoreInter + "\n"
+                + "Advanced: " + scoreAdv
+        );
+
 
         // TODO: defining the time for the user's playing date
-//        @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//
-//        //@SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-//        TimeZone tz = TimeZone.getTimeZone("SGT");
-//        sdf.setTimeZone(tz);
-//        date = sdf.format(new Date());
-
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
         TimeZone tz = TimeZone.getTimeZone("Asia/Singapore");
         sdf.setTimeZone(tz);
@@ -85,7 +78,7 @@ public class ResultActivity extends AppCompatActivity {
         dbh = new DBHelper(ResultActivity.this);
 
         // TODO:  adding data into SQlite DB
-        long inserted_id = dbh.insertScoreBoard(username, score, strDate);
+        long inserted_id = dbh.insertScoreBoard(username, score, difficulty, strDate);
 
         dbh.close();
 
@@ -99,14 +92,12 @@ public class ResultActivity extends AppCompatActivity {
         textViewHeading.setText("Good Job!");
 
         sharedPreferences = getSharedPreferences("Score", Context.MODE_PRIVATE);
-        if (sharedPreferences.contains("Score")){
+        if (sharedPreferences.contains("Score")) {
 //            sharedPreferences = this.getSharedPreferences("Score", Context.MODE_PRIVATE);
             highestScore = sharedPreferences.getInt("highestScore", 0);
-        }else {
+        } else {
             highestScore = 0;
         }
-
-
 
 
         if (myScore >= highestScore) {
@@ -132,8 +123,6 @@ public class ResultActivity extends AppCompatActivity {
             }
         }
 
-
-//        UserInputDialog();
 
         btnPlayAgain.setOnClickListener(v -> {
 //            String difficulty = getIntent().getStringExtra("difficulty");
@@ -167,56 +156,4 @@ public class ResultActivity extends AppCompatActivity {
 
     }
 
-    /* Initialize popup dialog view and ui controls in the popup dialog. */
-
-//    public void UserInputDialog(){
-//        Dialog MyDialog = new Dialog(this);
-//        // Set title, icon, can not cancel properties.
-//        MyDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//        // Set the inflated layout view object to the AlertDialog builder.
-//        MyDialog.setContentView(R.layout.popup_input_name_dialog);
-//
-//
-//        EditText dialogUserName = MyDialog.findViewById(R.id.dialogUserName);
-//        TextView dialogScore = MyDialog.findViewById(R.id.dialogScore);
-//        TextView dialogDatePlayed = MyDialog.findViewById(R.id.dialogDatePlayed);
-//        Button cancelUserData = MyDialog.findViewById(R.id.buttonCancelUserData);
-//        Button saveUserData = MyDialog.findViewById(R.id.buttonSaveUserData);
-
-
-//        dialogScore.setText(myScore);
-//        dialogDatePlayed.setText(date);
-//
-//        saveUserData.setOnClickListener(v1 -> {
-//
-//            // Getting data
-//            String username = dialogUserName.getText().toString();
-//            String score = dialogScore.getText().toString();
-//            String playedDate = dialogDatePlayed.getText().toString();
-//
-//
-//            // TODO:  adding data into SQlite DB
-//            DBHelper dbh = new DBHelper(ResultActivity.this);
-//
-//
-//            long inserted_id = dbh.insertScoreBoard(username, score, playedDate);
-//
-//            dbh.close();
-//
-//            if (inserted_id != -1) {
-//                Toast.makeText(ResultActivity.this, "Insert successful",
-//                        Toast.LENGTH_SHORT).show();
-//            }
-//
-//        });
-//        cancelUserData.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                MyDialog.dismiss();
-//                Intent i = new Intent(ResultActivity.this, ShowScoreboardActivity.class);
-//                startActivity(i);
-//            }
-//        });
-//
-//        MyDialog.show();
 }

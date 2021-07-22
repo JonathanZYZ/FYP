@@ -1,4 +1,5 @@
 package com.myapplicationdev.android.fyp;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -6,7 +7,9 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.widget.Button;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.myapplicationdev.android.fyp.Modes.AdvancedModeActivity;
 import com.myapplicationdev.android.fyp.Modes.EasyModeActivity;
 import com.myapplicationdev.android.fyp.Modes.IntermediateModeActivity;

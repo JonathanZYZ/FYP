@@ -31,7 +31,7 @@ import java.util.ArrayList;
 public class AdvancedQuestionsActivity extends AppCompatActivity {
 
     Button btnStart;
-    TextView tvQuestionsNumber, tvScore,tvTimer;
+    TextView tvQuestionsNumber, tvScore, tvTimer;
     ImageView ivQuestion, ivChoice1, ivChoice2, ivDidYouKnow;
     QuestionAdvanced currentQuestion;
     ArrayList<QuestionAdvanced> al;
@@ -40,7 +40,7 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
     int questionCounter, questionCountTotal;
     int ans1, ans2, streak;
     int score, numOfAnsForQn1, numOfAnsForQn2;
-    int scoreEasy,scoreInter,scoreAdv;
+    int scoreEasy, scoreInter, scoreAdv;
     boolean answered;
     MediaPlayer choiceSound, correctSound, wrongSound, finishSound, backgroundMusic, buttonSound;
     EditText editText;
@@ -233,8 +233,8 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
         questionCountTotal = al.size();
         Intent i = getIntent();
         int currentScore = i.getIntExtra("scoreTotal", 0);
-        scoreEasy = i.getIntExtra("scoreEasy",0);
-        scoreInter = i.getIntExtra("scoreIntermediate",0);
+        scoreEasy = i.getIntExtra("scoreEasy", 0);
+        scoreInter = i.getIntExtra("scoreIntermediate", 0);
         if (currentScore != 0) {
             score = currentScore;
         }
@@ -713,9 +713,9 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
             finishSound.start();
             Intent i = new Intent(AdvancedQuestionsActivity.this, ResultActivity.class);
             i.putExtra("scoreTotal", score);
-            i.putExtra("scoreIntermediate",scoreInter);
-            i.putExtra("scoreEasy",scoreEasy);
-            i.putExtra("scoreAdv",scoreAdv);
+            i.putExtra("scoreIntermediate", scoreInter);
+            i.putExtra("scoreEasy", scoreEasy);
+            i.putExtra("scoreAdv", scoreAdv);
             i.putExtra("difficulty", currentQuestion.getMode());
             i.putExtra("username", editText.getText().toString());
             startActivity(i);
@@ -730,9 +730,9 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
                     finishSound.start();
                     Intent i = new Intent(AdvancedQuestionsActivity.this, ResultActivity.class);
                     i.putExtra("scoreTotal", score);
-                    i.putExtra("scoreIntermediate",scoreInter);
-                    i.putExtra("scoreEasy",scoreEasy);
-                    i.putExtra("scoreAdv",scoreAdv);
+                    i.putExtra("scoreIntermediate", scoreInter);
+                    i.putExtra("scoreEasy", scoreEasy);
+                    i.putExtra("scoreAdv", scoreAdv);
                     i.putExtra("difficulty", currentQuestion.getMode());
                     i.putExtra("username", editText.getText().toString());
                     startActivity(i);

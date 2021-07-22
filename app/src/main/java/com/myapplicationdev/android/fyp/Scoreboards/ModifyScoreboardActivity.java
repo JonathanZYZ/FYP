@@ -55,11 +55,12 @@ public class ModifyScoreboardActivity extends AppCompatActivity {
 //            private String date;
 
             int result = dbh.updateScoreBoard(new ScoreBoard(
-
                     scoreBoard.getId(),
                     etUsername.getText().toString(),
                     scoreBoard.getScore(),
-                    scoreBoard.getDate()));
+                    scoreBoard.getMode(),
+                    scoreBoard.getDate()
+            ));
 
 
             Toast.makeText(ModifyScoreboardActivity.this, "This username has been successfully updated by you.",

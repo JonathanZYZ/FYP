@@ -19,7 +19,7 @@ public class ScoreboardAdapter extends ArrayAdapter<ScoreBoard> {
     Context context;
     ArrayList<ScoreBoard> scoreBoards;
     int resource;
-    TextView TextViewUserID, TextViewUsername, TextViewScore, TextViewDatePlayed;
+    TextView TextViewUserID, TextViewUsername, TextViewScore, TextViewMode, TextViewDatePlayed;
 
     public ScoreboardAdapter(Context context, int resource, ArrayList<ScoreBoard> scoreBoards) {
         super(context, resource, scoreBoards);
@@ -39,6 +39,7 @@ public class ScoreboardAdapter extends ArrayAdapter<ScoreBoard> {
         TextViewUserID = rowView.findViewById(R.id.TextViewUserID);
         TextViewUsername = rowView.findViewById(R.id.TextViewUsername);
         TextViewScore = rowView.findViewById(R.id.TextViewScore);
+        TextViewMode = rowView.findViewById(R.id.TextViewMode);
         TextViewDatePlayed = rowView.findViewById(R.id.TextViewDatePlayed);
 
 //        private int id;
@@ -47,15 +48,16 @@ public class ScoreboardAdapter extends ArrayAdapter<ScoreBoard> {
 //        private String date;
 
         ScoreBoard scoreBoard = scoreBoards.get(position);
-
         int id = scoreBoard.getId();
         String username = scoreBoard.getUsername();
         String score = scoreBoard.getScore();
+        String mode = scoreBoard.getMode();
         String date = scoreBoard.getDate();
 
         TextViewUserID.setText(String.format("%d", id));
         TextViewUsername.setText(username);
         TextViewScore.setText(score);
+        TextViewMode.setText(mode);
         TextViewDatePlayed.setText(date);
 
         return rowView;

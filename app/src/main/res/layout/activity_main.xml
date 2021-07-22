@@ -8,40 +8,7 @@
     android:background="@drawable/splash_background"
     android:orientation="vertical">
 
-
-    <!--    <RelativeLayout-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:orientation="horizontal">-->
-
-    <!--        <Button-->
-    <!--            android:id="@+id/btnLogOut"-->
-    <!--            android:layout_width="50dp"-->
-    <!--            android:layout_height="50dp"-->
-    <!--            android:layout_alignParentLeft="true"-->
-    <!--            android:layout_margin="10dp"-->
-    <!--            android:background="@drawable/ic_baseline_power_settings_new_24"-->
-    <!--            android:textSize="20sp"-->
-    <!--            tools:ignore="RtlHardcoded" />-->
-
-    <!--        <TextView-->
-    <!--            android:id="@+id/tvPoint"-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_alignParentRight="true"-->
-    <!--            android:layout_margin="10dp"-->
-    <!--            android:text="Username:"-->
-    <!--            android:textColor="@color/black"-->
-    <!--            android:textSize="36sp"-->
-    <!--            android:textStyle="bold"-->
-    <!--            tools:ignore="RtlHardcoded" />-->
-
-
-    <!--    </RelativeLayout>-->
-
-    <!--TODO:    Done by Shufang-->
-
-
+    <!--TODO: Done by Shufang-->
     <Button
         android:id="@+id/btnHowToPlay"
         android:layout_width="0dp"

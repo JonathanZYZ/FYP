@@ -31,13 +31,13 @@ import java.util.ArrayList;
 public class IntermediateQuestionsActivity extends AppCompatActivity {
 
     Button btnStart;
-    TextView tvQuestionsNumber, tvScore,tvTimer;
+    TextView tvQuestionsNumber, tvScore, tvTimer;
     ImageView ivQuestion, ivChoice1, ivChoice2, ivChoice3;
     ArrayList<QuestionIntermediate> al;
     int questionCounter = 0, questionCountTotal;
     QuestionIntermediate currentQuestion;
     int ans1, ans2, ans3;
-    int score = 0, numOfAnsForQn1, numOfAnsForQn2,scoreInter,scoreEasy;
+    int score = 0, numOfAnsForQn1, numOfAnsForQn2, scoreInter, scoreEasy;
     int streak;
     boolean answered;
     DBHelper dbh = new DBHelper(IntermediateQuestionsActivity.this);
@@ -131,7 +131,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
         questionCountTotal = al.size();
         Intent i = getIntent();
         int currentScore = i.getIntExtra("scoreTotal", 0);
-        scoreEasy = i.getIntExtra("scoreEasy",0);
+        scoreEasy = i.getIntExtra("scoreEasy", 0);
         if (currentScore != 0) {
             score = currentScore;
         }
@@ -287,8 +287,8 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             myBuilder.setPositiveButton("Proceed to Advanced Mode", (dialogInterface, i) -> {
                                 Intent intent = new Intent(IntermediateQuestionsActivity.this, AdvancedQuestionsActivity.class);
                                 intent.putExtra("scoreTotal", score);
-                                intent.putExtra("scoreIntermediate",scoreInter);
-                                intent.putExtra("scoreEasy",scoreEasy);
+                                intent.putExtra("scoreIntermediate", scoreInter);
+                                intent.putExtra("scoreEasy", scoreEasy);
                                 intent.putExtra("questionNum", questionCounter + 1);
                                 startActivity(intent);
                             });
@@ -395,8 +395,8 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                                 myBuilder.setPositiveButton("Proceed to Advanced Mode", (dialogInterface, i) -> {
                                     Intent intent = new Intent(IntermediateQuestionsActivity.this, AdvancedQuestionsActivity.class);
                                     intent.putExtra("scoreTotal", score);
-                                    intent.putExtra("scoreIntermediate",scoreInter);
-                                    intent.putExtra("scoreEasy",scoreEasy);
+                                    intent.putExtra("scoreIntermediate", scoreInter);
+                                    intent.putExtra("scoreEasy", scoreEasy);
                                     intent.putExtra("questionNum", questionCounter + 1);
                                     startActivity(intent);
                                 });
@@ -460,8 +460,8 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                                 myBuilder.setPositiveButton("Proceed to Advanced Mode", (dialogInterface, i) -> {
                                     Intent intent = new Intent(IntermediateQuestionsActivity.this, AdvancedQuestionsActivity.class);
                                     intent.putExtra("scoreTotal", score);
-                                    intent.putExtra("scoreIntermediate",scoreInter);
-                                    intent.putExtra("scoreEasy",scoreEasy);
+                                    intent.putExtra("scoreIntermediate", scoreInter);
+                                    intent.putExtra("scoreEasy", scoreEasy);
                                     intent.putExtra("questionNum", questionCounter + 1);
                                     startActivity(intent);
                                 });
@@ -525,8 +525,8 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                                 myBuilder.setPositiveButton("Proceed to Advanced Mode", (dialogInterface, i) -> {
                                     Intent intent = new Intent(IntermediateQuestionsActivity.this, AdvancedQuestionsActivity.class);
                                     intent.putExtra("scoreTotal", score);
-                                    intent.putExtra("scoreIntermediate",scoreInter);
-                                    intent.putExtra("scoreEasy",scoreEasy);
+                                    intent.putExtra("scoreIntermediate", scoreInter);
+                                    intent.putExtra("scoreEasy", scoreEasy);
                                     intent.putExtra("questionNum", questionCounter + 1);
                                     startActivity(intent);
                                 });
@@ -594,8 +594,8 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                                 myBuilder.setPositiveButton("Proceed to Advanced Mode", (dialogInterface, i) -> {
                                     Intent intent = new Intent(IntermediateQuestionsActivity.this, AdvancedQuestionsActivity.class);
                                     intent.putExtra("scoreTotal", score);
-                                    intent.putExtra("scoreIntermediate",scoreInter);
-                                    intent.putExtra("scoreEasy",scoreEasy);
+                                    intent.putExtra("scoreIntermediate", scoreInter);
+                                    intent.putExtra("scoreEasy", scoreEasy);
                                     intent.putExtra("questionNum", questionCounter + 1);
                                     startActivity(intent);
                                 });
@@ -639,8 +639,8 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                                 myBuilder.setPositiveButton("Proceed to Advanced Mode", (dialogInterface, i) -> {
                                     Intent intent = new Intent(IntermediateQuestionsActivity.this, AdvancedQuestionsActivity.class);
                                     intent.putExtra("scoreTotal", score);
-                                    intent.putExtra("scoreIntermediate",scoreInter);
-                                    intent.putExtra("scoreEasy",scoreEasy);
+                                    intent.putExtra("scoreIntermediate", scoreInter);
+                                    intent.putExtra("scoreEasy", scoreEasy);
                                     intent.putExtra("questionNum", questionCounter + 1);
                                     startActivity(intent);
                                 });
@@ -685,8 +685,8 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                                 myBuilder.setPositiveButton("Proceed to Advanced Mode", (dialogInterface, i) -> {
                                     Intent intent = new Intent(IntermediateQuestionsActivity.this, AdvancedQuestionsActivity.class);
                                     intent.putExtra("scoreTotal", score);
-                                    intent.putExtra("scoreIntermediate",scoreInter);
-                                    intent.putExtra("scoreEasy",scoreEasy);
+                                    intent.putExtra("scoreIntermediate", scoreInter);
+                                    intent.putExtra("scoreEasy", scoreEasy);
                                     intent.putExtra("questionNum", questionCounter + 1);
                                     startActivity(intent);
                                 });
@@ -1325,8 +1325,8 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
             finishSound.start();
             Intent i = new Intent(IntermediateQuestionsActivity.this, ResultActivity.class);
             i.putExtra("scoreTotal", score);
-            i.putExtra("scoreIntermediate",scoreInter);
-            i.putExtra("scoreEasy",scoreEasy);
+            i.putExtra("scoreIntermediate", scoreInter);
+            i.putExtra("scoreEasy", scoreEasy);
             i.putExtra("difficulty", currentQuestion.getMode());
             i.putExtra("username", editText.getText().toString());
             Log.i("Test", "check");
@@ -1343,8 +1343,8 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                     finishSound.start();
                     Intent i = new Intent(IntermediateQuestionsActivity.this, ResultActivity.class);
                     i.putExtra("scoreTotal", score);
-                    i.putExtra("scoreIntermediate",scoreInter);
-                    i.putExtra("scoreEasy",scoreEasy);
+                    i.putExtra("scoreIntermediate", scoreInter);
+                    i.putExtra("scoreEasy", scoreEasy);
                     i.putExtra("difficulty", currentQuestion.getMode());
                     i.putExtra("username", editText.getText().toString());
                     startActivity(i);

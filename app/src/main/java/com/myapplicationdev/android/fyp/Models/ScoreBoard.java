@@ -7,12 +7,14 @@ public class ScoreBoard implements Serializable {
     private int id;
     private String username;
     private String score;
+    private String mode;
     private String date;
 
-    public ScoreBoard(int id, String username, String score, String date) {
+    public ScoreBoard(int id, String username, String score, String mode, String date) {
         this.id = id;
         this.username = username;
         this.score = score;
+        this.mode = mode;
         this.date = date;
     }
 
@@ -38,6 +40,14 @@ public class ScoreBoard implements Serializable {
 
     public void setScore(String score) {
         this.score = score;
+    }
+
+    public String getMode() {
+        return mode;
+    }
+
+    public void setMode(String mode) {
+        this.mode = mode;
     }
 
     public String getDate() {

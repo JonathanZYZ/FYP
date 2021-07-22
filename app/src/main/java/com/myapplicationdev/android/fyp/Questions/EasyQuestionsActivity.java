@@ -188,7 +188,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
                         myBuilder.setPositiveButton("Proceed to Intermediate Mode", (dialogInterface, i) -> {
                             Intent intent = new Intent(EasyQuestionsActivity.this, IntermediateQuestionsActivity.class);
                             intent.putExtra("scoreEasy", score);
-                            intent.putExtra("scoreTotal",score);
+                            intent.putExtra("scoreTotal", score);
                             intent.putExtra("questionNum", questionCounter + 1);
                             startActivity(intent);
                         });
@@ -381,7 +381,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
             finishSound.start();
             Intent i = new Intent(EasyQuestionsActivity.this, ResultActivity.class);
             i.putExtra("scoreEasy", score);
-            i.putExtra("scoreTotal",score);
+            i.putExtra("scoreTotal", score);
             i.putExtra("difficulty", currentQuestion.getMode());
             i.putExtra("username", editText.getText().toString());
             Log.i("Test", "check");
@@ -399,7 +399,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
                     finishSound.start();
                     Intent i = new Intent(EasyQuestionsActivity.this, ResultActivity.class);
                     i.putExtra("scoreEasy", score);
-                    i.putExtra("scoreTotal",score);
+                    i.putExtra("scoreTotal", score);
                     i.putExtra("difficulty", currentQuestion.getMode());
                     i.putExtra("username", editText.getText().toString());
                     Log.i("Test", "check");

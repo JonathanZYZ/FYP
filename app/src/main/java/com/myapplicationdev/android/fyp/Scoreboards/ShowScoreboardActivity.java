@@ -85,7 +85,7 @@ public class ShowScoreboardActivity extends AppCompatActivity {
             aa = new ScoreboardAdapter(this, R.layout.scoreboard_row, filterAL);
             lvScoreBoardData.setAdapter(aa);
 
-            Toast.makeText(ShowScoreboardActivity.this, "Here is the top scorer amonst all users",
+            Toast.makeText(ShowScoreboardActivity.this, "Here is the top scorer amongst all users",
                     Toast.LENGTH_SHORT).show();
         });
 
