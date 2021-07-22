@@ -10,7 +10,7 @@
     <LinearLayout
         android:id="@+id/linearLayoutBackground"
         android:layout_width="match_parent"
-        android:layout_height="270dp"
+        android:layout_height="350dp"
         android:layout_margin="20dp"
         android:background="#80FC90"
         android:orientation="vertical">
@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:text="Good Job!"
             android:textAlignment="center"
             android:textColor="@color/black"
@@ -32,19 +32,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:background="#45E95A"
             android:text="Your Score: XXX"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="24sp" />
+        <TextView
+            android:id="@+id/textViewScoreOverview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:background="#00FF00"
+            android:text="Score Overview: "
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/textViewHighestScore"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:text="Highest score: XXX"
             android:textAlignment="center"
             android:textColor="@color/black"

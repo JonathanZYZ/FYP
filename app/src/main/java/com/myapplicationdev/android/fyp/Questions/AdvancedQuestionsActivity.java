@@ -3,6 +3,7 @@ package com.myapplicationdev.android.fyp.Questions;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
@@ -39,6 +40,7 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
     int questionCounter, questionCountTotal;
     int ans1, ans2, streak;
     int score, numOfAnsForQn1, numOfAnsForQn2;
+    int scoreEasy,scoreInter,scoreAdv;
     boolean answered;
     MediaPlayer choiceSound, correctSound, wrongSound, finishSound, backgroundMusic, buttonSound;
     EditText editText;
@@ -230,7 +232,9 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
                 R.drawable.question19_advanced_product1_incorrect, R.drawable.question19_advanced_product2_incorrect, R.drawable.question19_advanced_product3_incorrect, 1));
         questionCountTotal = al.size();
         Intent i = getIntent();
-        int currentScore = i.getIntExtra("score", 0);
+        int currentScore = i.getIntExtra("scoreTotal", 0);
+        scoreEasy = i.getIntExtra("scoreEasy",0);
+        scoreInter = i.getIntExtra("scoreIntermediate",0);
         if (currentScore != 0) {
             score = currentScore;
         }
@@ -299,16 +303,28 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
                         correctSound.start();
                         streak += 1;
                         score++;
+                        scoreAdv++;
                         if (streak == 5) {
                             myBuilder.setTitle("Congratulations!!");
                             myBuilder.setMessage("You have answered 5 questions correctly in a row! Would you like to continue or check your results?");
+
+                            final View customLayout = getLayoutInflater().inflate(R.layout.custom_layout, null);
+                            myBuilder.setView(customLayout);
+                            editText = customLayout.findViewById(R.id.et_text);
+                            editText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
                             myBuilder.setCancelable(false);
                             //myBuilder.setPositiveButton("Next", (dialogInterface, i) -> Intent intent = new Intent(IntermediateQuestionsActivity.this,AdvancedQuestionsActivity));
-                            myBuilder.setPositiveButton("Continue", (dialogInterface, i) -> {
-                                streak = 0;
-                                showNextQuestion();
+                            myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> {
+                                finishQuiz();
                             });
-                            myBuilder.setNegativeButton("Check Results", (dialogInterface, i) -> finishQuiz());
+
+                            myBuilder.setNegativeButton("Continue", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    streak = 0;
+                                    showNextQuestion();
+                                }
+                            });
 
                             AlertDialog myDialog = myBuilder.create();
                             myDialog.show();
@@ -364,17 +380,28 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
                             correctSound.start();
                             streak += 1;
                             score++;
-
+                            scoreAdv++;
                             if (streak == 5) {
                                 myBuilder.setTitle("Congratulations!!");
-                                myBuilder.setMessage("You have answered 5 questions correctly in a row! We would like to test you further by bringing you to the Advanced Level! GoodLuck!");
+                                myBuilder.setMessage("You have answered 5 questions correctly in a row!  Would you like to continue or check your results?");
+
+                                final View customLayout = getLayoutInflater().inflate(R.layout.custom_layout, null);
+                                myBuilder.setView(customLayout);
+                                editText = customLayout.findViewById(R.id.et_text);
+                                editText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
                                 myBuilder.setCancelable(false);
                                 //myBuilder.setPositiveButton("Next", (dialogInterface, i) -> Intent intent = new Intent(IntermediateQuestionsActivity.this,AdvancedQuestionsActivity));
-                                myBuilder.setPositiveButton("Continue", (dialogInterface, i) -> {
-                                    streak = 0;
-                                    showNextQuestion();
+                                myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> {
+                                    finishQuiz();
                                 });
-                                myBuilder.setNegativeButton("Check Results", (dialogInterface, i) -> finishQuiz());
+
+                                myBuilder.setNegativeButton("Continue", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        streak = 0;
+                                        showNextQuestion();
+                                    }
+                                });
 
                                 AlertDialog myDialog = myBuilder.create();
                                 myDialog.show();
@@ -685,7 +712,10 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
         if (dbh.getAllScoreBoard().isEmpty()) {
             finishSound.start();
             Intent i = new Intent(AdvancedQuestionsActivity.this, ResultActivity.class);
-            i.putExtra("score", score);
+            i.putExtra("scoreTotal", score);
+            i.putExtra("scoreIntermediate",scoreInter);
+            i.putExtra("scoreEasy",scoreEasy);
+            i.putExtra("scoreAdv",scoreAdv);
             i.putExtra("difficulty", currentQuestion.getMode());
             i.putExtra("username", editText.getText().toString());
             startActivity(i);
@@ -699,7 +729,10 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
                 } else {
                     finishSound.start();
                     Intent i = new Intent(AdvancedQuestionsActivity.this, ResultActivity.class);
-                    i.putExtra("score", score);
+                    i.putExtra("scoreTotal", score);
+                    i.putExtra("scoreIntermediate",scoreInter);
+                    i.putExtra("scoreEasy",scoreEasy);
+                    i.putExtra("scoreAdv",scoreAdv);
                     i.putExtra("difficulty", currentQuestion.getMode());
                     i.putExtra("username", editText.getText().toString());
                     startActivity(i);

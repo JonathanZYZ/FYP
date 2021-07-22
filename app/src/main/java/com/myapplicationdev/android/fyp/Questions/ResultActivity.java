@@ -31,7 +31,7 @@ public class ResultActivity extends AppCompatActivity {
     EditText editTextDialogUserName;
 
     LinearLayout linearLayoutBackground;
-    TextView textViewHeading, textViewMyScore, textViewHighestScore, textViewDialogScore, textViewDialogDatePlayed;
+    TextView textViewHeading, textViewMyScore, textViewHighestScore, textViewDialogScore, textViewDialogDatePlayed,tvScoreOverview;
     Button btnPlayAgain, btnQuitGame, btnScoreboard;
     int myScore;
     String username;
@@ -51,13 +51,18 @@ public class ResultActivity extends AppCompatActivity {
         textViewHeading = findViewById(R.id.textViewHeading);
         textViewMyScore = findViewById(R.id.textViewMyScore);
         textViewHighestScore = findViewById(R.id.textViewHighestScore);
+        tvScoreOverview = findViewById(R.id.textViewScoreOverview);
         btnPlayAgain = findViewById(R.id.btnPlayAgain);
         btnQuitGame = findViewById(R.id.btnQuitGame);
         btnScoreboard = findViewById(R.id.btnScoreBoard);
 
         // TODO: the total score obtained from all activities completed
-        myScore = getIntent().getIntExtra("score", 0);
+        myScore = getIntent().getIntExtra("scoreTotal", 0);
         String score = String.valueOf(myScore);
+        int scoreEasy = getIntent().getIntExtra("scoreEasy",0);
+        int scoreInter = getIntent().getIntExtra("scoreIntermediate",0);
+        int scoreAdv = getIntent().getIntExtra("scoreAdv",0);
+        tvScoreOverview.setText("Score Overview: \n" + "Easy: " + scoreEasy + "\n" + "Intermediate: " + scoreInter +"\n" + "Advanced: " + scoreAdv );
         username = getIntent().getStringExtra("username");
         difficulty = getIntent().getStringExtra("difficulty");
 
@@ -92,8 +97,10 @@ public class ResultActivity extends AppCompatActivity {
         textViewMyScore.setText("Your Score : " + myScore);
 
         textViewHeading.setText("Good Job!");
+
+        sharedPreferences = getSharedPreferences("Score", Context.MODE_PRIVATE);
         if (sharedPreferences.contains("Score")){
-            sharedPreferences = this.getSharedPreferences("Score", Context.MODE_PRIVATE);
+//            sharedPreferences = this.getSharedPreferences("Score", Context.MODE_PRIVATE);
             highestScore = sharedPreferences.getInt("highestScore", 0);
         }else {
             highestScore = 0;

@@ -37,7 +37,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
     int questionCounter = 0, questionCountTotal;
     QuestionIntermediate currentQuestion;
     int ans1, ans2, ans3;
-    int score = 0, numOfAnsForQn1, numOfAnsForQn2;
+    int score = 0, numOfAnsForQn1, numOfAnsForQn2,scoreInter,scoreEasy;
     int streak;
     boolean answered;
     DBHelper dbh = new DBHelper(IntermediateQuestionsActivity.this);
@@ -130,7 +130,8 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
 
         questionCountTotal = al.size();
         Intent i = getIntent();
-        int currentScore = i.getIntExtra("score", 0);
+        int currentScore = i.getIntExtra("scoreTotal", 0);
+        scoreEasy = i.getIntExtra("scoreEasy",0);
         if (currentScore != 0) {
             score = currentScore;
         }
@@ -277,6 +278,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                         correctSound.start();
                         streak += 1;
                         score++;
+                        scoreInter++;
                         if (streak == 5) {
                             myBuilder.setTitle("Congratulations!!");
                             myBuilder.setMessage("You have answered 5 questions correctly in a row! We would like to test you further by bringing you to the Advanced Level! GoodLuck!");
@@ -284,7 +286,9 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             //myBuilder.setPositiveButton("Next", (dialogInterface, i) -> Intent intent = new Intent(IntermediateQuestionsActivity.this,AdvancedQuestionsActivity));
                             myBuilder.setPositiveButton("Proceed to Advanced Mode", (dialogInterface, i) -> {
                                 Intent intent = new Intent(IntermediateQuestionsActivity.this, AdvancedQuestionsActivity.class);
-                                intent.putExtra("score", score);
+                                intent.putExtra("scoreTotal", score);
+                                intent.putExtra("scoreIntermediate",scoreInter);
+                                intent.putExtra("scoreEasy",scoreEasy);
                                 intent.putExtra("questionNum", questionCounter + 1);
                                 startActivity(intent);
                             });
@@ -382,6 +386,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             correctSound.start();
                             streak += 1;
                             score++;
+                            scoreInter++;
                             if (streak == 5) {
                                 myBuilder.setTitle("Congratulations!!");
                                 myBuilder.setMessage("You have answered 5 questions correctly in a row! We would like to test you further by bringing you to the Advanced Level! GoodLuck!");
@@ -389,7 +394,9 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                                 //myBuilder.setPositiveButton("Next", (dialogInterface, i) -> Intent intent = new Intent(IntermediateQuestionsActivity.this,AdvancedQuestionsActivity));
                                 myBuilder.setPositiveButton("Proceed to Advanced Mode", (dialogInterface, i) -> {
                                     Intent intent = new Intent(IntermediateQuestionsActivity.this, AdvancedQuestionsActivity.class);
-                                    intent.putExtra("score", score);
+                                    intent.putExtra("scoreTotal", score);
+                                    intent.putExtra("scoreIntermediate",scoreInter);
+                                    intent.putExtra("scoreEasy",scoreEasy);
                                     intent.putExtra("questionNum", questionCounter + 1);
                                     startActivity(intent);
                                 });
@@ -444,7 +451,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             correctSound.start();
                             streak += 1;
                             score++;
-
+                            scoreInter++;
                             if (streak == 5) {
                                 myBuilder.setTitle("Congratulations!!");
                                 myBuilder.setMessage("You have answered 5 questions correctly in a row! We would like to test you further by bringing you to the Advanced Level! GoodLuck!");
@@ -452,7 +459,9 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                                 //myBuilder.setPositiveButton("Next", (dialogInterface, i) -> Intent intent = new Intent(IntermediateQuestionsActivity.this,AdvancedQuestionsActivity));
                                 myBuilder.setPositiveButton("Proceed to Advanced Mode", (dialogInterface, i) -> {
                                     Intent intent = new Intent(IntermediateQuestionsActivity.this, AdvancedQuestionsActivity.class);
-                                    intent.putExtra("score", score);
+                                    intent.putExtra("scoreTotal", score);
+                                    intent.putExtra("scoreIntermediate",scoreInter);
+                                    intent.putExtra("scoreEasy",scoreEasy);
                                     intent.putExtra("questionNum", questionCounter + 1);
                                     startActivity(intent);
                                 });
@@ -507,6 +516,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             correctSound.start();
                             streak += 1;
                             score++;
+                            scoreInter++;
                             if (streak == 5) {
                                 myBuilder.setTitle("Congratulations!!");
                                 myBuilder.setMessage("You have answered 5 questions correctly in a row! We would like to test you further by bringing you to the Advanced Level! GoodLuck!");
@@ -514,7 +524,9 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                                 //myBuilder.setPositiveButton("Next", (dialogInterface, i) -> Intent intent = new Intent(IntermediateQuestionsActivity.this,AdvancedQuestionsActivity));
                                 myBuilder.setPositiveButton("Proceed to Advanced Mode", (dialogInterface, i) -> {
                                     Intent intent = new Intent(IntermediateQuestionsActivity.this, AdvancedQuestionsActivity.class);
-                                    intent.putExtra("score", score);
+                                    intent.putExtra("scoreTotal", score);
+                                    intent.putExtra("scoreIntermediate",scoreInter);
+                                    intent.putExtra("scoreEasy",scoreEasy);
                                     intent.putExtra("questionNum", questionCounter + 1);
                                     startActivity(intent);
                                 });
@@ -573,6 +585,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             correctSound.start();
                             streak += 1;
                             score++;
+                            scoreInter++;
                             if (streak == 5) {
                                 myBuilder.setTitle("Congratulations!!");
                                 myBuilder.setMessage("You have answered 5 questions correctly in a row! We would like to test you further by bringing you to the Advanced Level! GoodLuck!");
@@ -580,7 +593,9 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                                 //myBuilder.setPositiveButton("Next", (dialogInterface, i) -> Intent intent = new Intent(IntermediateQuestionsActivity.this,AdvancedQuestionsActivity));
                                 myBuilder.setPositiveButton("Proceed to Advanced Mode", (dialogInterface, i) -> {
                                     Intent intent = new Intent(IntermediateQuestionsActivity.this, AdvancedQuestionsActivity.class);
-                                    intent.putExtra("score", score);
+                                    intent.putExtra("scoreTotal", score);
+                                    intent.putExtra("scoreIntermediate",scoreInter);
+                                    intent.putExtra("scoreEasy",scoreEasy);
                                     intent.putExtra("questionNum", questionCounter + 1);
                                     startActivity(intent);
                                 });
@@ -615,6 +630,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             correctSound.start();
                             streak += 1;
                             score++;
+                            scoreInter++;
                             if (streak == 5) {
                                 myBuilder.setTitle("Congratulations!!");
                                 myBuilder.setMessage("You have answered 5 questions correctly in a row! We would like to test you further by bringing you to the Advanced Level! GoodLuck!");
@@ -622,7 +638,9 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                                 //myBuilder.setPositiveButton("Next", (dialogInterface, i) -> Intent intent = new Intent(IntermediateQuestionsActivity.this,AdvancedQuestionsActivity));
                                 myBuilder.setPositiveButton("Proceed to Advanced Mode", (dialogInterface, i) -> {
                                     Intent intent = new Intent(IntermediateQuestionsActivity.this, AdvancedQuestionsActivity.class);
-                                    intent.putExtra("score", score);
+                                    intent.putExtra("scoreTotal", score);
+                                    intent.putExtra("scoreIntermediate",scoreInter);
+                                    intent.putExtra("scoreEasy",scoreEasy);
                                     intent.putExtra("questionNum", questionCounter + 1);
                                     startActivity(intent);
                                 });
@@ -658,6 +676,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             correctSound.start();
                             streak += 1;
                             score++;
+                            scoreInter++;
                             if (streak == 5) {
                                 myBuilder.setTitle("Congratulations!!");
                                 myBuilder.setMessage("You have answered 5 questions correctly in a row! We would like to test you further by bringing you to the Advanced Level! GoodLuck!");
@@ -665,7 +684,9 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                                 //myBuilder.setPositiveButton("Next", (dialogInterface, i) -> Intent intent = new Intent(IntermediateQuestionsActivity.this,AdvancedQuestionsActivity));
                                 myBuilder.setPositiveButton("Proceed to Advanced Mode", (dialogInterface, i) -> {
                                     Intent intent = new Intent(IntermediateQuestionsActivity.this, AdvancedQuestionsActivity.class);
-                                    intent.putExtra("score", score);
+                                    intent.putExtra("scoreTotal", score);
+                                    intent.putExtra("scoreIntermediate",scoreInter);
+                                    intent.putExtra("scoreEasy",scoreEasy);
                                     intent.putExtra("questionNum", questionCounter + 1);
                                     startActivity(intent);
                                 });
@@ -710,6 +731,8 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                 if (currentQuestion.getQnCount() == 3) {
                     if (ans1 == currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2() && ans3 == currentQuestion.getCorrectNum3()) {
                         correctSound.start();
+                        score++;
+                        scoreInter++;
                         myBuilder.setTitle("Congratulations!!");
                         myBuilder.setMessage("You selected the correct answer!");
                         myBuilder.setCancelable(false);
@@ -718,7 +741,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                         AlertDialog myDialog = myBuilder.create();
                         myDialog.show();
 
-                        score++;
+
                         tvScore.setText("Score: " + score);
                     } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2() && ans3 == currentQuestion.getCorrectNum3()) {
                         wrongSound.start();
@@ -789,6 +812,8 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                     if (currentQuestion.getQn1Image() == 0) {
                         if (ans1 == currentQuestion.getCorrectNum2() && ans2 == currentQuestion.getCorrectNum3()) {
                             correctSound.start();
+                            score++;
+                            scoreInter++;
                             myBuilder.setTitle("Congratulations!!");
                             myBuilder.setMessage("You selected the correct answer!");
                             myBuilder.setCancelable(false);
@@ -797,7 +822,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             AlertDialog myDialog = myBuilder.create();
                             myDialog.show();
 
-                            score++;
+
                             tvScore.setText("Score: " + score);
                         } else if (ans1 != currentQuestion.getCorrectNum2() && ans2 == currentQuestion.getCorrectNum3()) {
                             wrongSound.start();
@@ -830,6 +855,8 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                     } else if (currentQuestion.getQn2Image() == 0) {
                         if (ans1 == currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum3()) {
                             correctSound.start();
+                            scoreInter++;
+                            score++;
                             myBuilder.setTitle("Congratulations!!");
                             myBuilder.setMessage("You selected the correct answer!");
                             myBuilder.setCancelable(false);
@@ -838,7 +865,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             AlertDialog myDialog = myBuilder.create();
                             myDialog.show();
 
-                            score++;
+
                             tvScore.setText("Score: " + score);
                         } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum3()) {
                             wrongSound.start();
@@ -871,6 +898,8 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                     } else if (currentQuestion.getQn3Image() == 0) {
                         if (ans1 == currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2()) {
                             correctSound.start();
+                            scoreInter++;
+                            score++;
                             myBuilder.setTitle("Congratulations!!");
                             myBuilder.setMessage("You selected the correct answer!");
                             myBuilder.setCancelable(false);
@@ -879,7 +908,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             AlertDialog myDialog = myBuilder.create();
                             myDialog.show();
 
-                            score++;
+
                             tvScore.setText("Score: " + score);
                         } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2()) {
                             wrongSound.start();
@@ -916,6 +945,8 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                     if (currentQuestion.getQn1Image() != 0) {
                         if (ans1 == currentQuestion.getCorrectNum1()) {
                             correctSound.start();
+                            scoreInter++;
+                            score++;
                             myBuilder.setTitle("Congratulations!!");
                             myBuilder.setMessage("You selected the correct answer!");
                             myBuilder.setCancelable(false);
@@ -924,7 +955,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             AlertDialog myDialog = myBuilder.create();
                             myDialog.show();
 
-                            score++;
+
                             tvScore.setText("Score: " + score);
                         } else if (ans1 != currentQuestion.getCorrectNum1()) {
                             wrongSound.start();
@@ -939,6 +970,8 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                     } else if (currentQuestion.getQn2Image() != 0) {
                         if (ans1 == currentQuestion.getCorrectNum2()) {
                             correctSound.start();
+                            scoreInter++;
+                            score++;
                             myBuilder.setTitle("Congratulations!!");
                             myBuilder.setMessage("You selected the correct answer!");
                             myBuilder.setCancelable(false);
@@ -947,7 +980,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             AlertDialog myDialog = myBuilder.create();
                             myDialog.show();
 
-                            score++;
+
                             tvScore.setText("Score: " + score);
                         } else if (ans1 != currentQuestion.getCorrectNum2()) {
                             wrongSound.start();
@@ -962,6 +995,8 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                     } else if (currentQuestion.getQn3Image() != 0) {
                         if (ans1 == currentQuestion.getCorrectNum3()) {
                             correctSound.start();
+                            scoreInter++;
+                            score++;
                             myBuilder.setTitle("Congratulations!!");
                             myBuilder.setMessage("You selected the correct answer!");
                             myBuilder.setCancelable(false);
@@ -970,7 +1005,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             AlertDialog myDialog = myBuilder.create();
                             myDialog.show();
 
-                            score++;
+
                             tvScore.setText("Score: " + score);
                         } else if (ans1 != currentQuestion.getCorrectNum3()) {
                             wrongSound.start();
@@ -1289,7 +1324,9 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
         if (dbh.getAllScoreBoard().isEmpty()) {
             finishSound.start();
             Intent i = new Intent(IntermediateQuestionsActivity.this, ResultActivity.class);
-            i.putExtra("score", score);
+            i.putExtra("scoreTotal", score);
+            i.putExtra("scoreIntermediate",scoreInter);
+            i.putExtra("scoreEasy",scoreEasy);
             i.putExtra("difficulty", currentQuestion.getMode());
             i.putExtra("username", editText.getText().toString());
             Log.i("Test", "check");
@@ -1305,7 +1342,9 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                 } else {
                     finishSound.start();
                     Intent i = new Intent(IntermediateQuestionsActivity.this, ResultActivity.class);
-                    i.putExtra("score", score);
+                    i.putExtra("scoreTotal", score);
+                    i.putExtra("scoreIntermediate",scoreInter);
+                    i.putExtra("scoreEasy",scoreEasy);
                     i.putExtra("difficulty", currentQuestion.getMode());
                     i.putExtra("username", editText.getText().toString());
                     startActivity(i);
