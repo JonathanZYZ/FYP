@@ -39,7 +39,7 @@ public class ResultActivity extends AppCompatActivity {
     DBHelper dbh = new DBHelper(ResultActivity.this);
     MediaPlayer mediaPlayer;
     String date, difficulty;
-
+    int highestScore;
 
     @SuppressLint({"SetTextI18n", "CutPasteId"})
     @Override
@@ -92,8 +92,14 @@ public class ResultActivity extends AppCompatActivity {
         textViewMyScore.setText("Your Score : " + myScore);
 
         textViewHeading.setText("Good Job!");
-        sharedPreferences = this.getSharedPreferences("Score", Context.MODE_PRIVATE);
-        int highestScore = sharedPreferences.getInt("highestScore", 0);
+        if (sharedPreferences.contains("Score")){
+            sharedPreferences = this.getSharedPreferences("Score", Context.MODE_PRIVATE);
+            highestScore = sharedPreferences.getInt("highestScore", 0);
+        }else {
+            highestScore = 0;
+        }
+
+
 
 
         if (myScore >= highestScore) {

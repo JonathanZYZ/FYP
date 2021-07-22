@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Vibrator;
 import android.text.InputType;
 import android.util.Log;
@@ -30,7 +31,7 @@ import java.util.ArrayList;
 public class IntermediateQuestionsActivity extends AppCompatActivity {
 
     Button btnStart;
-    TextView tvQuestionsNumber, tvScore;
+    TextView tvQuestionsNumber, tvScore,tvTimer;
     ImageView ivQuestion, ivChoice1, ivChoice2, ivChoice3;
     ArrayList<QuestionIntermediate> al;
     int questionCounter = 0, questionCountTotal;
@@ -44,6 +45,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
     MediaPlayer choiceSound, correctSound, wrongSound, finishSound, backgroundMusic, buttonSound;
     EditText editText;
     Vibrator v;
+    CountDownTimer timer;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -54,6 +56,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
         btnStart = findViewById(R.id.btnStart_intermediate);
         tvQuestionsNumber = findViewById(R.id.tvQuestionsNumber_Intermediate);
         tvScore = findViewById(R.id.tvScore_Intermediate);
+        tvTimer = findViewById(R.id.tvTimer);
         ivQuestion = findViewById(R.id.ivQuestions_Intermediate);
         ivChoice1 = findViewById(R.id.ivChoiceQn1);
         ivChoice2 = findViewById(R.id.ivChoiceQn2);
@@ -154,6 +157,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
     private void checkAnswer() {
+
         answered = true;
         if (ans1 == 0 && ans2 == 0 && ans3 == 0) {
             v.vibrate(200);
@@ -264,6 +268,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
             AlertDialog myDialog = myBuilder.create();
             myDialog.show();
         } else {
+            timer.cancel();
             if (questionCounter < questionCountTotal) {
                 AlertDialog.Builder myBuilder = new AlertDialog.Builder(IntermediateQuestionsActivity.this);
                 myBuilder.setTitle("Sorry");
@@ -1061,6 +1066,16 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                 }
             });
 
+            timer = new CountDownTimer(30000, 1000) {
+
+                public void onTick(long millisUntilFinished) {
+                    tvTimer.setText("seconds remaining: " + millisUntilFinished / 1000);
+                }
+
+                public void onFinish() {
+                    showNextQuestion();
+                }
+            }.start();
 
             questionCounter++;
             tvQuestionsNumber.setText("Intermediate: " + questionCounter + "/" + questionCountTotal);
@@ -1298,6 +1313,12 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        timer.cancel();
     }
 }
 

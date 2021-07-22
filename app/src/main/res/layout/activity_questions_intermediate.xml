@@ -25,7 +25,7 @@
             android:layout_marginBottom="10dp"
             android:text="Score:"
             android:textColor="@color/black"
-            android:textSize="30sp"
+            android:textSize="26sp"
             android:textStyle="bold"
             tools:ignore="RtlHardcoded" />
 
@@ -36,13 +36,31 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_margin="10dp"
-            android:text="Q1"
             android:textColor="@color/black"
-            android:textSize="30sp"
+            android:text="Q1"
+            android:textSize="26sp"
             android:textStyle="bold"
             tools:ignore="RtlHardcoded" />
 
     </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvTimer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:text="00"
+            android:textColor="@color/black"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            tools:ignore="RtlHardcoded" />
+    </LinearLayout>
 
 
     <LinearLayout

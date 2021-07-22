@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Vibrator;
 import android.text.InputType;
 import android.view.View;
@@ -29,7 +30,7 @@ import java.util.ArrayList;
 public class AdvancedQuestionsActivity extends AppCompatActivity {
 
     Button btnStart;
-    TextView tvQuestionsNumber, tvScore;
+    TextView tvQuestionsNumber, tvScore,tvTimer;
     ImageView ivQuestion, ivChoice1, ivChoice2, ivDidYouKnow;
     QuestionAdvanced currentQuestion;
     ArrayList<QuestionAdvanced> al;
@@ -42,6 +43,7 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
     MediaPlayer choiceSound, correctSound, wrongSound, finishSound, backgroundMusic, buttonSound;
     EditText editText;
     Vibrator v;
+    CountDownTimer timer;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -53,6 +55,7 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
         btnStart = findViewById(R.id.btnStart_advanced);
         tvQuestionsNumber = findViewById(R.id.tvQuestionsNumber_Advanced);
         tvScore = findViewById(R.id.tvScore_Advanced);
+        tvTimer = findViewById(R.id.tvTimerAdvanced);
         ivQuestion = findViewById(R.id.ivQuestions_Advanced);
         ivChoice1 = findViewById(R.id.ivChoiceAdvancedQn1);
         ivChoice2 = findViewById(R.id.ivChoiceAdvancedQn2);
@@ -287,6 +290,7 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
             AlertDialog myDialog = myBuilder.create();
             myDialog.show();
         } else {
+            timer.cancel();
             if (questionCounter < questionCountTotal) {
                 AlertDialog.Builder myBuilder = new AlertDialog.Builder(AdvancedQuestionsActivity.this);
                 myBuilder.setTitle("Sorry");
@@ -525,7 +529,16 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
                 hintDialog.setCancelable(true);
                 hintDialog.show();
             });
+            timer = new CountDownTimer(30000, 1000) {
 
+                public void onTick(long millisUntilFinished) {
+                    tvTimer.setText("seconds remaining: " + millisUntilFinished / 1000);
+                }
+
+                public void onFinish() {
+                    showNextQuestion();
+                }
+            }.start();
             questionCounter++;
             tvQuestionsNumber.setText("Advanced: " + questionCounter + "/" + questionCountTotal);
             answered = false;
@@ -698,7 +711,11 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
 
     }
 
-
+    @Override
+    protected void onPause() {
+        super.onPause();
+        timer.cancel();
+    }
 }
 
 
