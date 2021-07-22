@@ -4,16 +4,17 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.myapplicationdev.android.fyp.DifficultySectionActivity;
 import com.myapplicationdev.android.fyp.MainActivity;
 import com.myapplicationdev.android.fyp.R;
 import com.myapplicationdev.android.fyp.Scoreboards.ShowScoreboardActivity;
@@ -29,6 +30,7 @@ public class ResultActivity extends AppCompatActivity {
 
     EditText editTextDialogUserName;
 
+    LinearLayout linearLayoutBackground;
     TextView textViewHeading, textViewMyScore, textViewHighestScore, textViewDialogScore, textViewDialogDatePlayed;
     Button btnPlayAgain, btnQuitGame, btnScoreboard;
     int myScore;
@@ -45,6 +47,7 @@ public class ResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
+        linearLayoutBackground = findViewById(R.id.linearLayoutBackground);
         textViewHeading = findViewById(R.id.textViewHeading);
         textViewMyScore = findViewById(R.id.textViewMyScore);
         textViewHighestScore = findViewById(R.id.textViewHighestScore);
@@ -107,7 +110,12 @@ public class ResultActivity extends AppCompatActivity {
                 textViewHeading.setText(username);
             }
             if ((highestScore - myScore) <= 3) {
-                textViewHeading.setText(username);
+
+                textViewHighestScore.setText("Lowest Score : " + myScore);
+                textViewMyScore.setBackgroundColor(Color.parseColor("#FF3D3D"));
+                textViewHeading.setText("You could do so much better.");
+                linearLayoutBackground.setBackgroundColor(Color.parseColor("#FF6868"));
+
             }
         }
 

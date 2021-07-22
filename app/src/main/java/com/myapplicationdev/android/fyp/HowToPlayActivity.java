@@ -44,11 +44,6 @@ public class HowToPlayActivity extends AppCompatActivity {
         ft.replace(R.id.frame1, f1);
 
         ft.commit();
-        btnHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        btnHome.setOnClickListener(view -> finish());
     }
 }

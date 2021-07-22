@@ -41,7 +41,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
     boolean answered;
     DBHelper dbh = new DBHelper(IntermediateQuestionsActivity.this);
     SharedPreferences sharedPreferences;
-    MediaPlayer choiceSound, correctSound, wrongSound, finishSound, backgroundMusic,buttonSound;
+    MediaPlayer choiceSound, correctSound, wrongSound, finishSound, backgroundMusic, buttonSound;
     EditText editText;
     Vibrator v;
 
@@ -66,7 +66,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
         wrongSound = MediaPlayer.create(IntermediateQuestionsActivity.this, R.raw.wrong_answer);
         finishSound = MediaPlayer.create(IntermediateQuestionsActivity.this, R.raw.end_game);
         backgroundMusic = MediaPlayer.create(IntermediateQuestionsActivity.this, R.raw.background_music);
-        buttonSound = MediaPlayer.create(IntermediateQuestionsActivity.this,R.raw.button_click);
+        buttonSound = MediaPlayer.create(IntermediateQuestionsActivity.this, R.raw.button_click);
 
         al = new ArrayList<>();
         al.add(new QuestionIntermediate("intermediate", "1", R.drawable.question1_intermediate, 3, R.drawable.hidden_qn_solvent, R.drawable.question1_intermediate_solvent_correct, R.drawable.question1_intermediate_solvent_incorrect,
@@ -167,7 +167,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
 
             AlertDialog myDialog = myBuilder.create();
             myDialog.show();
-        }else if (currentQuestion.getQnCount() == 3 && ans2 == 0 && ans3 ==0){
+        } else if (currentQuestion.getQnCount() == 3 && ans2 == 0 && ans3 == 0) {
             v.vibrate(200);
             answered = false;
             wrongSound.start();
@@ -179,7 +179,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
 
             AlertDialog myDialog = myBuilder.create();
             myDialog.show();
-        }else if (currentQuestion.getQnCount() == 3 && ans1 == 0 && ans3 ==0){
+        } else if (currentQuestion.getQnCount() == 3 && ans1 == 0 && ans3 == 0) {
             v.vibrate(200);
             answered = false;
             wrongSound.start();
@@ -191,7 +191,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
 
             AlertDialog myDialog = myBuilder.create();
             myDialog.show();
-        }else if (currentQuestion.getQnCount() == 3 && ans1 == 0 && ans2 ==0){
+        } else if (currentQuestion.getQnCount() == 3 && ans1 == 0 && ans2 == 0) {
             v.vibrate(200);
             answered = false;
             wrongSound.start();
@@ -203,7 +203,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
 
             AlertDialog myDialog = myBuilder.create();
             myDialog.show();
-        }else if (currentQuestion.getQnCount() == 3 && ans1 == 0){
+        } else if (currentQuestion.getQnCount() == 3 && ans1 == 0) {
             v.vibrate(200);
             answered = false;
             wrongSound.start();
@@ -215,7 +215,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
 
             AlertDialog myDialog = myBuilder.create();
             myDialog.show();
-        }else if (currentQuestion.getQnCount() == 3 && ans2 ==0){
+        } else if (currentQuestion.getQnCount() == 3 && ans2 == 0) {
             v.vibrate(200);
             answered = false;
             wrongSound.start();
@@ -227,7 +227,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
 
             AlertDialog myDialog = myBuilder.create();
             myDialog.show();
-        }else if (currentQuestion.getQnCount() == 3 && ans3 == 0){
+        } else if (currentQuestion.getQnCount() == 3 && ans3 == 0) {
             v.vibrate(200);
             answered = false;
             wrongSound.start();
@@ -239,7 +239,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
 
             AlertDialog myDialog = myBuilder.create();
             myDialog.show();
-        }else if (currentQuestion.getQnCount() == 2 && ans2 == 0){
+        } else if (currentQuestion.getQnCount() == 2 && ans2 == 0) {
             v.vibrate(200);
             answered = false;
             wrongSound.start();
@@ -251,7 +251,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
 
             AlertDialog myDialog = myBuilder.create();
             myDialog.show();
-        }else if (currentQuestion.getQnCount() == 2 && ans1 == 0){
+        } else if (currentQuestion.getQnCount() == 2 && ans1 == 0) {
             v.vibrate(200);
             answered = false;
             wrongSound.start();
@@ -263,8 +263,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
 
             AlertDialog myDialog = myBuilder.create();
             myDialog.show();
-        }
-        else {
+        } else {
             if (questionCounter < questionCountTotal) {
                 AlertDialog.Builder myBuilder = new AlertDialog.Builder(IntermediateQuestionsActivity.this);
                 myBuilder.setTitle("Sorry");
@@ -702,7 +701,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                 final View customLayout = getLayoutInflater().inflate(R.layout.custom_layout, null);
                 myBuilder.setView(customLayout);
                 editText = customLayout.findViewById(R.id.et_text);
-                editText.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+                editText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
                 if (currentQuestion.getQnCount() == 3) {
                     if (ans1 == currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2() && ans3 == currentQuestion.getCorrectNum3()) {
                         correctSound.start();

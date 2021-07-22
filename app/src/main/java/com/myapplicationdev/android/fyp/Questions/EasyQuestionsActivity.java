@@ -3,7 +3,6 @@ package com.myapplicationdev.android.fyp.Questions;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
@@ -36,7 +35,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
     TextView tvQuestionsNumber, tvScore;
     RadioGroup group;
     RadioButton rdReaction_Option1, rdReaction_Option2;
-    ImageView ivQuestion, btnExit, ivChoiceBasicQn,ivHints;
+    ImageView ivQuestion, btnExit, ivChoiceBasicQn, ivHints;
     ArrayList<QuestionEasy> al;
     QuestionEasy currentQuestion;
     DBHelper dbh = new DBHelper(EasyQuestionsActivity.this);
@@ -49,8 +48,9 @@ public class EasyQuestionsActivity extends AppCompatActivity {
     int questionCounter, questionCountTotal;
     boolean answered;
     String[] hints;
-    MediaPlayer choiceSound, correctSound, wrongSound, finishSound, backgroundMusic,buttonSound;
+    MediaPlayer choiceSound, correctSound, wrongSound, finishSound, backgroundMusic, buttonSound;
     Vibrator v;
+
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,14 +73,14 @@ public class EasyQuestionsActivity extends AppCompatActivity {
         wrongSound = MediaPlayer.create(EasyQuestionsActivity.this, R.raw.wrong_answer);
         finishSound = MediaPlayer.create(EasyQuestionsActivity.this, R.raw.end_game);
         backgroundMusic = MediaPlayer.create(EasyQuestionsActivity.this, R.raw.background_music);
-        buttonSound = MediaPlayer.create(EasyQuestionsActivity.this,R.raw.button_click);
+        buttonSound = MediaPlayer.create(EasyQuestionsActivity.this, R.raw.button_click);
         v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
-        hints = new String[]{"Starting material has less steric hinderance.","Starting material has less steric hinderance.","Starting material with high steric hindrance inhibits nucleophilic attack.","Starting material with high steric hindrance inhibits nucleophilic attack.","Starting material with high steric hindrance inhibits nucleophilic attack.","Starting material has less\n" +
-                " steric hinderance.\n","Starting material has less\n" +
-                " steric hinderance.\n","Undergoes either SN1 or SN2 depending on the Nucleophile and Solvent. ","Undergoes either SN1 or SN2 depending on the Nucleophile and Solvent. "};
+        hints = new String[]{"Starting material has less steric hinderance.", "Starting material has less steric hinderance.", "Starting material with high steric hindrance inhibits nucleophilic attack.", "Starting material with high steric hindrance inhibits nucleophilic attack.", "Starting material with high steric hindrance inhibits nucleophilic attack.", "Starting material has less\n" +
+                " steric hinderance.\n", "Starting material has less\n" +
+                " steric hinderance.\n", "Undergoes either SN1 or SN2 depending on the Nucleophile and Solvent. ", "Undergoes either SN1 or SN2 depending on the Nucleophile and Solvent. "};
         al = new ArrayList<>();
-        al.add(new QuestionEasy("basic", "1", R.drawable.question1_basic, R.drawable.question1_basic1_incorrect, R.drawable.question1_basic2_incorrect, R.drawable.question1_basic_correct, R.drawable.question1_basic3_incorrect,3));
+        al.add(new QuestionEasy("basic", "1", R.drawable.question1_basic, R.drawable.question1_basic1_incorrect, R.drawable.question1_basic2_incorrect, R.drawable.question1_basic_correct, R.drawable.question1_basic3_incorrect, 3));
         al.add(new QuestionEasy("basic", "2", R.drawable.question2_basic, R.drawable.question2_basic_incorrect, R.drawable.question2_basic2_incorrect, R.drawable.question2_basic3_incorrect, R.drawable.question2_basic_correct, 4));
         al.add(new QuestionEasy("basic", "3", R.drawable.question3_basic, R.drawable.question3_basic1_incorrect, R.drawable.question3_basic_correct, R.drawable.question3_basic2_incorrect, R.drawable.question3_basic3_incorrect, 2));
         al.add(new QuestionEasy("basic", "4", R.drawable.question4_basic, R.drawable.question4_basic1_incorrect, R.drawable.question4_basic_correct, R.drawable.question4_basic2_incorrect, R.drawable.question4_basic3_incorrect, 2));
@@ -251,7 +251,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
                     final View customLayout = getLayoutInflater().inflate(R.layout.custom_layout, null);
                     myBuilder.setView(customLayout);
                     editText = customLayout.findViewById(R.id.et_text);
-                    editText.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+                    editText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
                     myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
 
 
@@ -273,7 +273,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
                     final View customLayout = getLayoutInflater().inflate(R.layout.custom_layout, null);
                     myBuilder.setView(customLayout);
                     editText = customLayout.findViewById(R.id.et_text);
-                    editText.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+                    editText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
                     myBuilder.setPositiveButton("Check Results", (dialogInterface, i) -> finishQuiz());
 
                     AlertDialog myDialog = myBuilder.create();

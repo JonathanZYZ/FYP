@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 
 public class QuestionEasy implements Serializable {
+
     private String mode;
     private String questionsNum;
     private int questionsBasic;
