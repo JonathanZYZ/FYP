@@ -83,24 +83,33 @@ public class ShowScoreboardActivity extends AppCompatActivity {
         btnFilter.setOnClickListener(v -> {
             tvHeading.setText("THE TOP SCORER");
             al = dbh.getAllScoreBoard();
-
+            filterAL.clear();
+            int dbLength = al.size();
 
 
             if (!al.isEmpty()) {
-                filterAL.clear();
-                //finds the highest value
-                String topScore = al.get(0).getScore();
-                for (ScoreBoard i : al) {
-                    if (Integer.parseInt(i.getScore()) > Integer.parseInt(topScore)) {
-                        topScore = i.getScore();
-                        filterAL.add(i);
+
+
+                if (dbLength > 1) {
+                    //finds the highest value
+                    String topScore = al.get(0).getScore();
+                    for (ScoreBoard i : al) {
+                        if (Integer.parseInt(i.getScore()) > Integer.parseInt(topScore)) {
+                            topScore = i.getScore();
+                            filterAL.add(i);
+                        }
                     }
+                    aa = new ScoreboardAdapter(this, R.layout.scoreboard_row, filterAL);
+                    lvScoreBoardData.setAdapter(aa);
+                    Toast.makeText(ShowScoreboardActivity.this,
+                            "Here is the user with the highest score out of all users.",
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(ShowScoreboardActivity.this,
+                            "There is currently only one user's data in the database, which means there are no other users to compare scores with.",
+                            Toast.LENGTH_SHORT).show();
                 }
-                aa = new ScoreboardAdapter(this, R.layout.scoreboard_row, filterAL);
-                lvScoreBoardData.setAdapter(aa);
-                Toast.makeText(ShowScoreboardActivity.this,
-                        "Here is the user with the highest score out of all users.",
-                        Toast.LENGTH_SHORT).show();
+
             } else {
                 Toast.makeText(ShowScoreboardActivity.this,
                         "Because you haven't played the game yet, there will be no data displayed in the scoreboard.",
