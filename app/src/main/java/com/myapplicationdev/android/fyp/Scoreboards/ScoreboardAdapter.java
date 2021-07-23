@@ -42,12 +42,9 @@ public class ScoreboardAdapter extends ArrayAdapter<ScoreBoard> {
         TextViewMode = rowView.findViewById(R.id.TextViewMode);
         TextViewDatePlayed = rowView.findViewById(R.id.TextViewDatePlayed);
 
-//        private int id;
-//        private String username;
-//        private String score;
-//        private String date;
 
         ScoreBoard scoreBoard = scoreBoards.get(position);
+
         int id = scoreBoard.getId();
         String username = scoreBoard.getUsername();
         String score = scoreBoard.getScore();

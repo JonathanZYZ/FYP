@@ -83,7 +83,8 @@ public class ResultActivity extends AppCompatActivity {
         dbh.close();
 
         if (inserted_id != -1) {
-            Toast.makeText(ResultActivity.this, "Insert successful",
+            Toast.makeText(ResultActivity.this,
+                    "Insert successful",
                     Toast.LENGTH_SHORT).show();
         }
 
@@ -104,6 +105,7 @@ public class ResultActivity extends AppCompatActivity {
             sharedPreferences.edit().putInt("highestScore", myScore).apply();
             textViewHighestScore.setText("Highest Score : " + myScore);
             textViewHeading.setText("Congratulations. The new high score. Do you want to get better scores?");
+
         } else {
 
             textViewHighestScore.setText("Highest Score : " + highestScore);
@@ -127,6 +129,7 @@ public class ResultActivity extends AppCompatActivity {
         btnPlayAgain.setOnClickListener(v -> {
 //            String difficulty = getIntent().getStringExtra("difficulty");
             Intent intent = new Intent();
+
             if (difficulty.equalsIgnoreCase("easy")) {
                 intent = new Intent(ResultActivity.this, EasyQuestionsActivity.class);
             } else if (difficulty.equalsIgnoreCase("intermediate")) {
@@ -134,6 +137,7 @@ public class ResultActivity extends AppCompatActivity {
             } else if (difficulty.equalsIgnoreCase("advanced")) {
                 intent = new Intent(ResultActivity.this, AdvancedQuestionsActivity.class);
             }
+
             //Intent intent = new Intent(ResultActivity.this, DifficultySectionActivity.class);
             startActivity(intent);
             finish();

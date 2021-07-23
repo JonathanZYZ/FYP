@@ -1,5 +1,6 @@
 package com.myapplicationdev.android.fyp.Scoreboards;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +22,7 @@ import java.util.ArrayList;
 
 public class ShowScoreboardActivity extends AppCompatActivity {
 
+    TextView tvHeading;
     Button btnFilter, btnShowAll;
     ListView lvScoreBoardData;
     ArrayList<ScoreBoard> al, filterAL;
@@ -28,12 +31,14 @@ public class ShowScoreboardActivity extends AppCompatActivity {
     ArrayAdapter spinnerAA;
     Spinner spinner;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // setContentView(R.layout.activity_show);
         setContentView(R.layout.activity_show_scoreboard);
 
+        tvHeading = findViewById(R.id.tvHeading);
         btnShowAll = findViewById(R.id.btnShowAll);
         btnFilter = findViewById(R.id.btnFilter);
         lvScoreBoardData = findViewById(R.id.lvScoreBoardData);
@@ -56,37 +61,53 @@ public class ShowScoreboardActivity extends AppCompatActivity {
 
 
         btnShowAll.setOnClickListener(v -> {
+
+
             al = dbh.getAllScoreBoard();
-            filterAL.clear();
-            filterAL.addAll(al);
-            aa = new ScoreboardAdapter(this, R.layout.scoreboard_row, filterAL);
-            lvScoreBoardData.setAdapter(aa);
+
+            if (!al.isEmpty()) {
+                filterAL.clear();
+                filterAL.addAll(al);
+                aa = new ScoreboardAdapter(this, R.layout.scoreboard_row, filterAL);
+                lvScoreBoardData.setAdapter(aa);
+            } else {
+                Toast.makeText(ShowScoreboardActivity.this,
+                        "Because you haven't played the game yet, there will be no data displayed in the scoreboard.",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+
         });
 
 
         btnFilter.setOnClickListener(v -> {
+            tvHeading.setText("THE TOP SCORER");
             al = dbh.getAllScoreBoard();
-            filterAL.clear();
-
-            //finds the highest value
-            String topScore = al.get(0).getScore();
 
 
-            for (ScoreBoard i : al) {
 
-                if (Integer.parseInt(i.getScore()) > Integer.parseInt(topScore)) {
-                    topScore = i.getScore();
-                    filterAL.add(i);
+            if (!al.isEmpty()) {
+                filterAL.clear();
+                //finds the highest value
+                String topScore = al.get(0).getScore();
+                for (ScoreBoard i : al) {
+                    if (Integer.parseInt(i.getScore()) > Integer.parseInt(topScore)) {
+                        topScore = i.getScore();
+                        filterAL.add(i);
+                    }
                 }
-
+                aa = new ScoreboardAdapter(this, R.layout.scoreboard_row, filterAL);
+                lvScoreBoardData.setAdapter(aa);
+                Toast.makeText(ShowScoreboardActivity.this,
+                        "Here is the user with the highest score out of all users.",
+                        Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(ShowScoreboardActivity.this,
+                        "Because you haven't played the game yet, there will be no data displayed in the scoreboard.",
+                        Toast.LENGTH_SHORT).show();
             }
 
 
-            aa = new ScoreboardAdapter(this, R.layout.scoreboard_row, filterAL);
-            lvScoreBoardData.setAdapter(aa);
-
-            Toast.makeText(ShowScoreboardActivity.this, "Here is the top scorer amongst all users",
-                    Toast.LENGTH_SHORT).show();
         });
 
         lvScoreBoardData.setOnItemClickListener((parent, view, position, id) -> {
@@ -99,16 +120,17 @@ public class ShowScoreboardActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
                 al = dbh.getAllScoreBoard();
-                String selected = spinnerAL.get(position);
                 filterAL.clear();
 
+
+                String selected = spinnerAL.get(position);
                 for (ScoreBoard i : al) {
                     if (i.getUsername().equalsIgnoreCase(selected))
                         filterAL.add(i);
                 }
-
                 aa = new ScoreboardAdapter(ShowScoreboardActivity.this, R.layout.scoreboard_row, filterAL);
                 lvScoreBoardData.setAdapter(aa);
+
             }
 
             @Override
