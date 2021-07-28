@@ -5,7 +5,7 @@
     android:background="@drawable/background2"
     android:orientation="vertical"
     android:padding="10dp">
-    <!--TODO:    Done by Zuhaili and Shufang-->
+
 
     <Button
         android:id="@+id/btnShowAll"
@@ -31,19 +31,10 @@
         android:layout_width="match_parent"
         android:layout_height="50dp" />
 
-    <!--    <Button-->
-    <!--        android:id="@+id/btnHome"-->
-    <!--        android:layout_width="50dp"-->
-    <!--        android:layout_height="50dp"-->
-    <!--        android:layout_gravity="top|left"-->
-    <!--        android:layout_margin="10dp"-->
-    <!--        android:background="@drawable/ic_baseline_home_24"-->
-    <!--        android:textSize="20sp"-->
-    <!--        tools:ignore="RtlHardcoded" />-->
 
     <TableLayout
         android:layout_width="380dp"
-        android:layout_height="500dp"
+        android:layout_height="400dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:background="#F686BD"
@@ -58,14 +49,6 @@
             android:textColor="@color/white"
             android:textSize="40dp" />
 
-
-        <!--        <TextView-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:gravity="center_horizontal"-->
-        <!--            android:text="Score Ranking"-->
-        <!--            android:textColor="@color/white"-->
-        <!--            android:textSize="30dp" />-->
 
         <TableRow
 
@@ -120,5 +103,11 @@
 
     </TableLayout>
 
+    <Button
+        android:id="@+id/btnExcel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Convert Scoreboard Data to Exel" />
 
 </LinearLayout>

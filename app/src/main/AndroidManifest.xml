@@ -5,7 +5,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
-
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,10 +20,10 @@
         tools:targetApi="m">
         <activity
             android:name=".Scoreboards.ModifyScoreboardActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".Questions.AdvancedQuestionsActivity"
-            android:screenOrientation="portrait"
+              android:screenOrientation="fullSensor" 
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".SplashScreenActivity"
@@ -43,7 +45,7 @@
         </activity>
         <activity
             android:name=".Questions.IntermediateQuestionsActivity"
-            android:screenOrientation="portrait"
+              android:screenOrientation="fullSensor" 
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <!--        <activity-->
         <!--            android:name=".PositivelyQuitedActivity"-->
@@ -59,7 +61,7 @@
         <!--            android:theme="@style/Theme.AppCompat.NoActionBar" />-->
         <activity
             android:name=".Questions.ResultActivity"
-            android:screenOrientation="portrait"
+              android:screenOrientation="fullSensor" 
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".NegativeResultActivity"
@@ -69,42 +71,42 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".Questions.EasyQuestionsActivity"
-            android:screenOrientation="portrait"
+              android:screenOrientation="fullSensor" 
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".SettingPageActivity"
-            android:screenOrientation="portrait"
+              android:screenOrientation="fullSensor" 
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".RevisionSectionActivity"
-            android:screenOrientation="portrait"
+              android:screenOrientation="fullSensor" 
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".HowToPlayActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".StartQuizActivity"
-            android:screenOrientation="portrait"
+              android:screenOrientation="fullSensor" 
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".Scoreboards.ShowScoreboardActivity"
-            android:screenOrientation="portrait"
+              android:screenOrientation="fullSensor" 
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".Modes.AdvancedModeActivity"
-            android:screenOrientation="portrait"
+              android:screenOrientation="fullSensor" 
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".Modes.IntermediateModeActivity"
-            android:screenOrientation="portrait"
+              android:screenOrientation="fullSensor" 
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".Modes.EasyModeActivity"
-            android:screenOrientation="portrait"
+              android:screenOrientation="fullSensor" 
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".DifficultySectionActivity"
-            android:screenOrientation="portrait"
+              android:screenOrientation="fullSensor" 
             android:theme="@style/Theme.AppCompat.NoActionBar" />
 
     </application>

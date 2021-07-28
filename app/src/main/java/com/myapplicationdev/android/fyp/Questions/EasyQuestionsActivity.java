@@ -33,7 +33,7 @@ import java.util.ArrayList;
 
 public class EasyQuestionsActivity extends AppCompatActivity {
     Button btnStart;
-    TextView tvQuestionsNumber, tvScore,tvTimer;
+    TextView tvQuestionsNumber, tvScore, tvTimer;
     RadioGroup group;
     RadioButton rdReaction_Option1, rdReaction_Option2;
     ImageView ivQuestion, btnExit, ivChoiceBasicQn, ivHints;
@@ -52,6 +52,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
     MediaPlayer choiceSound, correctSound, wrongSound, finishSound, backgroundMusic, buttonSound;
     Vibrator v;
     CountDownTimer timer;
+
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
