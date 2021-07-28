@@ -93,7 +93,7 @@ public class ResultActivity extends AppCompatActivity {
         textViewHeading.setText("Good Job!");
 
         sharedPreferences = getSharedPreferences("Score", Context.MODE_PRIVATE);
-        if (sharedPreferences.contains("Score")) {
+        if (sharedPreferences.contains("highestScore")) {
 //            sharedPreferences = this.getSharedPreferences("Score", Context.MODE_PRIVATE);
             highestScore = sharedPreferences.getInt("highestScore", 0);
         } else {

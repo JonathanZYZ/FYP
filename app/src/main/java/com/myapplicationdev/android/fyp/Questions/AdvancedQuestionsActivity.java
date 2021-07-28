@@ -343,7 +343,6 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
                     } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2()) {
                         wrongSound.start();
                         v.vibrate(200);
-                        streak = 0;
                         myBuilder.setMessage("You selected the wrong answer for Question 1!");
                         myBuilder.setCancelable(false);
                         myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
@@ -353,7 +352,6 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
                     } else if (ans1 == currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum2()) {
                         wrongSound.start();
                         v.vibrate(200);
-                        streak = 0;
                         myBuilder.setMessage("You selected the wrong answer for Question 2!");
                         myBuilder.setCancelable(false);
                         myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
@@ -363,7 +361,6 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
                     } else {
                         wrongSound.start();
                         v.vibrate(200);
-                        streak = 0;
                         myBuilder.setMessage("You selected the wrong answer for all Questions!");
                         myBuilder.setCancelable(false);
                         myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
@@ -420,7 +417,6 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
                         } else if (ans1 != currentQuestion.getCorrectNum1()) {
                             wrongSound.start();
                             v.vibrate(200);
-                            streak = 0;
                             myBuilder.setMessage("You selected the wrong answer!");
                             myBuilder.setCancelable(false);
                             myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
@@ -556,7 +552,7 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
                 hintDialog.setCancelable(true);
                 hintDialog.show();
             });
-            timer = new CountDownTimer(30000, 1000) {
+            timer = new CountDownTimer(100000, 1000) {
 
                 public void onTick(long millisUntilFinished) {
                     tvTimer.setText("seconds remaining: " + millisUntilFinished / 1000);

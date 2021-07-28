@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Vibrator;
 import android.text.InputType;
 import android.util.Log;
@@ -32,7 +33,7 @@ import java.util.ArrayList;
 
 public class EasyQuestionsActivity extends AppCompatActivity {
     Button btnStart;
-    TextView tvQuestionsNumber, tvScore;
+    TextView tvQuestionsNumber, tvScore,tvTimer;
     RadioGroup group;
     RadioButton rdReaction_Option1, rdReaction_Option2;
     ImageView ivQuestion, btnExit, ivChoiceBasicQn, ivHints;
@@ -50,7 +51,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
     String[] hints;
     MediaPlayer choiceSound, correctSound, wrongSound, finishSound, backgroundMusic, buttonSound;
     Vibrator v;
-
+    CountDownTimer timer;
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +64,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
 //        group = findViewById(R.id.radioGroupBasic);
 //        rdReaction_Option1 = findViewById(R.id.radioButtonOption1);
 //        rdReaction_Option2 = findViewById(R.id.radioButtonOption2);
+        tvTimer = findViewById(R.id.tvTimerEasy);
         ivChoiceBasicQn = findViewById(R.id.ivChoiceBasicQn);
         ivQuestion = findViewById(R.id.ivQuestions);
         ivHints = findViewById(R.id.ivHints);
@@ -213,7 +215,6 @@ public class EasyQuestionsActivity extends AppCompatActivity {
                 } else {
                     v.vibrate(200);
                     wrongSound.start();
-                    streak = 0;
                     AlertDialog.Builder myBuilder = new AlertDialog.Builder(EasyQuestionsActivity.this);
                     myBuilder.setTitle("Sorry!");
                     myBuilder.setMessage("You selected the wrong answer!");
@@ -266,7 +267,6 @@ public class EasyQuestionsActivity extends AppCompatActivity {
                 } else {
                     v.vibrate(200);
                     wrongSound.start();
-                    streak = 0;
                     AlertDialog.Builder myBuilder = new AlertDialog.Builder(EasyQuestionsActivity.this);
                     myBuilder.setTitle("Sorry!");
                     myBuilder.setMessage("You selected the wrong answer!");
@@ -308,7 +308,16 @@ public class EasyQuestionsActivity extends AppCompatActivity {
                     MyCustomAlertDialog();
                 }
             });
+            timer = new CountDownTimer(70000, 1000) {
 
+                public void onTick(long millisUntilFinished) {
+                    tvTimer.setText("seconds remaining: " + millisUntilFinished / 1000);
+                }
+
+                public void onFinish() {
+                    showNextQuestion();
+                }
+            }.start();
 
 //            ivQuestion.setImageResource();
             questionCounter++;
