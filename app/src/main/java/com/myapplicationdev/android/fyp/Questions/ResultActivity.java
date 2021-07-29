@@ -59,11 +59,8 @@ public class ResultActivity extends AppCompatActivity {
         int scoreInter = getIntent().getIntExtra("scoreIntermediate", 0);
         int scoreAdv = getIntent().getIntExtra("scoreAdv", 0);
 
-        tvScoreOverview.setText("Score Overview: \n"
-                + "Easy: " + scoreEasy + "\n"
-                + "Intermediate: " + scoreInter + "\n"
-                + "Advanced: " + scoreAdv
-        );
+        String myScoreOverview = String.format("Score Overview: \n%s: %s", difficulty, score);
+        tvScoreOverview.setText(myScoreOverview);
 
 
         // TODO: defining the time for the user's playing date

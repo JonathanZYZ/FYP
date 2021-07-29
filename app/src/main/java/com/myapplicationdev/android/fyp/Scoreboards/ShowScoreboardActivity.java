@@ -30,10 +30,10 @@ public class ShowScoreboardActivity<SqliteToExcel> extends AppCompatActivity {
     Button btnFilter, btnShowAll, btnExcel;
     ListView lvScoreBoardData;
     ArrayList<ScoreBoard> al, filterAL;
-    ArrayList<String> spinnerAL;
+    ArrayList<String> spinnerUsernameAL, spinnerModeAL;
     ScoreboardAdapter aa;
-    ArrayAdapter spinnerAA;
-    Spinner spinner;
+    ArrayAdapter spinnerUsernameAA, spinnerModeAA;
+    Spinner spUsername, spMode;
     String folderLocation = Environment.getExternalStorageDirectory().getPath() + "/Backup/";
     DBHelper dbh;
     File folder;
@@ -49,17 +49,22 @@ public class ShowScoreboardActivity<SqliteToExcel> extends AppCompatActivity {
 
         // TODO: At the start of the ShowScoreboardActivity initialize() method,
         //  initialize all UI variables and other objects.
-        initialize();
+        tvHeading = findViewById(R.id.tvHeading);
+        btnShowAll = findViewById(R.id.btnShowAll);
+        btnFilter = findViewById(R.id.btnFilter);
+        btnExcel = findViewById(R.id.btnExcel);
+        lvScoreBoardData = findViewById(R.id.lvScoreBoardData);
+        spUsername = findViewById(R.id.spUsername);
+        spMode = findViewById(R.id.spMode);
+
 
         // TODO: setting of SQLite to Excel ...
         folder = new File(folderLocation);
         /*================================================================================== */
 
 
-
-
         btnShowAll.setOnClickListener(v -> {
-
+            tvHeading.setText("ScoreBoard (Total Users)");
             al = dbh.getAllScoreBoard();
             if (!al.isEmpty()) {
                 filterAL.clear();
@@ -76,7 +81,8 @@ public class ShowScoreboardActivity<SqliteToExcel> extends AppCompatActivity {
 
 
         btnFilter.setOnClickListener(v -> {
-            tvHeading.setText("THE TOP SCORER");
+
+            tvHeading.setText("ScoreBoard (The Top Scorer)");
             al = dbh.getAllScoreBoard();
             filterAL.clear();
             int dbLength = al.size();
@@ -85,29 +91,25 @@ public class ShowScoreboardActivity<SqliteToExcel> extends AppCompatActivity {
             if (!al.isEmpty()) {
 
 
-                if (dbLength > 1) {
-                    //finds the highest value
-                    String topScore = al.get(0).getScore();
-                    for (ScoreBoard i : al) {
-                        if (Integer.parseInt(i.getScore()) > Integer.parseInt(topScore)) {
-                            topScore = i.getScore();
-                            filterAL.add(i);
-                        }
+                //finds the highest value
+                String topScore = al.get(0).getScore();
+                for (ScoreBoard i : al) {
+                    if (Integer.parseInt(i.getScore()) > Integer.parseInt(topScore)) {
+                        topScore = i.getScore();
+                        filterAL.add(i);
                     }
-                    aa = new ScoreboardAdapter(this, R.layout.scoreboard_row, filterAL);
-                    lvScoreBoardData.setAdapter(aa);
-                    Toast.makeText(ShowScoreboardActivity.this,
-                            "Here is the user with the highest score out of all users.",
-                            Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(ShowScoreboardActivity.this,
-                            "There is currently only one user's data in the database, which means there are no other users to compare scores with.",
-                            Toast.LENGTH_SHORT).show();
                 }
+                aa = new ScoreboardAdapter(this, R.layout.scoreboard_row, filterAL);
+                lvScoreBoardData.setAdapter(aa);
+                Toast.makeText(ShowScoreboardActivity.this,
+                        "Here is the user with the highest score out of all users.",
+                        Toast.LENGTH_SHORT).show();
+
 
             } else {
                 Toast.makeText(ShowScoreboardActivity.this,
-                        "Because you haven't played the game yet, there will be no data displayed in the scoreboard.",
+                        "Because you haven't played the game yet," +
+                                " there will be no data displayed in the scoreboard.",
                         Toast.LENGTH_SHORT).show();
             }
 
@@ -120,17 +122,52 @@ public class ShowScoreboardActivity<SqliteToExcel> extends AppCompatActivity {
             startActivity(i);
         });
 
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spUsername.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
                 al = dbh.getAllScoreBoard();
                 filterAL.clear();
 
 
-                String selected = spinnerAL.get(position);
+                String selected = spinnerUsernameAL.get(position);
                 for (ScoreBoard i : al) {
                     if (i.getUsername().equalsIgnoreCase(selected))
                         filterAL.add(i);
+                }
+                if (selected.equalsIgnoreCase("basic")) {
+                    tvHeading.setText("ScoreBoard (Basic Game Mode");
+                } else if (selected.equalsIgnoreCase("intermediate")) {
+                    tvHeading.setText("ScoreBoard (Intermediate Game Mode");
+                } else if (selected.equalsIgnoreCase("advanced")) {
+                    tvHeading.setText("ScoreBoard (Advanced Game Mode)");
+                }
+
+                aa = new ScoreboardAdapter(ShowScoreboardActivity.this, R.layout.scoreboard_row, filterAL);
+                lvScoreBoardData.setAdapter(aa);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        spMode.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+                al = dbh.getAllScoreBoard();
+                filterAL.clear();
+
+
+                String selected = spinnerModeAL.get(position);
+
+                for (ScoreBoard i : al) {
+                    if (i.getMode().equalsIgnoreCase(selected))
+                        filterAL.add(i);
+
+                    String tvHeadingOutput = String.format("ScoreBoard (User: %s)" ,selected );
+                    tvHeading.setText(tvHeadingOutput);
                 }
                 aa = new ScoreboardAdapter(ShowScoreboardActivity.this, R.layout.scoreboard_row, filterAL);
                 lvScoreBoardData.setAdapter(aa);
@@ -149,32 +186,6 @@ public class ShowScoreboardActivity<SqliteToExcel> extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        lvScoreBoardData = findViewById(R.id.lvScoreBoardData);
-        spinner = findViewById(R.id.spinner);
-        DBHelper dbh = new DBHelper(ShowScoreboardActivity.this);
-        al = dbh.getAllScoreBoard();
-        aa = new ScoreboardAdapter(this, R.layout.scoreboard_row, al);
-        lvScoreBoardData.setAdapter(aa);
-
-        spinnerAL = new ArrayList<>();
-        for (ScoreBoard i : al) {
-            spinnerAL.add(i.getUsername());
-        }
-        spinnerAA = new ArrayAdapter(this, android.R.layout.simple_spinner_item, spinnerAL);
-        spinnerAA.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(spinnerAA);
-    }
-
-    private void initialize() {
-
-        // Todo: Declare & bind UI variables
-        tvHeading = findViewById(R.id.tvHeading);
-        btnShowAll = findViewById(R.id.btnShowAll);
-        btnFilter = findViewById(R.id.btnFilter);
-        btnExcel = findViewById(R.id.btnExcel);
-        lvScoreBoardData = findViewById(R.id.lvScoreBoardData);
-        spinner = findViewById(R.id.spinner);
-
         // TODO: Sets the data for ListView
         dbh = new DBHelper(ShowScoreboardActivity.this);
         al = dbh.getAllScoreBoard();
@@ -182,14 +193,25 @@ public class ShowScoreboardActivity<SqliteToExcel> extends AppCompatActivity {
         aa = new ScoreboardAdapter(this, R.layout.scoreboard_row, al);
         lvScoreBoardData.setAdapter(aa);
 
-        // TODO: Sets the SpinnerAdapter used to provide the data which backs this Spinner.
-        spinnerAL = new ArrayList<>();
+        // TODO: Sets the SpinnerAdapter used to provide the data which backs spinnerUsernameAL.
+        spinnerUsernameAL = new ArrayList<>();
+
         for (ScoreBoard i : al) {
-            spinnerAL.add(i.getUsername());
+            spinnerUsernameAL.add(i.getUsername());
         }
-        spinnerAA = new ArrayAdapter(this, android.R.layout.simple_spinner_item, spinnerAL);
-        spinnerAA.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(spinnerAA);
+        spinnerUsernameAA = new ArrayAdapter(this, android.R.layout.simple_spinner_item, spinnerUsernameAL);
+        spinnerUsernameAA.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spUsername.setAdapter(spinnerUsernameAA);
+
+        // TODO: Sets the SpinnerAdapter used to provide the data which backs spinnerModeAA.
+        spinnerModeAL = new ArrayList<>();
+        spinnerModeAL.add("basic");
+        spinnerModeAL.add("intermediate");
+        spinnerModeAL.add("advanced");
+
+        spinnerModeAA = new ArrayAdapter(this, android.R.layout.simple_spinner_item, spinnerModeAL);
+        spinnerModeAA.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spMode.setAdapter(spinnerModeAA);
 
     }
 

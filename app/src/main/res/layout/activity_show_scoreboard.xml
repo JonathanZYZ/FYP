@@ -20,6 +20,19 @@
         android:layout_height="wrap_content"
         android:text="Only Show User with top high-scores" />
 
+    <!--  TODO:  Mode Spinner-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select user by mode:"
+        android:textColor="@color/black" />
+
+    <Spinner
+        android:id="@+id/spMode"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+    <!--  TODO:  username Spinner-->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,9 +40,11 @@
         android:textColor="@color/black" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/spUsername"
         android:layout_width="match_parent"
         android:layout_height="50dp" />
+
+
 
 
     <TableLayout
@@ -45,9 +60,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="SCOREBOARD"
+            android:text="Scoreboard"
             android:textColor="@color/white"
-            android:textSize="40dp" />
+            android:textSize="20dp" />
 
 
         <TableRow

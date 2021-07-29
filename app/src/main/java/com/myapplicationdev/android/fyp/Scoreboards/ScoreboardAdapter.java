@@ -28,7 +28,7 @@ public class ScoreboardAdapter extends ArrayAdapter<ScoreBoard> {
         this.resource = resource;
     }
 
-    @SuppressLint("DefaultLocale")
+    @SuppressLint({"DefaultLocale", "SetTextI18n"})
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context
@@ -54,6 +54,15 @@ public class ScoreboardAdapter extends ArrayAdapter<ScoreBoard> {
         TextViewUserID.setText(String.format("%d", id));
         TextViewUsername.setText(username);
         TextViewScore.setText(score);
+
+        if (mode.equalsIgnoreCase("basic")) {
+            TextViewScore.setText(score + "/18");
+        } else if (mode.equalsIgnoreCase("intermediate")) {
+            TextViewScore.setText(score + "/14");
+        } else if (mode.equalsIgnoreCase("advanced")) {
+            TextViewScore.setText(score + "/19");
+        }
+
         TextViewMode.setText(mode);
         TextViewDatePlayed.setText(date);
 
