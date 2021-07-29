@@ -37,8 +37,21 @@
         android:layout_height="wrap_content"
         android:text="Score" />
 
+    <!-- TODO : User Played Date-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your Played Mode"
+        android:textStyle="bold" />
 
-    <!-- TODO : User ID-->
+    <TextView
+        android:id="@+id/tvPlayedMode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Played Mode" />
+
+
+    <!-- TODO : User Played Date-->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

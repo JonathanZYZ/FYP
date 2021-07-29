@@ -75,7 +75,7 @@ public class ResultActivity extends AppCompatActivity {
         dbh = new DBHelper(ResultActivity.this);
 
         // TODO:  adding data into SQlite DB
-        long inserted_id = dbh.insertScoreBoard(username, score, strDate);
+        long inserted_id = dbh.insertScoreBoard(username, score, difficulty, strDate);
 
         dbh.close();
 

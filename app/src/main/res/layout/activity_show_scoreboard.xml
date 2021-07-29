@@ -55,16 +55,16 @@
     <!--        tools:ignore="RtlHardcoded" />-->
 
 
-
     <TableLayout
         android:layout_width="380dp"
-        android:layout_height="500dp"
+        android:layout_height="400dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:background="#F686BD"
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/tvHeading"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
@@ -127,5 +127,11 @@
 
     </TableLayout>
 
+    <Button
+        android:id="@+id/btnExcel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Show all Users" />
 
 </LinearLayout>

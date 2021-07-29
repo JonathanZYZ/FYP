@@ -16,7 +16,7 @@ import com.myapplicationdev.android.fyp.Utilities.DBHelper;
 public class ModifyScoreboardActivity extends AppCompatActivity {
 
 
-    TextView tvID, tvScore, tvPlayedDate;
+    TextView tvID, tvScore, tvPlayedDate , tvPlayedMode;
     EditText etUsername;
     Button btnUpdate, btnDelete, btnCancel;
 
@@ -35,6 +35,7 @@ public class ModifyScoreboardActivity extends AppCompatActivity {
         tvID = findViewById(R.id.tvID);
         tvScore = findViewById(R.id.tvScore);
         tvPlayedDate = findViewById(R.id.tvPlayedDate);
+        tvPlayedMode = findViewById(R.id.tvPlayedMode);
         etUsername = findViewById(R.id.etUsername);
         btnUpdate = findViewById(R.id.btnUpdate);
         btnDelete = findViewById(R.id.btnDelete);
@@ -42,24 +43,19 @@ public class ModifyScoreboardActivity extends AppCompatActivity {
 
         tvID.setText(String.valueOf(scoreBoard.getId()));
         tvScore.setText(scoreBoard.getScore());
+        tvPlayedMode.setText(scoreBoard.getMode());
         tvPlayedDate.setText(scoreBoard.getDate());
-
-
         etUsername.setText(scoreBoard.getUsername());
 
-
         btnUpdate.setOnClickListener(v -> {
-//            private int id;
-//            private String username;
-//            private String score;
-//            private String date;
 
             int result = dbh.updateScoreBoard(new ScoreBoard(
-
                     scoreBoard.getId(),
                     etUsername.getText().toString(),
                     scoreBoard.getScore(),
-                    scoreBoard.getDate()));
+                    scoreBoard.getMode(),
+                    scoreBoard.getDate()
+            ));
 
 
             Toast.makeText(ModifyScoreboardActivity.this, "This username has been successfully updated by you.",
