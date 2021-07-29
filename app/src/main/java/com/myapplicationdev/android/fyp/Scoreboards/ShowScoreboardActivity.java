@@ -1,117 +1,92 @@
 package com.myapplicationdev.android.fyp.Scoreboards;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.ajts.androidmads.library.SQLiteToExcel;
 import com.myapplicationdev.android.fyp.Models.ScoreBoard;
 import com.myapplicationdev.android.fyp.R;
 import com.myapplicationdev.android.fyp.Utilities.DBHelper;
 
-import java.io.File;
 import java.util.ArrayList;
 
-public class ShowScoreboardActivity<SqliteToExcel> extends AppCompatActivity {
+public class ShowScoreboardActivity extends AppCompatActivity {
 
-    TextView tvHeading;
-    Button btnFilter, btnShowAll, btnExcel;
+    Button btnFilter, btnShowAll;
     ListView lvScoreBoardData;
     ArrayList<ScoreBoard> al, filterAL;
     ArrayList<String> spinnerAL;
     ScoreboardAdapter aa;
     ArrayAdapter spinnerAA;
     Spinner spinner;
-    String folderLocation = Environment.getExternalStorageDirectory().getPath() + "/Backup/";
-    DBHelper dbh;
-    File folder;
-    SqliteToExcel sqliteToExcel;
 
-
-    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // setContentView(R.layout.activity_show);
         setContentView(R.layout.activity_show_scoreboard);
 
-        // TODO: At the start of the ShowScoreboardActivity initialize() method,
-        //  initialize all UI variables and other objects.
-        initialize();
+        btnShowAll = findViewById(R.id.btnShowAll);
+        btnFilter = findViewById(R.id.btnFilter);
+        lvScoreBoardData = findViewById(R.id.lvScoreBoardData);
+        spinner = findViewById(R.id.spinner);
 
-        // TODO: setting of SQLite to Excel ...
-        folder = new File(folderLocation);
-        /*================================================================================== */
+        DBHelper dbh = new DBHelper(ShowScoreboardActivity.this);
+        al = dbh.getAllScoreBoard();
+        filterAL = al;
+        aa = new ScoreboardAdapter(this, R.layout.scoreboard_row, al);
+        lvScoreBoardData.setAdapter(aa);
 
+        spinnerAL = new ArrayList<>();
 
+        for (ScoreBoard i : al) {
+            spinnerAL.add(i.getUsername());
+        }
+        spinnerAA = new ArrayAdapter(this, android.R.layout.simple_spinner_item, spinnerAL);
+        spinnerAA.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(spinnerAA);
 
 
         btnShowAll.setOnClickListener(v -> {
-
             al = dbh.getAllScoreBoard();
-            if (!al.isEmpty()) {
-                filterAL.clear();
-                filterAL.addAll(al);
-                aa = new ScoreboardAdapter(this, R.layout.scoreboard_row, filterAL);
-                lvScoreBoardData.setAdapter(aa);
-            } else {
-                Toast.makeText(ShowScoreboardActivity.this,
-                        "Because you haven't played the game yet, " +
-                                "there will be no data displayed in the scoreboard.",
-                        Toast.LENGTH_SHORT).show();
-            }
+            filterAL.clear();
+            filterAL.addAll(al);
+            aa = new ScoreboardAdapter(this, R.layout.scoreboard_row, filterAL);
+            lvScoreBoardData.setAdapter(aa);
         });
 
 
         btnFilter.setOnClickListener(v -> {
-            tvHeading.setText("THE TOP SCORER");
             al = dbh.getAllScoreBoard();
             filterAL.clear();
-            int dbLength = al.size();
+
+            //finds the highest value
+            String topScore = al.get(0).getScore();
 
 
-            if (!al.isEmpty()) {
+            for (ScoreBoard i : al) {
 
-
-                if (dbLength > 1) {
-                    //finds the highest value
-                    String topScore = al.get(0).getScore();
-                    for (ScoreBoard i : al) {
-                        if (Integer.parseInt(i.getScore()) > Integer.parseInt(topScore)) {
-                            topScore = i.getScore();
-                            filterAL.add(i);
-                        }
-                    }
-                    aa = new ScoreboardAdapter(this, R.layout.scoreboard_row, filterAL);
-                    lvScoreBoardData.setAdapter(aa);
-                    Toast.makeText(ShowScoreboardActivity.this,
-                            "Here is the user with the highest score out of all users.",
-                            Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(ShowScoreboardActivity.this,
-                            "There is currently only one user's data in the database, which means there are no other users to compare scores with.",
-                            Toast.LENGTH_SHORT).show();
+                if (Integer.parseInt(i.getScore()) > Integer.parseInt(topScore)) {
+                    topScore = i.getScore();
+                    filterAL.add(i);
                 }
 
-            } else {
-                Toast.makeText(ShowScoreboardActivity.this,
-                        "Because you haven't played the game yet, there will be no data displayed in the scoreboard.",
-                        Toast.LENGTH_SHORT).show();
             }
 
 
+            aa = new ScoreboardAdapter(this, R.layout.scoreboard_row, filterAL);
+            lvScoreBoardData.setAdapter(aa);
+
+            Toast.makeText(ShowScoreboardActivity.this, "Here is the top scorer amonst all users",
+                    Toast.LENGTH_SHORT).show();
         });
 
         lvScoreBoardData.setOnItemClickListener((parent, view, position, id) -> {
@@ -124,17 +99,16 @@ public class ShowScoreboardActivity<SqliteToExcel> extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
                 al = dbh.getAllScoreBoard();
+                String selected = spinnerAL.get(position);
                 filterAL.clear();
 
-
-                String selected = spinnerAL.get(position);
                 for (ScoreBoard i : al) {
                     if (i.getUsername().equalsIgnoreCase(selected))
                         filterAL.add(i);
                 }
+
                 aa = new ScoreboardAdapter(ShowScoreboardActivity.this, R.layout.scoreboard_row, filterAL);
                 lvScoreBoardData.setAdapter(aa);
-
             }
 
             @Override
@@ -164,34 +138,4 @@ public class ShowScoreboardActivity<SqliteToExcel> extends AppCompatActivity {
         spinnerAA.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(spinnerAA);
     }
-
-    private void initialize() {
-
-        // Todo: Declare & bind UI variables
-        tvHeading = findViewById(R.id.tvHeading);
-        btnShowAll = findViewById(R.id.btnShowAll);
-        btnFilter = findViewById(R.id.btnFilter);
-        btnExcel = findViewById(R.id.btnExcel);
-        lvScoreBoardData = findViewById(R.id.lvScoreBoardData);
-        spinner = findViewById(R.id.spinner);
-
-        // TODO: Sets the data for ListView
-        dbh = new DBHelper(ShowScoreboardActivity.this);
-        al = dbh.getAllScoreBoard();
-        filterAL = al;
-        aa = new ScoreboardAdapter(this, R.layout.scoreboard_row, al);
-        lvScoreBoardData.setAdapter(aa);
-
-        // TODO: Sets the SpinnerAdapter used to provide the data which backs this Spinner.
-        spinnerAL = new ArrayList<>();
-        for (ScoreBoard i : al) {
-            spinnerAL.add(i.getUsername());
-        }
-        spinnerAA = new ArrayAdapter(this, android.R.layout.simple_spinner_item, spinnerAL);
-        spinnerAA.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(spinnerAA);
-
-    }
-
-
 }
