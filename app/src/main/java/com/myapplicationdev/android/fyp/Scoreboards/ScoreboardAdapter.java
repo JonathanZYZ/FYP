@@ -66,6 +66,7 @@ public class ScoreboardAdapter extends ArrayAdapter<ScoreBoard> {
         TextViewMode.setText(mode);
         TextViewDatePlayed.setText(date);
 
+
         return rowView;
     }
 

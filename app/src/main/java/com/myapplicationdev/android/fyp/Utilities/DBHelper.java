@@ -18,18 +18,9 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private static final String TABLE_SCOREBOARD = "scoreBoard";
 
-//    private int id;
-//    private String username;
-//    private String score;
-//    private String mode;
-//    private String date;
-
-
     private static final String COLUMN_ID = "id";
-
     private static final String COLUMN_USERNAME = "username";
     private static final String COLUMN_SCORE = "score";
-    private static final String COLUMN_MODE = "mode";
     private static final String COLUMN_DATE = "date";
 
     public DBHelper(Context context) {
@@ -42,12 +33,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
         String createNoteTableSql = "CREATE TABLE " + TABLE_SCOREBOARD + "("
                 + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-
                 + COLUMN_USERNAME + " TEXT,"
                 + COLUMN_SCORE + " TEXT,"
-                + COLUMN_MODE + " TEXT,"
-                + COLUMN_DATE + " TEXT " +
-                ")";
+                + COLUMN_DATE + " TEXT )";
         // Create the table with a default settings to put current datetime automatically ^
 
 
@@ -57,14 +45,13 @@ public class DBHelper extends SQLiteOpenHelper {
         // TODO: to prepare the database for testing,
         //  we could create some dummy data during the table creation process.
         //  Dummy records, to be inserted when the database is created
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 4; i++) {
 
             // Creates an empty set of values using the default initial size
             ContentValues values = new ContentValues();
             values.put(COLUMN_ID, "ScoreBoard ID " + i);
             values.put(COLUMN_USERNAME, "ScoreBoard Username " + i);
             values.put(COLUMN_SCORE, "ScoreBoard Score " + i);
-            values.put(COLUMN_MODE, "ScoreBoard Mode " + i);
             values.put(COLUMN_DATE, "ScoreBoard Date " + i);
 
             db.insert(TABLE_SCOREBOARD, null, values);
@@ -80,16 +67,13 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
-
-    //    private int id;
-//    private String username;
-//    private String score;
-//    private String mode;
-//    private String date;
-// COLUMN_MODE
+//    private static final String COLUMN_ID = "id";
+//    private static final String COLUMN_MODE = "mode";
+//    private static final String COLUMN_SCORE = "score";
+//    private static final String COLUMN_DATE = "date";
 
     // TODO: Insert a new record , C in CRUD
-    public long insertScoreBoard(String username, String score, String mode, String date) {
+    public long insertScoreBoard(String username, String score, String date) {
 
         // Create and/or open a SQLiteDatabase that will be used for reading and writing.
         SQLiteDatabase db = this.getWritableDatabase();
@@ -99,7 +83,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
         values.put(COLUMN_USERNAME, username);
         values.put(COLUMN_SCORE, score);
-        values.put(COLUMN_MODE, mode);
         values.put(COLUMN_DATE, date);
 
 
@@ -117,13 +100,12 @@ public class DBHelper extends SQLiteOpenHelper {
     // TODO: Record retrieval from database table , R in CRUD
     public ArrayList<ScoreBoard> getAllScoreBoard() {
 
+
         ArrayList<ScoreBoard> ScoreBoards = new ArrayList<>();
 
-        String selectQuery = "SELECT "
-                + COLUMN_ID + ", "
+        String selectQuery = "SELECT " + COLUMN_ID + ", "
                 + COLUMN_USERNAME + ", "
                 + COLUMN_SCORE + ", "
-                + COLUMN_MODE + ", "
                 + COLUMN_DATE
                 + " FROM " + TABLE_SCOREBOARD;
 
@@ -139,12 +121,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
                 // Getting relevant data
                 int id = cursor.getInt(0);
-                String username = cursor.getString(1);
-                String score = cursor.getString(2);
-                String mode = cursor.getString(3);
-                String date = cursor.getString(4);
+                String modeContent = cursor.getString(1);
+                String scoreContent = cursor.getString(2);
+                String dateContent = cursor.getString(3);
 
-                ScoreBoard scoreBoard = new ScoreBoard(id, username, score, mode, date);
+                ScoreBoard scoreBoard = new ScoreBoard(id, modeContent, scoreContent, dateContent);
 
                 // Appends the specified element to the end of the ScoreBoards ArrayList
                 ScoreBoards.add(scoreBoard);
@@ -178,8 +159,8 @@ public class DBHelper extends SQLiteOpenHelper {
         // Add values to the values (ContentValues)
         values.put(COLUMN_USERNAME, data.getUsername());
         values.put(COLUMN_SCORE, data.getScore());
-        values.put(COLUMN_MODE, data.getMode());
         values.put(COLUMN_DATE, data.getDate());
+
 
         String condition = COLUMN_ID + "= ?";
         String[] args = {String.valueOf(data.getId())};
@@ -211,8 +192,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
         return result;
     }
-
-    public ArrayList<String> getNameInScoreBoard() {
+    public ArrayList<String> getNameInScoreBoard(){
         ArrayList<String> NameScoreBoards = new ArrayList<>();
 
         String selectQuery = "SELECT " + COLUMN_USERNAME
