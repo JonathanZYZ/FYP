@@ -67,20 +67,27 @@ public class ShowScoreboardActivity<SqliteToExcel> extends AppCompatActivity {
             tvHeading.setText("ScoreBoard (Total Users)");
             al = dbh.getAllScoreBoard();
             if (!al.isEmpty()) {
+
                 filterAL.clear();
                 filterAL.addAll(al);
                 aa = new ScoreboardAdapter(this, R.layout.scoreboard_row, filterAL);
                 lvScoreBoardData.setAdapter(aa);
+
+                Toast.makeText(ShowScoreboardActivity.this,
+                        "The total number of users who have played the game is shown above.",
+                        Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(ShowScoreboardActivity.this,
                         "Because you haven't played the game yet, " +
                                 "there will be no data displayed in the scoreboard.",
                         Toast.LENGTH_SHORT).show();
             }
+
+            aa.notifyDataSetChanged();
         });
 
 
-        btnFilter.setOnClickListener(v -> {
+        btnFilter.setOnClickListener(view -> {
 
             tvHeading.setText("ScoreBoard (The Top Scorer)");
             al = dbh.getAllScoreBoard();
@@ -93,14 +100,17 @@ public class ShowScoreboardActivity<SqliteToExcel> extends AppCompatActivity {
 
                 //finds the highest value
                 String topScore = al.get(0).getScore();
+
                 for (ScoreBoard i : al) {
                     if (Integer.parseInt(i.getScore()) > Integer.parseInt(topScore)) {
                         topScore = i.getScore();
                         filterAL.add(i);
                     }
                 }
+
                 aa = new ScoreboardAdapter(this, R.layout.scoreboard_row, filterAL);
                 lvScoreBoardData.setAdapter(aa);
+
                 Toast.makeText(ShowScoreboardActivity.this,
                         "Here is the user with the highest score out of all users.",
                         Toast.LENGTH_SHORT).show();
@@ -113,7 +123,7 @@ public class ShowScoreboardActivity<SqliteToExcel> extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
             }
 
-
+            aa.notifyDataSetChanged();
         });
 
         lvScoreBoardData.setOnItemClickListener((parent, view, position, id) -> {
@@ -131,25 +141,26 @@ public class ShowScoreboardActivity<SqliteToExcel> extends AppCompatActivity {
 
                 String selected = spinnerUsernameAL.get(position);
                 for (ScoreBoard i : al) {
-                    if (i.getUsername().equalsIgnoreCase(selected))
+                    if (i.getUsername().equalsIgnoreCase(selected)) {
                         filterAL.add(i);
-                }
-                if (selected.equalsIgnoreCase("basic")) {
-                    tvHeading.setText("ScoreBoard (Basic Game Mode");
-                } else if (selected.equalsIgnoreCase("intermediate")) {
-                    tvHeading.setText("ScoreBoard (Intermediate Game Mode");
-                } else if (selected.equalsIgnoreCase("advanced")) {
-                    tvHeading.setText("ScoreBoard (Advanced Game Mode)");
-                }
+                    }
 
+
+                    String tvHeadingOutput = String.format("ScoreBoard (User: %s)", selected);
+                    tvHeading.setText(tvHeadingOutput);
+                }
                 aa = new ScoreboardAdapter(ShowScoreboardActivity.this, R.layout.scoreboard_row, filterAL);
                 lvScoreBoardData.setAdapter(aa);
+                aa.notifyDataSetChanged();
 
+                Toast.makeText(ShowScoreboardActivity.this,
+                        "Here are the stats for user " + selected + " in the game.",
+                        Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
+                aa.notifyDataSetChanged();
             }
         });
 
@@ -163,20 +174,26 @@ public class ShowScoreboardActivity<SqliteToExcel> extends AppCompatActivity {
                 String selected = spinnerModeAL.get(position);
 
                 for (ScoreBoard i : al) {
-                    if (i.getMode().equalsIgnoreCase(selected))
+                    if (i.getMode().equalsIgnoreCase(selected)) {
                         filterAL.add(i);
+                    }
 
-                    String tvHeadingOutput = String.format("ScoreBoard (User: %s)" ,selected );
+                    String tvHeadingOutput = String.format("ScoreBoard (%s level)", selected);
                     tvHeading.setText(tvHeadingOutput);
+
                 }
                 aa = new ScoreboardAdapter(ShowScoreboardActivity.this, R.layout.scoreboard_row, filterAL);
                 lvScoreBoardData.setAdapter(aa);
+                aa.notifyDataSetChanged();
 
+                Toast.makeText(ShowScoreboardActivity.this,
+                        "Here are all of the " + selected + " mode users.",
+                        Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
+                aa.notifyDataSetChanged();
             }
         });
 
@@ -192,6 +209,7 @@ public class ShowScoreboardActivity<SqliteToExcel> extends AppCompatActivity {
         filterAL = al;
         aa = new ScoreboardAdapter(this, R.layout.scoreboard_row, al);
         lvScoreBoardData.setAdapter(aa);
+
 
         // TODO: Sets the SpinnerAdapter used to provide the data which backs spinnerUsernameAL.
         spinnerUsernameAL = new ArrayList<>();

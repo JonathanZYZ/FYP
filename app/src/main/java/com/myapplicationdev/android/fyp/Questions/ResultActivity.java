@@ -69,7 +69,6 @@ public class ResultActivity extends AppCompatActivity {
         sdf.setTimeZone(tz);
 
         Date date = new java.util.Date();
-        // Timestamp local = new Timestamp(date.getTime());
         String strDate = sdf.format(date);
 
         dbh = new DBHelper(ResultActivity.this);
@@ -81,7 +80,7 @@ public class ResultActivity extends AppCompatActivity {
 
         if (inserted_id != -1) {
             Toast.makeText(ResultActivity.this,
-                    "Insert successful",
+                    "Inserted successful",
                     Toast.LENGTH_SHORT).show();
         }
 
@@ -91,7 +90,6 @@ public class ResultActivity extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences("Score", Context.MODE_PRIVATE);
         if (sharedPreferences.contains("highestScore")) {
-//            sharedPreferences = this.getSharedPreferences("Score", Context.MODE_PRIVATE);
             highestScore = sharedPreferences.getInt("highestScore", 0);
         } else {
             highestScore = 0;
@@ -116,7 +114,8 @@ public class ResultActivity extends AppCompatActivity {
 
                 textViewHighestScore.setText("Lowest Score : " + myScore);
                 textViewMyScore.setBackgroundColor(Color.parseColor("#FF3D3D"));
-                textViewHeading.setText("You could do so much better.");
+                textViewHeading.setText("You're capable of so much more.");
+                tvScoreOverview.setBackgroundColor(Color.parseColor("#F72119"));
                 linearLayoutBackground.setBackgroundColor(Color.parseColor("#FF6868"));
 
             }
@@ -124,7 +123,7 @@ public class ResultActivity extends AppCompatActivity {
 
 
         btnPlayAgain.setOnClickListener(v -> {
-//            String difficulty = getIntent().getStringExtra("difficulty");
+
             Intent intent = new Intent();
 
             if (difficulty.equalsIgnoreCase("easy")) {
@@ -135,7 +134,6 @@ public class ResultActivity extends AppCompatActivity {
                 intent = new Intent(ResultActivity.this, AdvancedQuestionsActivity.class);
             }
 
-            //Intent intent = new Intent(ResultActivity.this, DifficultySectionActivity.class);
             startActivity(intent);
             finish();
 
