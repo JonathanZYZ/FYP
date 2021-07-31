@@ -27,6 +27,7 @@ import com.myapplicationdev.android.fyp.R;
 import com.myapplicationdev.android.fyp.Utilities.DBHelper;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class IntermediateQuestionsActivity extends AppCompatActivity {
 
@@ -1014,7 +1015,8 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
         ivChoice2.setEnabled(true);
         ivChoice3.setEnabled(true);
         if (questionCounter < questionCountTotal) {
-            currentQuestion = al.get(questionCounter);
+            Random rand = new Random();
+            currentQuestion = al.get(rand.nextInt(al.size()));
 
             ivQuestion.setImageResource(currentQuestion.getQnMainImage());
             if (currentQuestion.getQnCount() == 1) {

@@ -30,6 +30,7 @@ import com.myapplicationdev.android.fyp.R;
 import com.myapplicationdev.android.fyp.Utilities.DBHelper;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class EasyQuestionsActivity extends AppCompatActivity {
     Button btnStart;
@@ -291,7 +292,8 @@ public class EasyQuestionsActivity extends AppCompatActivity {
         ans = 0;
 //        group.clearCheck();
         if (questionCounter < questionCountTotal) {
-            currentQuestion = al.get(questionCounter);
+            Random rand = new Random();
+            currentQuestion = al.get(rand.nextInt(al.size()));
 
             ivQuestion.setImageResource(currentQuestion.getQuestionsBasic());
             ivChoiceBasicQn.setImageResource(R.drawable.hidden_qn_reaction);
