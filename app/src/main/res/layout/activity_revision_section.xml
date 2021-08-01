@@ -58,6 +58,7 @@
         <com.jsibbold.zoomage.ZoomageView
             android:layout_width="300dp"
             android:layout_height="300dp"
+            android:src="@drawable/treediagram"
             app:zoomage_restrictBounds="false"
             app:zoomage_animateOnReset="true"
             app:zoomage_autoResetMode="UNDER"

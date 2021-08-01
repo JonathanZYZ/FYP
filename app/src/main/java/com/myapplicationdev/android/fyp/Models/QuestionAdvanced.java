@@ -25,8 +25,10 @@ public class QuestionAdvanced implements Serializable {
     private final int ans2Image3;
     private final int ans2Image4;
     private final int correctNum2;
+    private final int solution1;
+    private final int solution2;
 
-    public QuestionAdvanced(String mode, String qnNum, String didYouKnowMsg, int qnMainImage, int qnCount, int qn1Image, int numOfQuestions1, int ans1Image1, int ans1Image2, int ans1Image3, int ans1Image4, int correctNum1, int qn2Image, int numOfQuestions2, int ans2Image1, int ans2Image2, int ans2Image3, int ans2Image4, int correctNum2) {
+    public QuestionAdvanced(String mode, String qnNum, String didYouKnowMsg, int qnMainImage, int qnCount, int qn1Image, int numOfQuestions1, int ans1Image1, int ans1Image2, int ans1Image3, int ans1Image4, int correctNum1, int qn2Image, int numOfQuestions2, int ans2Image1, int ans2Image2, int ans2Image3, int ans2Image4, int correctNum2,int solution1,int solution2) {
         this.mode = mode;
         this.qnNum = qnNum;
         this.didYouKnowMsg = didYouKnowMsg;
@@ -46,6 +48,8 @@ public class QuestionAdvanced implements Serializable {
         this.ans2Image3 = ans2Image3;
         this.ans2Image4 = ans2Image4;
         this.correctNum2 = correctNum2;
+        this.solution1 = solution1;
+        this.solution2 = solution2;
     }
 
     public String getMode() {
@@ -122,5 +126,13 @@ public class QuestionAdvanced implements Serializable {
 
     public int getCorrectNum2() {
         return correctNum2;
+    }
+
+    public int getSolution1() {
+        return solution1;
+    }
+
+    public int getSolution2() {
+        return solution2;
     }
 }

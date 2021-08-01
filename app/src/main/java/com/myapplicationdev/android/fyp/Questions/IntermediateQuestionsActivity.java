@@ -66,12 +66,25 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
         v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
 
-        choiceSound = MediaPlayer.create(IntermediateQuestionsActivity.this, R.raw.answer_click);
-        correctSound = MediaPlayer.create(IntermediateQuestionsActivity.this, R.raw.correct_answer);
-        wrongSound = MediaPlayer.create(IntermediateQuestionsActivity.this, R.raw.wrong_answer);
-        finishSound = MediaPlayer.create(IntermediateQuestionsActivity.this, R.raw.end_game);
-        backgroundMusic = MediaPlayer.create(IntermediateQuestionsActivity.this, R.raw.background_music);
-        buttonSound = MediaPlayer.create(IntermediateQuestionsActivity.this, R.raw.button_click);
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        boolean sound = sharedPreferences.getBoolean("sound", true);
+
+        if (sound) {
+            choiceSound = MediaPlayer.create(IntermediateQuestionsActivity.this, R.raw.answer_click);
+            correctSound = MediaPlayer.create(IntermediateQuestionsActivity.this, R.raw.correct_answer);
+            wrongSound = MediaPlayer.create(IntermediateQuestionsActivity.this, R.raw.wrong_answer);
+            finishSound = MediaPlayer.create(IntermediateQuestionsActivity.this, R.raw.end_game);
+            backgroundMusic = MediaPlayer.create(IntermediateQuestionsActivity.this, R.raw.background_music);
+            buttonSound = MediaPlayer.create(IntermediateQuestionsActivity.this, R.raw.button_click);
+        } else {
+            choiceSound = new MediaPlayer();
+            correctSound = new MediaPlayer();
+            wrongSound = new MediaPlayer();
+            finishSound = new MediaPlayer();
+            backgroundMusic = new MediaPlayer();
+            buttonSound = new MediaPlayer();
+
+        }
 
         al = new ArrayList<>();
         al.add(new QuestionIntermediate("intermediate", "1", R.drawable.question1_intermediate, 2, 0, 0, 0,
@@ -150,7 +163,19 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
         al.add(new QuestionIntermediate("intermediate", "19", R.drawable.question19_intermediate, 2, 0, 0, 0,
                 0,R.drawable.hidden_qn_majorproduct,R.drawable.question19_intermediate_majorproduct_correct,R.drawable.question19_intermediate_majorproduct1_incorrect, R.drawable.question19_intermediate_majorproduct2_incorrect, R.drawable.question19_intermediate_majorproduct3_incorrect, 1, R.drawable.hidden_qn_reaction, R.drawable.question19_intermediate_reaction1_incorrect, R.drawable.question19_intermediate_reaction2_incorrect,
                 R.drawable.question19_intermediate_reaction3_incorrect, R.drawable.question19_intermediate_reaction_correct, 4,R.drawable.question19_intermediate_solution1, R.drawable.question19_intermediate_solution2,0));
-
+        //
+        al.add(new QuestionIntermediate("intermediate", "20", R.drawable.question20_intermediate, 2, R.drawable.hidden_qn_solvent, R.drawable.question20_intermediate_solvent_correct, R.drawable.question20_intermediate_solvent_incorrect,
+                1,0,0,0, 0, 0, 0, R.drawable.hidden_qn_reaction, R.drawable.question20_intermediate_reaction1_incorrect, R.drawable.question20_intermediate_reaction2_incorrect,
+                R.drawable.question20_intermediate_reaction3_incorrect, R.drawable.question20_intermediate_reaction_correct, 4,R.drawable.question20_intermediate_solution1, R.drawable.question20_intermediate_solution2,0));
+        //
+        al.add(new QuestionIntermediate("intermediate", "21", R.drawable.question21_intermediate, 1, 0, 0, 0,
+                0, 0,0, 0, 0, 0, 0, R.drawable.hidden_qn_startingmaterial, R.drawable.question21_intermediate_startingmaterial_correct,
+                R.drawable.question21_intermediate_startingmaterial1_incorrect, R.drawable.question21_intermediate_startingmaterial2_incorrect, R.drawable.question21_intermediate_startingmaterial3_incorrect, 1,R.drawable.question21_intermediate_solution,0,0));
+        //
+        al.add(new QuestionIntermediate("intermediate", "22", R.drawable.question22_intermediate, 2, 0, 0, 0,
+                0,R.drawable.hidden_qn_majorproduct,R.drawable.question22_intermediate_majorproduct_correct,R.drawable.question22_intermediate_majorproduct1_incorrect, R.drawable.question22_intermediate_majorproduct2_incorrect, R.drawable.question22_intermediate_majorproduct3_incorrect, 1, R.drawable.hidden_qn_reaction, R.drawable.question22_intermediate_reaction1_incorrect, R.drawable.question22_intermediate_reaction2_incorrect,
+                R.drawable.question22_intermediate_reaction3_incorrect, R.drawable.question22_intermediate_reaction_correct, 4,R.drawable.question22_intermediate_solution1, R.drawable.question22_intermediate_solution2,0));
+        //
 
 
         questionCountTotal = al.size();

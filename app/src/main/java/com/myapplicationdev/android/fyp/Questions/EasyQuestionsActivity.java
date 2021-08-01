@@ -27,6 +27,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.myapplicationdev.android.fyp.MainActivity;
 import com.myapplicationdev.android.fyp.Models.QuestionEasy;
 import com.myapplicationdev.android.fyp.R;
+import com.myapplicationdev.android.fyp.StartQuizActivity;
 import com.myapplicationdev.android.fyp.Utilities.DBHelper;
 
 import java.util.ArrayList;
@@ -70,12 +71,28 @@ public class EasyQuestionsActivity extends AppCompatActivity {
         ivHints = findViewById(R.id.ivHints);
         btnExit = findViewById(R.id.btnExit);
 
-        choiceSound = MediaPlayer.create(EasyQuestionsActivity.this, R.raw.answer_click);
-        correctSound = MediaPlayer.create(EasyQuestionsActivity.this, R.raw.correct_answer);
-        wrongSound = MediaPlayer.create(EasyQuestionsActivity.this, R.raw.wrong_answer);
-        finishSound = MediaPlayer.create(EasyQuestionsActivity.this, R.raw.end_game);
-        backgroundMusic = MediaPlayer.create(EasyQuestionsActivity.this, R.raw.background_music);
-        buttonSound = MediaPlayer.create(EasyQuestionsActivity.this, R.raw.button_click);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        boolean sound = sharedPreferences.getBoolean("sound", true);
+
+        if (sound) {
+            choiceSound = MediaPlayer.create(EasyQuestionsActivity.this, R.raw.answer_click);
+            correctSound = MediaPlayer.create(EasyQuestionsActivity.this, R.raw.correct_answer);
+            wrongSound = MediaPlayer.create(EasyQuestionsActivity.this, R.raw.wrong_answer);
+            finishSound = MediaPlayer.create(EasyQuestionsActivity.this, R.raw.end_game);
+            backgroundMusic = MediaPlayer.create(EasyQuestionsActivity.this, R.raw.background_music);
+            buttonSound = MediaPlayer.create(EasyQuestionsActivity.this, R.raw.button_click);
+        } else {
+            choiceSound = new MediaPlayer();
+            correctSound = new MediaPlayer();
+            wrongSound = new MediaPlayer();
+            finishSound = new MediaPlayer();
+            backgroundMusic = new MediaPlayer();
+            buttonSound = new MediaPlayer();
+
+        }
+
+
         v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
         hints = new String[]{"Starting material has less steric hinderance.", "Starting material has less steric hinderance.", "Starting material with high steric hindrance inhibits nucleophilic attack.", "Starting material with high steric hindrance inhibits nucleophilic attack.", "Starting material with high steric hindrance inhibits nucleophilic attack.", "Starting material has less\n" +
