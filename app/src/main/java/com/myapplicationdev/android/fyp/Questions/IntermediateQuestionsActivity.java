@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -33,7 +34,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
 
     Button btnStart;
     TextView tvQuestionsNumber, tvScore, tvTimer;
-    ImageView ivQuestion, ivChoice1, ivChoice2, ivChoice3;
+    ImageView ivQuestion, ivChoice1, ivChoice2, ivChoice3,ivSolution1,ivSolution2,ivSolution3;
     ArrayList<QuestionIntermediate> al;
     int questionCounter = 0, questionCountTotal;
     QuestionIntermediate currentQuestion;
@@ -73,61 +74,84 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
         buttonSound = MediaPlayer.create(IntermediateQuestionsActivity.this, R.raw.button_click);
 
         al = new ArrayList<>();
-        al.add(new QuestionIntermediate("intermediate", "1", R.drawable.question1_intermediate, 3, R.drawable.hidden_qn_solvent, R.drawable.question1_intermediate_solvent_correct, R.drawable.question1_intermediate_solvent_incorrect,
-                1, R.drawable.hidden_qn_reaction, R.drawable.question1_intermediate_reaction_correct, R.drawable.question1_intermediate_reaction_incorrect, 0, 1, R.drawable.hidden_qn_product, R.drawable.question1_intermediate_product1_incorrect,
-                R.drawable.question1_intermediate_product2_incorrect, R.drawable.question1_intermediate_product3_correct, R.drawable.question1_intermediate_product4_incorrect, 3));
+        al.add(new QuestionIntermediate("intermediate", "1", R.drawable.question1_intermediate, 2, 0, 0, 0,
+                1, R.drawable.hidden_qn_reaction, R.drawable.question1_intermediate_reaction_correct, R.drawable.question1_intermediate_reaction1_incorrect, R.drawable.question1_intermediate_reaction2_incorrect,R.drawable.question1_intermediate_reaction3_incorrect, 1, R.drawable.hidden_qn_product, R.drawable.question1_intermediate_product1_incorrect,
+                R.drawable.question1_intermediate_product2_incorrect, R.drawable.question1_intermediate_product3_correct, R.drawable.question1_intermediate_product4_incorrect, 3,R.drawable.question1_intermediate_solution1,R.drawable.question1_intermediate_solution2,0));
         //
         al.add(new QuestionIntermediate("intermediate", "2", R.drawable.question2_intermediate, 3, R.drawable.hidden_qn_solvent, R.drawable.question2_intermediate_solvent_correct, R.drawable.question2_intermediate_solvent_incorrect,
-                1, R.drawable.hidden_qn_reaction, R.drawable.question2_intermediate_reaction_correct, R.drawable.question2_intermediate_reaction_incorrect, 0, 1, R.drawable.hidden_qn_startingmaterial, R.drawable.question2_intermediate_startingmaterial1_incorrect,
-                R.drawable.question2_intermediate_startingmaterial2_incorrect, R.drawable.question2_intermediate_startingmaterial_correct, R.drawable.question2_intermediate_startingmaterial3_incorrect, 3));
+                1, R.drawable.hidden_qn_reaction, R.drawable.question2_intermediate_reaction_correct, R.drawable.question2_intermediate_reaction1_incorrect, R.drawable.question2_intermediate_reaction2_incorrect, R.drawable.question2_intermediate_reaction3_incorrect, 1, R.drawable.hidden_qn_startingmaterial, R.drawable.question2_intermediate_startingmaterial1_incorrect,
+                R.drawable.question2_intermediate_startingmaterial2_incorrect, R.drawable.question2_intermediate_startingmaterial_correct, R.drawable.question2_intermediate_startingmaterial3_incorrect, 3,R.drawable.question2_intermediate_solution1,R.drawable.question2_intermediate_solution2,R.drawable.question2_intermediate_solution3));
         //
-        al.add(new QuestionIntermediate("intermediate", "3", R.drawable.question3_intermediate, 2, R.drawable.hidden_qn_reaction, R.drawable.question3_intermediate_reaction_correct, R.drawable.question3_intermediate_reaction_incorrect,
-                1, 0, 0, 0, 0, 0, R.drawable.hidden_qn_product, R.drawable.question3_intermediate_product1_incorrect,
-                R.drawable.question3_intermediate_product2_incorrect, R.drawable.question3_intermediate_product_correct, R.drawable.question3_intermediate_product3_incorrect, 3));
+        al.add(new QuestionIntermediate("intermediate", "3", R.drawable.question3_intermediate, 2, 0, 0, 0,
+                0,  R.drawable.hidden_qn_reaction, R.drawable.question3_intermediate_reaction1_incorrect,  R.drawable.question3_intermediate_reaction_correct, R.drawable.question3_intermediate_reaction2_incorrect,R.drawable.question3_intermediate_reaction3_incorrect,2, R.drawable.hidden_qn_product, R.drawable.question3_intermediate_product1_incorrect,
+                R.drawable.question3_intermediate_product2_incorrect, R.drawable.question3_intermediate_product_correct, R.drawable.question3_intermediate_product3_incorrect, 3,R.drawable.question3_intermediate_solution1,R.drawable.question3_intermediate_solution2,0));
         //
         al.add(new QuestionIntermediate("intermediate", "4", R.drawable.question4_intermediate, 2, 0, 0, 0,
-                0, R.drawable.hidden_qn_reaction, R.drawable.question4_intermediate_reaction_correct, R.drawable.question4_intermediate_reaction1_incorrect, R.drawable.question4_intermediate_reaction2_incorrect, 1, R.drawable.hidden_qn_product, R.drawable.question4_intermediate_product1_incorrect,
-                R.drawable.question4_intermediate_product2_incorrect, R.drawable.question4_intermediate_product3_incorrect, R.drawable.question4_intermediate_product_correct, 4));
+                0, R.drawable.hidden_qn_reaction, R.drawable.question4_intermediate_reaction_correct, R.drawable.question4_intermediate_reaction1_incorrect, R.drawable.question4_intermediate_reaction2_incorrect, 0,1, R.drawable.hidden_qn_product, R.drawable.question4_intermediate_product1_incorrect,
+                R.drawable.question4_intermediate_product2_incorrect, R.drawable.question4_intermediate_product3_incorrect, R.drawable.question4_intermediate_product_correct, 4,R.drawable.question4_intermediate_solution1,R.drawable.question4_intermediate_solution2,0));
         //
         al.add(new QuestionIntermediate("intermediate", "5", R.drawable.question5_intermediate, 2, R.drawable.hidden_qn_leavinggroup, R.drawable.question5_intermediate_leavinggroup_incorrect, R.drawable.question5_intermediate_leavinggroup_correct,
-                2, 0, 0, 0, 0, 0, R.drawable.hidden_qn_product, R.drawable.question5_intermediate_product1_incorrect,
-                R.drawable.question5_intermediate_product2_incorrect, R.drawable.question5_intermediate_product3_incorrect, R.drawable.question5_intermediate_product_correct, 4));
+                2, 0, 0, 0, 0,0,0, R.drawable.hidden_qn_product, R.drawable.question5_intermediate_product1_incorrect,
+                R.drawable.question5_intermediate_product2_incorrect, R.drawable.question5_intermediate_product3_incorrect, R.drawable.question5_intermediate_product_correct, 4,R.drawable.question5_intermediate_solution1,R.drawable.question5_intermediate_solution2,0));
         //
-        al.add(new QuestionIntermediate("intermediate", "6", R.drawable.question6_intermediate, 1, R.drawable.hidden_qn_leavinggroup, R.drawable.question6_intermediate_leavinggroup_incorrect, R.drawable.question6_intermediate_leavinggroup_correct,
-                2, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0));
+        al.add(new QuestionIntermediate("intermediate", "6", R.drawable.question6_intermediate, 2, 0, 0,0,
+                0,  R.drawable.hidden_qn_product, R.drawable.question6_intermediate_product_correct, R.drawable.question6_intermediate_product1_incorrect, R.drawable.question6_intermediate_product2_incorrect, R.drawable.question6_intermediate_product3_incorrect, 1,
+                 R.drawable.hidden_qn_reaction, R.drawable.question6_intermediate_reaction1_incorrect, R.drawable.question6_intermediate_reaction2_incorrect,R.drawable.question6_intermediate_reaction_correct,R.drawable.question6_intermediate_reaction1_incorrect,3,R.drawable.question6_intermediate_solution1,R.drawable.question6_intermediate_solution2,0));
         //
         al.add(new QuestionIntermediate("intermediate", "7", R.drawable.question7_intermediate, 1, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, R.drawable.hidden_qn_startingmaterial, R.drawable.question7_intermediate_startingmaterial_correct,
-                R.drawable.question7_intermediate_startingmaterial1_incorrect, R.drawable.question7_intermediate_startingmaterial2_incorrect, R.drawable.question7_intermediate_startingmaterial3_incorrect, 1));
+                0, 0, 0, 0,0,0,0,  R.drawable.hidden_qn_startingmaterial, R.drawable.question7_intermediate_startingmaterial_correct,
+                R.drawable.question7_intermediate_startingmaterial1_incorrect, R.drawable.question7_intermediate_startingmaterial2_incorrect, R.drawable.question7_intermediate_startingmaterial3_incorrect, 1,R.drawable.question7_intermediate_solution,0,0));
         //
         al.add(new QuestionIntermediate("intermediate", "8", R.drawable.question8_intermediate, 1, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, R.drawable.hidden_qn_product, R.drawable.question8_intermediate_product_correct,
-                R.drawable.question8_intermediate_product1_incorrect, R.drawable.question8_intermediate_product2_incorrect, R.drawable.question8_intermediate_product3_incorrect, 1));
+                0, 0,0, 0, 0, 0, 0, R.drawable.hidden_qn_product, R.drawable.question8_intermediate_product_correct,
+                R.drawable.question8_intermediate_product1_incorrect, R.drawable.question8_intermediate_product2_incorrect, R.drawable.question8_intermediate_product3_incorrect, 1,R.drawable.question8_intermediate_solution,0,0));
         //
         al.add(new QuestionIntermediate("intermediate", "9", R.drawable.question9_intermediate, 1, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, R.drawable.hidden_qn_product, R.drawable.question9_intermediate_product3_incorrect,
-                R.drawable.question9_intermediate_product1_incorrect, R.drawable.question9_intermediate_product2_incorrect, R.drawable.question9_intermediate_product_correct, 4));
+                0, 0,0, 0, 0, 0, 0, R.drawable.hidden_qn_product, R.drawable.question9_intermediate_product3_incorrect,
+                R.drawable.question9_intermediate_product1_incorrect, R.drawable.question9_intermediate_product2_incorrect, R.drawable.question9_intermediate_product_correct, 4,R.drawable.question9_intermediate_solution,0,0));
         //
         al.add(new QuestionIntermediate("intermediate", "10", R.drawable.question10_intermediate, 1, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, R.drawable.hidden_qn_startingmaterial, R.drawable.question10_intermediate_startingmaterial_correct,
-                R.drawable.question10_intermediate_startingmaterial1_incorrect, R.drawable.question10_intermediate_startingmaterial2_incorrect, R.drawable.question10_intermediate_startingmaterial3_incorrect, 1));
+                0, 0, 0, 0, 0, 0,0, R.drawable.hidden_qn_startingmaterial, R.drawable.question10_intermediate_startingmaterial_correct,
+                R.drawable.question10_intermediate_startingmaterial1_incorrect, R.drawable.question10_intermediate_startingmaterial2_incorrect, R.drawable.question10_intermediate_startingmaterial3_incorrect, 1,R.drawable.question10_intermediate_solution,0,0));
         //
-        al.add(new QuestionIntermediate("intermediate", "11", R.drawable.question11_intermediate, 2, R.drawable.hidden_qn_reaction, R.drawable.question11_intermediate_reaction_correct, R.drawable.question11_intermediate_reaction_incorrect,
-                1, 0, 0, 0, 0, 0, R.drawable.hidden_qn_carbocation, R.drawable.question11_intermediate_carbocation1_incorrect,
-                R.drawable.question11_intermediate_carbocation2_incorrect, R.drawable.question11_intermediate_carbocation_correct, R.drawable.question11_intermediate_carbocation3_incorrect, 3));
+        al.add(new QuestionIntermediate("intermediate", "11", R.drawable.question11_intermediate, 2,0, 0, 0,
+                0,  R.drawable.hidden_qn_product, R.drawable.question11_intermediate_product_correct, R.drawable.question11_intermediate_product1_incorrect, R.drawable.question11_intermediate_product2_incorrect,R.drawable.question11_intermediate_product3_incorrect,1, R.drawable.hidden_qn_reaction, R.drawable.question11_intermediate_reaction1_incorrect,
+                R.drawable.question11_intermediate_reaction2_incorrect, R.drawable.question11_intermediate_reaction_correct, R.drawable.question11_intermediate_reaction3_incorrect, 3,R.drawable.question11_intermediate_solution1,R.drawable.question11_intermediate_solution2,0));
         //
-        al.add(new QuestionIntermediate("intermediate", "12", R.drawable.question12_intermediate, 2, R.drawable.hidden_qn_solvent, R.drawable.question12_intermediate_solvent_correct, R.drawable.question12_intermediate_solvent_incorrect,
-                1, R.drawable.hidden_qn_reaction, R.drawable.question12_intermediate_reaction_correct, R.drawable.question12_intermediate_reaction_incorrect, 0, 1, 0, 0,
-                0, 0, 0, 0));
+        al.add(new QuestionIntermediate("intermediate", "12", R.drawable.question12_intermediate, 1, 0, 0, 0,
+                0,0,  0, 1, 0, 0,
+                0, R.drawable.hidden_qn_startingmaterial, R.drawable.question12_intermediate_startingmaterial1_incorrect, R.drawable.question12_intermediate_startingmaterial1_incorrect,
+                R.drawable.question12_intermediate_startingmaterial1_incorrect,R.drawable.question12_intermediate_startingmaterial_correct,4,R.drawable.question12_intermediate_solution,0,0));
         //
-        al.add(new QuestionIntermediate("intermediate", "13", R.drawable.question13_intermediate, 1, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, R.drawable.hidden_qn_startingmaterial, R.drawable.question13_intermediate_startingmaterial_correct,
-                R.drawable.question13_intermediate_startingmaterial1_incorrect, R.drawable.question13_intermediate_startingmaterial2_incorrect, R.drawable.question13_intermediate_startingmaterial3_incorrect, 1));
+        al.add(new QuestionIntermediate("intermediate", "13", R.drawable.question13_intermediate, 2, R.drawable.hidden_qn_solvent, R.drawable.question13_intermediate_solvent_correct, R.drawable.question13_intermediate_solvent_incorrect,
+                1,  0, 0, 0,0,0,0, R.drawable.hidden_qn_reaction, R.drawable.question13_intermediate_reaction_correct,
+                R.drawable.question13_intermediate_reaction1_incorrect, R.drawable.question13_intermediate_reaction2_incorrect, R.drawable.question13_intermediate_reaction3_incorrect, 1, R.drawable.question13_intermediate_solution1,R.drawable.question13_intermediate_solution2,0));
         //
-        al.add(new QuestionIntermediate("intermediate", "14", R.drawable.question14_intermediate, 1, R.drawable.hidden_qn_solvent, R.drawable.question14_intermediate_correct, R.drawable.question14_intermediate_incorrect,
-                1, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0));
+        al.add(new QuestionIntermediate("intermediate", "14", R.drawable.question14_intermediate, 2, 0, 0, 0,
+                0,R.drawable.hidden_qn_startingmaterial,R.drawable.question14_intermediate_startingmaterial_correct,R.drawable.question14_intermediate_startingmaterial1_incorrect, R.drawable.question14_intermediate_startingmaterial2_incorrect, R.drawable.question14_intermediate_startingmaterial3_incorrect, 1, R.drawable.hidden_qn_reaction, R.drawable.question14_intermediate_reaction1_incorrect, R.drawable.question14_intermediate_reaction2_incorrect,
+                R.drawable.question14_intermediate_reaction3_incorrect, R.drawable.question14_intermediate_reaction_correct, 4,R.drawable.question14_intermediate_solution, R.drawable.question14_intermediate_solution2,0));
+        //
+        al.add(new QuestionIntermediate("intermediate", "15", R.drawable.question15_intermediate, 1, 0, 0, 0,
+                0,0, 0, 0, 0, 0, 0, R.drawable.hidden_qn_startingmaterial, R.drawable.question15_intermediate_startingmaterial1_incorrect,
+                R.drawable.question15_intermediate_startingmaterial2_incorrect, R.drawable.question15_intermediate_startingmaterial_correct, R.drawable.question15_intermediate_startingmaterial3_incorrect, 3,R.drawable.question15_intermediate_solution,0,0));
+        //
+        al.add(new QuestionIntermediate("intermediate", "16", R.drawable.question16_intermediate, 1, R.drawable.hidden_qn_solvent, R.drawable.question16_intermediate_solvent_correct, R.drawable.question16_intermediate_solvent_incorrect,
+                1,0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0,0, 0,R.drawable.question16_intermediate_solution,0,0));
+        //
+        al.add(new QuestionIntermediate("intermediate", "17", R.drawable.question17_intermediate, 2, 0, 0, 0,
+                0,R.drawable.hidden_qn_startingmaterial,R.drawable.question17_intermediate_startingmaterial_correct,R.drawable.question17_intermediate_startingmaterial1_incorrect, R.drawable.question17_intermediate_startingmaterial2_incorrect, R.drawable.question17_intermediate_startingmaterial3_incorrect, 1, R.drawable.hidden_qn_reaction, R.drawable.question17_intermediate_reaction1_incorrect, R.drawable.question17_intermediate_reaction2_incorrect,
+                R.drawable.question17_intermediate_reaction3_incorrect, R.drawable.question17_intermediate_reaction_correct, 4,R.drawable.question17_intermediate_solution1, R.drawable.question17_intermediate_solution2,0));
+        //
+        al.add(new QuestionIntermediate("intermediate", "18", R.drawable.question18_intermediate, 2, 0, 0, 0,
+                0,R.drawable.hidden_qn_reaction,R.drawable.question18_intermediate_product_correct,R.drawable.question18_intermediate_product1_incorrect, R.drawable.question18_intermediate_product2_incorrect, R.drawable.question18_intermediate_product3_incorrect, 1, R.drawable.hidden_qn_reaction, R.drawable.question18_intermediate_reaction1_incorrect, R.drawable.question18_intermediate_reaction2_incorrect,
+                R.drawable.question18_intermediate_reaction3_incorrect, R.drawable.question18_intermediate_reaction_correct, 4,R.drawable.question18_intermediate_solution1, R.drawable.question18_intermediate_solution2,0));
+        //
+        al.add(new QuestionIntermediate("intermediate", "19", R.drawable.question19_intermediate, 2, 0, 0, 0,
+                0,R.drawable.hidden_qn_majorproduct,R.drawable.question19_intermediate_majorproduct_correct,R.drawable.question19_intermediate_majorproduct1_incorrect, R.drawable.question19_intermediate_majorproduct2_incorrect, R.drawable.question19_intermediate_majorproduct3_incorrect, 1, R.drawable.hidden_qn_reaction, R.drawable.question19_intermediate_reaction1_incorrect, R.drawable.question19_intermediate_reaction2_incorrect,
+                R.drawable.question19_intermediate_reaction3_incorrect, R.drawable.question19_intermediate_reaction_correct, 4,R.drawable.question19_intermediate_solution1, R.drawable.question19_intermediate_solution2,0));
+
+
 
         questionCountTotal = al.size();
         Intent i = getIntent();
@@ -275,6 +299,14 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                 AlertDialog.Builder myBuilder = new AlertDialog.Builder(IntermediateQuestionsActivity.this);
                 myBuilder.setTitle("Sorry");
                 if (currentQuestion.getQnCount() == 3) {
+                    final View customLayout = getLayoutInflater().inflate(R.layout.custom_image_layout3, null);
+                    myBuilder.setView(customLayout);
+                    ivSolution1 = customLayout.findViewById(R.id.ivSolution3Qn1);
+                    ivSolution1.setImageResource(currentQuestion.getSolution1());
+                    ivSolution2 = customLayout.findViewById(R.id.ivSolution3Qn2);
+                    ivSolution2.setImageResource(currentQuestion.getSolution2());
+                    ivSolution3 = customLayout.findViewById(R.id.ivSolution3Qn3);
+                    ivSolution3.setImageResource(currentQuestion.getSolution3());
                     if (ans1 == currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2() && ans3 == currentQuestion.getCorrectNum3()) {
                         correctSound.start();
                         streak += 1;
@@ -375,6 +407,12 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                     }
 
                 } else if (currentQuestion.getQnCount() == 2) {
+                    final View customLayout = getLayoutInflater().inflate(R.layout.custom_image_layout2, null);
+                    myBuilder.setView(customLayout);
+                    ivSolution1 = customLayout.findViewById(R.id.ivSolution2Qn);
+                    ivSolution1.setImageResource(currentQuestion.getSolution1());
+                    ivSolution2 = customLayout.findViewById(R.id.ivSolution2Qn2);
+                    ivSolution2.setImageResource(currentQuestion.getSolution2());
                     if (currentQuestion.getQn1Image() == 0) {
                         if (ans1 == currentQuestion.getCorrectNum2() && ans2 == currentQuestion.getCorrectNum3()) {
                             correctSound.start();
@@ -565,6 +603,10 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
 
 
                 } else if (currentQuestion.getQnCount() == 1) {
+                    final View customLayout = getLayoutInflater().inflate(R.layout.custom_image_layout, null);
+                    myBuilder.setView(customLayout);
+                    ivSolution1 = customLayout.findViewById(R.id.ivSolution1Qn);
+                    ivSolution1.setImageResource(currentQuestion.getSolution1());
                     if (currentQuestion.getQn1Image() != 0) {
                         if (ans1 == currentQuestion.getCorrectNum1()) {
                             correctSound.start();
@@ -1029,7 +1071,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                     numOfAnsForQn1 = 2;
                 } else if (currentQuestion.getQn2Image() != 0) {
                     ivChoice1.setImageResource(currentQuestion.getQn2Image());
-                    numOfAnsForQn1 = 3;
+                    numOfAnsForQn1 = 4;
                 } else if (currentQuestion.getQn3Image() != 0) {
                     ivChoice1.setImageResource(currentQuestion.getQn3Image());
                     numOfAnsForQn1 = 4;
@@ -1039,7 +1081,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                 ivChoice3.setEnabled(false);
                 if (currentQuestion.getQn1Image() == 0) {
                     ivChoice1.setImageResource(currentQuestion.getQn2Image());
-                    numOfAnsForQn1 = 3;
+                    numOfAnsForQn1 = 4;
                     ivChoice2.setImageResource(currentQuestion.getQn3Image());
                     numOfAnsForQn2 = 4;
                 } else if (currentQuestion.getQn2Image() == 0) {
@@ -1051,13 +1093,13 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                     ivChoice1.setImageResource(currentQuestion.getQn1Image());
                     numOfAnsForQn1 = 2;
                     ivChoice2.setImageResource(currentQuestion.getQn2Image());
-                    numOfAnsForQn2 = 3;
+                    numOfAnsForQn2 = 4;
                 }
             } else if (currentQuestion.getQnCount() == 3) {
                 ivChoice1.setImageResource(currentQuestion.getQn1Image());
                 numOfAnsForQn1 = 2;
                 ivChoice2.setImageResource(currentQuestion.getQn2Image());
-                numOfAnsForQn2 = 3;
+                numOfAnsForQn2 = 4;
                 ivChoice3.setImageResource(currentQuestion.getQn3Image());
             }
 
@@ -1153,31 +1195,27 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
 
 
         } else if (qnNum == 2) {
-            if (numOfAns == 3) {
-                ivUserChoice4.setEnabled(false);
-                ivUserChoice4.setImageResource(android.R.color.transparent);
-                //
-                ivUserChoice1.setEnabled(true);
-                ivUserChoice1.setImageResource(currentQuestion.getAns2Image1());
-                ivUserChoice2.setEnabled(true);
-                ivUserChoice2.setImageResource(currentQuestion.getAns2Image2());
-                if (currentQuestion.getAns2Image3() == 0) {
-                    ivUserChoice3.setEnabled(false);
-                    ivUserChoice3.setImageResource(android.R.color.transparent);
-                } else {
-                    ivUserChoice3.setEnabled(true);
-                    ivUserChoice3.setImageResource(currentQuestion.getAns2Image3());
-                }
-            } else if (numOfAns == 4) {
-                ivUserChoice1.setEnabled(true);
-                ivUserChoice1.setImageResource(currentQuestion.getAns3Image1());
-                ivUserChoice2.setEnabled(true);
-                ivUserChoice2.setImageResource(currentQuestion.getAns3Image2());
-                ivUserChoice3.setEnabled(true);
-                ivUserChoice3.setImageResource(currentQuestion.getAns3Image3());
-                ivUserChoice4.setEnabled(true);
-                ivUserChoice4.setImageResource(currentQuestion.getAns3Image4());
-            }
+             if (numOfAns == 4) {
+                 if (currentQuestion.getQn2Image() == 0) {
+                     ivUserChoice1.setEnabled(true);
+                     ivUserChoice1.setImageResource(currentQuestion.getAns3Image1());
+                     ivUserChoice2.setEnabled(true);
+                     ivUserChoice2.setImageResource(currentQuestion.getAns3Image2());
+                     ivUserChoice3.setEnabled(true);
+                     ivUserChoice3.setImageResource(currentQuestion.getAns3Image3());
+                     ivUserChoice4.setEnabled(true);
+                     ivUserChoice4.setImageResource(currentQuestion.getAns3Image4());
+                 }else{
+                     ivUserChoice1.setEnabled(true);
+                     ivUserChoice1.setImageResource(currentQuestion.getAns2Image1());
+                     ivUserChoice2.setEnabled(true);
+                     ivUserChoice2.setImageResource(currentQuestion.getAns2Image2());
+                     ivUserChoice3.setEnabled(true);
+                     ivUserChoice3.setImageResource(currentQuestion.getAns2Image3());
+                     ivUserChoice4.setEnabled(true);
+                     ivUserChoice4.setImageResource(currentQuestion.getAns2Image4());
+                 }
+             }
 
         } else if (qnNum == 3) {
             ivUserChoice1.setEnabled(true);

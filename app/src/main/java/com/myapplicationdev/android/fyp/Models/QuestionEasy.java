@@ -13,9 +13,10 @@ public class QuestionEasy implements Serializable {
     private int option3Reaction;
     private int option4Reaction;
     private int answerNum;
+    private int solution;
 
 
-    public QuestionEasy(String mode, String questionsNum, int questionsImg, int option1Reaction, int option2Reaction, int option3Reaction, int option4Reaction, int answerNum) {
+    public QuestionEasy(String mode, String questionsNum, int questionsImg, int option1Reaction, int option2Reaction, int option3Reaction, int option4Reaction, int answerNum,int solution) {
         this.mode = mode;
         this.questionsNum = questionsNum;
         this.questionsBasic = questionsImg;
@@ -24,6 +25,7 @@ public class QuestionEasy implements Serializable {
         this.option3Reaction = option3Reaction;
         this.option4Reaction = option4Reaction;
         this.answerNum = answerNum;
+        this.solution = solution;
     }
 
     public String getMode() {
@@ -88,5 +90,9 @@ public class QuestionEasy implements Serializable {
 
     public void setAnswerNum(int answerNum) {
         this.answerNum = answerNum;
+    }
+
+    public int getSolution() {
+        return solution;
     }
 }
