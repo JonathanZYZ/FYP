@@ -63,9 +63,6 @@ public class EasyQuestionsActivity extends AppCompatActivity {
         btnStart = findViewById(R.id.btnStart);
         tvQuestionsNumber = findViewById(R.id.tvQuestions_Number);
         tvScore = findViewById(R.id.tvPoint);
-//        group = findViewById(R.id.radioGroupBasic);
-//        rdReaction_Option1 = findViewById(R.id.radioButtonOption1);
-//        rdReaction_Option2 = findViewById(R.id.radioButtonOption2);
         tvTimer = findViewById(R.id.tvTimerEasy);
         ivChoiceBasicQn = findViewById(R.id.ivChoiceBasicQn);
         ivQuestion = findViewById(R.id.ivQuestions);
