@@ -16,7 +16,7 @@ import com.myapplicationdev.android.fyp.Utilities.DBHelper;
 public class ModifyScoreboardActivity extends AppCompatActivity {
 
 
-    TextView tvID, tvScore, tvPlayedDate , tvPlayedMode;
+    TextView tvID, tvScore, tvPlayedDate, tvPlayedMode;
     EditText etUsername;
     Button btnUpdate, btnDelete, btnCancel;
 
