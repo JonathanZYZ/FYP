@@ -1,7 +1,10 @@
 package com.myapplicationdev.android.fyp.Scoreboards;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -15,13 +18,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.ajts.androidmads.library.SQLiteToExcel;
 import com.myapplicationdev.android.fyp.Models.ScoreBoard;
 import com.myapplicationdev.android.fyp.R;
 import com.myapplicationdev.android.fyp.Utilities.DBHelper;
 
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.util.ArrayList;
 
 public class ShowScoreboardActivity<SqliteToExcel> extends AppCompatActivity {
@@ -38,6 +49,7 @@ public class ShowScoreboardActivity<SqliteToExcel> extends AppCompatActivity {
     DBHelper dbh;
     File folder;
     SqliteToExcel sqliteToExcel;
+    private File filePath = new File(Environment.getExternalStorageDirectory() + "/Demo.xls");
 
 
     @SuppressLint("SetTextI18n")
@@ -59,7 +71,101 @@ public class ShowScoreboardActivity<SqliteToExcel> extends AppCompatActivity {
 
 
         // TODO: setting of SQLite to Excel ...
-        folder = new File(folderLocation);
+
+
+        String[] permission = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE};
+        ActivityCompat.requestPermissions(ShowScoreboardActivity.this, permission, 0);
+        String folderLocation_I = getFilesDir().getAbsolutePath() + "/Folder";
+        File folder_I = new File(folderLocation_I);
+        if (folder_I.exists() == false) {
+            boolean result = folder_I.mkdir();
+            if (result == true) {
+                Log.d("File Read/Write", "Folder created");
+            }
+        }
+        btnExcel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HSSFWorkbook hssfWorkbook = new HSSFWorkbook();
+                HSSFSheet hssfSheet = hssfWorkbook.createSheet("Custom Sheet");
+
+
+                HSSFRow hssfRow = hssfSheet.createRow(0);
+                HSSFCell hssfCell = hssfRow.createCell(0);
+                hssfCell.setCellValue("ID");
+
+                HSSFCell hssfCell1 = hssfRow.createCell(1);
+                hssfCell1.setCellValue("Username");
+
+                HSSFCell hssfCell2 = hssfRow.createCell(2);
+                hssfCell2.setCellValue("Score");
+
+                HSSFCell hssfCell3 = hssfRow.createCell(3);
+                hssfCell3.setCellValue("Mode");
+
+                HSSFCell hssfCell4 = hssfRow.createCell(4);
+                hssfCell4.setCellValue("Date");
+
+                al = dbh.getAllScoreBoard();
+                for (int i = 1; i < al.size()+1; i++) {
+                    HSSFRow hssfRow1 = hssfSheet.createRow(i);
+                    HSSFCell hssfCells1 = hssfRow1.createCell(0);
+                    Log.d("TEST123", al.get(i-1).getId()+" TEST");
+                    hssfCells1.setCellValue(al.get(i-1).getId());
+
+                    HSSFCell hssfCells2 = hssfRow1.createCell(1);
+                    Log.d("TEST123", al.get(i-1).getUsername()+" TEST");
+                    hssfCells2.setCellValue(al.get(i-1).getUsername());
+
+                    HSSFCell hssfCells3 = hssfRow1.createCell(2);
+                    Log.d("TEST123", al.get(i-1).getId()+" TEST");
+                    hssfCells3.setCellValue(al.get(i-1).getScore());
+
+                    HSSFCell hssfCells4 = hssfRow1.createCell(3);
+                    Log.d("TEST123", al.get(i-1).getId()+" TEST");
+                    hssfCells4.setCellValue(al.get(i-1).getMode());
+
+                    HSSFCell hssfCells5 = hssfRow1.createCell(4);
+                    Log.d("TEST123", al.get(i-1).getId()+" TEST");
+                    hssfCells5.setCellValue(al.get(i-1).getDate());
+                }
+
+                try {
+                    String folderLocation =
+                            Environment.getExternalStorageDirectory()
+                                    .getAbsolutePath() + "/Folder";
+                    File folder = new File(folderLocation);
+                    if (folder.exists() == false) {
+                        boolean result = folder.mkdir();
+                        if (result == true) {
+                            Log.d("File Read/Write", "Folder created");
+                        }
+                    }
+                    try {
+                        folderLocation = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Folder";
+                        File targetFile = new File(folderLocation, "data.xls");
+
+
+                        FileOutputStream fileOutputStream= new FileOutputStream(targetFile, true);
+                        hssfWorkbook.write(fileOutputStream);
+
+                        if (fileOutputStream!=null){
+                            fileOutputStream.flush();
+                            fileOutputStream.close();
+                        }
+
+                        Toast.makeText(ShowScoreboardActivity.this,
+                                "Successfully created excel file",
+                                Toast.LENGTH_SHORT).show();
+                    } catch (Exception e) {
+                        Toast.makeText(ShowScoreboardActivity.this, "Failed to write!", Toast.LENGTH_LONG).show();
+                        e.printStackTrace();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
         /*================================================================================== */
 
 

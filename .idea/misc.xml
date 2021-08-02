@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AY3SEM1/C347/FYP/app/src/main/res/layout/activity_show_scoreboard.xml" value="0.1" />
+        <entry key="..\:/AY3SEM1/C347/FYP/app/src/main/res/layout/scoreboard_row.xml" value="0.12183383991894631" />
         <entry key="..\:/Android/FYP6/app/src/main/res/layout/activity_revision_section.xml" value="0.1" />
         <entry key="..\:/C346/Workspace/P01/FYP/app/src/main/res/layout/activity_modify_scoreboard.xml" value="0.33" />
       </map>
@@ -52,7 +54,7 @@
       </value>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_13" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

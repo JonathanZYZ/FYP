@@ -38,7 +38,7 @@ dependencies {
     //noinspection GradleCompatible
     implementation 'com.android.support:design:26.1.0'
     implementation 'com.google.android.material:material:1.4.0'
-
+    implementation 'org.apache.poi:poi:3.17'
 
     // TODO:  3rd party Dependencies
     implementation 'com.squareup.picasso:picasso:2.5.2'
