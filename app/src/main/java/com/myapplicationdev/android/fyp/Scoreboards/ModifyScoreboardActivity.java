@@ -50,7 +50,7 @@ public class ModifyScoreboardActivity extends AppCompatActivity {
         btnUpdate.setOnClickListener(v -> {
 
             int result = dbh.updateScoreBoard(new ScoreBoard(
-                    //scoreBoard.getId(),
+                    scoreBoard.getId(),
                     etUsername.getText().toString(),
                     scoreBoard.getScore(),
                     scoreBoard.getMode(),

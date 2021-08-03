@@ -10,13 +10,13 @@ public class ScoreBoard implements Serializable {
     private String mode;
     private String date;
 
-//    public ScoreBoard(int id, String username, String score, String mode, String date) {
-//        this.id = id;
-//        this.username = username;
-//        this.score = score;
-//        this.mode = mode;
-//        this.date = date;
-//    }
+    public ScoreBoard(int id, String username, String score, String mode, String date) {
+        this.id = id;
+        this.username = username;
+        this.score = score;
+        this.mode = mode;
+        this.date = date;
+    }
 
     public ScoreBoard(String username, String score, String mode, String date) {
         this.username = username;

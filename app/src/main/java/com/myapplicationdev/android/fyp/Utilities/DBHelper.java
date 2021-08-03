@@ -81,7 +81,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-    //    private int id;
+//        private int id;
 //    private String username;
 //    private String score;
 //    private String mode;
@@ -138,13 +138,13 @@ public class DBHelper extends SQLiteOpenHelper {
             do {
 
                 // Getting relevant data
-                //int id = cursor.getInt(0);
+                int id = cursor.getInt(0);
                 String username = cursor.getString(1);
                 String score = cursor.getString(2);
                 String mode = cursor.getString(3);
                 String date = cursor.getString(4);
 
-                ScoreBoard scoreBoard = new ScoreBoard(username, score, mode, date);
+                ScoreBoard scoreBoard = new ScoreBoard(id ,username, score, mode, date);
 
                 // Appends the specified element to the end of the ScoreBoards ArrayList
                 ScoreBoards.add(scoreBoard);
