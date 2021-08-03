@@ -28,13 +28,16 @@ public class StartQuizActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_quiz);
-        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        boolean sound = sharedPreferences.getBoolean("sound", true);
-
-        if (sound) {
-            mediaPlayer = MediaPlayer.create(StartQuizActivity.this, R.raw.mouse_click);
+        SharedPreferences sharedPreferences = getSharedPreferences("audio", Context.MODE_PRIVATE);
+        if (sharedPreferences.contains("sound") && sharedPreferences.contains("music")) {
+            int sound = sharedPreferences.getInt("sound", 0);
+            if (sound == 0) {
+                mediaPlayer = new MediaPlayer();
+            } else {
+                mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.mouse_click);
+            }
         } else {
-            mediaPlayer = new MediaPlayer();
+            mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.mouse_click);
         }
 
         tvMode = findViewById(R.id.tvMode);
@@ -47,10 +50,10 @@ public class StartQuizActivity extends AppCompatActivity {
 
         if (mode.equalsIgnoreCase("easy")) {
             tvMode.setText("Easy");
-            tvDesc.setText("The quiz contains 18 questions and there is no time limit");
-            mediaPlayer.start();
-            btnStart.setOnClickListener(view -> {
+            tvDesc.setText("The quiz contains 18 questions and has a 70 sec time limit");
 
+            btnStart.setOnClickListener(view -> {
+                mediaPlayer.start();
                 v.vibrate(50);
                 //TODO
                 Intent intent1 = new Intent(StartQuizActivity.this, EasyQuestionsActivity.class);
@@ -61,10 +64,10 @@ public class StartQuizActivity extends AppCompatActivity {
 
         } else if (mode.equalsIgnoreCase("intermediate")) {
             tvMode.setText("Intermediate");
-            tvDesc.setText("The quiz contains 22 questions and has a 30 sec time limit");
-            mediaPlayer.start();
-            btnStart.setOnClickListener(view -> {
+            tvDesc.setText("The quiz contains 22 questions and has a 100 sec time limit");
 
+            btnStart.setOnClickListener(view -> {
+                mediaPlayer.start();
                 v.vibrate(50);
                 //TODO
                 Intent intent2 = new Intent(StartQuizActivity.this, IntermediateQuestionsActivity.class);

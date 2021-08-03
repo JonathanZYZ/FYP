@@ -29,13 +29,16 @@ public class DifficultySectionActivity extends AppCompatActivity {
         btnAdvanced = findViewById(R.id.btnAdvanced);
         btnBack = findViewById(R.id.btnBack);
         v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        boolean sound = sharedPreferences.getBoolean("sound", true);
-
-        if (sound) {
-            mediaPlayer = MediaPlayer.create(DifficultySectionActivity.this, R.raw.mouse_click);
+        SharedPreferences sharedPreferences = getSharedPreferences("audio", Context.MODE_PRIVATE);
+        if (sharedPreferences.contains("sound") && sharedPreferences.contains("music")) {
+            int sound = sharedPreferences.getInt("sound", 0);
+            if (sound == 0) {
+                mediaPlayer = new MediaPlayer();
+            } else {
+                mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.mouse_click);
+            }
         } else {
-            mediaPlayer = new MediaPlayer();
+            mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.mouse_click);
         }
 
         btnEasy.setOnClickListener(view -> {

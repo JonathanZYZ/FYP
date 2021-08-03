@@ -72,26 +72,32 @@ public class EasyQuestionsActivity extends AppCompatActivity {
         btnExit = findViewById(R.id.btnExit);
 
 
-        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        boolean sound = sharedPreferences.getBoolean("sound", true);
-
-        if (sound) {
+        SharedPreferences sharedPreferences = getSharedPreferences("audio", Context.MODE_PRIVATE);
+        if (sharedPreferences.contains("sound") && sharedPreferences.contains("music")) {
+            int sound = sharedPreferences.getInt("sound", 0);
+            if (sound == 0) {
+                choiceSound = new MediaPlayer();
+                correctSound = new MediaPlayer();
+                wrongSound = new MediaPlayer();
+                finishSound = new MediaPlayer();
+                backgroundMusic = new MediaPlayer();
+                buttonSound = new MediaPlayer();
+            } else {
+                choiceSound = MediaPlayer.create(EasyQuestionsActivity.this, R.raw.answer_click);
+                correctSound = MediaPlayer.create(EasyQuestionsActivity.this, R.raw.correct_answer);
+                wrongSound = MediaPlayer.create(EasyQuestionsActivity.this, R.raw.wrong_answer);
+                finishSound = MediaPlayer.create(EasyQuestionsActivity.this, R.raw.end_game);
+                backgroundMusic = MediaPlayer.create(EasyQuestionsActivity.this, R.raw.background_music);
+                buttonSound = MediaPlayer.create(EasyQuestionsActivity.this, R.raw.button_click);
+            }
+        } else {
             choiceSound = MediaPlayer.create(EasyQuestionsActivity.this, R.raw.answer_click);
             correctSound = MediaPlayer.create(EasyQuestionsActivity.this, R.raw.correct_answer);
             wrongSound = MediaPlayer.create(EasyQuestionsActivity.this, R.raw.wrong_answer);
             finishSound = MediaPlayer.create(EasyQuestionsActivity.this, R.raw.end_game);
             backgroundMusic = MediaPlayer.create(EasyQuestionsActivity.this, R.raw.background_music);
             buttonSound = MediaPlayer.create(EasyQuestionsActivity.this, R.raw.button_click);
-        } else {
-            choiceSound = new MediaPlayer();
-            correctSound = new MediaPlayer();
-            wrongSound = new MediaPlayer();
-            finishSound = new MediaPlayer();
-            backgroundMusic = new MediaPlayer();
-            buttonSound = new MediaPlayer();
-
         }
-
 
         v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
@@ -335,7 +341,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
                     MyCustomAlertDialog();
                 }
             });
-            timer = new CountDownTimer(70000, 1000) {
+            timer = new CountDownTimer(60000, 1000) {
 
                 public void onTick(long millisUntilFinished) {
                     tvTimer.setText("seconds remaining: " + millisUntilFinished / 1000);

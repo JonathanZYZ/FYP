@@ -25,13 +25,16 @@ public class IntermediateModeActivity extends AppCompatActivity {
 
         btnStart = findViewById(R.id.btnStartIntermediate);
         v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        boolean sound = sharedPreferences.getBoolean("sound", true);
-
-        if (sound) {
-            mediaPlayer = MediaPlayer.create(IntermediateModeActivity.this, R.raw.mouse_click);
+        SharedPreferences sharedPreferences = getSharedPreferences("audio", Context.MODE_PRIVATE);
+        if (sharedPreferences.contains("sound") && sharedPreferences.contains("music")) {
+            int sound = sharedPreferences.getInt("sound", 0);
+            if (sound == 0) {
+                mediaPlayer = new MediaPlayer();
+            } else {
+                mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.mouse_click);
+            }
         } else {
-            mediaPlayer = new MediaPlayer();
+            mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.mouse_click);
         }
 
         btnStart.setOnClickListener(view -> {

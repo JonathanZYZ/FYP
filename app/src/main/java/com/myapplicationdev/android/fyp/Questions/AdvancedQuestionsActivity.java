@@ -67,24 +67,31 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
         v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
 
-        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        boolean sound = sharedPreferences.getBoolean("sound", true);
-
-        if (sound) {
-            choiceSound = MediaPlayer.create(AdvancedQuestionsActivity.this, R.raw.answer_click);
-            correctSound = MediaPlayer.create(AdvancedQuestionsActivity.this, R.raw.correct_answer);
-            wrongSound = MediaPlayer.create(AdvancedQuestionsActivity.this, R.raw.wrong_answer);
-            finishSound = MediaPlayer.create(AdvancedQuestionsActivity.this, R.raw.end_game);
-            backgroundMusic = MediaPlayer.create(AdvancedQuestionsActivity.this, R.raw.background_music);
-            buttonSound = MediaPlayer.create(AdvancedQuestionsActivity.this, R.raw.button_click);
+        SharedPreferences sharedPreferences = getSharedPreferences("audio", Context.MODE_PRIVATE);
+        if (sharedPreferences.contains("sound") && sharedPreferences.contains("music")) {
+            int sound = sharedPreferences.getInt("sound", 0);
+            if (sound == 0) {
+                choiceSound = new MediaPlayer();
+                correctSound = new MediaPlayer();
+                wrongSound = new MediaPlayer();
+                finishSound = new MediaPlayer();
+                backgroundMusic = new MediaPlayer();
+                buttonSound = new MediaPlayer();
+            } else {
+                choiceSound = MediaPlayer.create(getApplicationContext(), R.raw.answer_click);
+                correctSound = MediaPlayer.create(getApplicationContext(), R.raw.correct_answer);
+                wrongSound = MediaPlayer.create(getApplicationContext(), R.raw.wrong_answer);
+                finishSound = MediaPlayer.create(getApplicationContext(), R.raw.end_game);
+                backgroundMusic = MediaPlayer.create(getApplicationContext(), R.raw.background_music);
+                buttonSound = MediaPlayer.create(getApplicationContext(), R.raw.button_click);
+            }
         } else {
-            choiceSound = new MediaPlayer();
-            correctSound = new MediaPlayer();
-            wrongSound = new MediaPlayer();
-            finishSound = new MediaPlayer();
-            backgroundMusic = new MediaPlayer();
-            buttonSound = new MediaPlayer();
-
+            choiceSound = MediaPlayer.create(getApplicationContext(), R.raw.answer_click);
+            correctSound = MediaPlayer.create(getApplicationContext(), R.raw.correct_answer);
+            wrongSound = MediaPlayer.create(getApplicationContext(), R.raw.wrong_answer);
+            finishSound = MediaPlayer.create(getApplicationContext(), R.raw.end_game);
+            backgroundMusic = MediaPlayer.create(getApplicationContext(), R.raw.background_music);
+            buttonSound = MediaPlayer.create(getApplicationContext(), R.raw.button_click);
         }
 
 //  TODO: When the user clicks the "did you know?" icon on the screen, text messages are prepared for them.

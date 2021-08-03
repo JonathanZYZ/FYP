@@ -59,12 +59,12 @@ public class ResultActivity extends AppCompatActivity {
         int scoreInter = getIntent().getIntExtra("scoreIntermediate", 0);
         int scoreAdv = getIntent().getIntExtra("scoreAdv", 0);
 
-        String myScoreOverview = String.format("Score Overview: \n%s: %s", difficulty, score);
+        String myScoreOverview = String.format("Score Overview: \n%s: %s\n%s: %s\n%s: %s", "Easy", scoreEasy,"Intermediate",scoreInter,"Advanced",scoreAdv);
         tvScoreOverview.setText(myScoreOverview);
 
 
         // TODO: defining the time for the user's playing date
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
         TimeZone tz = TimeZone.getTimeZone("Asia/Singapore");
         sdf.setTimeZone(tz);
 
