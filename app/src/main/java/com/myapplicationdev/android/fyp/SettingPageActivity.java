@@ -3,6 +3,7 @@ package com.myapplicationdev.android.fyp;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -21,7 +22,7 @@ public class SettingPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting_page);
-
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         btnApply = findViewById(R.id.btnApply);
         checkBoxSound = findViewById(R.id.checkBoxSound);
         checkBoxMusic = findViewById(R.id.checkBoxMusic);

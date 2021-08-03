@@ -1,5 +1,6 @@
 package com.myapplicationdev.android.fyp;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,7 +25,7 @@ public class HowToPlayActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_how_to_play);
-
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
         videoView = findViewById(R.id.videoView);
         btnHome = findViewById(R.id.btnHome);
 //        vPager = findViewById(R.id.viewpager1);

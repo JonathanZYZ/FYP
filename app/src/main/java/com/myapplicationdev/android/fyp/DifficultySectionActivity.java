@@ -3,6 +3,7 @@ package com.myapplicationdev.android.fyp;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -23,7 +24,7 @@ public class DifficultySectionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_difficulty_selection);
-
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         btnEasy = findViewById(R.id.btnEasy);
         btnIntermediate = findViewById(R.id.btnIntermediate);
         btnAdvanced = findViewById(R.id.btnAdvanced);

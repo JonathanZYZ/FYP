@@ -58,7 +58,7 @@ public class ShowScoreboardActivity<SqliteToExcel> extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         // setContentView(R.layout.activity_show);
         setContentView(R.layout.activity_show_scoreboard);
-
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         // TODO: At the start of the ShowScoreboardActivity initialize() method,
         //  initialize all UI variables and other objects.
         tvHeading = findViewById(R.id.tvHeading);
