@@ -36,7 +36,7 @@ public class ScoreboardAdapter extends ArrayAdapter<ScoreBoard> {
         @SuppressLint("ViewHolder") View rowView = inflater.inflate(R.layout.scoreboard_row, parent, false);
 
         //Match the UI components with Java variables
-        TextViewUserID = rowView.findViewById(R.id.TextViewUserID);
+        //TextViewUserID = rowView.findViewById(R.id.TextViewUserID);
         TextViewUsername = rowView.findViewById(R.id.TextViewUsername);
         TextViewScore = rowView.findViewById(R.id.TextViewScore);
         TextViewMode = rowView.findViewById(R.id.TextViewMode);
@@ -45,13 +45,13 @@ public class ScoreboardAdapter extends ArrayAdapter<ScoreBoard> {
 
         ScoreBoard scoreBoard = scoreBoards.get(position);
 
-        int id = scoreBoard.getId();
+        //int id = scoreBoard.getId();
         String username = scoreBoard.getUsername();
         String score = scoreBoard.getScore();
         String mode = scoreBoard.getMode();
         String date = scoreBoard.getDate();
 
-        TextViewUserID.setText(String.format("%d", id));
+        //TextViewUserID.setText(String.format("%d", id));
         TextViewUsername.setText(username);
         TextViewScore.setText(score);
 

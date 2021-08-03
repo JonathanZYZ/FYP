@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/AY3SEM1/C347/FYP/app/src/main/res/layout/activity_show_scoreboard.xml" value="0.1" />
+        <entry key="..\:/AY3SEM1/C347/FYP/app/src/main/res/layout/activity_show_scoreboard.xml" value="0.264" />
+        <entry key="..\:/AY3SEM1/C347/FYP/app/src/main/res/layout/popup_input_name_dialog.xml" value="0.25052083333333336" />
         <entry key="..\:/AY3SEM1/C347/FYP/app/src/main/res/layout/scoreboard_row.xml" value="0.12183383991894631" />
+        <entry key="..\:/AY3SEM1/C347/FYP/app/src/main/res/layout/test.xml" value="0.25052083333333336" />
         <entry key="..\:/Android/FYP6/app/src/main/res/layout/activity_revision_section.xml" value="0.1" />
         <entry key="..\:/C346/Workspace/P01/FYP/app/src/main/res/layout/activity_modify_scoreboard.xml" value="0.33" />
       </map>
