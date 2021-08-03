@@ -5,8 +5,13 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Environment;
+import android.text.Html;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -37,7 +42,7 @@ import java.util.ArrayList;
 
 public class ShowScoreboardActivity<SqliteToExcel> extends AppCompatActivity {
 
-    TextView tvHeading;
+    TextView tvHeading, tvMode, tvUsername;
     Button btnFilter, btnShowAll, btnExcel;
     ListView lvScoreBoardData;
     ArrayList<ScoreBoard> al, filterAL;
@@ -62,12 +67,19 @@ public class ShowScoreboardActivity<SqliteToExcel> extends AppCompatActivity {
         // TODO: At the start of the ShowScoreboardActivity initialize() method,
         //  initialize all UI variables and other objects.
         tvHeading = findViewById(R.id.tvHeading);
+        tvMode = findViewById(R.id.tvMode);
+        tvUsername = findViewById(R.id.tvUsername);
         btnShowAll = findViewById(R.id.btnShowAll);
         btnFilter = findViewById(R.id.btnFilter);
         btnExcel = findViewById(R.id.btnExcel);
         lvScoreBoardData = findViewById(R.id.lvScoreBoardData);
         spUsername = findViewById(R.id.spUsername);
         spMode = findViewById(R.id.spMode);
+
+
+        // setting of TextView
+        tvMode.setText(Html.fromHtml("<u>Select user by mode:</u>"));
+        tvUsername.setText(Html.fromHtml("<u>Select user by username:</u>"));
 
 
         // TODO: setting of SQLite to Excel ...
@@ -77,93 +89,88 @@ public class ShowScoreboardActivity<SqliteToExcel> extends AppCompatActivity {
         ActivityCompat.requestPermissions(ShowScoreboardActivity.this, permission, 0);
         String folderLocation_I = getFilesDir().getAbsolutePath() + "/Folder";
         File folder_I = new File(folderLocation_I);
-        if (folder_I.exists() == false) {
+        if (!folder_I.exists()) {
             boolean result = folder_I.mkdir();
-            if (result == true) {
+            if (result) {
                 Log.d("File Read/Write", "Folder created");
             }
         }
-        btnExcel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                HSSFWorkbook hssfWorkbook = new HSSFWorkbook();
-                HSSFSheet hssfSheet = hssfWorkbook.createSheet("Custom Sheet");
+        btnExcel.setOnClickListener(v -> {
+            HSSFWorkbook hssfWorkbook = new HSSFWorkbook();
+            HSSFSheet hssfSheet = hssfWorkbook.createSheet("Custom Sheet");
 
 
-                HSSFRow hssfRow = hssfSheet.createRow(0);
-                HSSFCell hssfCell = hssfRow.createCell(0);
-                hssfCell.setCellValue("ID");
+            HSSFRow hssfRow = hssfSheet.createRow(0);
+            HSSFCell hssfCell = hssfRow.createCell(0);
+            hssfCell.setCellValue("ID");
 
-                HSSFCell hssfCell1 = hssfRow.createCell(1);
-                hssfCell1.setCellValue("Username");
+            HSSFCell hssfCell1 = hssfRow.createCell(1);
+            hssfCell1.setCellValue("Username");
 
-                HSSFCell hssfCell2 = hssfRow.createCell(2);
-                hssfCell2.setCellValue("Score");
+            HSSFCell hssfCell2 = hssfRow.createCell(2);
+            hssfCell2.setCellValue("Score");
 
-                HSSFCell hssfCell3 = hssfRow.createCell(3);
-                hssfCell3.setCellValue("Mode");
+            HSSFCell hssfCell3 = hssfRow.createCell(3);
+            hssfCell3.setCellValue("Mode");
 
-                HSSFCell hssfCell4 = hssfRow.createCell(4);
-                hssfCell4.setCellValue("Date");
+            HSSFCell hssfCell4 = hssfRow.createCell(4);
+            hssfCell4.setCellValue("Date");
 
-                al = dbh.getAllScoreBoard();
-                for (int i = 1; i < al.size()+1; i++) {
-                    HSSFRow hssfRow1 = hssfSheet.createRow(i);
-                    HSSFCell hssfCells1 = hssfRow1.createCell(0);
-                    Log.d("TEST123", al.get(i-1).getId()+" TEST");
-                    hssfCells1.setCellValue(al.get(i-1).getId());
+            al = dbh.getAllScoreBoard();
+            for (int i = 1; i < al.size() + 1; i++) {
+                HSSFRow hssfRow1 = hssfSheet.createRow(i);
+                HSSFCell hssfCells1 = hssfRow1.createCell(0);
+                Log.d("TEST123", al.get(i - 1).getId() + " TEST");
+                hssfCells1.setCellValue(al.get(i - 1).getId());
 
-                    HSSFCell hssfCells2 = hssfRow1.createCell(1);
-                    Log.d("TEST123", al.get(i-1).getUsername()+" TEST");
-                    hssfCells2.setCellValue(al.get(i-1).getUsername());
+                HSSFCell hssfCells2 = hssfRow1.createCell(1);
+                Log.d("TEST123", al.get(i - 1).getUsername() + " TEST");
+                hssfCells2.setCellValue(al.get(i - 1).getUsername());
 
-                    HSSFCell hssfCells3 = hssfRow1.createCell(2);
-                    Log.d("TEST123", al.get(i-1).getId()+" TEST");
-                    hssfCells3.setCellValue(al.get(i-1).getScore());
+                HSSFCell hssfCells3 = hssfRow1.createCell(2);
+                Log.d("TEST123", al.get(i - 1).getId() + " TEST");
+                hssfCells3.setCellValue(al.get(i - 1).getScore());
 
-                    HSSFCell hssfCells4 = hssfRow1.createCell(3);
-                    Log.d("TEST123", al.get(i-1).getId()+" TEST");
-                    hssfCells4.setCellValue(al.get(i-1).getMode());
+                HSSFCell hssfCells4 = hssfRow1.createCell(3);
+                Log.d("TEST123", al.get(i - 1).getId() + " TEST");
+                hssfCells4.setCellValue(al.get(i - 1).getMode());
 
-                    HSSFCell hssfCells5 = hssfRow1.createCell(4);
-                    Log.d("TEST123", al.get(i-1).getId()+" TEST");
-                    hssfCells5.setCellValue(al.get(i-1).getDate());
+                HSSFCell hssfCells5 = hssfRow1.createCell(4);
+                Log.d("TEST123", al.get(i - 1).getId() + " TEST");
+                hssfCells5.setCellValue(al.get(i - 1).getDate());
+            }
+
+            try {
+                String folderLocation =
+                        Environment.getExternalStorageDirectory()
+                                .getAbsolutePath() + "/Folder";
+                File folder = new File(folderLocation);
+                if (!folder.exists()) {
+                    boolean result = folder.mkdir();
+                    if (result) {
+                        Log.d("File Read/Write", "Folder created");
+                    }
                 }
-
                 try {
-                    String folderLocation =
-                            Environment.getExternalStorageDirectory()
-                                    .getAbsolutePath() + "/Folder";
-                    File folder = new File(folderLocation);
-                    if (folder.exists() == false) {
-                        boolean result = folder.mkdir();
-                        if (result == true) {
-                            Log.d("File Read/Write", "Folder created");
-                        }
-                    }
-                    try {
-                        folderLocation = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Folder";
-                        File targetFile = new File(folderLocation, "data.xls");
+                    folderLocation = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Folder";
+                    File targetFile = new File(folderLocation, "data.xls");
 
 
-                        FileOutputStream fileOutputStream= new FileOutputStream(targetFile, true);
-                        hssfWorkbook.write(fileOutputStream);
+                    FileOutputStream fileOutputStream = new FileOutputStream(targetFile, true);
+                    hssfWorkbook.write(fileOutputStream);
 
-                        if (fileOutputStream!=null){
-                            fileOutputStream.flush();
-                            fileOutputStream.close();
-                        }
+                    fileOutputStream.flush();
+                    fileOutputStream.close();
 
-                        Toast.makeText(ShowScoreboardActivity.this,
-                                "Successfully created excel file",
-                                Toast.LENGTH_SHORT).show();
-                    } catch (Exception e) {
-                        Toast.makeText(ShowScoreboardActivity.this, "Failed to write!", Toast.LENGTH_LONG).show();
-                        e.printStackTrace();
-                    }
+                    Toast.makeText(ShowScoreboardActivity.this,
+                            "Successfully created excel file",
+                            Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
+                    Toast.makeText(ShowScoreboardActivity.this, "Failed to write!", Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         });
         /*================================================================================== */
@@ -241,11 +248,19 @@ public class ShowScoreboardActivity<SqliteToExcel> extends AppCompatActivity {
         spUsername.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+
+                ((TextView) adapterView.getChildAt(0)).setTypeface(null, Typeface.BOLD);
+                ((TextView) adapterView.getChildAt(0)).setTextColor(Color.BLACK);
+                ((TextView) adapterView.getChildAt(0)).setTextSize(16);
+
+
                 al = dbh.getAllScoreBoard();
                 filterAL.clear();
 
 
                 String selected = spinnerUsernameAL.get(position);
+
+
                 for (ScoreBoard i : al) {
                     if (i.getUsername().equalsIgnoreCase(selected)) {
                         filterAL.add(i);
@@ -273,6 +288,12 @@ public class ShowScoreboardActivity<SqliteToExcel> extends AppCompatActivity {
         spMode.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+
+                ((TextView) adapterView.getChildAt(0)).setTypeface(null, Typeface.BOLD);
+                ((TextView) adapterView.getChildAt(0)).setTextColor(Color.BLACK);
+                ((TextView) adapterView.getChildAt(0)).setTextSize(16);
+
+
                 al = dbh.getAllScoreBoard();
                 filterAL.clear();
 

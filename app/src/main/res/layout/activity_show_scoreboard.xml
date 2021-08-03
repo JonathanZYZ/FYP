@@ -22,6 +22,7 @@
 
     <!--  TODO:  Mode Spinner-->
     <TextView
+        android:id="@+id/tvMode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Select user by mode:"
@@ -34,6 +35,7 @@
 
     <!--  TODO:  username Spinner-->
     <TextView
+        android:id="@+id/tvUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Select user by username:"

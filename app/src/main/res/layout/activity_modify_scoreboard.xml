@@ -6,17 +6,17 @@
     android:padding="10dp">
 
     <!-- TODO : User ID-->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="User ID"
-        android:textStyle="bold" />
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="User ID"-->
+<!--        android:textStyle="bold" />-->
 
-    <TextView
-        android:id="@+id/tvID"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="User ID" />
+<!--    <TextView-->
+<!--        android:id="@+id/tvID"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="User ID" />-->
 
     <!-- TODO : Score-->
     <TextView
