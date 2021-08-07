@@ -28,7 +28,7 @@ public class QuestionIntermediate implements Serializable {
     private final int correctNum3;
     private final int solution3;
 
-    public QuestionIntermediate(String mode, String qnNum, int qnMainImage, int qnCount, int qn1Image, int ans1Image1, int ans1Image2, int correctNum1, int qn2Image, int ans2Image1, int ans2Image2, int ans2Image3,int ans2Image4, int correctNum2, int qn3Image, int ans3Image1, int ans3Image2, int ans3Image3, int ans3Image4, int correctNum3,int solution1,int solution2,int solution3) {
+    public QuestionIntermediate(String mode, String qnNum, int qnMainImage, int qnCount, int qn1Image, int ans1Image1, int ans1Image2, int correctNum1, int qn2Image, int ans2Image1, int ans2Image2, int ans2Image3, int ans2Image4, int correctNum2, int qn3Image, int ans3Image1, int ans3Image2, int ans3Image3, int ans3Image4, int correctNum3, int solution1, int solution2, int solution3) {
         this.mode = mode;
         this.qnNum = qnNum;
         this.qnMainImage = qnMainImage;

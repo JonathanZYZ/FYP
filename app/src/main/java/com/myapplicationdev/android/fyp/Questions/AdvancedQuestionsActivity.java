@@ -267,7 +267,7 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
         showNextQuestion();
         tvQuestionsNumber.setText("Question: " + questionCounter + "/" + questionCountTotal);
         tvScore.setText("Score: " + score);
-        btnStart.setOnClickListener(view -> {
+        btnStart.setOnClickListener((View view) -> {
             buttonSound.start();
             if (!answered) {
 
@@ -291,7 +291,7 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
             myBuilder.setTitle("No Input!");
             myBuilder.setMessage("Click on the question mark to input your answer");
             myBuilder.setCancelable(false);
-            myBuilder.setPositiveButton("Input Answer", (dialogInterface, i) -> dialogInterface.dismiss());
+            myBuilder.setPositiveButton("Input Answer", (DialogInterface dialogInterface, int i) -> dialogInterface.dismiss());
 
             AlertDialog myDialog = myBuilder.create();
             myDialog.show();
@@ -350,12 +350,9 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
                                 finishQuiz();
                             });
 
-                            myBuilder.setNegativeButton("Continue", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    streak = 0;
-                                    showNextQuestion();
-                                }
+                            myBuilder.setNegativeButton("Continue", (dialogInterface, i) -> {
+                                streak = 0;
+                                showNextQuestion();
                             });
 
                             AlertDialog myDialog = myBuilder.create();
@@ -428,12 +425,9 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
                                     finishQuiz();
                                 });
 
-                                myBuilder.setNegativeButton("Continue", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        streak = 0;
-                                        showNextQuestion();
-                                    }
+                                myBuilder.setNegativeButton("Continue", (dialogInterface, i) -> {
+                                    streak = 0;
+                                    showNextQuestion();
                                 });
 
                                 AlertDialog myDialog = myBuilder.create();

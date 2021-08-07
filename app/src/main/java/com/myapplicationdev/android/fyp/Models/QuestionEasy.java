@@ -13,7 +13,7 @@ public class QuestionEasy implements Serializable {
     private int option3Reaction;
     private int option4Reaction;
     private int answerNum;
-    private int solution;
+    private final int solution;
 
 
     public QuestionEasy(String mode, String questionsNum, int questionsImg, int option1Reaction, int option2Reaction, int option3Reaction, int option4Reaction, int answerNum,int solution) {

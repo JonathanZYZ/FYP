@@ -32,7 +32,7 @@ public class ModifyScoreboardActivity extends AppCompatActivity {
         DBHelper dbh = new DBHelper(ModifyScoreboardActivity.this);
 
 
-        tvID = findViewById(R.id.tvID);
+       // tvID = findViewById(R.id.tvID);
         tvScore = findViewById(R.id.tvScore);
         tvPlayedDate = findViewById(R.id.tvPlayedDate);
         tvPlayedMode = findViewById(R.id.tvPlayedMode);
@@ -41,7 +41,7 @@ public class ModifyScoreboardActivity extends AppCompatActivity {
         btnDelete = findViewById(R.id.btnDelete);
         btnCancel = findViewById(R.id.btnCancel);
 
-        tvID.setText(String.valueOf(scoreBoard.getId()));
+       // tvID.setText(String.valueOf(scoreBoard.getId()));
         tvScore.setText(scoreBoard.getScore());
         tvPlayedMode.setText(scoreBoard.getMode());
         tvPlayedDate.setText(scoreBoard.getDate());
