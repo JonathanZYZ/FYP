@@ -1201,45 +1201,32 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                 ivUserChoice1.setImageResource(currentQuestion.getAns1Image1());
                 ivUserChoice2.setEnabled(true);
                 ivUserChoice2.setImageResource(currentQuestion.getAns1Image2());
-            } else if (numOfAns == 3) {
-                ivUserChoice4.setEnabled(false);
-                ivUserChoice4.setImageResource(android.R.color.transparent);
-                //
-                ivUserChoice1.setEnabled(true);
-                ivUserChoice1.setImageResource(currentQuestion.getAns2Image1());
-                ivUserChoice2.setEnabled(true);
-                ivUserChoice2.setImageResource(currentQuestion.getAns2Image2());
-                if (currentQuestion.getAns2Image3() == 0) {
-                    ivUserChoice3.setEnabled(false);
-                    ivUserChoice3.setImageResource(android.R.color.transparent);
-                } else {
+            }  else if (numOfAns == 4) {
+                if (currentQuestion.getQnCount() == 2){
+                    ivUserChoice1.setEnabled(true);
+                    ivUserChoice1.setImageResource(currentQuestion.getAns2Image1());
+                    ivUserChoice2.setEnabled(true);
+                    ivUserChoice2.setImageResource(currentQuestion.getAns2Image2());
                     ivUserChoice3.setEnabled(true);
                     ivUserChoice3.setImageResource(currentQuestion.getAns2Image3());
+                    ivUserChoice4.setEnabled(true);
+                    ivUserChoice4.setImageResource(currentQuestion.getAns2Image4());
+                }else{
+                    ivUserChoice1.setEnabled(true);
+                    ivUserChoice1.setImageResource(currentQuestion.getAns3Image1());
+                    ivUserChoice2.setEnabled(true);
+                    ivUserChoice2.setImageResource(currentQuestion.getAns3Image2());
+                    ivUserChoice3.setEnabled(true);
+                    ivUserChoice3.setImageResource(currentQuestion.getAns3Image3());
+                    ivUserChoice4.setEnabled(true);
+                    ivUserChoice4.setImageResource(currentQuestion.getAns3Image4());
                 }
-            } else if (numOfAns == 4) {
-                ivUserChoice1.setEnabled(true);
-                ivUserChoice1.setImageResource(currentQuestion.getAns3Image1());
-                ivUserChoice2.setEnabled(true);
-                ivUserChoice2.setImageResource(currentQuestion.getAns3Image2());
-                ivUserChoice3.setEnabled(true);
-                ivUserChoice3.setImageResource(currentQuestion.getAns3Image3());
-                ivUserChoice4.setEnabled(true);
-                ivUserChoice4.setImageResource(currentQuestion.getAns3Image4());
             }
 
 
         } else if (qnNum == 2) {
              if (numOfAns == 4) {
-                 if (currentQuestion.getQn2Image() == 0) {
-                     ivUserChoice1.setEnabled(true);
-                     ivUserChoice1.setImageResource(currentQuestion.getAns3Image1());
-                     ivUserChoice2.setEnabled(true);
-                     ivUserChoice2.setImageResource(currentQuestion.getAns3Image2());
-                     ivUserChoice3.setEnabled(true);
-                     ivUserChoice3.setImageResource(currentQuestion.getAns3Image3());
-                     ivUserChoice4.setEnabled(true);
-                     ivUserChoice4.setImageResource(currentQuestion.getAns3Image4());
-                 }else{
+                 if (currentQuestion.getQnCount() == 3){
                      ivUserChoice1.setEnabled(true);
                      ivUserChoice1.setImageResource(currentQuestion.getAns2Image1());
                      ivUserChoice2.setEnabled(true);
@@ -1248,7 +1235,17 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                      ivUserChoice3.setImageResource(currentQuestion.getAns2Image3());
                      ivUserChoice4.setEnabled(true);
                      ivUserChoice4.setImageResource(currentQuestion.getAns2Image4());
+                 }else{
+                     ivUserChoice1.setEnabled(true);
+                     ivUserChoice1.setImageResource(currentQuestion.getAns3Image1());
+                     ivUserChoice2.setEnabled(true);
+                     ivUserChoice2.setImageResource(currentQuestion.getAns3Image2());
+                     ivUserChoice3.setEnabled(true);
+                     ivUserChoice3.setImageResource(currentQuestion.getAns3Image3());
+                     ivUserChoice4.setEnabled(true);
+                     ivUserChoice4.setImageResource(currentQuestion.getAns3Image4());
                  }
+
              }
 
         } else if (qnNum == 3) {
@@ -1268,21 +1265,24 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                 if (numOfAns == 2) {
                     ans1 = 1;
                     ivChoice1.setImageResource(currentQuestion.getAns1Image1());
-                } else if (numOfAns == 3) {
+                }  else if (numOfAns == 4) {
                     ans1 = 1;
-                    ivChoice1.setImageResource(currentQuestion.getAns2Image1());
-                } else if (numOfAns == 4) {
-                    ans1 = 1;
-                    ivChoice1.setImageResource(currentQuestion.getAns3Image1());
+                    if (currentQuestion.getQnCount() == 2){
+                        ivChoice1.setImageResource(currentQuestion.getAns2Image1());
+                    }else{
+                        ivChoice1.setImageResource(currentQuestion.getAns3Image1());
+                    }
+
                 }
 
             } else if (qnNum == 2) {
-                if (numOfAns == 3) {
+                if (numOfAns == 4) {
                     ans2 = 1;
-                    ivChoice2.setImageResource(currentQuestion.getAns2Image1());
-                } else if (numOfAns == 4) {
-                    ans2 = 1;
-                    ivChoice2.setImageResource(currentQuestion.getAns3Image1());
+                    if (currentQuestion.getQnCount() == 3){
+                        ivChoice2.setImageResource(currentQuestion.getAns2Image1());
+                    }else{
+                        ivChoice2.setImageResource(currentQuestion.getAns3Image1());
+                    }
                 }
 
             } else if (qnNum == 3) {
@@ -1298,21 +1298,24 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                 if (numOfAns == 2) {
                     ans1 = 2;
                     ivChoice1.setImageResource(currentQuestion.getAns1Image2());
-                } else if (numOfAns == 3) {
+                }  else if (numOfAns == 4) {
                     ans1 = 2;
-                    ivChoice1.setImageResource(currentQuestion.getAns2Image2());
-                } else if (numOfAns == 4) {
-                    ans1 = 2;
-                    ivChoice1.setImageResource(currentQuestion.getAns3Image2());
+                    if (currentQuestion.getQnCount() == 2){
+                        ivChoice1.setImageResource(currentQuestion.getAns2Image2());
+                    }else{
+                        ivChoice1.setImageResource(currentQuestion.getAns3Image2());
+                    }
+
                 }
 
             } else if (qnNum == 2) {
-                if (numOfAns == 3) {
+                if (numOfAns == 4) {
                     ans2 = 2;
-                    ivChoice2.setImageResource(currentQuestion.getAns2Image2());
-                } else if (numOfAns == 4) {
-                    ans2 = 2;
-                    ivChoice2.setImageResource(currentQuestion.getAns3Image2());
+                    if (currentQuestion.getQnCount() == 3){
+                        ivChoice2.setImageResource(currentQuestion.getAns2Image2());
+                    }else{
+                        ivChoice2.setImageResource(currentQuestion.getAns3Image2());
+                    }
                 }
 
             } else if (qnNum == 3) {
@@ -1325,21 +1328,24 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
         ivUserChoice3.setOnClickListener(view -> {
             choiceSound.start();
             if (qnNum == 1) {
-                if (numOfAns == 3) {
+                if (numOfAns == 4) {
                     ans1 = 3;
-                    ivChoice1.setImageResource(currentQuestion.getAns2Image3());
-                } else if (numOfAns == 4) {
-                    ans1 = 3;
-                    ivChoice1.setImageResource(currentQuestion.getAns3Image3());
+                    if (currentQuestion.getQnCount() == 2){
+                        ivChoice1.setImageResource(currentQuestion.getAns2Image3());
+                    }else{
+                        ivChoice1.setImageResource(currentQuestion.getAns3Image3());
+                    }
+
                 }
 
             } else if (qnNum == 2) {
-                if (numOfAns == 3) {
+                if (numOfAns == 4) {
                     ans2 = 3;
-                    ivChoice2.setImageResource(currentQuestion.getAns2Image3());
-                } else if (numOfAns == 4) {
-                    ans2 = 3;
-                    ivChoice2.setImageResource(currentQuestion.getAns3Image3());
+                    if (currentQuestion.getQnCount() == 3){
+                        ivChoice2.setImageResource(currentQuestion.getAns2Image3());
+                    }else{
+                        ivChoice2.setImageResource(currentQuestion.getAns3Image3());
+                    }
                 }
 
             } else if (qnNum == 3) {
@@ -1352,16 +1358,25 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
         ivUserChoice4.setOnClickListener(view -> {
             choiceSound.start();
             if (qnNum == 1) {
+                if (numOfAns == 4) {
+                    ans1 = 4;
+                    if (currentQuestion.getQnCount() == 2){
+                        ivChoice1.setImageResource(currentQuestion.getAns2Image4());
+                    }else{
+                        ivChoice1.setImageResource(currentQuestion.getAns3Image4());
+                    }
 
-                ans1 = 4;
-                ivChoice1.setImageResource(currentQuestion.getAns3Image4());
-
+                }
 
             } else if (qnNum == 2) {
-
-                ans2 = 4;
-                ivChoice2.setImageResource(currentQuestion.getAns3Image4());
-
+                if (numOfAns == 4) {
+                    ans2 = 4;
+                    if (currentQuestion.getQnCount() == 3){
+                        ivChoice2.setImageResource(currentQuestion.getAns2Image4());
+                    }else{
+                        ivChoice2.setImageResource(currentQuestion.getAns3Image4());
+                    }
+                }
 
             } else if (qnNum == 3) {
                 ans3 = 4;
@@ -1393,7 +1408,9 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                 if (editText.getText().toString().equalsIgnoreCase(namesInScoreboard.get(x))) {
                     wrongSound.start();
                     editText.setText("");
+                    answered = false;
                     Toast.makeText(IntermediateQuestionsActivity.this, "Name already exists. Use a different name.", Toast.LENGTH_SHORT).show();
+
                 } else {
                     finishSound.start();
                     Intent i = new Intent(IntermediateQuestionsActivity.this, ResultActivity.class);
