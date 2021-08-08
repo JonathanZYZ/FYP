@@ -752,6 +752,9 @@ public class AdvancedQuestionsActivity extends AppCompatActivity {
             for (int x = 0; x < namesInScoreboard.size(); x++) {
                 if (editText.getText().toString().equalsIgnoreCase(namesInScoreboard.get(x))) {
                     wrongSound.start();
+                    answered = false;
+                    score--;
+                    editText.setText("");
                     Toast.makeText(AdvancedQuestionsActivity.this, "The username is already in use. Please use a different username.", Toast.LENGTH_SHORT).show();
                 } else {
                     finishSound.start();

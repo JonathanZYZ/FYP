@@ -437,6 +437,7 @@ public class EasyQuestionsActivity extends AppCompatActivity {
                     wrongSound.start();
                     answered = false;
                     score--;
+                    editText.setText("");
                     Toast.makeText(EasyQuestionsActivity.this, "Name already exists. Use a different name.", Toast.LENGTH_SHORT).show();
                 } else {
                     finishSound.start();

@@ -1407,8 +1407,9 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
             for (int x = 0; x < namesInScoreboard.size(); x++) {
                 if (editText.getText().toString().equalsIgnoreCase(namesInScoreboard.get(x))) {
                     wrongSound.start();
-                    editText.setText("");
                     answered = false;
+                    score--;
+                    editText.setText("");
                     Toast.makeText(IntermediateQuestionsActivity.this, "Name already exists. Use a different name.", Toast.LENGTH_SHORT).show();
 
                 } else {
