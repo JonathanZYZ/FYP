@@ -119,21 +119,21 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                 0,  R.drawable.hidden_qn_product, R.drawable.question6_intermediate_product_correct, R.drawable.question6_intermediate_product1_incorrect, R.drawable.question6_intermediate_product2_incorrect, R.drawable.question6_intermediate_product3_incorrect, 1,
                  R.drawable.hidden_qn_reaction, R.drawable.question6_intermediate_reaction1_incorrect, R.drawable.question6_intermediate_reaction2_incorrect,R.drawable.question6_intermediate_reaction_correct,R.drawable.question6_intermediate_reaction1_incorrect,3,R.drawable.question6_intermediate_solution1,R.drawable.question6_intermediate_solution2,0));
         //
-        al.add(new QuestionIntermediate("intermediate", "7", R.drawable.question7_intermediate, 1, 0, 0, 0,
-                0, 0, 0, 0,0,0,0,  R.drawable.hidden_qn_startingmaterial, R.drawable.question7_intermediate_startingmaterial_correct,
-                R.drawable.question7_intermediate_startingmaterial1_incorrect, R.drawable.question7_intermediate_startingmaterial2_incorrect, R.drawable.question7_intermediate_startingmaterial3_incorrect, 1,R.drawable.question7_intermediate_solution,0,0));
+        al.add(new QuestionIntermediate("intermediate", "7", R.drawable.question7_intermediate, 1, R.drawable.hidden_qn_leavinggroup, R.drawable.question7_intermediate_leavinggroup_correct, R.drawable.question7_intermediate_leavinggroup_incorrect,
+                1, 0, 0, 0,0,0,0,  0, 0,
+                0, 0, 0, 0,R.drawable.question7_intermediate_solution,0,0));
         //
         al.add(new QuestionIntermediate("intermediate", "8", R.drawable.question8_intermediate, 1, 0, 0, 0,
-                0, 0,0, 0, 0, 0, 0, R.drawable.hidden_qn_product, R.drawable.question8_intermediate_product_correct,
-                R.drawable.question8_intermediate_product1_incorrect, R.drawable.question8_intermediate_product2_incorrect, R.drawable.question8_intermediate_product3_incorrect, 1,R.drawable.question8_intermediate_solution,0,0));
+                0, 0,0, 0, 0, 0, 0, R.drawable.hidden_qn_startingmaterial, R.drawable.question8_intermediate_startingmaterial_correct,
+                R.drawable.question8_intermediate_startingmaterial1_incorrect, R.drawable.question8_intermediate_startingmaterial2_incorrect, R.drawable.question8_intermediate_startingmaterial3_incorrect, 1,R.drawable.question8_intermediate_solution,0,0));
         //
         al.add(new QuestionIntermediate("intermediate", "9", R.drawable.question9_intermediate, 1, 0, 0, 0,
                 0, 0,0, 0, 0, 0, 0, R.drawable.hidden_qn_product, R.drawable.question9_intermediate_product3_incorrect,
                 R.drawable.question9_intermediate_product1_incorrect, R.drawable.question9_intermediate_product2_incorrect, R.drawable.question9_intermediate_product_correct, 4,R.drawable.question9_intermediate_solution,0,0));
         //
         al.add(new QuestionIntermediate("intermediate", "10", R.drawable.question10_intermediate, 1, 0, 0, 0,
-                0, 0, 0, 0, 0, 0,0, R.drawable.hidden_qn_startingmaterial, R.drawable.question10_intermediate_startingmaterial_correct,
-                R.drawable.question10_intermediate_startingmaterial1_incorrect, R.drawable.question10_intermediate_startingmaterial2_incorrect, R.drawable.question10_intermediate_startingmaterial3_incorrect, 1,R.drawable.question10_intermediate_solution,0,0));
+                0, 0, 0, 0, 0, 0,0, R.drawable.hidden_qn_product, R.drawable.question10_intermediate_product_correct,
+                R.drawable.question10_intermediate_product1_incorrect, R.drawable.question10_intermediate_product2_incorrect, R.drawable.question10_intermediate_product3_incorrect, 1,R.drawable.question10_intermediate_solution,0,0));
         //
         al.add(new QuestionIntermediate("intermediate", "11", R.drawable.question11_intermediate, 2,0, 0, 0,
                 0,  R.drawable.hidden_qn_product, R.drawable.question11_intermediate_product_correct, R.drawable.question11_intermediate_product1_incorrect, R.drawable.question11_intermediate_product2_incorrect,R.drawable.question11_intermediate_product3_incorrect,1, R.drawable.hidden_qn_reaction, R.drawable.question11_intermediate_reaction1_incorrect,
@@ -165,7 +165,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                 R.drawable.question17_intermediate_reaction3_incorrect, R.drawable.question17_intermediate_reaction_correct, 4,R.drawable.question17_intermediate_solution1, R.drawable.question17_intermediate_solution2,0));
         //
         al.add(new QuestionIntermediate("intermediate", "18", R.drawable.question18_intermediate, 2, 0, 0, 0,
-                0,R.drawable.hidden_qn_reaction,R.drawable.question18_intermediate_product_correct,R.drawable.question18_intermediate_product1_incorrect, R.drawable.question18_intermediate_product2_incorrect, R.drawable.question18_intermediate_product3_incorrect, 1, R.drawable.hidden_qn_reaction, R.drawable.question18_intermediate_reaction1_incorrect, R.drawable.question18_intermediate_reaction2_incorrect,
+                0,R.drawable.hidden_qn_product,R.drawable.question18_intermediate_product_correct,R.drawable.question18_intermediate_product1_incorrect, R.drawable.question18_intermediate_product2_incorrect, R.drawable.question18_intermediate_product3_incorrect, 1, R.drawable.hidden_qn_reaction, R.drawable.question18_intermediate_reaction1_incorrect, R.drawable.question18_intermediate_reaction2_incorrect,
                 R.drawable.question18_intermediate_reaction3_incorrect, R.drawable.question18_intermediate_reaction_correct, 4,R.drawable.question18_intermediate_solution1, R.drawable.question18_intermediate_solution2,0));
         //
         al.add(new QuestionIntermediate("intermediate", "19", R.drawable.question19_intermediate, 2, 0, 0, 0,
@@ -330,7 +330,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
             timer.cancel();
             if (questionCounter < questionCountTotal) {
                 AlertDialog.Builder myBuilder = new AlertDialog.Builder(IntermediateQuestionsActivity.this);
-                myBuilder.setTitle("Sorry");
+
                 if (currentQuestion.getQnCount() == 3) {
                     final View customLayout = getLayoutInflater().inflate(R.layout.custom_image_layout3, null);
                     myBuilder.setView(customLayout);
@@ -363,8 +363,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                             myDialog.show();
 
                         } else {
-                            myBuilder.setTitle("Congratulations!!");
-                            myBuilder.setMessage("You selected the correct answer!");
+                            myBuilder.setTitle("Congratulations!!You selected the correct answer!");
                             myBuilder.setCancelable(false);
                             myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
@@ -377,7 +376,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                     } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2() && ans3 == currentQuestion.getCorrectNum3()) {
                         wrongSound.start();
                         v.vibrate(200);
-                        myBuilder.setMessage("You selected the wrong answer for Question 1!");
+                        myBuilder.setTitle("You selected the wrong answer for Question 1!");
                         myBuilder.setCancelable(false);
                         myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
@@ -386,7 +385,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                     } else if (ans1 == currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum2() && ans3 == currentQuestion.getCorrectNum3()) {
                         wrongSound.start();
                         v.vibrate(200);
-                        myBuilder.setMessage("You selected the wrong answer for Question 2!");
+                        myBuilder.setTitle("You selected the wrong answer for Question 2!");
                         myBuilder.setCancelable(false);
                         myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
@@ -395,7 +394,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                     } else if (ans1 == currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2() && ans3 != currentQuestion.getCorrectNum3()) {
                         wrongSound.start();
                         v.vibrate(200);
-                        myBuilder.setMessage("You selected the wrong answer for Question 3!");
+                        myBuilder.setTitle("You selected the wrong answer for Question 3!");
                         myBuilder.setCancelable(false);
                         myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
@@ -404,7 +403,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                     } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum2() && ans3 == currentQuestion.getCorrectNum3()) {
                         wrongSound.start();
                         v.vibrate(200);
-                        myBuilder.setMessage("You selected the wrong answer for Question 1 and 2!");
+                        myBuilder.setTitle("You selected the wrong answer for Question 1 and 2!");
                         myBuilder.setCancelable(false);
                         myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
@@ -413,7 +412,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                     } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2() && ans3 != currentQuestion.getCorrectNum3()) {
                         wrongSound.start();
                         v.vibrate(200);
-                        myBuilder.setMessage("You selected the wrong answer for Question 1 and 3!");
+                        myBuilder.setTitle("You selected the wrong answer for Question 1 and 3!");
                         myBuilder.setCancelable(false);
                         myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
@@ -422,7 +421,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                     } else if (ans1 == currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum2() && ans3 != currentQuestion.getCorrectNum3()) {
                         wrongSound.start();
                         v.vibrate(200);
-                        myBuilder.setMessage("You selected the wrong answer for Question 2 and 3!");
+                        myBuilder.setTitle("You selected the wrong answer for Question 2 and 3!");
                         myBuilder.setCancelable(false);
                         myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
@@ -431,7 +430,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                     } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum2() && ans3 != currentQuestion.getCorrectNum3()) {
                         wrongSound.start();
                         v.vibrate(200);
-                        myBuilder.setMessage("You selected the wrong answer for all Questions!");
+                        myBuilder.setTitle("You selected the wrong answer for all Questions!");
                         myBuilder.setCancelable(false);
                         myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
@@ -483,7 +482,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                         } else if (ans1 != currentQuestion.getCorrectNum2() && ans2 == currentQuestion.getCorrectNum3()) {
                             wrongSound.start();
                             v.vibrate(200);
-                            myBuilder.setMessage("You selected the wrong answer for Question 1!");
+                            myBuilder.setTitle("You selected the wrong answer for Question 1!");
                             myBuilder.setCancelable(false);
                             myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
@@ -492,7 +491,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                         } else if (ans1 == currentQuestion.getCorrectNum2() && ans2 != currentQuestion.getCorrectNum3()) {
                             wrongSound.start();
                             v.vibrate(200);
-                            myBuilder.setMessage("You selected the wrong answer for Question 2!");
+                            myBuilder.setTitle("You selected the wrong answer for Question 2!");
                             myBuilder.setCancelable(false);
                             myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
@@ -501,7 +500,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                         } else {
                             wrongSound.start();
                             v.vibrate(200);
-                            myBuilder.setMessage("You selected the wrong answer for all Questions!");
+                            myBuilder.setTitle("You selected the wrong answer for all Questions!");
                             myBuilder.setCancelable(false);
                             myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
@@ -545,7 +544,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                         } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum3()) {
                             wrongSound.start();
                             v.vibrate(200);
-                            myBuilder.setMessage("You selected the wrong answer for Question 1!");
+                            myBuilder.setTitle("You selected the wrong answer for Question 1!");
                             myBuilder.setCancelable(false);
                             myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
@@ -554,7 +553,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                         } else if (ans1 == currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum3()) {
                             wrongSound.start();
                             v.vibrate(200);
-                            myBuilder.setMessage("You selected the wrong answer for Question 2!");
+                            myBuilder.setTitle("You selected the wrong answer for Question 2!");
                             myBuilder.setCancelable(false);
                             myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
@@ -563,7 +562,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                         } else {
                             wrongSound.start();
                             v.vibrate(200);
-                            myBuilder.setMessage("You selected the wrong answer for all Questions!");
+                            myBuilder.setTitle("You selected the wrong answer for all Questions!");
                             myBuilder.setCancelable(false);
                             myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
@@ -607,7 +606,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                         } else if (ans1 != currentQuestion.getCorrectNum1() && ans2 == currentQuestion.getCorrectNum2()) {
                             wrongSound.start();
                             v.vibrate(200);
-                            myBuilder.setMessage("You selected the wrong answer for Question 1!");
+                            myBuilder.setTitle("You selected the wrong answer for Question 1!");
                             myBuilder.setCancelable(false);
                             myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
@@ -616,7 +615,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                         } else if (ans1 == currentQuestion.getCorrectNum1() && ans2 != currentQuestion.getCorrectNum2()) {
                             wrongSound.start();
                             v.vibrate(200);
-                            myBuilder.setMessage("You selected the wrong answer for Question 2!");
+                            myBuilder.setTitle("You selected the wrong answer for Question 2!");
                             myBuilder.setCancelable(false);
                             myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
@@ -625,7 +624,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                         } else {
                             wrongSound.start();
                             v.vibrate(200);
-                            myBuilder.setMessage("You selected the wrong answer for all Questions!");
+                            myBuilder.setTitle("You selected the wrong answer for all Questions!");
                             myBuilder.setCancelable(false);
                             myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
@@ -677,7 +676,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                         } else if (ans1 != currentQuestion.getCorrectNum1()) {
                             wrongSound.start();
                             v.vibrate(200);
-                            myBuilder.setMessage("You selected the wrong answer!");
+                            myBuilder.setTitle("You selected the wrong answer!");
                             myBuilder.setCancelable(false);
                             myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
@@ -722,7 +721,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                         } else if (ans1 != currentQuestion.getCorrectNum2()) {
                             wrongSound.start();
                             v.vibrate(200);
-                            myBuilder.setMessage("You selected the wrong answer!");
+                            myBuilder.setTitle("You selected the wrong answer!");
                             myBuilder.setCancelable(false);
                             myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
@@ -766,7 +765,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                         } else if (ans1 != currentQuestion.getCorrectNum3()) {
                             wrongSound.start();
                             v.vibrate(200);
-                            myBuilder.setMessage("You selected the wrong answer!");
+                            myBuilder.setTitle("You selected the wrong answer!");
                             myBuilder.setCancelable(false);
                             myBuilder.setPositiveButton("Next", (dialogInterface, i) -> showNextQuestion());
 
@@ -1090,10 +1089,10 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
         ivChoice1.setEnabled(true);
         ivChoice2.setEnabled(true);
         ivChoice3.setEnabled(true);
+        questionCounter++;
         if (questionCounter < questionCountTotal) {
             Random rand = new Random();
             currentQuestion = al.get(rand.nextInt(al.size()));
-
             ivQuestion.setImageResource(currentQuestion.getQnMainImage());
             if (currentQuestion.getQnCount() == 1) {
                 ivChoice2.setImageResource(android.R.color.transparent);
@@ -1171,7 +1170,7 @@ public class IntermediateQuestionsActivity extends AppCompatActivity {
                 }
             }.start();
 
-            questionCounter++;
+
             tvQuestionsNumber.setText("Intermediate: " + questionCounter + "/" + questionCountTotal);
             answered = false;
             btnStart.setText("Confirm");

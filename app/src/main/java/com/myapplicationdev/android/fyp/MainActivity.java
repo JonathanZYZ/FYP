@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         if (sharedPreferences.contains("sound") && sharedPreferences.contains("music")) {
             music = sharedPreferences.getInt("music", 0);
             sound = sharedPreferences.getInt("sound", 0);
+
             if (music == 0) {
                 backgroundMusic = new MediaPlayer();
             } else {

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "simpleScoreBoard.db";
+    private static final String DATABASE_NAME = "ScoreBoard.db";
     // To make the app calls onUpgrade(), increment the variable DATABASE_VERSION from 1 to 2.
     private static final int DATABASE_VERSION = 1;
     private static final String TABLE_SCOREBOARD = "scoreBoard";
